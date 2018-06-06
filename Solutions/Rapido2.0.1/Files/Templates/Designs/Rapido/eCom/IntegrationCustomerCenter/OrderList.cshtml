@@ -1,0 +1,148 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Ecommerce.Prices
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using System
+@using System.Web
+
+@{
+    string pageId = GetGlobalValue("Global:Page.ID");
+    string openOrderLink = GetString("Ecom:IntegrationCustomerCenter.OpenOrder.Link");
+    int detailsPageID = GetPageIdByNavigationTag("OrderDetails");
+}  
+
+@if (string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.OpenOrder.EmptyList")))
+{
+    <div class="grid__col-6 grid__col--bleed">
+        <div class="grid__cell">
+            <div class="u-pull--right">
+                <a href="/Admin/Public/CustomerCenter/ExcelExport.aspx" class="btn btn--secondary btn--condensed dw-mod"><i class="fa fa-download"></i></a>
+            </div>
+        </div>
+    </div>
+
+    foreach (LoopItem order in GetLoop("Ecom:IntegrationCustomerCenter.OpenOrderLoop"))
+    {
+    string stockState = !String.IsNullOrEmpty(order.GetString("Status")) ? "stock-icon--in" : "stock-icon--not";
+    string price = new PriceInfo { PriceWithoutVAT = order.GetInteger("totalAmountIncVat") }.PriceWithoutVATFormatted;
+
+    <div class="grid__col-12 grid__col--border grid__col--bleed-x">
+        <div class="grid">
+            <div class="grid__col-md-3 grid__col-xs-12 grid__col--bleed-y">
+                <div class="u-pull--left u-middle">
+                    <a href="#" onclick="GetSelectedOrder(this)" id="@order.GetString("id")" class="btn btn--clean btn--condensed u-no-margin">@Translate("Date"): @order.GetString("orderDate")</a>
+                </div>
+            </div>
+            <div class="grid__col-md-4 grid__col-xs-12 grid__col--bleed-y">
+                <div class="grid__cell grid__cell--full">
+                    <div class="u-pull--left u-middle">
+                        <a href="#" onclick="GetSelectedOrder(this)" id="@order.GetString("id")" class="btn btn--clean btn--condensed u-no-margin">@Translate("Order ID"): @order.GetString("id")</a>
+                    </div>
+                    <div class="stock-icon @stockState u-pull--right u-middle dw-mod"></div>
+                </div>
+            </div>
+            <div class="grid__col-md-5 grid__col-xs-12 grid__col--bleed-y">
+                <div class="grid__cell grid__cell--full">
+                    <div class="u-pull--right u-middle">
+                        <a href="/Admin/public/CustomerCenter/RequestExternalPdf.aspx?type=OpenOrder&id=@order.GetString("id")&forceDownload=true" class="btn btn--secondary btn--condensed u-no-margin dw-mod" title="@Translate("Download")" download><i class="fa fa-download"></i></a>
+                    </div>
+                    <div class="u-pull--right u-middle u-margin-right">
+                        <span class="u-color-light-gray">@Translate("Total price"): </span><span>@price</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+    @*if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Orders.Paging.Show")))
+    {
+        <div class="u-pull--left">
+            @Translate("Page") @GetString("Ecom:IntegrationCustomerCenter.Paging.CurrentPage") @Translate("of") @GetString("Ecom:IntegrationCustomerCenter.Paging.NumPages")
+        </div>
+        <div class="u-pull--right">
+            <ul class="pager dw-mod">
+                @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Paging.Back.URL")))
+                {
+                <li class="pager__btn dw-mod">
+                    <a href="@GetString("Ecom:IntegrationCustomerCenter.Paging.Back.URL")"><i class="fa fa-angle-left"></i></a>
+                </li>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Paging.HasPages")))
+                {
+                    foreach (LoopItem page in GetLoop("Ecom:IntegrationCustomerCenter.Paging.Pages"))
+                    {
+                        string activeClass = page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageClass") == "currentPage" ? "pager__btn--current" : "";
+                        <li class="pager__btn @activeClass dw-mod">
+                            <a class="@page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageClass")" href="@page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageIndexUrl")">
+                                @page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageIndex")
+                            </a>
+                        </li>
+                    }                                                                                                                                                                                                           <text></text>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Paging.Forward.URL")))
+                {
+                <li class="pager__btn dw-mod">
+                    <a href="@GetString("Ecom:IntegrationCustomerCenter.Paging.Forward.URL")" class="pager--current dw-mod"><i class="fa fa-angle-right"></i></a>
+                </li>
+                }
+            </ul>
+        </div>
+    }*@
+}
+else
+{
+    @Translate("No orders found", "No orders found")
+}
+
+
+@* Escape the grid, container and section *@
+</div>
+</div>
+</section>
+</div>
+@* ----------------------------------- *@
+
+<!-- Trigger for the order modal -->
+<input type="checkbox" id="order-modal-trigger" class="modal-trigger" />
+
+<div class="modal-container">
+    <div class="modal-tools">
+        <a id="orderPrintBtn" href="#" class="btn btn--clean btn--condensed u-color-light"><i class="fa fa-print"></i></a>
+        <a id="orderDownloadBtn" href="#" class="btn btn--clean btn--condensed u-color-light" download><i class="fa fa-download"></i></a>
+    </div>
+
+    <label for="order-modal-trigger" id="order-modal-overlay" class="modal-overlay"></label>
+
+    <div class="modal modal--iframe modal--lg" id="order-modal">
+        <iframe id="orderIframe" src=""></iframe>
+    </div>
+</div>
+
+@* Re-enter the grid, container and section *@
+<div class="site-container dw-mod">
+<section class="content-container page-container dw-mod">
+<div class="grid">
+<div class="grid grid--outer-bleed product">
+@* ----------------------------------- *@
+
+
+<script>
+    function GetSelectedOrder(order) {        
+        window.scroll(0, 0);
+
+        document.body.classList.add("u-overflow-hidden");
+
+        document.getElementById("orderIframe").setAttribute("src", "");
+        document.getElementById("order-modal-trigger").checked = true;
+        document.getElementById("orderIframe").setAttribute("src", "/Default.aspx?ID=@detailsPageID&itemID=" + order.getAttribute("id"));
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        document.getElementById("order-modal-overlay").addEventListener('click', function (event) {
+            document.body.classList.remove("u-overflow-hidden");
+        }, false);
+    });
+</script>

@@ -1,0 +1,11 @@
+﻿// -----------------------------------------------------------------------------
+// Contains all styles related to the Wbsite settings Logo section
+// -----------------------------------------------------------------------------
+
+.logo.dw-mod {
+    .logo-mixin();
+}
+
+.logo-mixin() when not (@logo-background-color = none) {   
+	background-color: @logo-background-color;
+}

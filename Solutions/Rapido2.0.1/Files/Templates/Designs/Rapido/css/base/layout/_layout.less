@@ -1,0 +1,127 @@
+//  Content
+.site {
+  left: 0;
+  position: relative;
+  transition: left 0.2s;  
+}
+
+.page {
+	min-height: 500px;
+}
+
+
+//Top
+.top-container {
+  background-color: #fff;
+}
+
+.top-container__center-container {
+  padding: 0 @reflex-cell-spacing-lg;
+}
+
+.top-container--sticky {
+  width: 100%;
+  position: fixed; 
+  top: 0;
+  z-index: @z-index-9;
+}
+
+
+//Center
+.center-container {
+  margin: 0 auto;
+  max-width: @container-width;
+  position: relative;
+  width: 100%;
+  height:100%;
+  box-sizing: border-box;
+}
+
+.content-container {
+    background-color: #fff;
+}
+
+
+//Paragraph
+.paragraph-container {
+	padding: @reflex-cell-spacing-lg;
+
+	p:last-of-type {
+		margin-bottom: @reflex-cell-spacing-sm;
+	}
+}
+
+.paragraph-container__grid--bleed {
+    position: relative;
+    width: ~"calc(100% + @{reflex-cell-spacing-xl})";
+    left: -@reflex-cell-spacing-lg;
+}
+
+.paragraph-container__grid--bleed-x {
+    position: relative;
+    width: ~"calc(100% + @{reflex-cell-spacing-lg})";
+    left: -@reflex-cell-spacing-md;
+}
+
+.paragraph-container__grid--bleed-y {
+    position: relative;
+    height: ~"calc(100% + @{reflex-cell-spacing-lg})";
+    top: -@reflex-cell-spacing-md;
+}
+
+.paragraph-container--height-sm {
+    min-height: 150px;
+}
+
+.paragraph-container--height-md {
+    min-height: 220px;
+}
+
+.paragraph-container--height-lg {
+    min-height: 350px;
+}
+
+.paragraph-container--height-xl {
+    min-height: 550px;
+}
+
+
+//Multi paragraph
+.multiple-paragraphs-container {
+    height: 100%;
+}
+
+.multiple-paragraphs-container--seperation-line-after {
+   border-bottom: 1px solid @gray-light;
+   margin-bottom: @reflex-cell-spacing-lg;
+}
+
+.multiple-paragraphs-container--spacing-sm {
+    padding: 0;
+}
+
+.multiple-paragraphs-container--spacing-md {
+    padding: @reflex-cell-spacing-md @reflex-cell-spacing-lg;
+}
+
+.multiple-paragraphs-container--spacing-lg {
+    padding: @reflex-cell-spacing-lg;
+}
+
+.multiple-paragraphs-container--spacing-xl {
+    padding: @reflex-cell-spacing-xl @reflex-cell-spacing-lg;
+}
+
+@media (max-width: @reflex-sm) {
+    .top-container__center-container {
+      padding: 0 @reflex-cell-spacing-md;
+    }
+
+   .paragraph-container {
+        padding-top: @reflex-cell-spacing-lg;
+        padding-bottom: @reflex-cell-spacing-lg;
+        padding-left: @reflex-cell-spacing-md;
+        padding-right: @reflex-cell-spacing-md;
+		
+   }
+}

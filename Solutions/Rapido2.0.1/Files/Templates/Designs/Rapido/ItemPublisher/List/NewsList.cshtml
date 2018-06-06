@@ -1,0 +1,46 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@functions { 
+    string Truncate(string value, int maxChars)
+    {
+        return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
+    }
+}
+
+<div class="grid__col-md-8 grid__col-sm-12 grid__col-xs-12">
+    <div class="grid">
+        @foreach (LoopItem item in GetLoop("ItemPublisher:Items.List"))
+        {
+            string link = "/Default.aspx?ID=" + item.GetString("ItemPublisher:Item.Field.PageId");
+
+            <div class="grid__col-md-4 grid__col-sm-4 grid__col-xs-12 grid__col-xxs-12">
+                <a href="@link">
+                    <img src="/Admin/Public/GetImage.ashx?width=800&height=600&amp;crop=0&amp;Compression=75&amp;DoNotUpscale=0&amp;image=@item.GetString("ItemPublisher:Item.Image")" class="u-no-margin" />
+                </a>
+            </div>
+            <div class="grid__col-md-8 grid__col-sm-8 grid__col-xs-12 grid__col-xxs-12">
+                <a href="@link"><h2 class="article__header u-truncate-text dw-mod">@item.GetString("ItemPublisher:Item.Title")</h2></a>
+                <small class="article__subscription dw-mod">
+                    @if (!(string.IsNullOrWhiteSpace(item.GetString("ItemPublisher:Item.Author")) && string.IsNullOrWhiteSpace(item.GetString("ItemPublisher:Item.Date"))))
+                    {
+                        <text>@Translate("Written")</text>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(item.GetString("ItemPublisher:Item.Author")))
+                    {
+                        <text>@Translate("by") @item.GetString("ItemPublisher:Item.Author")</text>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(item.GetString("ItemPublisher:Item.Date")))
+                    {
+                        <text>@Translate("on") @item.GetDate("ItemPublisher:Item.Date").ToString("dd.MM.yyyy, HH:mm")</text>
+                    }
+                </small>
+
+                <p class="article__short-summary dw-mod">@Truncate(item.GetString("ItemPublisher:Item.Summary"), 120)</p>
+
+                <div class="grid__cell-footer">
+                    <a href="@link" class="btn btn--secondary u-no-margin dw-mod">@Translate("Read more")</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,9 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+
+@Include("Layout.cshtml")
+
+<div class="@columnClass() paragraph-container">
+    <div class="video-wrapper">
+        @Model.Item.GetString("VideoHTML")
+    </div>
+</div>

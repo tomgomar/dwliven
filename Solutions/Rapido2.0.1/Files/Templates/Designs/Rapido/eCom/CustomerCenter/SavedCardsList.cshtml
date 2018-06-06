@@ -1,0 +1,58 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+<div class="grid__col-12 grid__col--bleed">
+    <div class="grid__cell u-border-bottom">
+        <div class="u-pull--left">
+            <h2><i class="fa fa-credit-card"></i> @GetGlobalValue("Global:Page.Name")</h2>
+        </div>
+    </div>
+</div>
+
+<div class="grid__col-12 grid__col--bleed">
+    @if (!string.IsNullOrWhiteSpace(GetString("Ecom:CustomerCenter.SavedCards.EmptyList")))
+    {
+        <div class="u-ta-center">@Translate("No saved cards found")</div>
+    }
+    else
+    {
+        int i = 0;
+        foreach (LoopItem card in GetLoop("SavedCards"))
+        {
+            i++;
+            <!-- Trigger for the warning modal -->
+            <input type="checkbox" id="DeleteWarningModalTrigger_@i" class="modal-trigger" />
+
+            <!-- Warning modal -->
+            <div class="modal-container">
+                <label for="DeleteWarningModalTrigger_@i" class="modal-overlay"></label>
+                <div class="modal modal--xs">
+                    <div class="modal__header">
+                        <h2>@Translate("Warning")</h2>
+                    </div>
+                    <div class="modal__body">
+                        <p>@Translate("Are you sure you wish to delete this saved card?")</p>
+                        <p></p>
+                        <a href="@card.GetString("Ecom:CustomerCenter.SavedCards.DeleteUrl")" class="btn btn--primary btn--full u-no-margin dw-mod">@Translate("Yes")</a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__col-md-12 list-item">
+                <div class="grid__cell list-item__wraper">
+                    <div class="list-item__column">
+                        <div class="list-item__circle circle--centered-text list-item__circle--no-link"><span>@card.GetString("Ecom:SavedCard.CardType")</span></div>
+                        <div>
+                            <div class="list-item__header">
+                                <div class="list-item__name list-item__name--no-link">@card.GetString("Ecom:SavedCard.Name")</div>
+                            </div>
+                            <div><span class="list-item__parameter-label">@Translate("Payment method"):</span> @card.GetString("Ecom:SavedCard.Payment")</div>
+                            <div><span class="list-item__parameter-label">@Translate("Card no").:</span> @card.GetString("Ecom:SavedCard.Identifier")</div>
+                        </div>
+                    </div>
+                    <div class="list-item__actions">
+                        <label for="DeleteWarningModalTrigger_@i" class="list-item__action link" title="@Translate("Delete")">@Translate("Delete")</label>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

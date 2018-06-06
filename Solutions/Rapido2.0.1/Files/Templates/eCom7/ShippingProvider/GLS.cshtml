@@ -1,0 +1,111 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@functions {
+    public class ParcelShops
+    {
+        public string fieldPrefix { get; set; }
+        public string selected { get; set; }
+        public string number { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
+        public string company { get; set; }
+        public string address { get; set; }
+        public string zip { get; set; }
+        public string city { get; set; }
+        public string countryCode { get; set; }
+    }
+
+    public class Root
+    {
+        public string hideShippingProvider { get; set; }
+        public string fieldPrefix { get; set; }
+        public string location { get; set; }
+        public List<ParcelShops> ParcelShops { get; set; }
+        public List<ParcelShops> SelectedParcelShop { get; set; }
+    }
+}
+
+@{
+    string jsonFeed = "";
+
+    List<Root> feedObject = new List<Root>();
+    Root feedRoot = new Root();
+
+    feedRoot.hideShippingProvider = GetLoop("ParcelShops").Count > 0 ? "" : "u-hidden";
+    feedRoot.fieldPrefix = GetString("FieldPrefix");
+    feedRoot.location = Translate("Parcel shops near", "Parcel shops near") + " " + GetString("Order.Customer.Address") + " " + GetString("Order.Customer.ZipCode");
+    feedRoot.ParcelShops = new List<ParcelShops>();
+
+    foreach (LoopItem shop in GetLoop("ParcelShops"))
+    {
+        ParcelShops parcelShop = new ParcelShops();
+        parcelShop.fieldPrefix = GetString("FieldPrefix");
+        parcelShop.number = shop.GetString("Number");
+        parcelShop.latitude = shop.GetString("Latitude");
+        parcelShop.longitude = shop.GetString("Longitude");
+        parcelShop.company = shop.GetString("CompanyName");
+        parcelShop.address = shop.GetString("Streetname");
+        parcelShop.zip = shop.GetString("ZipCode");
+        parcelShop.city = shop.GetString("CityName");
+        parcelShop.countryCode = shop.GetString("CountryCodeISO3166A2");
+        parcelShop.selected = shop.GetBoolean("IsSelected") ? "checked" : "";
+        feedRoot.ParcelShops.Add(parcelShop);
+    }
+
+    feedRoot.SelectedParcelShop = new List<ParcelShops>();
+
+    bool hasSelection = false;
+
+    foreach (LoopItem shop in GetLoop("ParcelShops"))
+    {
+        if (shop.GetBoolean("IsSelected"))
+        {
+            ParcelShops parcelShop = new ParcelShops();
+            parcelShop.fieldPrefix = GetString("FieldPrefix");
+            parcelShop.number = shop.GetString("Number");
+            parcelShop.latitude = shop.GetString("Latitude");
+            parcelShop.longitude = shop.GetString("Longitude");
+            parcelShop.company = shop.GetString("CompanyName");
+            parcelShop.address = shop.GetString("Streetname");
+            parcelShop.zip = shop.GetString("ZipCode");
+            parcelShop.city = shop.GetString("CityName");
+            parcelShop.countryCode = shop.GetString("CountryCodeISO3166A2");
+            parcelShop.selected = "checked";
+
+            feedRoot.SelectedParcelShop.Add(parcelShop);
+
+            hasSelection = true;
+        }
+    }
+
+    if (hasSelection == false) {
+        int count = 0;
+
+        foreach (LoopItem shop in GetLoop("ParcelShops"))
+        {
+            if (count == 0) {
+                ParcelShops parcelShop = new ParcelShops();
+                parcelShop.fieldPrefix = GetString("FieldPrefix");
+                parcelShop.number = shop.GetString("Number");
+                parcelShop.latitude = shop.GetString("Latitude");
+                parcelShop.longitude = shop.GetString("Longitude");
+                parcelShop.company = shop.GetString("CompanyName");
+                parcelShop.address = shop.GetString("Streetname");
+                parcelShop.zip = shop.GetString("ZipCode");
+                parcelShop.city = shop.GetString("CityName");
+                parcelShop.countryCode = shop.GetString("CountryCodeISO3166A2");
+                parcelShop.selected = "checked";
+
+                feedRoot.SelectedParcelShop.Add(parcelShop);
+
+                count++;
+            }
+        }
+    }
+
+    feedObject.Add(feedRoot);
+    jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(feedObject);
+
+}
+
+@jsonFeed

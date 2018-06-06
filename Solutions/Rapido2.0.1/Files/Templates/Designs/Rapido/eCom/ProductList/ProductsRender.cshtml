@@ -1,0 +1,709 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Frontend.Devices
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Core
+@using System
+@using System.Web 
+@using System.Collections.Generic;
+@using System.Linq
+@using System.Text.RegularExpressions
+
+@{
+    string pageUrl = GetGlobalValue("Global:Pageview.Url.Raw");
+
+    //Favorites
+    string pageId = GetGlobalValue("Global:Page.ID");
+    string feedFullUrl = pageUrl + "&feed=true";
+    string requestQuery = GetGlobalValue("Global:Request.Query") + "&feed=true";
+    string groupID = HttpContext.Current.Request.QueryString.Get("groupid");
+    string productCatalogId = GetGlobalValue("Global:Page.ID");
+    string listId = HttpContext.Current.Request.QueryString.Get("ListID");
+    bool isFavoriteList = !String.IsNullOrEmpty(listId) ? true : false;
+    requestQuery += !isFavoriteList ? "&DoNotShowVariantsAsSingleProducts=True" : "";
+    feedFullUrl += !isFavoriteList ? "&DoNotShowVariantsAsSingleProducts=True" : "";
+
+    int listViewsCount = 0;
+    listViewsCount += Converter.ToBoolean(Pageview.Area.Item["ProductItemContainer"]) ? 1 : 0;
+    listViewsCount += Converter.ToBoolean(Pageview.Area.Item["ProductGridItemContainer"]) ? 1 : 0;
+    listViewsCount += Converter.ToBoolean(Pageview.Area.Item["ProductDetailsItemContainer"]) ? 1 : 0;
+
+    bool hideSorting = Converter.ToBoolean(Pageview.Area.Item["HideSorting"]);
+    bool onlyPreview = Converter.ToBoolean(Pageview.Area.Item["OnlyPreviewForAnonymous"]) && Pageview.User == null;
+}
+
+@GetValue("DoNotRenderProductListTemplate")
+
+<form name="multiForm" id="multiForm" method="post">
+    <input type="hidden" name="CartCmd" id="CartCmd" value="addMulti" />
+    <div class="paragraph-container__grid--bleed-x paragraph-container__grid--bleed-y">
+        <div class="grid grid--align-content-start js-handlebars-root" id="productList" data-template="ProductContainer" data-pre-render-template="ProductPreRenderContainer" data-json-feed="@feedFullUrl" data-preloader="overlay"></div>
+    </div>
+</form>
+
+<script id="ProductPreRenderContainer" type="text/x-template">                                                   
+    <div class="grid__col-12">
+        <div class="pre-render-element pre-render-element--xxs"></div>
+    </div>
+    <div class="grid__col-12">
+        <div class="pre-render-element pre-render-element--xs"></div>
+    </div>
+    @if (Pageview.Area.Item["EcommerceFacetsViewMode"].ToString() == "left" && Pageview.Device.ToString() != "Mobile")
+    {
+        <div class="grid__col-3">
+            <div class="pre-render-element pre-render-element--xs"></div>
+            <div class="pre-render-element pre-render-element--md"></div>
+            <div class="pre-render-element pre-render-element--md"></div>
+            <div class="pre-render-element pre-render-element--md"></div>
+        </div>
+    }
+    <div class="grid__col-auto">
+        <div class="pre-render-element pre-render-element--xs"></div>
+        <div class="pre-render-element pre-render-element--lg"></div>
+        <div class="pre-render-element pre-render-element--lg"></div>
+        <div class="pre-render-element pre-render-element--lg"></div>
+        <div class="pre-render-element pre-render-element--lg"></div>
+    </div>
+</script>
+
+<script id="ProductContainer" type="text/x-template">
+    {{#each .}}
+        @if (!isFavoriteList) {
+            switch (Pageview.Area.Item["PromotionBlockDesign"].ToString())
+            {
+                case "OnlyText":
+                    <article class="grid__col-12 u-margin-bottom">
+                        <h1>{{groupName}}</h1>
+                        {{{groupDescription}}}
+                    </article>
+                    break;
+                case "TextAndImage":
+                    <article class="grid__col-12 u-margin-bottom">
+                        <div class="grid grid--bleed">
+                            <div class="grid__col-md-6">
+                                <h1>{{groupName}}</h1>
+                                {{{groupDescription}}}
+                            </div>
+                            {{#ifCond groupPromotionImage "!==" ""}}
+                                <div class="grid__col-md-6">
+                                    <img src="/Admin/Public/GetImage.ashx?width=300&height=300&crop=5&Compression=75&DoNotUpscale=true&FillCanvas=true&image={{groupPromotionImage}}" class="grid__cell-img grid__cell-img--centered" />
+                                </div>
+                            {{/ifCond}}
+                        </div>
+                    </article>
+                    break;
+                case "Banner":
+                    <text>
+                    {{#ifCond groupPromotionImage "!==" ""}}
+                        <article class="grid__col-12 u-margin-bottom">
+                            <div class="u-color-light grid center-container center-container--with-background-image u-padding" style="background-image:url('{{groupPromotionImage}}'); background-size: cover;">
+                                <div class="grid__col-12 u-middle">
+                                    <div class="grid__cell">
+                                        {{{groupDescription}}}
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    {{/ifCond}}
+                    </text>
+                    break;
+            }
+        }
+
+	@if (Pageview.Area.Item["EcommerceFacetsViewMode"].ToString() == "top" || Pageview.Device.ToString() == "Mobile")
+	{
+		<div class="grid__col-12">
+			<input type="checkbox" id="CheckFacetGroups" class="facets-container-trigger" />
+			<div class="grid facets-container dw-mod">
+				{{#FacetGroups}}
+				<div class="grid__col-lg-3 grid__col-md-3 grid__col-sm-4 grid__col-xs-12">
+					<input type="checkbox" id="OptionsGroup_{{counter}}" class="dropdown-trigger" />
+					<div class="dropdown dw-mod">
+						<label class="dropdown__header dropdown__btn dw-mod" for="OptionsGroup_{{counter}}">{{name}}</label>
+						<div id="FacetOptions" class="dropdown__content dropdown__content--padding dw-mod">
+							{{#FacetOptions}}
+							{{#ifCond template "===" "Checkboxes"}}
+							{{>Checkboxes}}
+							{{/ifCond}}
+							{{#ifCond template "===" "Range"}}
+							{{>Range}}
+							{{/ifCond}}
+							{{#ifCond template "===" "Weight"}}
+							{{>Weight}}
+							{{/ifCond}}
+							{{#ifCond template "===" "Tags"}}
+							{{>Tags}}
+							{{/ifCond}}
+							{{#ifCond template "===" "Colors"}}
+							{{>Colors}}
+							{{/ifCond}}
+							{{/FacetOptions}}
+						</div>
+						<label class="dropdown-trigger-off" for="OptionsGroup_{{counter}}"></label>
+					</div>
+				</div>
+				{{/FacetGroups}}
+			</div>
+			<label for="CheckFacetGroups" class="btn btn--primary btn--full dw-mod facet-selector more">@Translate("Select filters")</label>
+			<label for="CheckFacetGroups" class="btn btn--primary btn--full dw-mod facet-selector less">@Translate("Close filters")</label>
+		</div>
+	}
+
+        @if (Pageview.Area.Item["EcommerceFacetsViewMode"].ToString() == "left" && Pageview.Device.ToString() != "Mobile")
+        {
+            <div class="grid__col-3">
+                <h2>@Translate("Filters")</h2>
+                <input type="checkbox" id="CheckFacetGroups" class="facets-container-trigger" />
+                <div class="facets-container dw-mod">
+                    {{#FacetGroups}}
+                        <input type="checkbox" id="OptionsGroup_{{counter}}" class="expand-trigger js-remember-state" {{defaultState}} />
+
+                        <div class="expand-box expand-container dw-mod">
+                            <label class="expand-box__header expand-container__btn dw-mod" for="OptionsGroup_{{counter}}">{{name}}</label>
+                            <div id="FacetOptions" class="expand-box__content expand-container__content expand-container__content--limit-height dw-mod">
+                                {{#FacetOptions}}
+                                    {{#ifCond template "===" "Checkboxes"}}
+                                        {{>Checkboxes}}
+                                    {{/ifCond}}
+                                    {{#ifCond template "===" "Range"}}
+                                        {{>Range}}
+                                    {{/ifCond}}
+                                    {{#ifCond template "===" "Weight"}}
+                                        {{>Weight}}
+                                    {{/ifCond}}
+                                    {{#ifCond template "===" "Tags"}}
+                                        {{>Tags}}
+                                    {{/ifCond}}
+                                    {{#ifCond template "===" "Colors"}}
+                                        {{>Colors}}
+                                    {{/ifCond}}
+                                {{/FacetOptions}}
+                            </div>
+                        </div>
+                    {{/FacetGroups}}
+                </div>
+                <label for="CheckFacetGroups" class="btn btn--primary btn--full dw-mod facet-selector more">@Translate("Select filters")</label>
+                <label for="CheckFacetGroups" class="btn btn--primary btn--full dw-mod facet-selector less">@Translate("Close filters")</label>
+            </div>
+        }
+
+	<div class="grid__col-auto">
+        
+	    @if (isFavoriteList)
+        {
+            string searchPlaceholder = Translate("Search products", "Search products");
+            string searchValue = HttpContext.Current.Request.QueryString.Get("Search") != null ? HttpContext.Current.Request.QueryString.Get("Search") : "";
+            <div class="grid--align-self-center grid__col--bleed grid__col-12 u-margin-bottom">
+                <div class="typeahead u-margin u-color-inherit js-typeahead" data-page-size="10" id="FavoritesSearch" data-list-id="@listId" data-search-page-id="@pageId&feed=true" data-result-page-id="@pageId">
+                    <input type="text" class="typeahead-search-field u-no-margin u-full-width js-typeahead-search-field" placeholder="@searchPlaceholder" value="@searchValue">
+                    <ul class="dropdown dropdown--absolute-position u-full-width js-handlebars-root js-typeahead-search-content u-min-w220px u-full-width dw-mod" id="FavoritesSearchContent" data-template="SearchContentTemplate" data-json-feed="@feedFullUrl&ListID=@listId" data-init-onload="false" data-preloader="minimal"></ul>
+                    <button type="button" class="btn btn--condensed btn--primary u-no-margin dw-mod js-typeahead-enter-btn"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        }
+
+		<div class="grid__cell">
+
+            <div class="grid">
+                <div class="grid__col-6 grid__col--bleed-y">
+			        <h2><i class="{{headerIcon}}"></i>{{header}}</h2>
+                </div>
+
+                <div class="grid__col-6 grid--align-end grid__col--bleed-y">
+                    <div class="collection u-no-margin">
+                        @if (!hideSorting)
+                        {
+                            <h5 class="u-inline-block u-margin-right">@Translate("Sort by")</h5>
+                            <input type="checkbox" id="ProductSort" class="dropdown-trigger" />
+                            <div class="dropdown u-w150px u-w125px--xs u-margin-right u-inline-block dw-mod">
+                                <label class="dropdown__header dropdown__btn dropdown__btn--small dw-mod" for="ProductSort">{{selectedSort}}</label>
+                                <div class="dropdown__content dw-mod">
+                                    <div class="dropdown__item" onclick="HandlebarsBolt.UpdateContent('productList', '@feedFullUrl')">@Translate("Default")</div>
+                                    <div class="dropdown__item" onclick="HandlebarsBolt.UpdateContent('productList', '@feedFullUrl&SortBy=Created&SortOrder=DESC')">@Translate("Newest")</div>
+                                    @if (!onlyPreview)
+                                    {
+                                        <div class="dropdown__item" onclick="HandlebarsBolt.UpdateContent('productList', '@feedFullUrl&SortBy=Price&SortOrder=ASC')">@Translate("Price low - high")</div>
+                                        <div class="dropdown__item" onclick="HandlebarsBolt.UpdateContent('productList', '@feedFullUrl&SortBy=Price&SortOrder=DESC')">@Translate("Price high - low")</div>
+                                    }
+                                </div>
+                                <label class="dropdown-trigger-off" for="ProductSort"></label>
+                            </div>
+                        }
+                        @if (listViewsCount > 1) {
+                            if (Converter.ToBoolean(Pageview.Area.Item["ProductItemContainer"]))
+                            {
+                                <button type="button" class="btn btn--tag btn--sm" onclick="HandlebarsBolt.UpdateTemplate('ProductsContainer', 'ProductItemContainer')"><i class="fa fa-th-list"></i></button>
+                            }
+                            if (Converter.ToBoolean(Pageview.Area.Item["ProductGridItemContainer"]))
+                            {
+                                <button type="button" class="btn btn--tag btn--sm" onclick="HandlebarsBolt.UpdateTemplate('ProductsContainer', 'ProductGridItemContainer')"><i class="fa fa-th"></i></button>
+                            }
+                            if (Converter.ToBoolean(Pageview.Area.Item["ProductDetailsItemContainer"]))
+                            {
+                                <button type="button" class="btn btn--tag btn--sm" onclick="HandlebarsBolt.UpdateTemplate('ProductsContainer', 'ProductDetailsItemContainer')"><i class="fa fa-list"></i></button>
+                            }
+                        }
+
+				    @if (isFavoriteList)
+				    {
+				        <button type="submit" class="btn btn--primary btn--sm dw-mod">@Translate("Buy all") <i class="fa fa-shopping-cart"></i></button>
+				    }
+			    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="grid__col-12 grid__col--bleed-y">
+                        <div class="collection u-no-margin">
+                            {{#FacetSelections}}
+                                {{#ifCond template "===" "SelectedFilter"}}
+                                    {{>SelectedFilter}}
+                                {{/ifCond}}
+                                {{#ifCond template "===" "SelectedColorFilter"}}
+                                    {{>SelectedColorFilter}}
+                                {{/ifCond}}
+                                {{#ifCond template "===" "ResetFilters"}}
+                                    {{>ResetFilters}}
+                                {{/ifCond}}
+                            {{/FacetSelections}}
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ProductsContainer" data-template="{{listTemplate}}" class="grid product-list dw-mod" data-save-cookie="true">
+                    {{#ProductsContainer}} 
+                        {{#ifCond template "===" "ProductItemContainer"}}
+                            {{>ProductItemContainer}}
+                        {{/ifCond}}
+                        {{#ifCond template "===" "ProductGridItemContainer"}}
+                            {{>ProductGridItemContainer}}
+                        {{/ifCond}}
+                        {{#ifCond template "===" "ProductDetailsItemContainer"}}
+                            {{>ProductDetailsItemContainer}}
+                        {{/ifCond}}
+                    {{/ProductsContainer}}
+                </div>
+
+                <div class="grid">
+                    <div class="grid__col-12 grid__col--bleed-y">
+                        <button type="button" id="LoadMoreButton" class="btn btn--primary btn--full  {{nextdisabled}} dw-mod" data-current="{{currentPage}}" data-page-size="{{pageSize}}" data-total="{{totalPages}}" data-container="ProductsContainer" data-feed-url="@feedFullUrl&groupid=@groupID{{loadMoreFeedParams}}" onclick="LoadMore.Next(this)" {{nextdisabled}}>@Translate("Load") {{pageSizeText}} @Translate("more")</button>
+                        <button type="button" class="btn btn--clean" onclick="window.scroll(0, 0)">@Translate("Return to top")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+            <div class="grid__col-12">
+                <h2 class="u-ta-center">@Translate("No products found")</h2>
+            </div>
+        {{/each}}
+</script>
+
+@*Partial templates*@
+<script id="Checkboxes" type="text/x-template">
+    <div>
+        <label class="{{disabled}}">
+            <input type="checkbox" class="{{selected}}" onclick="Facets.UpdateFacets(this);" name="{{queryParameter}}" value="{{value}}" {{selected}} {{disabled}}>
+            {{label}} <span class="u-color-light-gray u-pull--right">({{count}})</span>
+        </label>
+    </div>
+</script>
+
+<script id="Range" type="text/x-template">
+    <div>
+        <label class="{{disabled}}">
+            <input type="checkbox" class="{{selected}}" onclick="Facets.UpdateFacets(this);" name="{{queryParameter}}" value="{{value}}" {{selected}} {{disabled}}>
+            {{label}} {{currency}} <span class="u-color-light-gray u-pull--right">({{count}})</span>
+        </label>
+    </div>
+</script>
+
+<script id="Weight" type="text/x-template">
+    <div>
+        <label class="{{disabled}}">
+            <input type="checkbox" class="{{selected}}" onclick="Facets.UpdateFacets(this);" name="{{queryParameter}}" value="{{value}}" {{selected}} {{disabled}}>
+            {{label}} {{weight}} <span class="u-color-light-gray u-pull--right">({{count}})</span>
+        </label>
+    </div>
+</script>
+
+<script id="Tags" type="text/x-template">
+    <button type="button" class="btn btn--tag {{selected}} {{disabled}}" data-check="{{selected}}" onclick="Facets.UpdateFacets(this);" name="{{queryParameter}}" value="{{value}}" {{disabled}}>
+        {{label}} <span class="facets-group__counter">({{count}})</span>
+    </button>
+</script>
+
+<script id="Colors" type="text/x-template">
+    <button type="button" class="btn btn--colorbox u-margin-right {{selected}} {{disabled}}" style="background-color: {{value}}" title="{{label}}" data-check="{{selected}}" onclick="Facets.UpdateFacets(this);" name="{{queryParameter}}" value="{{value}}" {{disabled}}></button>
+</script>
+
+<script id="SelectedFilter" type="text/x-template">
+    <button type="button" class="btn btn--tag" data-check="checked" onclick="Facets.UpdateFacets(this);" name="{{queryParameter}}" value="{{value}}" title="@Translate("Remove filter")">
+        {{group}}: {{label}} <i class="fa fa-times"></i>
+    </button>
+</script>
+
+<script id="SelectedColorFilter" type="text/x-template">
+    <button type="button" class="btn btn--tag" data-check="checked" onclick="Facets.UpdateFacets(this);" name="{{queryParameter}}" value="{{value}}" title="@Translate("Remove filter")">
+        {{group}}: <div class="btn__colorbox" style="background-color: {{label}}"></div> <i class="fa fa-times"></i>
+    </button>
+</script>
+
+<script id="ResetFilters" type="text/x-template">
+    <button type="button" class="btn btn--tag" onclick="Facets.ResetFacets(this);">
+        @Translate("Reset all filters") <i class="fa fa-rotate-left"></i>
+    </button>
+</script>
+
+@* Product list templates *@
+
+@* List view *@
+
+<script id="ProductItemContainer" type="text/x-template">
+    {{#.}}
+        <div id="Product{{id}}" data-template="ProductItem" data-preloader="overlay" class="grid__col-12">
+            {{#Product}}
+                {{>ProductItem}}
+            {{/Product}}
+        </div>
+    {{/.}}
+</script>
+
+<script id="ProductItem" type="text/x-template">
+    {{#.}}
+        <input type="hidden" name="ProductLoopCounter{{id}}" value="{{id}}" />
+        <input type="hidden" name="ProductID{{id}}" value="{{productId}}" />
+        <input type="hidden" value="{{variantid}}" name="VariantID{{id}}" id="Variant_{{id}}" />
+
+        <div class="grid product-list__list-item dw-mod">
+            <div class="grid__col-md-4 {{noImage}} product-list__list-item__left dw-mod">
+                <div class="stickers-container dw-mod">
+                    {{#Stickers}}
+                        {{>Sticker}}
+                    {{/Stickers}}
+                </div>
+                <div class="grid__cell">
+                    <a href="{{link}}" onclick="Scroll.SavePosition(event)"><img class="grid__cell-img grid__cell-img--centered b-lazy" src="/Files/Images/placeholder.gif" data-src="/Admin/Public/GetImage.ashx?width=300&amp;height=300&amp;crop=5&amp;Compression=75&amp;DoNotUpscale=true&amp;FillCanvas=true&amp;image={{image}}" alt="{{name}}" /></a>
+                </div>
+            </div>
+            <div class="grid__col-md-auto product-list__list-item__right dw-mod">
+                <div>
+                    <div class="u-pull--left">
+                        <a href="{{link}}" onclick="Scroll.SavePosition(event)" title="{{name}}"><h2 class="u-no-margin">{{name}}</h2></a>
+                        <div class="item-number dw-mod">{{number}}</div>
+                    </div>
+                    <div class="favorites u-pull--right {{hasVariants}} dw-mod" {{hasVariants}}>
+                         {{#Favorite}}
+                             {{>FavoriteTemplate}}
+                         {{/Favorite}}
+                    </div>
+                </div>
+
+                <div class="grid__cell">
+                    {{{description}}}
+                </div>
+
+                @* Combinations div needed to handle variant options(used in script block with Variants.SetVariantOptionStatesForProductList function) and should not be deleted *@
+                <div id="Combinations" data-product-id="{{productId}}" data-id="{{id}}" class="js-variants-wrap u-hidden">
+                    {{#VariantStockCombination}}
+                        {{>VariantStockCombination}}
+                    {{/VariantStockCombination}}
+                </div>
+
+                <div id="Variants{{id}}" data-template="VariantsTemplate" data-product-id="{{productId}}">
+                    {{#Variants}}
+                        {{>VariantsTemplate}}
+                    {{/Variants}}
+                </div>
+
+                <small id="helpText_{{id}}" class="help-text {{hideViewMore}} {{hideHelpText}}">@Translate("Please select variant!")</small>
+                @if (!onlyPreview)
+                {
+                    <div class="grid__cell-footer">
+                        <div class="grid__cell">
+                            <div class="product-list__list-item__price-actions dw-mod">
+                                <div class="u-margin-bottom">
+                                    <div class="before-price {{onSale}} dw-mod">{{discount}}</div>
+                                    <div class="price dw-mod">{{price}}</div>
+                                </div>
+                                <div class="buttons-collection buttons-collection--right">
+                                    <button type="button" id="CartButton_{{id}}" class="btn btn--primary btn--condensed u-pull--right dw-mod {{hasVariants}}" name="submit" onclick="Cart.AddToCart(event, '{{productId}}', document.getElementById('Quantity_{{id}}').value, 'Unit_{{id}}', 'Variant_{{id}}');" {{hasVariants}}><i class="fa fa-shopping-cart"></i><span class="u-hidden-xs u-hidden-xxs"> @Translate("Add to cart")</span></button>
+                                    <input type="number" class="u-w80px u-pull--right" id="Quantity_{{id}}" name="Quantity{{id}}" value="1" min="1">
+
+                                    <input type="checkbox" id="UnitOptions_{{id}}" class="dropdown-trigger" />
+                                    <div class="dropdown u-w110px u-w100px--xs {{hasUnits}} dw-mod">
+                                        <label class="dropdown__header dropdown__btn dw-mod" for="UnitOptions_{{id}}">{{unitName}}</label>
+                                        <div id="unitOptions" class="dropdown__content dw-mod">
+                                            {{#unitOptions}}
+                                                {{>UnitOption}}
+                                            {{/unitOptions}}
+                                        </div>
+                                        <label class="dropdown-trigger-off" for="UnitOptions_{{id}}"></label>
+                                    </div>
+                                    <input type="hidden" value="{{unitId}}" name="Unit{{id}}" id="Unit_{{id}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <button type="button" id="CartButton_{{id}}" class="u-hidden"></button>
+                }
+            </div>
+        </div>
+    {{/.}}
+</script>
+
+@* Grid view *@
+
+<script id="ProductGridItemContainer" type="text/x-template">
+    {{#.}}
+        <div id="Product{{id}}" data-template="ProductGridItem" data-preloader="overlay" class="grid__col-lg-4 grid__col-md-4 grid__col-sm-4 grid__col-xs-6 product-list__list-item dw-mod">
+            {{#Product}}
+                {{>ProductGridItem}}
+            {{/Product}}
+        </div>
+    {{/.}}
+</script>
+
+<script id="ProductGridItem" type="text/x-template">
+    {{#.}}
+        <input type="hidden" name="ProductLoopCounter{{id}}" value="{{id}}" />
+        <input type="hidden" name="ProductID{{id}}" value="{{productId}}" />
+
+        <div class="grid__cell product-list__grid-item__image dw-mod {{noImage}}">
+            <div class="stickers-container dw-mod">
+                {{#Stickers}}
+                    {{>Sticker}}
+                {{/Stickers}}
+            </div>
+            <a href="{{link}}" onclick="Scroll.SavePosition(event)">
+                <img class="grid__cell-img grid__cell-img--centered u-padding b-lazy" src="/Files/Images/placeholder.gif" data-src="/Admin/Public/GetImage.ashx?width=300&amp;height=300&amp;crop=5&amp;Compression=75&amp;DoNotUpscale=true&amp;image={{image}}" alt="{{name}}" />
+            </a>
+            <div class="favorites favorites--for-grid-view u-pull--right {{hasVariants}} dw-mod" {{hasVariants}}>
+                {{#Favorite}}
+                    {{>FavoriteTemplate}}
+                {{/Favorite}}
+            </div>
+        </div>
+
+	    <div class="grid__cell product-list__grid-item__price-info {{shortGridInfo}} dw-mod">
+		    <a href="{{link}}" onclick="Scroll.SavePosition(event)" title="{{name}}"><h6 class="u-condensed-text">{{name}}</h6></a>
+		    <div class="item-number dw-mod">{{number}}</div>
+		    @if (!onlyPreview)
+		    {
+			    <div class="price dw-mod">{{price}}</div>
+				    <div class="before-price {{onSale}} dw-mod">{{discount}}</div>
+		    }
+		    <input type="hidden" id="Quantity_{{id}}" name="Quantity{{id}}" value="1" min="1">
+		    <input type="hidden" value="{{unitId}}" name="Unit{{id}}" id="Unit_{{id}}" />
+		    <input type="hidden" value="{{variantid}}" name="VariantID{{id}}" id="Variant_{{id}}" />
+	    </div>
+
+        <div class="product-list__grid-item__footer dw-mod">
+            <div class="u-ta-center">
+                <a href="{{link}}" id="CartButton_{{id}}" class="btn btn--secondary btn--full u-no-margin dw-mod">@Translate("View")</a>
+            </div>
+        </div>
+    {{/.}}
+</script>
+
+@* Details view *@
+
+<script id="ProductDetailsItemContainer" type="text/x-template">
+    {{#.}}
+        <div id="Product{{id}}" data-template="ProductDetailsItem" data-preloader="overlay" class="grid__col-md-12 product-list__details-item dw-mod" style="z-index: {{zIndex}}">
+            {{#Product}}
+                {{>ProductDetailsItem}}
+            {{/Product}}
+        </div>
+    {{/.}}
+</script>
+
+<script id="ProductDetailsItem" type="text/x-template">
+    {{#.}}
+        <input type="hidden" name="ProductLoopCounter{{id}}" value="{{id}}" />
+        <input type="hidden" name="ProductID{{id}}" value="{{productId}}" />
+
+	    <div class="grid__cell">
+		    <div class="product-list__details-item__left dw-mod">
+			    <div class="lightbox u-hidden-xxs">
+				    <a href="{{link}}" onclick="Scroll.SavePosition(event)">
+					    <img class="lightbox__image {{noImage}}" src="/Admin/Public/GetImage.ashx?width=220&amp;height=220&amp;crop=5&amp;Compression=75&amp;image={{image}}" alt="{{name}}" />
+					    <div class="u-margin-right {{noImage}}">
+						    <img src="/Admin/Public/GetImage.ashx?width=40&amp;height=35&amp;crop=5&FillCanvas=true&amp;Compression=75&amp;image={{image}}" alt="{{name}}" />
+					    </div>
+				    </a>
+			    </div>
+			    <div class="u-margin-right">
+				    <a href="{{link}}" onclick="Scroll.SavePosition(event)" title="{{name}}"><h6 class="u-no-margin">{{name}}</h6></a>
+				    <div class="item-number item-number--compressed dw-mod">
+					    {{number}}
+					    @if (!onlyPreview)
+					    {
+						    <span>
+							    <span class="stock-icon {{stockState}} dw-mod" title="{{stockText}}"></span> {{stockText}}{{deliveryText}}
+						    </span>
+					    }
+				    </div>
+			    </div>
+		    </div>
+		    <div class="product-list__details-item__right dw-mod">
+			    @if (!onlyPreview)
+			    {
+				    <div class="grid__cell u-hidden-sm u-hidden-md u-hidden-lg">
+					    <div class="u-full-width u-ta-right">
+						    <div class="before-price {{onSale}} dw-mod">{{discount}}</div>
+						    <div class="price price--condensed dw-mod">{{price}}</div>
+					    </div>
+				    </div>
+			    }
+			    <div class="grid__cell grid__cell--align-middle-right">
+                    @if (!onlyPreview)
+                    {
+				        <div class="u-pull--right u-margin-right">
+					        <input type="checkbox" id="UnitOptions_{{id}}" class="dropdown-trigger" />
+					        <div class="dropdown u-w120px  {{hasUnits}} dw-mod">
+						        <label class="dropdown__header dropdown__btn dw-mod" for="UnitOptions_{{id}}">{{unitName}}</label>
+						        <div id="unitOptions" class="dropdown__content dw-mod">
+							        {{#unitOptions}}
+							            {{>UnitOption}}
+							        {{/unitOptions}}
+						        </div>
+						        <label class="dropdown-trigger-off" for="UnitOptions_{{id}}"></label>
+					        </div>
+					        <input type="hidden" value="{{unitId}}" name="Unit{{id}}" id="Unit_{{id}}" />
+					        <input type="hidden" value="{{variantid}}" name="VariantID{{id}}" id="Variant_{{id}}" />
+				        </div>
+                    }
+				    <div class="favorites u-pull--right u-margin-right {{hasVariants}} dw-mod" {{hasVariants}}>
+					    {{#Favorite}}
+					        {{>FavoriteTemplate}}
+					    {{/Favorite}}
+				    </div>
+				    @if (!onlyPreview)
+				    {
+					    <div class="u-pull--right u-margin-right u-w100px u-ta-right u-hidden-xs u-hidden-xxs">
+						    <div class="before-price {{onSale}} dw-mod">{{discount}}</div>
+						    <div class="price price--condensed dw-mod">{{price}}</div>
+					    </div>
+						<div class="u-pull--right {{hideBuyOptions}}">
+							<input type="number" class="u-w80px u-no-margin u-margin-right" id="Quantity_{{id}}" name="Quantity{{id}}" value="1" min="1">
+						</div>
+						<div class="u-pull--right {{hideBuyOptions}}">
+							<button type="button" id="CartButton_{{id}}" class="btn btn--primary btn--condensed u-no-margin dw-mod {{hasVariants}}" name="submit" onclick="Cart.AddToCart(event, '{{productId}}', document.getElementById('Quantity_{{id}}').value, 'Unit_{{id}}', 'Variant_{{id}}');" {{hasVariants}}><i class="fa fa-shopping-cart"></i></button>
+						</div>
+				        <div class="u-pull--right {{hideViewMore}}">
+					        <a href="{{link}}" class="btn btn--secondary u-no-margin u-w130px dw-mod" onclick="Scroll.SavePosition(event)" title="{{name}}">@Translate("View")</a>
+				        </div>
+                    }
+                    else
+                    {
+                        <div class="u-pull--right">
+                            <a href="{{link}}" class="btn btn--secondary u-no-margin u-w130px dw-mod" onclick="Scroll.SavePosition(event)" title="{{name}}">@Translate("View")</a>
+                        </div>
+                    }
+				    <div class="favorites favorites--lg u-hidden {{hasVariants}} u-hidden-xs u-hidden-xxs dw-mod" {{hasVariants}}>
+					    {{#Favorite}}
+					        {{>FavoriteListItem}}
+					    {{/Favorite}}
+				    </div>
+			    </div>
+		    </div>
+		    <div class="grid__cell-footer stickers-container stickers-container--block dw-mod">
+			    {{#Stickers}}
+			        {{>MiniSticker}}
+			    {{/Stickers}}
+		    </div>
+	    </div>
+	{{/.}}
+</script>
+
+<script id="Sticker" type="text/x-template">
+    <div class="stickers-container__tag {{className}} dw-mod">{{text}}</div>
+</script>
+
+<script id="MiniSticker" type="text/x-template">
+    <div class="stickers-container__tag stickers-container__tag--micro {{className}} dw-mod">{{text}}</div>
+</script>
+
+@* Units templates *@
+
+<script id="UnitOption" type="text/x-template">
+    <div class="dropdown__item dw-mod" onclick="HandlebarsBolt.UpdateContent('Product{{id}}', '{{link}}&feed=true&UnitID={{value}}&rid={{id}}')">{{name}}</div>
+</script>
+
+@* Variants templates *@
+
+<script id="VariantsTemplate" type="text/x-template">
+    {{#.}}
+        <div>
+            <div class="u-bold">{{name}}</div>
+            <div id="VariantOptions{{id}}">
+                {{#VariantOptions}}
+                    {{>VariantOption}}
+                {{/VariantOptions}}
+            </div>
+        </div>
+    {{/.}}
+</script>
+    
+<script id="VariantOption" type="text/x-template">
+    <button type="button" id="{{id}}{{variantId}}" data-id="{{id}}" data-variant-id="{{variantId}}" data-product-id="{{productId}}" onclick="Variants.UpdateVariants(this)" class="btn btn--tag {{disabled}} {{selected}}" data-check="{{selected}}" {{disabled}}>{{name}}</button>
+</script>
+
+<script id="VariantOptionImage" type="text/x-template">
+    <img src="/Admin/Public/GetImage.ashx?width=100&amp;height=50&amp;crop=5&amp;Compression=75&amp;image=/Images/{{image}}" title="{{name}}" id="{{productid}}{{id}}" data-variant-id="{{id}}" data-product-id="{{productid}}" onclick="Variants.UpdateVariants(this)" class="btn btn--tag {{disabled}} {{selected}}" data-check="{{selected}}" {{disabled}} />
+</script>
+
+<script id="VariantCombinations" type="text/x-template"></script>
+
+@* Favorites templates *@
+
+<script id="FavoriteTemplate" type="text/x-template">
+    <div class="favorites-list u-pull--right u-ta-left">
+        <label for="FavoriteTrigger_{{id}}"><i class="{{favoriteIcon}} fa-1_5x"></i></label>
+        <input type="checkbox" id="FavoriteTrigger_{{id}}" class="dropdown-trigger" />
+        <div class="dropdown dropdown--absolute-position">
+            <div class="dropdown__content dropdown__content--show-left dropdown__content--padding u-w220px dw-mod">
+                <ul class="list list--clean dw-mod">
+                    {{#FavoriteLists}}
+                        {{>FavoriteListItem}}
+                    {{/FavoriteLists}}
+                </ul>
+            </div>
+            <label class="dropdown-trigger-off" for="FavoriteTrigger_{{id}}"></label>
+        </div>
+    </div>
+</script>
+
+<script id="FavoriteListItem" type="text/x-template">
+    <li>
+        <a href="{{link}}" class="list__link u-no-underline dw-mod"><i class="{{favoriteIcon}}"></i> {{name}}</a>
+    </li>
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        Facets.Init("productList", '@productCatalogId', '@requestQuery');
+
+        Variants.SetProductFeedId('@productCatalogId');
+        Variants.SetViewMode("productList");
+
+        document.getElementById("productList").addEventListener('contentLoaded', function (e) {
+            //var variantsContainers = document.getElementsByClassName("js-variants-wrap");
+
+            //for (var i = 0; i < variantsContainers.length; i++) {
+            //    var variantsContainerElement = variantsContainers[i];
+            //    Variants.SetVariantOptionStatesForProductList(variantsContainerElement);
+            //}
+
+            if (e.srcElement.classList.contains("js-variants-wrap")) {
+                Variants.SetVariantOptionStatesForProductList(e.srcElement);
+            }
+            if (e.srcElement.id === "productList") {
+                Search.Init();
+            }
+        }, false);
+    });
+</script>

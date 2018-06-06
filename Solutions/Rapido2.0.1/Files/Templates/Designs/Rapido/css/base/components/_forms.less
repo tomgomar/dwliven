@@ -1,0 +1,93 @@
+// Special form related styling
+// For basic form styling, go to base/base.less
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//Forms
+
+.form {
+    margin-bottom: @reflex-cell-spacing-md;
+}
+
+.form__header {
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid @gray;
+    margin-bottom: @reflex-cell-spacing-md;
+}
+
+.form__fields-collection {
+    display: flex;
+}
+
+.form__fields-collection > * {
+    flex: auto;
+    width: 100%;
+    margin-right: @reflex-cell-spacing-md;
+
+    &:last-child {
+       margin-right: 0; 
+    }
+}
+
+.form__fields-collection--2-3 > :first-child {
+    flex: 2;
+}
+
+.form__fields-collection--2-3 > :last-child {
+    flex: 3;
+}
+
+.form__field-group, .form__field-combi {
+    margin-bottom: @reflex-cell-spacing-lg;
+
+    select, input, textarea { 
+        margin-bottom: 0;
+    }
+}
+
+.form__field-group > * {
+    width: 100%; 
+
+    &[for], &[type="checkbox"] {
+        display: inline;
+        width: auto;
+    } 
+}
+
+.form__field-combi {
+    display: flex;
+}
+
+.form__field-combi > * {
+    float: left;
+}
+
+.form__footer {
+    border-top: 1px solid @gray;
+    padding-top: @reflex-cell-spacing-md;
+}
+
+
+//Errors
+.error-block {
+    width: 100%;
+    padding: @reflex-cell-spacing-sm @reflex-cell-spacing-md;
+    border: 1px solid @color-danger;
+    color: @color-danger;
+    margin-bottom: @reflex-cell-spacing-lg;
+}
+
+.error-block::before {
+    font-family: "FontAwesome";
+    content: '\f071';
+    margin-right: @reflex-cell-spacing-sm;
+    position: relative;
+}
+
+.field-error {
+    color: @color-danger;
+    font-size: @font-size--sm;
+    position: relative;
+    top: -0.5em;
+}

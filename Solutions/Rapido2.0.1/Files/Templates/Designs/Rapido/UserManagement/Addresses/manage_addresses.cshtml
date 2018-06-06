@@ -1,0 +1,120 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@using Dynamicweb.Ecommerce.International;
+@using System.Linq;
+
+@GetString("UserManagement:User.ManageAddresses.MakeDefault.Javascript")
+@GetString("UserManagement:User.ManageAddresses.DeleteAddress.Javascript")
+@GetString("UserManagement:User.ManageAddresses.AddAddress.Javascript")
+@GetString("UserManagement:User.ManageAddresses.UpdateAddress.Javascript")
+@{
+    var countryList = GlobalISO.GetGlobalISOs().Cast<GlobalISO>().GroupBy(x => x.Code2).Select(x => x.FirstOrDefault()).ToDictionary(x => x.Code2, y => y.CountryUK);
+}
+
+<div class="grid__col-12 grid__col--bleed">
+    <div class="grid__cell">
+        <div class="u-pull--left">
+            <h2><i class="fa fa-address-card-o"></i> @Translate("Addresses")</h2>
+        </div>
+    </div>
+</div>
+@{ 
+    string columnWidth = "12";
+    string addNewModifier = "";
+    string listItemModifier = "";
+    string addNewColumnsBleed = "grid__col--bleed";
+    if (Pageview.Area.Item["AddressesListView"] == "Columns")
+    {
+        columnWidth = "4";
+        addNewColumnsBleed = "";
+        addNewModifier = "add-new-item--square";
+        listItemModifier = "list-item--square";
+    }
+}
+
+@GetString("UserManagement:User.ManageAddresses.FormStart")
+<div class="grid">
+    <div class="grid__col-sm-@columnWidth @addNewColumnsBleed">
+        <a href="javascript:;" onclick="addAddress()" class="add-new-item @addNewModifier">
+            <span>@Translate("Add new address")</span>
+        </a>
+    </div>
+    @foreach (LoopItem address in GetLoop("UserManagement:User.UserAddresses").OrderByDescending(address => address.GetString("UserManagement:User.UserAddress.Default")).ToList())
+    {
+        bool isDefault = address.GetBoolean("UserManagement:User.UserAddress.Default");
+
+        <div class="grid__col-sm-@columnWidth list-item @listItemModifier">
+            <div class="grid__cell list-item__wraper">
+                <div class="list-item__header">
+                    <i class="fa fa-map-marker"></i> 
+                    @if (!string.IsNullOrEmpty(@address.GetString("UserManagement:User.UserAddress.Description")))
+                    {
+                        <strong>@address.GetString("UserManagement:User.UserAddress.Description")</strong>
+                    }
+                    else
+                    {
+                        <strong>@address.GetString("UserManagement:User.UserAddress.Address")</strong>
+                    }
+                    @if (isDefault)
+                    {
+                        <div class="list-item__state">@Translate("Default")</div>
+                    }
+                </div>
+                <div class="list-item__column">
+                    <div>
+                        @if (!string.IsNullOrEmpty(@address.GetString("UserManagement:User.UserAddress.Description")))
+                        {
+                            <div>@address.GetString("UserManagement:User.UserAddress.Address")</div>
+                        }
+                        <div>@address.GetString("UserManagement:User.UserAddress.Zip") @address.GetString("UserManagement:User.UserAddress.City")</div>
+                        <div>
+                            @if (!string.IsNullOrEmpty(@address.GetString("UserManagement:User.UserAddress.State")))
+                            {
+                                <text>@address.GetString("UserManagement:User.UserAddress.State"), </text>
+                            }
+                            @{
+                                string countryName = address.GetString("UserManagement:User.UserAddress.Country");
+                                if (countryList.ContainsKey(countryName))
+                                {
+                                    countryName = countryList[countryName];
+                                }
+                            }
+                            @countryName
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item__column">
+                    <div>
+                        @if (!string.IsNullOrEmpty(@address.GetString("UserManagement:User.UserAddress.AccessUserAddress_UserName")))
+                        {
+                            <div>
+                                <i class="fa fa-user list-item__parameter-label--icon"></i>@address.GetString("UserManagement:User.UserAddress.AccessUserAddress_UserName")
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(@address.GetString("UserManagement:User.UserAddress.Email")))
+                        {
+                            <div>
+                                <i class="fa fa-envelope list-item__parameter-label--icon"></i>@address.GetString("UserManagement:User.UserAddress.Email")
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(@address.GetString("UserManagement:User.UserAddress.Phone")))
+                        {
+                            <div>
+                                <i class="fa fa-mobile list-item__parameter-label--icon"></i>@address.GetString("UserManagement:User.UserAddress.Phone")
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="list-item__actions">
+                    <a href="javascript:;" class="list-item__action" onclick="updateAddress('@address.GetString("UserManagement:User.UserAddress.ID")');" title="@Translate("Edit")" target="_blank">@Translate("Edit")</a>
+                    <a href="javascript:;" class="list-item__action" onclick="deleteAddress('@address.GetString("UserManagement:User.UserAddress.ID")');" title="@Translate("Delete")">@Translate("Delete")</a>
+                    @if (!isDefault)
+                    {
+                        <a href="javascript:;" class="list-item__action" onclick="makeDefaultAddress('@address.GetString("UserManagement:User.UserAddress.ID")');" title="@Translate("Set default")">@Translate("Set default")</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@GetString("UserManagement:User.ManageAddresses.FormEnd")

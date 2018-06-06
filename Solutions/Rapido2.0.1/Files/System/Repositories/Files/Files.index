@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Index Type="Dynamicweb.Indexing.Index, Dynamicweb.Indexing" Name="Files.index">
+  <Settings />
+  <Instances Balancer="Dynamicweb.Indexing.Balancing.LastUpdated">
+    <Instance Name="Files" Type="Dynamicweb.Indexing.Lucene.LuceneIndexProvider, Dynamicweb.Indexing.Lucene">
+      <Folder></Folder>
+    </Instance>
+    <Instance Name="Files2" Type="Dynamicweb.Indexing.Lucene.LuceneIndexProvider, Dynamicweb.Indexing.Lucene" />
+  </Instances>
+  <Builds Type="Dynamicweb.Content.Files.FileIndexBuilder, Dynamicweb">
+    <Build Name="Files" Action="Full">
+      <Setting Name="Recursive">True</Setting>
+      <Setting Name="StartFolder">DigitalAssets</Setting>
+      <Setting Name="SkipMetadata">False</Setting>
+      <Notification SendLog="false" NotificationType="Never" />
+    </Build>
+  </Builds>
+  <Schema>
+    <Fields>
+      <Extension Type="Dynamicweb.Content.Files.FileIndexSchemaExtender, Dynamicweb" Stored="false" Analyzed="false" Indexed="false" />
+    </Fields>
+    <FieldTypes />
+  </Schema>
+  <Meta />
+</Index>

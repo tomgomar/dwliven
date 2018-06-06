@@ -1,0 +1,58 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Core
+@using System
+
+@{ 
+    int productsPageId = GetPageIdByNavigationTag("ProductsPage");
+}
+
+@if (!Converter.ToBoolean(Pageview.Area.Item["OnlyPreviewForAnonymous"]) || Pageview.User != null)
+{
+    <div class="grid__cell">
+        <h2 class="u-no-margin u-margin-bottom">@Translate("Quick ordering")</h2>
+    </div>
+    <div class="grid">
+        <div class="grid__col-sm-7 grid__col--bleed">
+            <label for="express-product-number">@Translate("Product")</label>
+            <div class="typeahead js-typeahead" data-page-size="5" id="ExpressBuyProductSearch" data-search-page-id="@productsPageId&feed=true">
+                <input type="text" class="typeahead-search-field u-full-width js-typeahead-search-field" id="ExpressBuyProductSearchField" name="ProductNumber" placeholder="@Translate("Search products")">
+                <ul class="dropdown dropdown--absolute-position js-handlebars-root js-typeahead-search-content u-min-w220px u-full-width" id="ExpressBuyProductSearchContent" data-template="ExpressBuySearchContentTemplate" data-json-feed="/Default.aspx?ID=@productsPageId&feed=true&feedType=productsOnly" data-init-onload="false" data-preloader="minimal"></ul>
+            </div>
+        </div>
+
+        <div class="grid__col-sm-2 grid__col-6 grid__col--bleed-y">
+            <label for="express-quantity">@Translate("Quantity")</label>
+            <input type="number" class="u-full-width" name="Quantity" id="ExpressBuyProductCount" min="1" value="1">
+        </div>
+        <div class="grid__col-sm-3 grid__col-6 grid__col--bleed grid--align-self-end">
+            <button type="button" class="btn btn--primary dw-mod u-pull--right" name="submit" onclick="Cart.AddToCart(event, document.getElementById('ExpressBuyProductSearchField').value, document.getElementById('ExpressBuyProductCount').value); Search.ResetExpressSearch();" id="express-buy-button"><i class="fa fa-shopping-cart"></i> @Translate("Add to cart")</button>
+        </div>
+    </div>
+
+    <script id="ExpressBuySearchContentTemplate" type="text/x-template">
+        {{#.}}
+            {{#Product}}
+                <li class="dropdown__item dropdown__item--seperator dw-mod" onclick="Search.UpdateFieldValue(this)">
+                    <div class="u-margin-right u-pull--left u-hidden-xs u-hidden-xxs {{noimage}}">
+                        <img src="/Admin/Public/GetImage.ashx?width=45&height=38&crop=1&Compression=75&image={{image}}" alt="{{name}}">
+                    </div>
+                    <div class="u-pull--left">
+                        <div class="u-bold u-max-w340px u-truncate-text">{{name}}</div>
+                        <div class="js-typeahead-name">{{number}}</div>
+                        <div>{{price}}</div>
+                    </div>
+                </li>
+            {{/Product}}
+        {{/.}}
+
+        {{^.}}
+            <li class="dropdown__item dropdown__item--seperator dw-mod">
+                @Translate("No products found")
+            </li>
+        {{/.}}
+    </script>
+}
+

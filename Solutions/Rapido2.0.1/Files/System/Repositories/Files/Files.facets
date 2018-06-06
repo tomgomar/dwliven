@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Facets>
+  <Settings />
+  <Source Repository="Files" Item="Files.query" />
+  <Facet Name="Folder" Type="Field" Field="DirectoryRelativePath" QueryParameter="Folder">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+</Facets>

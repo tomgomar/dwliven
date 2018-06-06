@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Shared" name="Font" systemName="Font" description="" icon="Font" iconColor="" includeInUrlIndex="False" pageDefaultView="item" fieldForTitle="" title="" inherits="" useCache="False">
+    <fields>
+      <field name="FontFamily" systemName="FontFamily" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.GoogleFontEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.GoogleFontEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.GoogleFontEditor" name="DefaultFontName" value="Lato" /><Parameter addin="Dynamicweb.Content.Items.Editors.GoogleFontEditor" name="DefaultFontWeight" value="regular" /><Parameter addin="Dynamicweb.Content.Items.Editors.GoogleFontEditor" name="Default font" value="Dynamicweb.Content.Items.Editors.GoogleFont" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Font color" systemName="FontColor" description="" type="Dynamicweb.Imaging.Colors.Color, Dynamicweb.Imaging" excludeFromSearch="False" defaultValueCulture="en-US" defaultValue="#333">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorEditor" name="Presets" value="" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Font size" systemName="FontSize" description="" type="System.Int32, mscorlib" excludeFromSearch="False" defaultValueCulture="en-US" defaultValue="14">
+        <editor type="Dynamicweb.Content.Items.Editors.IntegerEditor, Dynamicweb">
+          <editorConfuguration />
+        </editor>
+      </field>
+      <field name="Line height" systemName="LineHeight" description="" type="System.Double, mscorlib" excludeFromSearch="False" defaultValueCulture="en-US" defaultValue="1.4">
+        <editor type="Dynamicweb.Content.Items.Editors.DecimalEditor, Dynamicweb">
+          <editorConfuguration />
+        </editor>
+      </field>
+      <field name="Casing" systemName="Casing" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="en-US" defaultValue="none">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="3" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="None" value="none" icon="Templates/Designs/Rapido/images/itemtypes/DW_CaseRegular.jpg" />
+            <option name="UPPERCASE" value="uppercase" icon="Templates/Designs/Rapido/images/itemtypes/DW_CaseUpper.jpg" />
+            <option name="lowercase" value="lowercase" icon="Templates/Designs/Rapido/images/itemtypes/DW_CaseLower.jpg" />
+          </Static>
+        </options>
+      </field>
+    </fields>
+    <rules>
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="ItemList" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="Font" systemName="General" collapsibleState="None" visibilityField="" visibilityCondition="" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="FontFamily" />
+            <field systemName="FontColor" />
+            <field systemName="FontSize" />
+            <field systemName="LineHeight" />
+            <field systemName="Casing" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

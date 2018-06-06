@@ -1,0 +1,241 @@
+//Base classes for Ecommerce
+
+.product-thumbs__item.dw-mod:hover, .product-thumbs__item--active.dw-mod {
+    border: 4px solid @layout-brand-color-two;
+}
+
+
+//Stickers
+.stickers-container__tag--sale.dw-mod {
+    .sale-sticker-mixin();
+}
+
+.sale-sticker-mixin() when not (@ecommerce-sale-tag-background-color = none) {
+    background-color: @ecommerce-sale-tag-background-color;
+}
+
+.sale-sticker-mixin() when not (@ecommerce-sale-tag-font-family-family = none) {
+    font-family: @ecommerce-sale-tag-font-family-family;
+}
+
+.sale-sticker-mixin() when not (@ecommerce-sale-tag-font-family-weight = none) {
+    font-weight: ~'@{ecommerce-sale-tag-font-family-weight}';
+}
+
+.sale-sticker-mixin() when not (@ecommerce-sale-tag-font-color = none) {
+    color: @ecommerce-sale-tag-font-color;
+}
+
+.sale-sticker-mixin() when not (@ecommerce-sale-tag-font-size = none) {
+    &:not(.stickers-container__tag--micro) {
+        font-size: unit(@ecommerce-sale-tag-font-size, px);
+    }
+}
+
+.sale-sticker-mixin() when not (@ecommerce-sale-tag-line-height = none) {
+    line-height: unit(@ecommerce-sale-tag-line-height, em);
+}
+
+.sale-sticker-mixin() when not (@ecommerce-sale-tag-casing = "none") {
+    text-transform: ~'@{ecommerce-sale-tag-casing}';
+}
+
+.sale-sticker-mixin() when (@ecommerce-sale-tag-design = "ball") {
+    &:not(.u-hidden):not(.stickers-container__tag--micro) {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        vertical-align: middle;
+        display: table-cell;
+        left: 0;
+        top: 0;
+        background-color: transparent;
+        z-index: @z-index-1;
+        text-align: center;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 100px;
+            height: 100px;
+            border-radius: 200px;
+            background-color: @ecommerce-sale-tag-background-color;
+            z-index: @z-index-0;
+        }
+
+        .product-list__grid-item__image &:not(.u-hidden):not(.stickers-container__tag--micro) {
+            left: .5em;
+            top: ~'calc(.5em + 1px)';
+        }
+    }
+}
+
+.stickers-container__tag--new.dw-mod {
+    .new-sticker-mixin();
+}
+
+.new-sticker-mixin() when not (@new-stickers-background = none) {
+    background-color: @new-stickers-background;
+}
+
+.new-sticker-mixin() when not (@new-stickers-font-family-family = none) {
+    font-family: @new-stickers-font-family-family;
+}
+
+.new-sticker-mixin() when not (@new-stickers-font-family-weight = none) {
+    font-weight: ~'@{new-stickers-font-family-weight}';
+}
+
+.new-sticker-mixin() when not (@new-stickers-font-color = none) {
+    color: @new-stickers-font-color;
+}
+
+.new-sticker-mixin() when not (@new-stickers-font-size = none) {
+    &:not(.stickers-container__tag--micro) {
+        font-size: unit(@new-stickers-font-size, px);
+    }
+}
+
+.new-sticker-mixin() when not (@new-stickers-line-height = none) {
+    line-height: unit(@new-stickers-line-height, em);
+}
+
+.new-sticker-mixin() when not (@new-stickers-casing = "none") {
+    text-transform: ~'@{new-stickers-casing}';
+}
+
+.new-sticker-mixin() when (@new-stickers-design = "Rounded") {
+    border-radius: 0 5px 5px 0;
+}
+
+.new-sticker-mixin() when (@new-stickers-design = "Ball") {
+    &:not(.u-hidden):not(.stickers-container__tag--micro) {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        vertical-align: middle;
+        display: table-cell;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        z-index: @z-index-1;
+        text-align: center;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 100px;
+            height: 100px;
+            border-radius: 200px;
+            background-color: @new-stickers-background;
+            z-index: @z-index-0;
+        }
+
+        .product-list__grid-item__image &:not(.u-hidden):not(.stickers-container__tag--micro) {
+            left: .5em;
+            top: ~'calc(.5em + 1px)';
+        }
+    }
+}
+
+.stickers-container__tag--custom.dw-mod {
+    .custom-sticker-mixin();
+}
+
+.custom-sticker-mixin() when not (@custom-stickers-background-color = none) {
+    background-color: @custom-stickers-background-color;
+}
+
+.custom-sticker-mixin() when not (@custom-stickers-font-family-family = none) {
+    font-family: @custom-stickers-font-family-family;
+}
+
+.custom-sticker-mixin() when not (@custom-stickers-font-family-weight = none) {
+    font-weight: ~'@{custom-stickers-font-family-weight}';
+}
+
+.custom-sticker-mixin() when not (@custom-stickers-font-color = none) {
+    color: @custom-stickers-font-color;
+}
+
+.custom-sticker-mixin() when not (@custom-stickers-font-size = none) {
+    &:not(.stickers-container__tag--micro) {
+        font-size: unit(@custom-stickers-font-size, px);
+    }
+}
+
+.custom-sticker-mixin() when not (@custom-stickers-line-height = none) {
+    &:not(.stickers-container__tag--micro) {
+        line-height: unit(@custom-stickers-line-height, em);
+    }
+}
+
+.custom-sticker-mixin() when not (@custom-stickers-casing = "none") {
+    text-transform: ~'@{custom-stickers-casing}';
+}
+
+.custom-sticker-mixin() when (@custom-stickers-design = "rounded") {
+    border-radius: 0 5px 5px 0;
+}
+
+.custom-sticker-mixin() when (@custom-stickers-design = "Ball") {
+    &:not(.u-hidden):not(.stickers-container__tag--micro) {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        vertical-align: middle;
+        display: table-cell;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        z-index: @z-index-1;
+        text-align: center;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 100px;
+            height: 100px;
+            border-radius: 200px;
+            background-color: @custom-stickers-background-color;
+            z-index: @z-index-0;
+        }
+
+        .product-list__grid-item__image &:not(.u-hidden):not(.stickers-container__tag--micro) {
+            left: .5em;
+            top: ~'calc(.5em + 1px)';
+        }
+    }
+}
+
+
+//Receipt
+.receipt__header.dw-mod {
+    .receipt-header-mixin();
+}
+
+.receipt__header.dw-mod * {
+    .receipt-header-color-mixin();
+}
+
+.receipt-header-mixin() when (@ecommerce-receipt-header = none) {
+    background-color: @layout-brand-color-two !important;
+}
+
+.receipt-header-mixin() when not (@ecommerce-receipt-header = none) {
+    background-color: @ecommerce-receipt-header !important;
+}
+
+.receipt-header-color-mixin() when (@ecommerce-receipt-header = none) {
+    color: white !important;
+}
+
+.receipt-header-color-mixin() when not (@ecommerce-receipt-header-font-color = none) {
+    color: @ecommerce-receipt-header-font-color !important;
+}

@@ -1,0 +1,130 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.PageViewModel>
+@MasterPageFile("Master.cshtml")
+
+@using Dynamicweb.Frontend;
+
+
+@{
+    string downloadUrl = "/Default.aspx?ID=" + Model.TopPage.ID + "&pdf=true";
+
+    string theLogo = Model.Area.Item.GetFile("LogoImage") != null ? Model.Area.Item.GetFile("LogoImage").Path : "/Files/Images/logo-dynamicweb.png";
+    string theFavicon = Model.Area.Item.GetFile("LogoFavicon") != null ? Model.Area.Item.GetFile("LogoFavicon").Path : "/Files/Images/favicon.png";
+
+    string theNavigationFont = Model.Area.Item.GetItem("NavigationFont").GetString("FontFamily");
+    string theNavigationFontColor = Model.Area.Item.GetItem("NavigationFont").GetString("FontColor");
+}
+
+<div class="grid">
+    <div class="grid__col-md-6">
+        <h1>@Translate("Design guide")</h1>
+    </div>
+    <div class="grid__col-md-6">
+        <div class="grid__cell">
+            <a href="@downloadUrl" class="btn btn--secondary btn--clean btn--condensed u-pull--right dw-mod" download><i class="fa fa-download"></i></a>
+        </div>
+    </div>
+    <div class="grid__col-md-12">
+        <h2 class="section-title">@Translate("Logo")</h2>
+
+        <div class="logo dw-mod">
+            <img src="@theLogo" />
+        </div>
+    </div>
+    <div class="grid__col-md-12">
+        <h2 class="section-title">@Translate("Colors")</h2>
+
+        <div class="collection">
+            @ColorBox("Brand color one", Model.Area.Item.GetString("LayoutBrandColorOne"))
+            @ColorBox("Brand color two", Model.Area.Item.GetString("LayoutBrandColorTwo"))
+        </div>
+
+        <div class="collection-header">Tools menu</div>
+        <div class="collection">
+            @ColorBox("Background", Model.Area.Item.GetString("ToolsMenuBackgroundColor"))
+            @ColorBox("Font", Model.Area.Item.GetString("ToolsMenuFontColor"))
+        </div>
+
+        <div class="collection-header">Navigation</div>
+        <div class="collection">
+            @ColorBox("Background", Model.Area.Item.GetString("NavigationBackgroundColor"))
+            @ColorBox("Font active", Model.Area.Item.GetString("NavigationActiveFontColor"))
+            @ColorBox("Dropdown bg", Model.Area.Item.GetString("NavigationDropdownBackgroundColor"))
+            @ColorBox("Dropdown active", Model.Area.Item.GetString("NavigationDropdownFontColor"))
+        </div>
+    </div>
+    <div class="grid__col-md-12">
+        <h2 class="section-title">@Translate("Fonts")</h2>
+
+        <div class="collection-header">Navigation</div>
+        <div class="collection">
+            @FontBox(Model.Area.Item.GetItem("NavigationFont"))
+        </div>
+
+        <div class="collection-header">Headers (H1)</div>
+        <div class="collection">
+            @FontBox(Model.Area.Item.GetItem("ContentLayoutHeaderFont"))
+        </div>
+
+        <div class="collection-header">Subheaders (H2)</div>
+        <div class="collection">
+            @FontBox(Model.Area.Item.GetItem("ContentLayoutSubheaderFont"))
+        </div>
+
+        <div class="collection-header">Body text</div>
+        <div class="collection">
+            @FontBox(Model.Area.Item.GetItem("ContentLayoutBodyText"))
+        </div>
+    </div>
+    <div class="grid__col-md-12">
+        <h2 class="section-title">@Translate("Buttons")</h2>
+        @ButtonBox("Primary", "primary")
+        @ButtonBox("Secondary", "secondary")
+    </div>
+    <div class="grid__col-md-12">
+        <h2 class="section-title">@Translate("Footer text")</h2>
+
+        <div class="collection-header">Column one</div>
+        @Model.Area.Item.GetString("FooterColumnOne")
+
+        <div class="collection-header">Column two</div>
+        @Model.Area.Item.GetString("FooterColumnTwo")
+    </div>
+</div>
+
+
+@helper ColorBox(string name, string color) {
+    <div class="color-box">
+        <div class="color-box__title">
+            @name
+        </div>
+        <div class="color-box__container">
+            <div class="color-box__color" style="background-color: @color"></div>
+            <div class="color-box__value">
+                @color
+            </div>
+        </div>
+    </div>
+}
+
+@helper FontBox(ItemViewModel fontModel) {
+    string fontColor = fontModel.GetString("FontColor");
+    string backgroundColor = fontModel.GetString("FontColor").ToLower() == "#fff" || fontModel.GetString("FontColor").ToLower() == "#ffffff" ? "background-color: #333;" : "";
+    string casing = @fontModel.GetString("Casing") != "None" ? fontModel.GetString("Casing") : "";
+
+    <div>
+        <div>@fontModel.GetString("FontFamily")</div>
+        <div class="collection u-color-light-gray">
+            <span>@fontModel.GetString("FontSize")<text>px</text></span><span>@fontModel.GetString("FontWeight")</span><span> @casing</span>
+        </div>
+        <div class="u-padding u-border" style="font-family: @fontModel.GetString("FontFamily"); color: @fontColor; @backgroundColor font-weight: @fontModel.GetString("FontWeight"); font-size: @fontModel.GetString("FontSize")px; text-transform: @fontModel.GetString("Casing"); width: max-content;">
+            The quick brown fox jumps over the lazy dog
+        </div>
+    </div>
+}
+
+@helper ButtonBox(string name, string type) {
+    <div>
+        <div>@name</div>
+        <button class="btn btn--@type dw-mod">@Translate("Read more")</button>
+    </div>
+}

@@ -1,0 +1,101 @@
+﻿@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+@using Dynamicweb;
+@using Dynamicweb.Ecommerce.Prices;
+@using Dynamicweb.Rendering;
+
+<div class="grid__col-12 grid__col--bleed-x">
+    <table class="table" id="orderlist">
+        <thead>
+            <tr>
+                <th>@Translate("Date", "Date")</th>
+                <th class="u-ta-right">@Translate("Order ID", "Order ID")</th>
+                <th>@Translate("Status", "Status")</th>
+                <th class="u-ta-right">@Translate("Total Price", "Total Price")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Invoice.EmptyList")))
+            {
+                <tr id="trNoOrdersFound">
+                    <td colspan="3"><strong>@Translate("No orders found", "No orders found")</strong></td>
+                </tr>
+            }
+            else
+            {
+                foreach (LoopItem order in GetLoop("Ecom:IntegrationCustomerCenter.InvoiceLoop"))
+                {
+                    <tr style="cursor:pointer" onClick="window.open('/Admin/public/CustomerCenter/RequestExternalPdf.aspx?type=Invoice&id=@order.GetString("id")')">
+                        <td>@order.GetString("orderDate")</td>
+                        <td class="u-ta-right">@order.GetString("id")</td>
+                        <td>
+                            @{ if (!String.IsNullOrEmpty(order.GetString("Status")))
+                                {
+                                    @order.GetString("Status");
+                                }
+                                else
+                                {
+                                    @Translate("N/A", "N/A");
+                                }
+                            }
+                        </td>
+                        <td class="u-ta-right">
+                            @(new PriceInfo { PriceWithoutVAT = order.GetInteger("totalAmountIncVat") }.PriceWithoutVATFormatted)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    @if (string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Invoice.EmptyList")))
+    {
+        var customerNumberOnUser = "";
+        foreach (LoopItem order in GetLoop("Ecom:IntegrationCustomerCenter.InvoiceLoop"))
+        {
+            customerNumberOnUser = order.GetString("UrlUserID");
+        }
+
+        <a href="/Admin/public/CustomerCenter/RequestExternalPdf.aspx?type=Statement&externalID=@customerNumberOnUser" class="btn btn--secondary btn--full dw-mod" title="@Translate("Download latest statement here")" target="_blank">
+            @Translate("Download latest statement here", "Download latest statement here")
+        </a>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Invoice.Paging.Show")))
+    {
+        <div class="grid__cell">
+            <div class="u-pull--left">
+                @Translate("Page") @GetString("Ecom:IntegrationCustomerCenter.Paging.CurrentPage") @Translate("of") @GetString("Ecom:IntegrationCustomerCenter.Paging.NumPages")
+            </div>
+            <div class="u-pull--right">
+                <ul class="pager dw-mod">
+                    @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Paging.Back.URL")))
+                    {
+                    <li class="pager__btn dw-mod">
+                        <a href="@GetString("Ecom:IntegrationCustomerCenter.Paging.Back.URL")"><i class="fa fa-angle-left"></i></a>
+                    </li>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Paging.HasPages")))
+                    {
+                        foreach (LoopItem page in GetLoop("Ecom:IntegrationCustomerCenter.Paging.Pages"))
+                        {
+                            string activeClass = page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageClass") == "currentPage" ? "pager__btn--current" : "";
+                            <li class="pager__btn @activeClass dw-mod">
+                                <a class="@page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageClass")" href="@page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageIndexUrl")">
+                                    @page.GetString("Ecom:IntegrationCustomerCenter.Paging.PageIndex")
+                                </a>
+                            </li>
+                        }                                                                                                                                                                                                           <text></text>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(GetString("Ecom:IntegrationCustomerCenter.Paging.Forward.URL")))
+                    {
+                    <li class="pager__btn dw-mod">
+                        <a href="@GetString("Ecom:IntegrationCustomerCenter.Paging.Forward.URL")" class="pager--current dw-mod"><i class="fa fa-angle-right"></i></a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+ </div>

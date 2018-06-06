@@ -1,0 +1,21 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+                                 
+@Include("Layout.cshtml")
+@Include("ParagraphRender.cshtml")
+
+@{
+    string backgroundImage = "";
+    string extraCssClasses = "";
+    string imageStyle = Model.Item.GetList("ImageStyle").SelectedValue;
+
+    if (imageStyle == "background")
+    {
+        extraCssClasses = " grid__col--bg";
+        string cropMode = Model.Item.GetList("ImageCrop").SelectedValue != null ? Model.Item.GetList("ImageCrop").SelectedValue : "0";
+        backgroundImage = "background-image:url(/Admin/Public/GetImage.ashx?width=2500&amp;height=1100&amp;crop=" + cropMode + "&DoNotUpscale=true&amp;Compression=75&amp;image=" + Dynamicweb.Context.Current.Server.UrlEncode(Model.Item.GetFile("Image").Path) + ");";
+    }
+}
+
+<div class="@columnClass() @extraCssClasses paragraph-container" style="@backgroundImage">
+     @RenderContent(Model.Item)
+</div>                                

@@ -1,0 +1,38 @@
+@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+@using Dynamicweb.Rendering;
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Security;
+
+@MasterPageFile("../../EmailMaster.cshtml")
+@Include("../../EmailHelpers.cshtml")
+
+@RenderBodySection()
+
+@* CONTENT HELPERS *@
+
+@helper RenderBodySection()
+{
+    Column imageColumn = new Column();
+    Column textColumn = new Column();
+
+    imageColumn.image = GetString("Item.Image");
+    textColumn.align = "center";
+    textColumn.header = GetString("Item.Heading");
+    textColumn.text.Add(GetString("Item.Text"));
+
+    if (!string.IsNullOrEmpty(GetString("Item.Link")))
+    {
+        textColumn.text.Add("");
+        textColumn.link = GetString("Item.Link");
+        textColumn.linkText = GetString("Item.LinkText");
+    }
+    
+    if (GetString("Item.ImageAlign") == "Right") {
+        @CreateRow(textColumn, imageColumn);
+    } 
+    else
+    {
+        @CreateRow(imageColumn, textColumn);
+    }
+}

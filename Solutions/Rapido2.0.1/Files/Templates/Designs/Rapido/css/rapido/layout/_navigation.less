@@ -1,0 +1,346 @@
+﻿// -----------------------------------------------------------------------------
+// Contains all styles related to the Wbsite settings Navigation section
+// -----------------------------------------------------------------------------
+
+//Main navigation
+.main-navigation.dw-mod {
+   .main-navigation-mixin(); 
+}
+
+.main-navigation-mixin() when not (@navigation-background-color = none) {   
+	background-color: @navigation-background-color;
+}
+
+.main-navigation-mixin() when not (@navigation-shadow = False) {
+	box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.25);
+}
+                  
+
+
+//Dropdown 
+.menu--dropdown.dw-mod, .menu--dropleft.dw-mod {
+    .menu--dropdown-mixin(); 
+}
+
+.menu--dropdown-mixin() when not (@navigation-dropdown-background-color = none) {   
+	background-color: @navigation-dropdown-background-color;
+
+    .menu-dropdown__link.dw-mod {
+        color: @navigation-dropdown-font-color;
+        font-size: unit(@navigation-font-size, px);
+    }
+}
+
+.is-dropdown.dw-mod:after {
+    .is-dropdown-mixin();
+}
+
+.is-dropdown-mixin() when not (@navigation-font-color = none) {   
+    color: @navigation-font-color; 
+}
+
+.is-dropdown-mixin() when not (@navigation-font-size = none) {   
+	font-size: unit(@navigation-font-size, px);
+}
+
+.is-dropdown-mixin() when not (@navigation-height = none) and not (@navigation-font-size = none) {   
+    line-height: unit((@navigation-height + @navigation-font-size), px); 
+}
+
+.menu-dropdown__item.dw-mod {
+    .menu-dropdown__item-mixin();
+}
+
+.menu-dropdown__item-mixin() when not (@navigation-dropdown-font-color = none) {   
+    color: @navigation-dropdown-font-color;
+    font-size: unit(@navigation-font-size, px);
+}
+
+.menu-dropdown__link.dw-mod {
+    .menu-dropdown__link-mixin();
+}
+
+.menu--dropdown .list__link.dw-mod {
+    .menu-dropdown__link-mixin(); 
+}
+
+.menu-dropdown__link-mixin() when not (@navigation-dropdown-font-color = none) {   
+    color: @navigation-dropdown-font-color;
+    font-size: unit(@navigation-font-size, px);
+}
+
+.menu-dropdown__link-mixin() when not (@navigation-font-family-family = none) {
+	font-family: @navigation-font-family-family;
+}
+
+.menu--dropdown.dw-mod > .menu__item, .menu--dropleft.dw-mod > .menu__item {
+    .menu__dropdown--item-mixin();
+} 
+
+.menu__dropdown--item-mixin() when not (@navigation-dropdown-font-color = none) {   
+    &:after {
+        color: @navigation-dropdown-font-color;
+    }
+}
+
+.menu--dropdown.dw-mod .menu__item:not(.menu__item--disabled):hover, 
+.menu--dropleft.dw-mod .menu__item:not(.menu__item--disabled):hover,
+.mega-menu.dw-mod .menu__item--mega:not(.menu__item--disabled):hover {
+    .menu__dropdown--active-mixin();
+} 
+
+.menu__dropdown--active-mixin() when not (@navigation-dropdown-active-font-color = none) {
+    background-color: @navigation-dropdown-active-color;
+
+    &:after {
+        color: @navigation-dropdown-active-font-color;
+    }
+
+    & > .menu-dropdown__link.dw-mod {
+	    color: @navigation-dropdown-active-font-color;
+        background-color: @navigation-dropdown-active-color;
+    }
+
+    & > .mega-menu__link.dw-mod {
+	    color: @navigation-dropdown-active-font-color;
+        background-color: @navigation-dropdown-active-color;
+    }
+}
+
+//Mega menu
+.mega-menu.dw-mod {
+    .mega-menu-mixin();
+}
+
+.mega-menu-mixin() when not (@navigation-dropdown-background-color = none) {   
+    background-color: @navigation-dropdown-background-color;
+}
+
+.mega-menu__header-container__text.dw-mod {
+    .mega-menu__header-container__text-mixin();
+}
+
+.mega-menu__header-container__text-mixin() when not (@navigation-dropdown-heading-color = none) {   
+    color: @navigation-dropdown-heading-color;
+}
+
+.mega-menu__header-container__text-mixin() when not (@navigation-dropdown-heading-size = none) {   
+    font-size: unit(@navigation-dropdown-heading-size, rem);
+}
+
+.mega-menu__header-container__text-mixin() when not (@navigation-font-family-family = none) {
+	font-family: @navigation-font-family-family;
+}
+
+.mega-menu__link.dw-mod {
+    .mega-menu__link-mixin();
+}
+
+.mega-menu__link-mixin() when not (@navigation-dropdown-font-color = none) {   
+    color: @navigation-dropdown-font-color;
+    font-size: unit(@navigation-font-size, px);
+}
+
+.mega-menu__link-mixin() when not (@navigation-font-family-family = none) {
+	font-family: @navigation-font-family-family;
+}
+
+.is-mega.dw-mod:after {
+    .is-mega-mixin();
+}
+
+.is-mega-mixin() when not (@navigation-height = none) and not (@navigation-font-size = none) {   
+    line-height: unit((@navigation-height + @navigation-font-size), px); 
+}
+
+.is-mega-mixin() when not (@navigation-font-color = none) {   
+    color: @navigation-font-color; 
+}
+
+
+//Menu item specifics
+.menu__link.dw-mod {
+    .menu__link-mixin();
+}
+
+//Menu item specifics
+
+.menu__link-mixin() when not (@navigation-font-family-family = none) {   
+	font-family: @navigation-font-family-family;
+}
+
+.menu__link-mixin() when not (@navigation-font-size = none) {   
+	font-size: unit(@navigation-font-size, px);
+}
+
+.menu__link-mixin() when not (@navigation-font-family-weight = none) {   
+	font-weight: ~'@{navigation-font-family-weight}';
+}
+
+.menu__link-mixin() when not (@navigation-line-height = none) {   
+	line-height: unit(@navigation-line-height, em);
+}
+
+.menu__link-mixin() when not (@navigation-font-color = none) {   
+	color: @navigation-font-color;
+}
+
+.menu__link-mixin() when not (@navigation-casing = "none") {   
+	text-transform: ~'@{navigation-casing}';
+} 
+
+.menu__link-mixin() when not (@navigation-height = 0) {   
+	line-height: unit(@navigation-height, px);
+}
+
+.header-menu__link.dw-mod {
+    .header-menu__link-mixin();
+}
+
+.header-menu__link-mixin() when not (@navigation-height = none) {   
+	line-height: unit(@navigation-height, px);
+}
+
+.header-menu__link.dw-mod:hover {
+    .header-menu__link-hover-mixin();
+}
+
+.header-menu__link-hover-mixin() when not ( @navigation-dropdown-active-color = none) {   
+	background-color: @navigation-dropdown-active-color;
+}
+
+.header-menu__link-hover-mixin() when not ( @navigation-dropdown-active-font-color = none) {   
+	color: @navigation-dropdown-active-font-color;
+}
+
+.menu__item--active.dw-mod:not(.menu__item--top-level, .menu__item--clean), 
+.menu__item.dw-mod:not(.menu__item--top-level, .menu__item--clean):hover, 
+.menu__item.dw-mod:not(.menu__item--top-level, .menu__item--clean):focus, 
+.menu__item.dw-mod:not(.menu__item--top-level, .menu__item--clean):active {
+    .menu__item--active-mixin();
+} 
+
+.menu__item--active-mixin() when not (@navigation-dropdown-active-color = none) {   
+	background-color: @navigation-dropdown-active-color;
+	color: @navigation-dropdown-active-font-color;
+}
+
+.menu__item--top-level {
+    .menu__item--top-level-mixin();
+} 
+
+.menu__item--top-level-mixin() when not (@navigation-background-color = none) { 
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+
+.menu__item--top-level.menu__item--active.dw-mod, 
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):hover, 
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):focus, 
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):active {
+    .menu__item--top--active-mixin();
+} 
+
+.menu__item--top--active-mixin() when (@navigation-active-design = "line") { 
+    border-bottom-color: @navigation-active-font-color;
+    color: @navigation-active-font-color;
+
+    &:after { 
+        color: @navigation-active-font-color;
+    }
+
+    .menu__link {
+        color: @navigation-active-font-color;
+    }
+}  
+
+.menu__item--top--active-mixin() when (@navigation-active-design = "box") { 
+    border-bottom-color: @navigation-active-background-color;
+    border-top-color: @navigation-active-background-color;
+    background-color: @navigation-active-background-color;
+    color: @navigation-active-font-color;
+
+    &:after { 
+        color: @navigation-active-font-color;
+    }
+
+    .menu__link {
+        color: @navigation-active-font-color;
+    }
+}  
+
+.menu__item--top--active-mixin() when (@navigation-active-design = "font-color") { 
+    border-top: 3px solid @navigation-background-color;
+    border-bottom: 3px solid @navigation-background-color;
+    color: @navigation-active-font-color;
+
+    &:after { 
+        color: @navigation-active-font-color;
+    }
+
+    .menu__link {
+        color: @navigation-active-font-color;
+    }
+}   
+
+.menu__item--top--active-mixin() when (@navigation-active-design = "arrow") { 
+    border-top: 3px solid @navigation-background-color;
+    border-bottom: 3px solid @navigation-background-color;
+    color: @navigation-active-font-color;
+
+    &:after { 
+        display: none;
+    }
+
+    .menu__link {
+        color: @navigation-active-font-color;
+        position: relative;
+
+        &:after {
+          position: absolute;
+          font-family: "FontAwesome";
+          content: "\A\f0d8"; //carriage return and icon-caret-up
+          font-size: 22px;
+          vertical-align: bottom;
+          color: @navigation-active-font-color;
+          bottom: unit(-(@navigation-height/2-2), px);
+          left: ~"calc(50% - 6px)";
+        }
+    }
+}  
+
+.menu__item--top-level.dw-mod {
+    .menu__item--top--mixin();
+} 
+
+.menu__item--top--mixin() when (@navigation-active-design = "arrow") { 
+    &:after { 
+        display: none;
+    }
+}                                 
+
+
+//Mini cart dropdown
+.mini-cart-dropdown.dw-mod {
+    .mini-cart-dropdown-mixin();
+}
+
+.mini-cart-dropdown-mixin() when not (@navigation-dropdown-background-color = none) {   
+    background-color: @navigation-dropdown-background-color;
+}
+
+.mini-cart-dropdown-mixin() when not (@navigation-font-size = none) {   
+    font-size: unit(@navigation-font-size, px);
+}
+
+.mini-cart-dropdown-mixin() when not (@navigation-dropdown-font-color = none) {   
+    color: @navigation-dropdown-font-color;
+
+    h4 {
+        color: @navigation-dropdown-font-color;
+    }
+
+    .mini-cart-orderlines__name {
+        color: @navigation-dropdown-font-color;
+    }
+}

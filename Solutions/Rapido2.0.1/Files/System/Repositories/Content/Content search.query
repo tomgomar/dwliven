@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="1f334c39-a668-4f43-ada2-5905db8d2873" Name="Content search.query">
+  <Settings />
+  <Source Repository="Content" Item="Content builder.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Parameters>
+    <Parameter Name="Query" Type="System.String" />
+    <Parameter Name="Areaid" Type="System.Int32" />
+  </Parameters>
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Contains">
+        <Left>
+          <FieldExpression Field="Free text" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Query" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="PageAllowsearch" />
+        </Left>
+        <Right>
+          <TermExpression Value="True" DisplayValue="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="PageAllowClick" />
+        </Left>
+        <Right>
+          <TermExpression Value="True" DisplayValue="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="PageHidden" />
+        </Left>
+        <Right>
+          <TermExpression Value="False" DisplayValue="False" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="PageAreaId" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Areaid" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields />
+  <ViewLanguages />
+</Query>

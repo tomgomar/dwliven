@@ -1,0 +1,112 @@
+// -----------------------------------------------------------------------------
+// CSS helper/utility classes used throughout the site/application
+// -----------------------------------------------------------------------------
+
+
+// Color utility modifiers
+.u-brand-color-one, .u-brand-color-one h1, .u-brand-color-one h2, .u-brand-color-one h3, .u-brand-color-one h4, .u-brand-color-one h5, .u-brand-color-one h6, .u-brand-color-one i {
+    .u-brand-color-one-mixin();
+}
+
+.u-brand-color-one-mixin() when not (@layout-brand-color-one = none) {
+	color: @layout-brand-color-one;
+}
+
+.u-brand-color-two, .u-brand-color-two h1, .u-brand-color-two h2, .u-brand-color-two h3, .u-brand-color-two h4, .u-brand-color-two h5, .u-brand-color-two h6, .u-brand-color-two i {
+    .u-brand-color-two-mixin();
+}
+
+.u-brand-color-two-mixin() when not (@layout-brand-color-two = none) {
+	color: @layout-brand-color-two;
+}
+
+
+// Background-color utility modifiers
+.u-brand-color-one--bg {
+    .u-brand-color-one--bg-mixin(); 
+}
+
+.u-brand-color-one--bg-mixin() when not (@layout-brand-color-one = none) {
+	background-color: @layout-brand-color-one !important; //Fix to secure print color
+    -webkit-print-color-adjust: exact;
+}
+
+.u-brand-color-one--bg-lighten-10 {
+    .u-brand-color-one--bg-lighten-10-mixin(); 
+}
+
+.u-brand-color-one--bg-lighten-10-mixin() when not (@layout-brand-color-one = none) {
+	background-color: lighten(@layout-brand-color-one, 10%);
+}
+
+.u-brand-color-one--bg-lighten-20 {
+    .u-brand-color-one--bg-lighten-20-mixin(); 
+}
+
+.u-brand-color-one--bg-lighten-20-mixin() when not (@layout-brand-color-one = none) {
+	background-color: lighten(@layout-brand-color-one, 20%);
+}
+
+.u-brand-color-one--bg-darken-10 {
+    .u-brand-color-one--bg-darken-10-mixin(); 
+}
+
+.u-brand-color-one--bg-darken-10-mixin() when not (@layout-brand-color-one = none) {
+	background-color: darken(@layout-brand-color-one, 20%);
+}
+
+.u-brand-color-one--bg-darken-20 {
+    .u-brand-color-one--bg-darken-20-mixin(); 
+}
+
+.u-brand-color-one--bg-darken-20-mixin() when not (@layout-brand-color-one = none) {
+	background-color: darken(@layout-brand-color-one, 10%);
+}
+
+.u-brand-color-two--bg {
+    .u-brand-color-two--bg-mixin(); 
+}
+
+.u-brand-color-two--bg-mixin() when not (@layout-brand-color-two = none) {
+	background-color: @layout-brand-color-two !important; //Fix to secure print color
+    -webkit-print-color-adjust: exact;
+}
+
+.u-brand-color-two--bg-lighten-10 {
+    .u-brand-color-two--bg-lighten-10-mixin(); 
+}
+
+.u-brand-color-two--bg-lighten-10-mixin() when not (@layout-brand-color-two = none) {
+	background-color: lighten(@layout-brand-color-two, 10%);
+}
+
+.u-brand-color-two--bg-lighten-20 {
+    .u-brand-color-two--bg-lighten-20-mixin(); 
+}
+
+.u-brand-color-two--bg-lighten-20-mixin() when not (@layout-brand-color-two = none) {
+	background-color: lighten(@layout-brand-color-two, 20%);
+}
+
+.u-brand-color-two--bg-darken-10 {
+    .u-brand-color-two--bg-darken-10-mixin(); 
+}
+
+.u-brand-color-two--bg-darken-10-mixin() when not (@layout-brand-color-two = none) {
+	background-color: darken(@layout-brand-color-two, 10%);
+}
+
+.u-brand-color-two--bg-darken-20 {
+    .u-brand-color-two--bg-darken-20-mixin(); 
+}
+
+.u-brand-color-two--bg-darken-20-mixin() when not (@layout-brand-color-two = none) {
+	background-color: darken(@layout-brand-color-two, 20%);
+}
+
+
+//Fonts
+
+.u-font-awesome {
+    font-family: "FontAwesome", @content-layout-body-text-font-family-family;
+}

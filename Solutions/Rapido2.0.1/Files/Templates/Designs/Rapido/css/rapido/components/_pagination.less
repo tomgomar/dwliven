@@ -1,0 +1,17 @@
+
+.pager__btn:hover:not(.disabled):not(.pager__btn--current) {
+    .pager__btn-mixin(); 
+}
+
+.pager__btn-mixin() when not (@content-layout-pagination-active-color = none) {
+	border: 1px solid @content-layout-pagination-active-color;
+}
+
+
+.pager__btn--current {
+    .pager__btn--current-mixin(); 
+}
+
+.pager__btn--current-mixin() when not (@content-layout-pagination-active-color = none) {
+    background-color: @content-layout-pagination-active-color;
+}

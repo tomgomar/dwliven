@@ -1,0 +1,637 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+@using Dynamicweb.Configuration;
+@using Dynamicweb.Core;
+
+@{
+	string feedType = HttpContext.Current.Request.QueryString.Get("feedtype");
+	string sortBy = HttpContext.Current.Request.QueryString.Get("SortBy");
+	string sortOrder = HttpContext.Current.Request.QueryString.Get("SortOrder");
+	int pageNum = Converter.ToInt32(HttpContext.Current.Request.QueryString.Get("pagenum"));
+	int pageSize = !String.IsNullOrEmpty(HttpContext.Current.Request["pagesize"]) ? Converter.ToInt32(HttpContext.Current.Request.QueryString.Get("pagesize")) : Converter.ToInt32(GetString("Ecom:ProductList.PageSize"));
+	string searchParameter = !String.IsNullOrEmpty(HttpContext.Current.Request["Search"]) ? HttpContext.Current.Request.QueryString.Get("Search") : "";
+	string groupId = !String.IsNullOrEmpty(HttpContext.Current.Request["GroupID"]) ? HttpContext.Current.Request.QueryString.Get("GroupID") : "";
+	string groupName = !String.IsNullOrEmpty(HttpContext.Current.Request["GroupName"]) ? HttpContext.Current.Request.QueryString.Get("GroupName") : "";
+	string template = !String.IsNullOrEmpty(HttpContext.Current.Request["Template"]) ? HttpContext.Current.Request.QueryString.Get("Template") : "SearchContentTemplate";
+	bool isLoadMore = !String.IsNullOrEmpty(HttpContext.Current.Request["pagenum"]);
+
+	string listCookie = "";
+	if (HttpContext.Current.Request.Cookies["ProductsContainerTemplate"] != null)
+	{
+		listCookie = HttpContext.Current.Request.Cookies["ProductsContainerTemplate"].Value;
+	}
+
+	string listMode = !String.IsNullOrEmpty(listCookie) ? listCookie : Pageview.Area.Item["ProductDefaultListView"].ToString();
+	listMode = !String.IsNullOrEmpty(listMode) ? listMode : "ProductItemContainer";
+
+	int defaultFacetsState = Converter.ToInt32(Pageview.Area.Item["OpenFacetGroups"]);
+}
+
+@functions {
+	public class FacetSelection
+	{
+		public string template { get; set; }
+		public string group { get; set; }
+		public string name { get; set; }
+		public string label { get; set; }
+		public string value { get; set; }
+		public string queryParameter { get; set; }
+	}
+
+	public class FacetOption
+	{
+		public string template { get; set; }
+		public string name { get; set; }
+		public string value { get; set; }
+		public string queryParameter { get; set; }
+		public string currency { get; set; }
+		public string weight { get; set; }
+		public string label { get; set; }
+		public string count { get; set; }
+		public string disabled { get; set; }
+		public string selected { get; set; }
+	}
+
+	public class FacetGroup
+	{
+		public string counter { get; set; }
+		public string name { get; set; }
+		public string defaultState { get; set; }
+		public List<FacetOption> FacetOptions { get; set; }
+	}
+
+	public class Combi
+	{
+		public string id { get; set; }
+	}
+
+	public class VariantOption
+	{
+		public string id { get; set; }
+		public string variantId { get; set; }
+		public string productId { get; set; }
+		public string template { get; set; }
+		public string name { get; set; }
+		public string selected { get; set; }
+		public string disabled { get; set; }
+		public string color { get; set; }
+		public string image { get; set; }
+	}
+
+	public class Variant
+	{
+		public string id { get; set; }
+		public string name { get; set; }
+		public List<VariantOption> VariantOptions { get; set; }
+	}
+
+	public class FavoriteItem
+	{
+		public string name { get; set; }
+		public string link { get; set; }
+		public string favoriteIcon { get; set; }
+	}
+
+	public class Favorite
+	{
+		public string id { get; set; }
+		public string favoriteIcon { get; set; }
+		public List<FavoriteItem> FavoriteLists { get; set; }
+	}
+
+	public class Sticker
+	{
+		public string className { get; set; }
+		public string text { get; set; }
+	}
+
+	public class Unit
+	{
+		public string id { get; set; }
+		public string value { get; set; }
+		public string name { get; set; }
+		public string selected { get; set; }
+		public string link { get; set; }
+	}
+
+	public class Product
+	{
+		public string id { get; set; }
+		public string template { get; set; }
+		public string productId { get; set; }
+		public string zIndex { get; set; }
+		public string name { get; set; }
+		public string number { get; set; }
+		public string price { get; set; }
+		public string discount { get; set; }
+		public string stockState { get; set; }
+		public string stockText { get; set; }
+		public string outOfStock { get; set; }
+		public string hideDelivery { get; set; }
+		public string deliveryText { get; set; }
+		public string link { get; set; }
+		public string variantid { get; set; }
+		public string description { get; set; }
+		public string onSale { get; set; }
+		public string image { get; set; }
+		public string noImage { get; set; }
+		public string removeFromFavorites { get; set; }
+		public string hasVariants { get; set; }
+		public string hideHelpText { get; set; }
+		public string hideViewMore { get; set; }
+		public string hideBuyOptions { get; set; }
+		public string shortGridInfo { get; set; }
+		public string hasUnits { get; set; }
+		public string unitName { get; set; }
+		public string unitId { get; set; }
+		public string groupId { get; set; }
+		public string searchParameter { get; set; }
+		public List<Unit> unitOptions { get; set; }
+		public List<Favorite> Favorite { get; set; }
+		public List<Combi> Combinations { get; set; }
+		public List<Variant> Variants { get; set; }
+		public List<Sticker> Stickers { get; set; }
+	}
+
+	public class ProductsContainer
+	{
+		public string template { get; set; }
+		public string id { get; set; }
+		public List<Product> Product { get; set; }
+	}
+
+	public class Root
+	{
+		public string listTemplate { get; set; }
+		public string groupName { get; set; }
+		public string groupDescription { get; set; }
+		public string groupPromotionImage { get; set; }
+		public string currentPage { get; set; }
+		public string totalPages { get; set; }
+		public string pageSize { get; set; }
+		public int pageSizeText { get; set; }
+		public string header { get; set; }
+		public string headerIcon { get; set; }
+		public string selectedSort { get; set; }
+		public string prevdisabled { get; set; }
+		public string nextdisabled { get; set; }
+		public string prevPage { get; set; }
+		public string nextPage { get; set; }
+		public string loadMoreFeedParams { get; set; }
+		public List<ProductsContainer> ProductsContainer { get; set; }
+		public List<FacetGroup> FacetGroups { get; set; }
+		public List<FacetSelection> FacetSelections { get; set; }
+	}
+}
+
+@{
+	List<Root> feedObject = new List<Root>();
+	List<ProductsContainer> productFeedObject = new List<ProductsContainer>();
+
+	string pageName = GetString("Ecom:Group.Name") != "" ? GetString("Ecom:Group.Name") : Translate("Products");
+	string listHeader = HttpContext.Current.Request.QueryString.Get("Search") != null ? Translate("Search result for") + " \"" + HttpContext.Current.Request.QueryString.Get("Search") + "\" : " : pageName + ": ";
+	listHeader = HttpContext.Current.Request.QueryString.Get("ListName") != null ? HttpContext.Current.Request.QueryString.Get("ListName") + ": " : listHeader;
+	listHeader += GetString("Ecom:ProductList.PageProdCnt");
+
+	Dictionary<string, string> Sorts = new Dictionary<string, string>() {
+		{"CreatedDESC", Translate("Newest")},
+		{"PriceDESC", Translate("Price high - low")},
+		{"PriceASC", Translate("Price low - high")}
+	};
+
+	Root feedRoot = new Root();
+	feedRoot.listTemplate = listMode;
+	feedRoot.groupName = !String.IsNullOrEmpty(GetString("Ecom:Group.Name")) ? GetString("Ecom:Group.Name") : groupName;
+	feedRoot.groupDescription = GetString("Ecom:Group.Description");
+	feedRoot.groupPromotionImage = GetString("Ecom:Group:Field.ctaImage.Clean");
+	feedRoot.currentPage = GetString("Ecom:ProductList.CurrentPage");
+	feedRoot.totalPages = GetString("Ecom:ProductList.TotalPages");
+	feedRoot.pageSize = GetString("Ecom:ProductList.PageSize");
+	feedRoot.pageSizeText = GetInteger("Ecom:ProductList.CurrentPage") != GetInteger("Ecom:ProductList.TotalPages") - 1 ? GetInteger("Ecom:ProductList.PageSize") : GetInteger("Ecom:ProductList.PageProdCnt") - (GetInteger("Ecom:ProductList.PageSize") * (GetInteger("Ecom:ProductList.TotalPages") - 1));
+	feedRoot.header = listHeader;
+	feedRoot.headerIcon = HttpContext.Current.Request.QueryString.Get("ListName") != null ? "fa fa-star u-margin-right" : "";
+	feedRoot.selectedSort = Sorts.ContainsKey(sortBy + sortOrder) ? Sorts[sortBy + sortOrder] : Translate("Default");
+	feedRoot.prevdisabled = string.IsNullOrWhiteSpace(GetString("Ecom:ProductList.PrevPage.Clean")) ? "u-hidden" : "";
+	feedRoot.nextdisabled = string.IsNullOrWhiteSpace(GetString("Ecom:ProductList.NextPage.Clean")) ? "u-hidden" : "";
+	feedRoot.prevPage = GetString("Ecom:ProductList.PrevPage.Clean");
+	feedRoot.nextPage = GetString("Ecom:ProductList.NextPage.Clean");
+	feedRoot.loadMoreFeedParams = "&SortBy=" + sortBy + "&SortOrder=" + sortOrder;
+	feedRoot.ProductsContainer = new List<ProductsContainer>();
+
+	Boolean onlyPreview = Converter.ToBoolean(Pageview.Area.Item["OnlyPreviewForAnonymous"]) && Pageview.User == null;
+
+	//PRODUCTS
+	int zIndex = GetLoop("Products").Count;
+	int count = 0;
+
+	if (pageNum > 1)
+	{
+
+		count = (pageSize - 1) * pageNum;
+	}
+
+	foreach (LoopItem product in GetLoop("Products"))
+	{
+		zIndex--;
+		count++;
+
+		ProductsContainer productsContainerObject = new ProductsContainer();
+		productsContainerObject.template = listMode;
+		productsContainerObject.id = count.ToString();
+		productsContainerObject.Product = new List<Product>();
+
+		Product productObject = new Product();
+
+		Boolean hasVariants = product.GetLoop("VariantGroups").Count > 0 ? true : false;
+
+		productObject.template = template;
+		productObject.id = count.ToString();
+		productObject.productId = product.GetString("Ecom:Product.ID");
+		productObject.zIndex = zIndex.ToString();
+		productObject.name = product.GetString("Ecom:Product.Name");
+		productObject.number = product.GetString("Ecom:Product.Number");
+		productObject.price = product.GetString("Ecom:Product.Discount.Price.PriceFormatted") != product.GetString("Ecom:Product.Price.PriceFormatted") ? product.GetString("Ecom:Product.Discount.Price.PriceFormatted") : product.GetString("Ecom:Product.Price.PriceFormatted");
+		productObject.discount = product.GetString("Ecom:Product.Discount.Price.PriceFormatted") != product.GetString("Ecom:Product.Price.PriceFormatted") ? product.GetString("Ecom:Product.Price.PriceFormatted") : "";
+		productObject.stockState = product.GetInteger("Ecom:Product.Stock") > 0 ? "stock-icon--in" : "stock-icon--not";
+		productObject.onSale = product.GetString("Ecom:Product.Discount.Price.PriceFormatted") == product.GetString("Ecom:Product.Price.PriceFormatted") ? "u-hidden" : "";
+		productObject.stockText = product.GetString("Ecom:Product:Stock.Text");
+		productObject.outOfStock = product.GetInteger("Ecom:Product.Stock") <= 0 ? "disabled" : "";
+		productObject.hideDelivery = String.IsNullOrEmpty(product.GetString("Ecom:Product:Stock.DeliveryText")) ? "u-hidden" : "";
+		productObject.deliveryText = String.IsNullOrEmpty(product.GetString("Ecom:Product:Stock.DeliveryText")) ? "" : ", " + Translate("Delivery") + " " + product.GetString("Ecom:Product:Stock.DeliveryText") + " " + product.GetString("Ecom:Product:Stock.DeliveryUnit");
+		productObject.variantid = !String.IsNullOrEmpty(product.GetString("Ecom:Product.VariantID")) ? product.GetString("Ecom:Product.VariantID") : product.GetString("Ecom:Product.VariantID.Extented");
+		productObject.description = product.GetString("Ecom:Product.ShortDescription");
+		productObject.image = product.GetString("Ecom:Product.ImageLarge.Default.Clean");
+		productObject.noImage = string.IsNullOrEmpty(product.GetString("Ecom:Product.ImageLarge.Default.Clean")) ? "u-hidden" : "";
+		productObject.removeFromFavorites = product.GetString("Ecom:Product.RemoveFromFavorites");
+		productObject.hasVariants = hasVariants ? "disabled" : "";
+		productObject.hideBuyOptions = hasVariants ? "u-hidden" : "";
+		productObject.hideViewMore = hasVariants ? "" : "u-hidden";
+		productObject.shortGridInfo = onlyPreview ? "product-list__grid-item__short-info" : "";
+		productObject.hasUnits = product.GetLoop("Units").Count > 0 ? "" : "u-hidden";
+
+		productObject.Stickers = new List<Sticker>();
+
+		if (Converter.ToBoolean(Pageview.Area.Item["EnableSaleTags"]))
+		{
+			string contentType = Pageview.Area.Item["EcommerceSaleTagContentType"].ToString();
+			var currency = Dynamicweb.Ecommerce.Services.Currencies.GetDefaultCurrency();
+			Sticker saleSticker = new Sticker();
+
+			switch (contentType)
+			{
+				case "Name":
+					foreach (LoopItem discount in product.GetLoop("ProductDiscounts"))
+					{
+						saleSticker = new Sticker();
+						saleSticker.text = discount.GetString("Ecom:Product.Discount.Name");
+						saleSticker.className = "stickers-container__tag--sale";
+						productObject.Stickers.Add(saleSticker);
+					}
+					break;
+				case "Amount":
+					if (product.GetLoop("ProductDiscounts").Count > 0)
+					{
+						saleSticker = new Sticker();
+						saleSticker.text = Dynamicweb.Ecommerce.Services.Currencies.Format(currency, product.GetDouble("Ecom:Product.Discount.Price.Price") - product.GetDouble("Ecom:Product.Price.Price"));
+						saleSticker.className = "stickers-container__tag--sale";
+						productObject.Stickers.Add(saleSticker);
+					}
+					break;
+				case "Percents":
+					double percents = 0;
+					foreach (LoopItem discount in product.GetLoop("ProductDiscounts"))
+					{
+						percents += discount.GetDouble("Ecom:Product.Discount.PercentWithoutVAT");
+					}
+					if (percents > 0)
+					{
+						saleSticker = new Sticker();
+						saleSticker.text = Math.Round(percents, 0) + "%";
+						saleSticker.className = "stickers-container__tag--sale";
+						productObject.Stickers.Add(saleSticker);
+					}
+					break;
+				case "Amount+and+percents":
+					double amount = 0;
+					double percent = 0;
+					foreach (LoopItem discount in product.GetLoop("ProductDiscounts"))
+					{
+						if (discount.GetString("Ecom:Product.Discount.Type") == "PERCENT")
+						{
+							percent += discount.GetDouble("Ecom:Product.Discount.PercentWithoutVAT");
+						}
+						else if (discount.GetString("Ecom:Product.Discount.Type") == "AMOUNT")
+						{
+							amount += discount.GetDouble("Ecom:Product.Discount.AmountWithVAT");
+						}
+					}
+
+					if (percent > 0)
+					{
+						saleSticker = new Sticker();
+						saleSticker.text = percent + "%";
+						saleSticker.className = "stickers-container__tag--sale";
+						productObject.Stickers.Add(saleSticker);
+					}
+
+					if (amount > 0)
+					{
+						saleSticker = new Sticker();
+						saleSticker.text = "-" + Dynamicweb.Ecommerce.Services.Currencies.Format(currency, amount);
+						saleSticker.className = "stickers-container__tag--sale";
+						productObject.Stickers.Add(saleSticker);
+					}
+					break;
+				default:
+					if (product.GetLoop("ProductDiscounts").Count > 0)
+					{
+						saleSticker = new Sticker();
+						saleSticker.text = Translate("Sale!");
+						saleSticker.className = "stickers-container__tag--sale";
+						productObject.Stickers.Add(saleSticker);
+					}
+					break;
+			}
+		}
+
+		if (Converter.ToBoolean(Pageview.Area.Item["NewStickersEnable"]) && product.GetDate("Ecom:Product.Created").AddDays(Converter.ToDouble(Pageview.Area.Item["NewStickersExpiration"])) > DateTime.Now)
+		{
+			Sticker newSticker = new Sticker();
+			newSticker.className = "stickers-container__tag--new";
+			newSticker.text = Translate("New!");
+			productObject.Stickers.Add(newSticker);
+		}
+
+		if (!String.IsNullOrEmpty(product.GetString("Ecom:Product:Field.CustomSticker.Value")))
+		{
+			Sticker customSticker = new Sticker();
+			customSticker.className = "stickers-container__tag--custom";
+			customSticker.text = product.GetString("Ecom:Product:Field.CustomSticker.Value");
+			productObject.Stickers.Add(customSticker);
+		}
+
+		productObject.unitOptions = new List<Unit>();
+
+		//Units
+		foreach (LoopItem unitOption in product.GetLoop("Units"))
+		{
+			Unit unitObject = new Unit();
+			unitObject.id = count.ToString();
+			unitObject.value = unitOption.GetString("Ecom:VariantOption.ID");
+			unitObject.name = unitOption.GetString("Ecom:VariantOption.Name");
+			unitObject.selected = unitOption.GetString("Ecom:VariantOption.Selected");
+			unitObject.link = "/" + product.GetString("Ecom:Product.LinkGroup.Clean") + (!string.IsNullOrEmpty(product.GetString("Ecom:Product.VariantID")) ? "&VariantID=" + product.GetString("Ecom:Product.VariantID") : "");
+			productObject.unitOptions.Add(unitObject);
+
+			if (unitOption.GetString("Ecom:VariantOption.Selected") == "SELECTED")
+			{
+				productObject.unitName = unitOption.GetString("Ecom:VariantOption.Name");
+				productObject.unitId = unitOption.GetString("Ecom:VariantOption.ID");
+			}
+		}
+
+		//Favorites
+		if (Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue("Global:Extranet.UserName")))
+		{
+			productObject.Favorite = new List<Favorite>();
+			Favorite favoriteObject = new Favorite();
+			favoriteObject.id = count.ToString();
+			favoriteObject.favoriteIcon = product.GetBoolean("Ecom:Product.IsProductInFavoriteList") ? "fa fa-star" : "fa fa-star-o";
+			favoriteObject.FavoriteLists = new List<FavoriteItem>();
+
+			if (product.GetLoop("CustomerCenter.ListTypes").Count > 0)
+			{
+				foreach (LoopItem favoriteList in product.GetLoop("CustomerCenter.ListTypes"))
+				{
+					foreach (LoopItem favoriteItem in favoriteList.GetLoop("CustomerCenter.ProductLists"))
+					{
+						FavoriteItem favoriteItemObject = new FavoriteItem();
+						favoriteItemObject.name = favoriteItem.GetString("Ecom:CustomerCenter.List.Name");
+						favoriteItemObject.link = favoriteItem.GetString("Ecom:Product.List.IsProductInThisList") == "True" ? favoriteItem.GetString("Ecom:Product.RemoveFromThisList") : favoriteItem.GetString("Ecom:Product.AddToThisListAction");
+						favoriteItemObject.favoriteIcon = favoriteItem.GetString("Ecom:Product.List.IsProductInThisList") == "True" ? "fa fa-star" : "fa fa-star-o";
+						favoriteObject.FavoriteLists.Add(favoriteItemObject);
+					}
+				}
+			}
+			else
+			{
+				FavoriteItem favoriteItemObject = new FavoriteItem();
+				favoriteItemObject.name = Translate("My favorites");
+				favoriteItemObject.link = product.GetString("Ecom:Product.AddToFavorites");
+				favoriteItemObject.favoriteIcon = "fa fa-star-o";
+				favoriteObject.FavoriteLists.Add(favoriteItemObject);
+			}
+
+
+			productObject.Favorite.Add(favoriteObject);
+		}
+
+		//Variants
+		productObject.Variants = new List<Variant>();
+		bool hasSelection = false;
+
+		List<LoopItem> variantGroupsLoop = new List<LoopItem>();
+		variantGroupsLoop = product.GetLoop("VariantGroups");
+
+		if (product.GetBoolean("Ecom:Product.ShowInProductList") && !String.IsNullOrEmpty(product.GetString("Ecom:Product.VariantID")) && variantGroupsLoop.Count > 1)
+		{
+			variantGroupsLoop.RemoveAt(0);
+		}
+
+		foreach (LoopItem variantgroup in variantGroupsLoop)
+		{
+			Variant variantObject = new Variant();
+			variantObject.id = count.ToString();
+			variantObject.name = variantgroup.GetString("Ecom:VariantGroup.Name");
+			variantObject.VariantOptions = new List<VariantOption>();
+
+			foreach (LoopItem variantoption in variantgroup.GetLoop("VariantAvailableOptions"))
+			{
+				VariantOption variantOptionObject = new VariantOption();
+				variantOptionObject.id = count.ToString();
+				variantOptionObject.variantId = variantoption.GetString("Ecom:VariantOption.ID");
+				variantOptionObject.productId = product.GetString("Ecom:Product.ID");
+				variantOptionObject.name = variantoption.GetString("Ecom:VariantOption.Name");
+				if (variantoption.GetBoolean("Ecom:VariantOption.Selected"))
+				{
+					variantOptionObject.selected = "checked";
+					hasSelection = true;
+				}
+				else
+				{
+					variantOptionObject.selected = "";
+				}
+				variantOptionObject.selected = variantoption.GetBoolean("Ecom:VariantOption.Selected") ? "checked" : "";
+				variantOptionObject.disabled = "";
+				variantOptionObject.color = variantoption.GetString("Ecom:VariantOption.Color");
+				variantOptionObject.image = variantoption.GetString("Ecom:VariantOption.ImgSmall.Clean");
+				if (!string.IsNullOrEmpty(variantOptionObject.image))
+				{
+					variantOptionObject.template = "VariantOptionImage";
+				}
+				else
+				{
+					variantOptionObject.template = "VariantOption";
+				}
+
+				variantObject.VariantOptions.Add(variantOptionObject);
+			}
+
+			productObject.Variants.Add(variantObject);
+		}
+
+		if (hasSelection)
+		{
+			productObject.hasVariants = "";
+			productObject.hideHelpText = "u-visibility-hidden";
+		}
+
+		productObject.link = "/" + product.GetString("Ecom:Product.LinkGroup.Clean") + (!string.IsNullOrWhiteSpace(productObject.variantid) ? "&VariantID=" + productObject.variantid : "");
+
+		//Combinations
+		productObject.Combinations = new List<Combi>();
+
+		foreach (LoopItem variantcomb in product.GetLoop("VariantStockCombinations"))
+		{
+			Combi combiObject = new Combi();
+			combiObject.id = variantcomb.GetString("Ecom:VariantStockCombination.VariantID");
+			productObject.Combinations.Add(combiObject);
+		}
+
+		productObject.Variants.OrderBy(varGroup => productObject.Combinations.Max(combination => combination.id.IndexOf(varGroup.VariantOptions.First().variantId)));
+
+		productsContainerObject.Product.Add(productObject);
+		feedRoot.ProductsContainer.Add(productsContainerObject);
+
+		if (feedType == "productsOnly")
+		{
+			productFeedObject.Add(productsContainerObject);
+		}
+
+		//FACETS
+
+		string currencySymbol = product.GetString("Ecom:Product.Price.Currency.Symbol");
+		string weightUnit = SystemConfiguration.Instance.GetValue("/Globalsettings/Ecom/Unit/Weight");
+
+		if (feedType != "productsOnly")
+		{
+			feedRoot.FacetGroups = new List<FacetGroup>();
+
+			foreach (LoopItem facetGroup in GetLoop("FacetGroups"))
+			{
+				foreach (LoopItem facetItem in facetGroup.GetLoop("Facets"))
+				{
+					if (facetItem.GetInteger("Facet.OptionWithResultCount") > 0 && facetItem.GetInteger("Facet.OptionResultTotalCount") > 0)
+					{
+						FacetGroup facetGroupObject = new FacetGroup();
+						facetGroupObject.counter = facetItem.GetString("Facets.LoopCounter");
+						facetGroupObject.name = Translate(facetItem.GetString("Facet.Name"));
+						facetGroupObject.defaultState = facetItem.GetInteger("Facets.LoopCounter") <= defaultFacetsState ? "checked" : "";
+						facetGroupObject.defaultState = Pageview.Device.ToString() == "Mobile" ? "" : facetGroupObject.defaultState;
+						facetGroupObject.FacetOptions = new List<FacetOption>();
+
+						foreach (LoopItem facetOption in facetItem.GetLoop("FacetOptions"))
+						{
+							string facetLabel = facetOption.GetString("FacetOption.Label");
+
+							if (facetLabel.ToLower() == "true")
+							{
+								facetLabel = Translate("Yes");
+							}
+
+							if (facetLabel.ToLower() == "false")
+							{
+								facetLabel = Translate("No");
+							}
+
+							FacetOption facetOptionObject = new FacetOption();
+							facetOptionObject.template = facetItem.GetString("Facet.RenderType");
+							facetOptionObject.name = facetOption.GetString("FacetOption.Name");
+							facetOptionObject.count = facetOption.GetString("FacetOption.Count");
+							facetOptionObject.label = facetLabel;
+							facetOptionObject.value = facetOption.GetString("FacetOption.Value");
+							facetOptionObject.queryParameter = facetItem.GetString("Facet.QueryParameter");
+							facetOptionObject.currency = currencySymbol;
+							facetOptionObject.weight = weightUnit;
+							facetOptionObject.disabled = facetOption.GetInteger("FacetOption.Count") <= 0 ? "disabled" : "";
+							facetOptionObject.selected = facetOption.GetBoolean("FacetOption.Selected") ? "checked" : "";
+							facetGroupObject.FacetOptions.Add(facetOptionObject);
+						}
+
+						feedRoot.FacetGroups.Add(facetGroupObject);
+					}
+				}
+			}
+
+			feedRoot.FacetSelections = new List<FacetSelection>();
+
+			int facetSelectionCount = 0;
+
+			foreach (LoopItem facetGroup in GetLoop("FacetGroups"))
+			{
+				foreach (LoopItem facetItem in facetGroup.GetLoop("Facets"))
+				{
+					if (facetItem.GetInteger("Facet.OptionWithResultCount") > 0 && facetItem.GetInteger("Facet.OptionResultTotalCount") > 0)
+					{
+						foreach (LoopItem facetOption in facetItem.GetLoop("FacetOptions"))
+						{
+							if (facetOption.GetBoolean("FacetOption.Selected"))
+							{
+								FacetSelection facetSelectionObject = new FacetSelection();
+								facetSelectionObject.template = facetOption.GetString("FacetOption.Value").Contains("#") ? "SelectedColorFilter" : "SelectedFilter";
+								facetSelectionObject.group = Translate(facetItem.GetString("Facet.Name"));
+								facetSelectionObject.name = facetOption.GetString("FacetOption.Name");
+								facetSelectionObject.label = facetOption.GetString("FacetOption.Label");
+								facetSelectionObject.value = facetOption.GetString("FacetOption.Value");
+								facetSelectionObject.queryParameter = facetItem.GetString("Facet.QueryParameter");
+								feedRoot.FacetSelections.Add(facetSelectionObject);
+
+								facetSelectionCount++;
+							}
+						}
+					}
+				}
+			}
+
+			if (facetSelectionCount > 2)
+			{
+				FacetSelection facetAllObject = new FacetSelection();
+				facetAllObject.template = "ResetFilters";
+				feedRoot.FacetSelections.Insert(0, facetAllObject);
+			}
+		}
+	}
+
+	feedObject.Add(feedRoot);
+
+	string jsonFeed = "";
+
+	if (GetLoop("Products").Count == 0)
+	{
+		jsonFeed = "[]";
+	}
+	else if (feedType == "productsOnly")
+	{
+		if (!string.IsNullOrEmpty(searchParameter) && !isLoadMore)
+		{
+			ProductsContainer productsContainerObject = new ProductsContainer();
+			productsContainerObject.Product = new List<Product>();
+
+			Product searchMoreObject = new Product();
+			searchMoreObject.template = "SearchMore";
+			searchMoreObject.searchParameter = searchParameter;
+			searchMoreObject.groupId = groupId;
+
+			productsContainerObject.Product.Add(searchMoreObject);
+			productFeedObject.Add(productsContainerObject);
+		}
+
+		jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(productFeedObject);
+	}
+	else
+	{
+		jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(feedObject);
+	}
+}
+
+@jsonFeed

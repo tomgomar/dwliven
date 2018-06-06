@@ -1,0 +1,267 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Core
+@using System
+
+@{ 
+    string pageId = GetGlobalValue("Global:Page.ID");
+    int cartOrderlinesFeedPageId = GetPageIdByNavigationTag("CartOrderlinesFeed");
+    int quotesCartPageId = GetPageIdByNavigationTag("QuotesCartPage");
+}
+
+@* Escape the container and section *@
+</div>
+</section>
+@* ----------------------------------- *@
+
+<section class="multiple-paragraphs-container u-color-light-gray--bg">
+    <div class="center-container center-container--with-background-image dw-mod">
+        <div class="paragraph-container">
+            <form name="ordersubmit" id="OrderSubmit" method="post" action="/Default.aspx?ID=@pageId" autocomplete="off">
+                <div class="paragraph-container__grid--bleed-x paragraph-container__grid--bleed-y">
+                    <div class="grid">
+                        <div class="grid__col-12">
+                           <div class="step-bar dw-mod">
+                               <div class="step-bar__step step-bar__step--active dw-mod">
+                                   1. @Translate("Cart")
+                               </div>
+                               <div class="step-bar__step dw-mod">
+                                   2. @Translate("Delivery")
+                               </div>
+                               <div class="step-bar__step dw-mod">
+                                   3. @Translate("Shipping/Payment")
+                               </div>
+                           </div>
+                        </div>
+                        <div class="grid__col-12 grid__col--bleed-x">
+                            @* The cart *@
+                            @Order(cartOrderlinesFeedPageId)
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@* Re-enter the container and section *@
+<section class="content-container center-container dw-mod">
+<div class="grid">
+@* ----------------------------------- *@
+
+@helper Order(int cartOrderlinesFeedPageId) {
+    <div class="grid__col-12 u-no-padding--xs">
+        <div class="js-handlebars-root" id="Cart" data-template="CartContent" data-cart-id="@cartOrderlinesFeedPageId" data-json-feed="/Default.aspx?ID=@cartOrderlinesFeedPageId" data-preloader="overlay"></div>
+    </div>
+}
+
+@* Template for the cart *@
+<script id="CartContent" type="text/x-template">
+    {{#.}}
+        <div class="card-header u-color-light--bg dw-mod">
+            <h3><i class="fa fa-list-ul"></i> @Translate("Your cart") ({{numberofproducts}})</h3>
+        </div>
+        <div class="card u-color-light--bg u-no-padding--xs dw-mod">
+            <div class="{{isempty}}">
+                <table class="table cart-table dw-mod">
+                    <tbody id="OrderLines">
+                        {{#OrderLines}}
+                            {{#ifCond template "===" "CartOrderline"}}
+                                {{>CartOrderline}}
+                            {{/ifCond}}
+                            {{#ifCond template "===" "CartOrderlineMobile"}}
+                                {{>CartOrderlineMobile}}
+                            {{/ifCond}}
+                            {{#ifCond template "===" "CartOrderlineDiscount"}}
+                                {{>CartOrderlineDiscount}}
+                            {{/ifCond}}
+                        {{/OrderLines}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="grid grid--justify-end">
+                <div class="grid__col-sm-6 grid__col--line-bottom">
+                    @if (!Converter.ToBoolean(Pageview.Area.Item["HideSubtotal"]))
+                    {
+                        <div class="grid__cell">
+                            <div class="cart-summary__subtotals u-pull--right dw-mod">{{subtotalprice}}</div>
+                            <div class="cart-summary__subtotals u-pull--left dw-mod">@Translate("Subtotal")</div>
+                        </div>
+                    }
+                    <div class="grid__cell {{hidePaymentfee}}">
+                        <div class="cart-summary__info u-pull--right dw-mod">{{paymentfee}}</div>
+                        <div class="cart-summary__info u-pull--left dw-mod"><i class="fa fa-credit-card"></i> {{paymentmethod}}</div>
+                    </div>
+                    <div class="grid__cell {{hideShippingfee}}">
+                        <div class="cart-summary__info u-pull--right dw-mod">{{shippingfee}}</div>
+                        <div class="cart-summary__info u-pull--left dw-mod"><i class="fa fa-truck"></i> {{shippingmethod}}</div>
+                    </div>
+                    <div class="grid__cell">
+                        <div class="cart-summary__info u-pull--right dw-mod">{{totalvat}}</div>
+                        <div class="cart-summary__info u-pull--left dw-mod">@Translate("VAT")</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid--justify-end">
+                <div class="grid__col-sm-6">
+                    <div class="grid__cell">
+                        <div class="cart-summary__totals u-pull--right dw-mod">{{totalprice}}</div>
+                        <div class="cart-summary__totals u-pull--left dw-mod">@Translate("Total")</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid--bleed {{hideComment}}">
+                <div class="grid__col-12 grid__col--line-top">
+                    <textarea rows="3" class="u-full-width u-margin-top" placeholder="@Translate("Enter comment")" name="EcomOrderCustomerComment" id="EcomOrderCustomerComment">{{comment}}</textarea>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="grid__col-12 grid__col--line-top"></div>
+            </div>
+
+            <div class="grid__cell-footer">
+                <div class="grid__cell u-padding--xs">
+                    <div class="u-pull--right">
+                        <button type="submit" class="btn btn--primary btn--condensed dw-mod u-pull--right u-no-margin" name="@GetString("CartV2.NextStepButtonName")" id="@GetString("CartV2.NextStepButtonName")">@Translate("Go to checkout") ></button>
+                    </div>
+                    <div class="u-pull--left">
+                        <button type="button" class="btn btn--secondary btn--condensed dw-mod u-pull--left u-no-margin" onclick="Cart.EmptyCart(event);">@Translate("Empty cart")</button>
+                    </div>
+                    <div class="u-pull--right">
+                        <a href="/Default.aspx?ID=@quotesCartPageId" class="btn btn--condensed btn--link dw-mod u-margin-right">@Translate("Create quote request")</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/.}}
+</script>
+
+@* Template for the orderlines *@
+<script id="CartOrderline" type="text/x-template">
+    <tr id="Orderline{{id}}" class="cart-orderline {{isempty}}">
+        <td class="cart-orderline__cell cart-table__image u-hidden-xs u-hidden-xxs dw-mod"><div class="cart-orderline__cell__block {{hideimage}}"><img src="/Admin/Public/GetImage.ashx?width=60&height=60&crop=5&Compression=75&image={{image}}"></div></td>
+        <td class="cart-orderline__cell dw-mod" title="{{name}} {{variantname}}">
+            <a href="{{link}}" class="u-color-inherit">{{name}}</a>
+            <div class="cart-orderline__cell__block dw-mod">#{{productnumber}}</div>
+            <div class="cart-orderline__cell__block dw-mod">{{variantname}}</div> 
+            <div class="cart-orderline__cell__block dw-mod">{{unitname}}</div>
+        </td>
+        <td class="cart-orderline__cell u-ta-right u-hidden-xs u-hidden-xxs dw-mod" width="120">{{unitprice}}</td>
+        <td class="cart-orderline__cell u-ta-right dw-mod" width="80"><input class="u-w80px u-no-margin" id="Quantity_{{orderLineId}}" type="number" min="1" onchange="Cart.UpdateQuantity('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=UpdateOrderlines&QuantityOrderLine{{orderLineId}}=' + this.value + '&redirect=false', true);" name='QuantityOrderLine{{orderLineId}}' value="{{quantity}}"></td>
+        <td class="cart-orderline__cell u-ta-left dw-mod" width="50"><button type="button" class="btn btn--clean btn--condensed u-no-margin" onclick="Cart.UpdateCart('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=DelOrderLine&key={{orderLineId}}', true);"><i class="fa fa-times"></i></button></td>
+        <td class="cart-orderline__cell u-ta-right dw-mod" width="120">{{totalprice}}</td>
+    </tr>
+    <tr class="{{hideBomItems}}">
+        <td colspan="6" class="u-no-padding">
+            <table class="u-no-margin u-color-light-gray--bg">
+                <tbody>
+                    {{#BomItems}}
+                         <tr>
+                            <td class="cart-table__image u-hidden-xs u-hidden-xxs dw-mod"><img src="/Admin/Public/GetImage.ashx?width=120&height=120&crop=5&Compression=75&image={{image}}"></td>
+                            <td title="{{name}} {{variantname}}">
+                                <a href="{{link}}" class="mini-cart-orderlines__name dw-mod">{{name}}</a>
+                                <div>#{{productnumber}}</div>
+                                <div>{{variantname}}</div> 
+                                <div>{{unitname}}</div>
+                            </td>
+                            <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>
+                            <td>{{quantity}}</td>
+                            <td>&nbsp;</td>
+                            <td class="cart-table__price u-ta-right dw-mod">&nbsp;</td>
+                        </tr>
+                    {{/BomItems}}
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</script>
+
+<script id="CartOrderlineMobile" type="text/x-template">
+    <tr id="Orderline{{id}}" class="{{isempty}}">
+        <td class="cart-table__image dw-mod"><div class="{{hideimage}}"><img src="/Admin/Public/GetImage.ashx?width=60&height=60&crop=5&Compression=75&image={{image}}"></div></td>
+        <td title="{{name}} {{variantname}}" colspan="4">
+            <a href="{{link}}" class="u-color-inherit">{{name}}</a>
+            <div>#{{productnumber}}</div>
+            <div>{{variantname}}</div> 
+            <div>{{unitname}}</div>
+        </td>
+    </tr>
+    <tr class="{{isempty}} table__row--no-border">
+        <td class="cart-table__image dw-mod"></td>
+        <td colspan="4">
+            <div class="u-pull--left">
+                <input class="u-w80px u-no-margin" id="Quantity_{{orderLineId}}" type="number" min="1" onchange="Cart.UpdateQuantity('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=UpdateOrderlines&QuantityOrderLine{{orderLineId}}=' + this.value + '&EcomOrderCustomerComment=' + document.getElementById('EcomOrderCustomerComment').value + '&EcomOrderCustomerAccepted=' + (document.getElementById('EcomOrderCustomerAccepted').checked ? true : '') + '&redirect=false', true);" name='QuantityOrderLine{{orderLineId}}' value="{{quantity}}">
+                <span><button type="button" class="btn btn--clean btn--condensed u-no-margin" onclick="Cart.UpdateCart('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=DelOrderLine&key={{orderLineId}}', true);"><i class="fa fa-times"></i></button></span>
+            </div>
+            <div class="u-pull--right u-ta-right">
+                {{totalprice}}
+            </div>
+        </td>
+    </tr>
+    <tr class="{{hideBomItems}}">
+        <td colspan="6" class="u-no-padding">
+            <table class="u-no-margin u-color-light-gray--bg">
+                <tbody>
+                    {{#BomItems}}
+                         <tr>
+                            <td class="cart-table__image u-hidden-xs u-hidden-xxs dw-mod"><img src="/Admin/Public/GetImage.ashx?width=120&height=120&crop=5&Compression=75&image={{image}}"></td>
+                            <td title="{{name}} {{variantname}}">
+                                <a href="{{link}}" class="mini-cart-orderlines__name dw-mod">{{name}}</a>
+                                <div>#{{productnumber}}</div>
+                                <div>{{variantname}}</div> 
+                                <div>{{unitname}}</div>
+                            </td>
+                            <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>
+                            <td>{{quantity}}</td>
+                            <td>&nbsp;</td>
+                            <td class="cart-table__price u-ta-right dw-mod">&nbsp;</td>
+                        </tr>
+                    {{/BomItems}}
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</script>
+
+<script id="CartOrderlineDiscount" type="text/x-template">
+    <tr class="table__row--no-border">
+        <td class="cart-table__image u-hidden-xs u-hidden-xxs dw-mod">&nbsp;</td>
+        <td>{{name}}</td>
+        <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td class="cart-table__price u-ta-right dw-mod">{{totalprice}}</td>
+    </tr>
+</script>
+
+<script id="unitOption" type="text/x-template">
+    <div class="dropdown__item dw-mod" onclick="Cart.UpdateCart('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=UpdateOrderlines&UnitOrderLine{{orderLineId}}=' + this.value)" value="{{value}}">{{name}}</div>
+</script>
+
+<script id="CartBomItem" type="text/x-template">
+    <tr>
+        <td class="cart-table__image u-hidden-xs u-hidden-xxs dw-mod"><img src="/Admin/Public/GetImage.ashx?width=120&height=120&crop=5&Compression=75&image={{image}}"></td>
+        <td title="{{name}} {{variantname}}">
+            <a href="{{link}}" class="mini-cart-orderlines__name dw-mod">{{name}}</a>
+            <div>#{{productnumber}}</div>
+            <div>{{variantname}}</div> 
+            <div>{{unitname}}</div>
+        </td>
+        <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>
+        <td>{{quantity}}</td>
+        <td>&nbsp;</td>
+        <td class="cart-table__price u-ta-right dw-mod">&nbsp;</td>
+    </tr>
+</script>
+
+@functions {
+    string Truncate(string str, int count)
+    {
+        return str.Substring(0, Math.Min(str.Length, count));
+    }
+}

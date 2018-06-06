@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Settings" name="Page" systemName="Page" description="" icon="FileText" iconColor="" includeInUrlIndex="False" pageDefaultView="paragraph" fieldForTitle="" title="" inherits="" useCache="False">
+    <fields>
+      <field name="Left menu" systemName="LeftMenu" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="2" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Show left menu" value="True" icon="/Templates/Designs/Rapido/Images/ItemTypes/DW_ShowLeftMenu.jpg" />
+            <option name="Hide left menu" value="False" icon="/Templates/Designs/Rapido/Images/ItemTypes/DW_HideLeftMenu.jpg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Show breadcrumb" systemName="ShowBreadcrumb" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="2" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Show breadcrumb" value="True" icon="/Templates/Designs/Rapido/Images/ItemTypes/DW_ShowBreadcrumb.jpg" />
+            <option name="Hide breadcrumb" value="False" icon="/Templates/Designs/Rapido/Images/ItemTypes/DW_HideLeftMenu.jpg" />
+          </Static>
+        </options>
+      </field>
+    </fields>
+    <rules>
+      <rule name="Allow in websites" type="Dynamicweb.Content.Items.Activation.AreaRestrictionRule, Dynamicweb" value="*" />
+      <rule name="Allowed children" type="Dynamicweb.Content.Items.Activation.ChildRestrictionRule, Dynamicweb" value="RegularPage" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Allowed parents" type="Dynamicweb.Content.Items.Activation.ParentRestrictionRule, Dynamicweb" value="RootOfWebsite,RegularPage" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="Websites" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="General" systemName="General" collapsibleState="None" visibilityField="" visibilityCondition="" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="LeftMenu" />
+            <field systemName="ShowBreadcrumb" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

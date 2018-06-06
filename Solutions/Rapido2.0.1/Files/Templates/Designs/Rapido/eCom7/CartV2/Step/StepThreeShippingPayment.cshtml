@@ -1,0 +1,405 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Text.RegularExpressions
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Core
+@using System
+
+@{
+    string pageId = GetGlobalValue("Global:Page.ID");
+    int quotesCartPageId = GetPageIdByNavigationTag("QuotesCartPage");
+
+    string mapsScriptUrl = "//maps.googleapis.com/maps/api/js";
+    mapsScriptUrl += !String.IsNullOrEmpty(Pageview.Area.Item["GoogleMapsAPIKey"].ToString()) ? "?key=" + Pageview.Area.Item["GoogleMapsAPIKey"].ToString() : "";
+}
+
+@* Escape the container and section *@
+</div>
+</section>
+@* ----------------------------------- *@
+
+<section class="multiple-paragraphs-container u-color-light-gray--bg">
+    <div class="center-container center-container--with-background-image dw-mod">
+        <div class="paragraph-container">
+            <form name="ordersubmit" id="OrderSubmit" method="post" action="/Default.aspx?ID=@pageId" autocomplete="off">
+                <!-- Trigger for the pacel shops modal -->
+                <input type="checkbox" id="ParcelShopsModalTrigger" class="modal-trigger" />
+
+                <!-- Map modal -->
+                <div class="modal-container">
+                    <label for="ParcelShopsModalTrigger" id="ParcelShopsModalOverlay" class="modal-overlay"></label>
+                    <div class="modal modal--lg" id="ParcelShopsModal">
+                        <div class="modal__header">
+                            <h2>@Translate("Choose a parcel shop")</h2>
+                        </div>
+                        <div class="modal__body">
+                            <div class="grid">
+                                <div class="grid__col-auto">
+                                    <ul class="list list--clean list--scroll u-w220px dw-mod" id="ParcelShops" data-template="ParcelShopsTemplate"></ul>
+                                </div>
+                                <div class="grid__col-auto u-hidden-xs">
+                                     <div class="map-container">
+                                       <div id="MapCanvas" class="map-container__canvas"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="paragraph-container__grid--bleed-x paragraph-container__grid--bleed-y">
+                    <div class="grid">
+                        <div class="grid__col-12">
+                           <div class="step-bar dw-mod">
+                               <div class="step-bar__step dw-mod">
+                                   1. @Translate("Cart")
+                               </div>
+                               <div class="step-bar__step dw-mod">
+                                   2. @Translate("Delivery")
+                               </div>
+                               <div class="step-bar__step step-bar__step--active dw-mod">
+                                   3. @Translate("Shipping/Payment")
+                               </div>
+                           </div>
+                        </div>
+
+                        <div class="grid__col-lg-8 grid__col-md-8 grid__col-sm-8 grid__col-xs-12">
+                            <div class="grid__cell">
+                                <div class="grid grid--direction-column">
+                                    @* Payment *@
+                                    @if (!Converter.ToBoolean(Pageview.Area.Item["HidePayment"]) && GetLoop("Paymethods").Count != 0) {
+                                        @Payment()
+                                    }
+                
+                                    @* Shipping *@
+                                    @if (!Converter.ToBoolean(Pageview.Area.Item["HideShipping"]) && GetLoop("Shippingmethods").Count != 0) {
+                                        @Shipping()
+                                    }
+
+                                    @foreach (LoopItem error in GetLoop("ValidationErrors"))
+                                    {
+                                        <div class="error-block">@error.GetString("Ecom:Cart.ValidationError.ErrorMessage")</div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Order summary *@
+                        <div class="grid__col-lg-4 grid__col-md-4 grid__col-sm-4 grid__col-xs-12">
+                            <div class="grid grid--direction-column"> 
+                                @CartSummary()
+                            </div>
+                        </div>
+
+                       @* Action bar *@
+                        <div class="grid__col-12">
+                            <div class="card u-color-light--bg dw-mod">
+                                <div class="u-pull--left">
+                                    <button type="submit" class="btn btn--secondary btn--condensed dw-mod u-pull--right u-no-margin" name="@GetString("CartV2.PreviousStepButtonName")" id="@GetString("CartV2.PreviousStepButtonName")">< @Translate("Back")</button>
+                                </div>
+                                <div class="u-pull--right">
+                                    <button type="submit" class="btn btn--primary btn--condensed dw-mod u-pull--right u-no-margin disabled" name="@GetString("CartV2.NextStepButtonName")" id="@GetString("CartV2.NextStepButtonName")" disabled>@Translate("Confirm order") ></button>
+                                </div>
+                                <div class="u-pull--right">
+                                    <a href="/Default.aspx?ID=@quotesCartPageId" class="btn btn--condensed btn--link dw-mod u-margin-right">@Translate("Create quote request")</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@* Re-enter the container and section *@
+<section class="content-container center-container dw-mod">
+<div class="grid">
+@* ----------------------------------- *@
+
+@helper Payment() {
+    string cardHeightClass = Pageview.Device.ToString() != "Tablet" ? "u-full-height" : "";
+    string savedCardName = "";
+
+    <div class="grid__col-12 grid__col--bleed-x">
+        <div class="card-header u-color-light--bg dw-mod">
+            <h3><i class="fa fa-credit-card"></i> @Translate("Payment")</h3>
+        </div>
+        <div class="card u-color-light--bg @cardHeightClass dw-mod">
+            @foreach (LoopItem payment in GetLoop("Paymethods"))
+            {
+                string supportSavedCards = payment.GetBoolean("Ecom:Cart.Paymethod.SupportSavedCard") && Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue("Global:Extranet.UserName")) ? "" : "u-hidden";
+                string cardIsSaved = !String.IsNullOrEmpty(payment.GetString("Ecom:Order.SavedCardName")) ? "checked" : "";
+                string selected = payment.GetBoolean("Ecom:Cart.Paymethod.IsSelected") ? "checked" : "";
+
+                <div>
+                    <input class="expand-trigger expand-trigger--visible u-no-margin u-margin-bottom" onclick="Cart.DeselectRadioGroup('EcomCartSavedCardID'); Cart.SubmitCart()" type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@payment.GetString("Ecom:Cart.Paymethod.ID")" value="@payment.GetString("Ecom:Cart.Paymethod.ID")" @selected />
+                    <label for="EcomCartPaymethodID_@payment.GetString("Ecom:Cart.Paymethod.ID")" class="u-inline u-margin-bottom">@payment.GetString("Ecom:Cart.Paymethod.Name")</label>
+                    <div class="expand-container dw-mod @supportSavedCards">
+                        <div class="u-border-top u-border-bottom u-padding u-margin-bottom show">
+                            <div class="form__field-group">
+                                <input type="checkbox" class="u-margin-bottom" name="EcomOrderSavedCardCreate" id="EcomOrderSavedCardCreate_@payment.GetString("Ecom:Cart.Paymethod.ID")" value="true" @cardIsSaved />
+                                <label for="EcomOrderSavedCardCreate_@payment.GetString("Ecom:Cart.Paymethod.ID")">@Translate("Save used card")</label>
+                            </div>
+                            <div>
+                                <input type="text" class="u-full-width u-no-margin" onkeyup="document.getElementById('MySavedCardName').value = this.value;" placeholder="@Translate("Saved card name")" value="@payment.GetString("Ecom:Order.SavedCardName")" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (GetLoop("SavedCards").Count > 0)
+            {
+                <div class="u-bold u-margin-top">@Translate("Pay with a saved card")</div>
+
+                foreach (LoopItem card in GetLoop("SavedCards"))
+                {
+                    string selected = card.GetBoolean("Ecom:SavedCard.IsSelected") ? "checked" : "";
+
+                    <div>
+                        <input class="u-no-margin u-margin-bottom" onclick="Cart.DeselectRadioGroup('EcomCartPaymethodID'); Cart.SubmitCart()" type="radio" name="EcomCartSavedCardID" value="@card.GetString("Ecom:SavedCard.ID")" @selected />
+                        <label for="EcomCartSavedCardID" class="u-inline u-margin-bottom">@card.GetString("Ecom:SavedCard.Name")</label>
+                    </div>
+
+                    if (!String.IsNullOrEmpty(selected))
+                    {
+                        savedCardName = card.GetString("Ecom:SavedCard.Name");
+                    }
+                }
+            }
+
+            <input type="hidden" name="EcomOrderSavedCardName" id="MySavedCardName" value="@savedCardName" />
+        </div>
+    </div>
+}
+
+@helper Shipping() {
+    string cardHeightClass = Pageview.Device.ToString() != "Tablet" ? "u-full-height" : "";
+    bool defaultShippingIsSet = Dynamicweb.Ecommerce.Orders.Shipping.GetDefaultShippingMethod(Dynamicweb.Ecommerce.Common.Context.Cart.ShippingMethodCountryCode) != null;
+
+    <div class="grid__col-12 grid__col--bleed-x">
+        <div class="card-header u-color-light--bg dw-mod">
+            <h3><i class="fa fa-truck"></i> @Translate("Shipping")</h3>
+        </div>
+        <div class="card u-color-light--bg @cardHeightClass dw-mod">
+            @foreach (LoopItem shipping in GetLoop("Shippingmethods"))
+            {
+                if (defaultShippingIsSet && !Converter.ToBoolean(shipping.GetString("Ecom:Cart.Shippingmethod.IsSelected")))
+                {
+                    continue;
+                }
+
+                bool selected = Converter.ToBoolean(shipping.GetString("Ecom:Cart.Shippingmethod.IsSelected")) || GetLoop("Shippingmethods").Count == 1;
+                object shippingProviderContent = selected ? Newtonsoft.Json.JsonConvert.DeserializeObject(shipping.GetString("Ecom:ShippingProvider.Content")) : null;
+                string isChecked = selected ? "checked" : "";
+                string hideLabel = GetLoop("Shippingmethods").Count != 1 && !defaultShippingIsSet ? "" : "u-hidden";
+                string leftMargin = GetLoop("Shippingmethods").Count != 1 && !defaultShippingIsSet ? "u-margin-left" : "";
+
+                <label for="EcomCartShippingmethodID_@shipping.GetString("Ecom:Cart.Shippingmethod.ID")" class="@hideLabel">
+                    <input onclick="Cart.SubmitCart()" type="radio" class="u-no-margin" name="EcomCartShippingmethodID" id="EcomCartShippingmethodID_@shipping.GetString("Ecom:Cart.Shippingmethod.ID")" value="@shipping.GetString("Ecom:Cart.Shippingmethod.ID")" @isChecked />
+                    @shipping.GetString("Ecom:Cart.Shippingmethod.Name")
+                </label>
+
+                if (shippingProviderContent != null)
+                {
+                    <div id="ShippingProviderContent" class="@leftMargin" data-template="ShippingProviderContentTemplate"></div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function (event) {
+                            HandlebarsBolt.CreateItemsFromJson(@shippingProviderContent, "ShippingProviderContent", "ShippingProviderContentTemplate");
+                            HandlebarsBolt.CreateItemsFromJson(@shippingProviderContent, "ParcelShops", "ParcelShopsTemplate");
+                        });
+                    </script>
+                }
+            }
+        </div>
+    </div>
+}
+
+@helper CartSummary() {
+    int productCatalog = GetPageIdByNavigationTag("ProductsPage");
+
+    <div class="grid__col-12 grid__col--bleed-x u-no-padding--xs">
+        <div class="card-header u-color-light--bg dw-mod">
+            <h3><i class="fa fa-list-ul"></i> @Translate("Summary") (@GetString("Ecom:Order.OrderLines.TotalProductQuantity"))</h3>
+        </div>
+        <div class="card u-color-light--bg u-no-padding--xs dw-mod">
+            <table class="table cart-table dw-mod">
+                <tbody>
+                    @foreach (LoopItem orderline in GetLoop("OrderLines"))
+                    {
+                        if (orderline.GetBoolean("Ecom:Order:OrderLine.IsProduct"))
+                        {
+                            string productLink = "/" + Regex.Replace(orderline.GetString("Ecom:Product.LinkGroup.Clean"), @"\?ID=\d*\&", "?ID=" + productCatalog + "&");
+                            productLink += !string.IsNullOrEmpty(orderline.GetString("Ecom:Order:OrderLine.ProductVariantID")) ? "&VariantID=" + orderline.GetString("Ecom:Order:OrderLine.ProductVariantID") : "";
+
+                            <tr>
+                                <td width="60">
+                                    @orderline.GetString("Ecom:Order:OrderLine.Quantity") x
+                                </td>
+                                <td title="@orderline.GetString("Ecom:Order:OrderLine.ProductName") @GetString("Ecom:Order:OrderLine.ProductVariantText")" colspan="3">
+                                    <a href="@productLink" class="u-color-inherit">@orderline.GetString("Ecom:Order:OrderLine.ProductName")</a>
+                                    <div>@GetString("Ecom:Order:OrderLine.ProductVariantText")</div>
+                                    <div>@orderline.GetString("Ecom:Order:OrderLine.UnitName")</div>
+                                </td>
+                                <td class="u-ta-right" width="120">@orderline.GetString("Ecom:Order:OrderLine.Price")</td>
+                            </tr>
+
+                            if (orderline.GetLoop("BOMItems").Count > 0)
+                            {
+                            <tr>
+                                <td colspan="6" class="u-no-padding">
+                                    <table class="u-no-margin u-color-light-gray--bg">
+                                        <tbody>
+                                            @foreach (LoopItem bomitem in orderline.GetLoop("BOMItems"))
+                                                {
+                                                    string bomItemLink = "/" + Regex.Replace(bomitem.GetString("Ecom:Product.LinkGroup.Clean"), @"\?ID=\d*\&", "?ID=" + productCatalog + "&");
+
+                                                    <tr>
+                                                        <td width="60">@bomitem.GetString("Ecom:Order:OrderLine.Quantity") x</td>
+                                                        <td title="{@bomitem.GetString("Ecom:Order:OrderLine.ProductName") @bomitem.GetString("Ecom:Order:OrderLine.ProductVariantText")">
+                                                            <a href="@bomItemLink" class="mini-cart-orderlines__name dw-mod">@bomitem.GetString("Ecom:Order:OrderLine.ProductName")</a>
+                                                            <div>@bomitem.GetString("Ecom:Order:OrderLine.ProductVariantText")</div>
+                                                            <div>@bomitem.GetString("Ecom:Order:OrderLine.UnitName")</div>
+                                                        </td>
+                                                        <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td class="cart-table__price u-ta-right dw-mod">&nbsp;</td>
+                                                    </tr>
+                                                }
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            }
+                        }
+                        else
+                        {
+                        <tr class="table__row--no-border">
+                            <td width="60">&nbsp;</td>
+                            <td>@orderline.GetString("Ecom:Order:OrderLine.ProductName")</td>
+                            <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="cart-table__price u-ta-right dw-mod">@orderline.GetString("Ecom:Order:OrderLine.Price")</td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <div class="grid grid--justify-end">
+                <div class="grid__col-12 grid__col--line-bottom">
+                    @if (!Converter.ToBoolean(Pageview.Area.Item["HideSubtotal"]))
+                    {
+                        <div class="grid__cell">
+                            <div class="cart-summary__subtotals u-pull--right dw-mod">@GetString("Ecom:Order.PriceWithoutFees.PriceFormatted")</div>
+                            <div class="cart-summary__subtotals u-pull--left dw-mod">@Translate("Subtotal")</div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="grid grid--justify-end">
+                <div class="grid__col-12 grid__col--line-bottom">
+                    @if (GetInteger("Ecom:Order.PaymentFee.Price") != 0 && Converter.ToBoolean(Pageview.Area.Item["HideFreeServices"]) != true)
+                    {
+                        string paymentFee = GetInteger("Ecom:Order.PaymentFee.Price") != 0 ? GetString("Ecom:Order.PaymentFee.PriceFormatted") : Translate("Free");
+
+                        <div class="grid__cell">
+                            <div class="cart-summary__info u-pull--right dw-mod">@paymentFee</div>
+                            <div class="cart-summary__info u-pull--left dw-mod"><i class="fa fa-credit-card"></i> @GetString("Ecom:Order.PaymentMethod")</div>
+                        </div>
+                    }
+                        
+                    @if (GetInteger("Ecom:Order.ShippingFee.Price") != 0 && Converter.ToBoolean(Pageview.Area.Item["HideFreeServices"]) != true)
+                    {
+                        string shippingFee = GetInteger("Ecom:Order.ShippingFee.Price") != 0 ? GetString("Ecom:Order.ShippingFee.PriceFormatted") : Translate("Free");
+
+                        <div class="grid__cell">
+                            <div class="cart-summary__info u-pull--right dw-mod">@shippingFee</div>
+                            <div class="cart-summary__info u-pull--left dw-mod"><i class="fa fa-truck"></i> @GetString("Ecom:Order.ShippingMethod")</div>
+                        </div>
+                    }
+                </div>
+
+                <div class="grid grid--justify-end">
+                    <div class="grid__col-12 grid__col--line-bottom">
+                        <div class="grid__cell">
+                            <div class="cart-summary__info u-pull--right dw-mod">@GetString("Ecom:Order.OrderLines.Total.PriceVAT")</div>
+                            <div class="cart-summary__info u-pull--left dw-mod">@Translate("VAT")</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__col-12">
+                    <div class="grid__cell">
+                        <div class="cart-summary__totals u-pull--right dw-mod">@GetString("Ecom:Order.OrderLines.Total.Price")</div>
+                        <div class="cart-summary__totals u-pull--left dw-mod">@Translate("Total")</div>
+                    </div>
+                </div>
+
+                <div class="grid__col-12">
+                    <label>
+                        <input type="checkbox" name="EcomOrderCustomerAccepted" id="EcomOrderCustomerAccepted" onchange="Cart.EnableCheckoutButton()">
+                        @Translate("I accept the terms and conditions")
+                    </label>
+                    <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerAccepted.ErrorMessage")</div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@* Templates for the shipping providers *@
+<script id="ShippingProviderContentTemplate" type="text/x-template">
+    {{#.}}
+    <div class="{{hideShippingProvider}}">
+        <ul class="list list--clean parcel-shop-address dw-mod" id="SelectedParcelShop">
+            {{#SelectedParcelShop}}
+            <li data-number="{{number}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
+                <label for="{{fieldPrefix}}ParcelShopNumber_{{number}}" class="u-hidden">
+                    <input type="radio" class="u-no-margin" name="{{fieldPrefix}}ParcelShopNumber" value="{{number}}" id="{{fieldPrefix}}SelectedParcelShopNumber_{{number}}" {{selected}} onclick="Cart.SubmitCart()" />
+                </label>
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <span class="u-bold">{{company}}, </span>
+                    <span>{{address}} </span>
+                    <span>{{city}} </span>
+                    <span>{{countryCode}} </span>
+                </div>
+            </li>
+            {{/SelectedParcelShop}}
+        </ul>
+
+        <label for="ParcelShopsModalTrigger" class="btn btn--secondary btn--full dw-mod" onclick="Maps.Init('MapCanvas', {{toJSON ParcelShops}}, Cart.SelectParcelShop, Cart.SubmitCart, '@Translate("Select")')">@Translate("Change parcel shop")</label>
+    </div>
+    {{/.}}
+</script>
+
+<script id="ParcelShopsTemplate" type="text/x-template">
+    {{#.}}
+        {{#ParcelShops}}
+            <li data-number="{{number}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
+                <label for="{{fieldPrefix}}ParcelShopNumber_{{number}}">
+                    <input type="radio" name="{{fieldPrefix}}ParcelShopNumber" value="{{number}}" id="{{fieldPrefix}}ParcelShopNumber_{{number}}" {{selected}} onclick="Cart.SubmitCart()" />
+                    <span class="u-inline-block">
+                        <span class="u-bold">{{company}}, </span>
+                        <span class="u-block">{{address}}, {{city}}</span>
+                        <span class="u-block">{{countryCode}} </span>
+                    </span>
+                </label>
+            </li>
+            <li class="list__seperator"></li>
+        {{/ParcelShops}}
+    {{/.}}
+</script>
+
+@functions {
+    string Truncate(string str, int count)
+    {
+        return str.Substring(0, Math.Min(str.Length, count));
+    }
+}
+
+<script src="@mapsScriptUrl"></script>

@@ -1,0 +1,1193 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.PageViewModel>
+
+@* Rapido version 2.0.1 *@ 
+
+@using Dynamicweb.Frontend.Devices
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Security
+@using System
+@using System.Linq
+@using System.Web
+@using System.IO
+
+@{
+	//General settings
+	string favicon = Model.Area.Item.GetFile("LogoFavicon") != null ? Model.Area.Item.GetFile("LogoFavicon").Path : "/Files/Images/favicon.png";
+	string logo = Model.Area.Item.GetFile("LogoImage") != null ? Model.Area.Item.GetFile("LogoImage").Path : "/Files/Images/logo-dynamicweb.png";
+	if (Path.GetExtension(logo).ToLower() != ".svg")
+	{
+		logo = "/Admin/Public/GetImage.ashx?height=40&amp;crop=5&amp;Compression=75&amp;image=" + @logo;
+	}
+	string searchPlaceholder = Translate("Search products", "Search products");
+	string searchValue = HttpContext.Current.Request.QueryString.Get("Search") != null ? HttpContext.Current.Request.QueryString.Get("Search") : "";
+	string wireframeMode = Model.Area.Item.GetBoolean("WireframeMode").ToString();
+
+	//Font settings
+	string navigationFont = Model.Area.Item.GetItem("NavigationFont").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+	string mobileNavigationFont = Model.Area.Item.GetItem("MobileNavigationFont").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+	string headerFont = Model.Area.Item.GetItem("ContentLayoutHeaderFont").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+	string subHeaderFont = Model.Area.Item.GetItem("ContentLayoutSubheaderFont").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+	string contentFont = Model.Area.Item.GetItem("ContentLayoutBodyText").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+	string newStickersFont = Model.Area.Item.GetItem("NewStickersFont").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+	string customStickersFont = Model.Area.Item.GetItem("CustomStickersFont").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+	string toolsMenuFont = Model.Area.Item.GetItem("ToolsMenuFont").GetGoogleFont("FontFamily").Family.Replace(" ", "+");
+
+	//Page IDs for use in the template
+	int pageId = Model.TopPage.ID;
+	string firstPageId = Model.Area.FirstActivePage.ID.ToString();
+	int cartPageId = GetPageIdByNavigationTag("CartPage");
+	int miniCartFeedPageId = GetPageIdByNavigationTag("MiniCartFeed");
+	int cartFeedPageId = GetPageIdByNavigationTag("CartOrderlinesFeed");
+	int productsPageId = GetPageIdByNavigationTag("ProductsPage");
+	int productsSearchFeedId = productsPageId;
+	int productGroupsPageId = GetPageIdByNavigationTag("ProductGroupsFeed");
+	int impersonationPageId = GetPageIdByNavigationTag("Impersonation");
+
+	bool stickyMenu = Pageview.Device.ToString() == "Mobile" || Pageview.Device.ToString() == "Tablet" ? false : Model.Area.Item.GetBoolean("NavigationStickyMenu");
+	string stickyTop = stickyMenu ? "top-container--sticky" : "";
+	string pagePos = stickyMenu ? "js-page-pos" : "";
+	string topLayout = Model.Area.Item.GetList("LayoutTop").SelectedValue;
+	bool renderPagesInToolBar = Model.Area.Item.GetBoolean("RenderPagesInToolBar");
+	string toolbarText = Model.Area.Item.GetString("ToolbarText");
+	bool onlyPreview = Model.Area.Item.GetBoolean("OnlyPreviewForAnonymous") && Model.CurrentUser.ID == 0;
+
+	string autoCssLink = "/Files/Templates/Designs/Rapido/css/rapido/rapido_" + Model.Area.ID.ToString() + ".min.css?ticks=" + Model.Area.UpdatedDate.Ticks;
+
+	string userInitials = "";
+	if (Model.CurrentUser.ID != 0)
+	{
+		if (!String.IsNullOrEmpty(Model.CurrentUser.Name))
+		{
+			string[] names = Model.CurrentUser.Name.Split(' ');
+			userInitials += Model.CurrentUser.Name.Substring(0, 1);
+
+			if (names.Length > 1)
+			{
+				userInitials += names[names.Length - 1].Substring(0, 1);
+			}
+		}
+		else
+		{
+			userInitials += Model.CurrentUser.FirstName != null && Model.CurrentUser.FirstName != "" ? Model.CurrentUser.FirstName.Substring(0, 1) : "";
+			userInitials += Model.CurrentUser.LastName != null && Model.CurrentUser.LastName != "" ? Model.CurrentUser.LastName.Substring(0, 1) : "";
+			userInitials += userInitials.Length == 1 && Model.CurrentUser.FirstName != null && Model.CurrentUser.FirstName.Length > 1 ? Model.CurrentUser.FirstName.Substring(1, 2) : "";
+			userInitials += userInitials == "" && Model.CurrentUser.Email != null && Model.CurrentUser.Email.Length > 1 ? Model.CurrentUser.Email.Substring(0, 2) : "";
+			userInitials += userInitials == "" ? Model.CurrentUser.UserName.Substring(0, 2) : "";
+		}
+	}
+
+	string siteURL = Dynamicweb.Context.Current.Request.Url.Scheme + "://" + Dynamicweb.Context.Current.Request.Url.Host;
+	string businessPhotoPath = Model.Area.Item.GetFile("BusinessPhoto") != null ? Model.Area.Item.GetFile("BusinessPhoto").Path : "";
+	string businessName = Model.Area.Item.GetString("BusinessName");
+	var address = Model.Area.Item.GetItem("Address");
+	string streetAddress = "";
+	string addressLocality = "";
+	string addressRegion = "";
+	string postalCode = "";
+	string addressCountry = "";
+	if (address != null)
+	{
+		streetAddress = address.GetString("StreetAddress");
+		addressLocality = address.GetString("City");
+		addressRegion = address.GetString("Region");
+		postalCode = address.GetString("PostalCode");
+		addressCountry = address.GetString("Country");
+	}
+	string contactEmail = Model.Area.Item.GetString("ContactEmail");
+	string contactNumber = Model.Area.Item.GetString("ContactNumber");
+}
+<!DOCTYPE html>
+
+<html lang="@Pageview.Area.CultureInfo.TwoLetterISOLanguageName">
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="robots" content="index, follow">
+	@Model.MetaTags
+    <!-- Favicon -->
+    <link href="@favicon" rel="icon" type="image/png">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="/Files/Templates/Designs/Rapido/css/rapido/font-awesome.min.css" type="text/css">
+
+    <!-- Base (Default, wireframe) styles -->
+    <link rel="stylesheet" href="/Files/Templates/Designs/Rapido/css/base/base.min.css" type="text/css">
+
+    <!-- Rapido Css from Website Settings -->
+    <link id="rapidoCss" rel="stylesheet" href="@autoCssLink" type="text/css">
+
+    <!-- Ignite Css (Custom site specific styles) -->
+    <link id="igniteCss" type="text/css" href="/Files/Templates/Designs/Rapido/css/ignite/ignite.min.css" rel="stylesheet">
+
+    <!-- Google fonts -->
+    @{ 
+        var fonts = new string[8] { navigationFont, mobileNavigationFont, headerFont, subHeaderFont, contentFont, newStickersFont, customStickersFont, toolsMenuFont };
+        var family = string.Join("%7C", fonts.Distinct().Select(x => string.Format("{0}:100,200,300,400,500,600,700,800,900", x)));
+    }
+    <link href="https://fonts.googleapis.com/css?family=@family" rel="stylesheet">
+    
+    @if (!string.IsNullOrEmpty(businessPhotoPath) &&
+         !string.IsNullOrEmpty(businessName) &&
+         !string.IsNullOrEmpty(streetAddress) &&
+         !string.IsNullOrEmpty(addressLocality) &&
+         !string.IsNullOrEmpty(addressRegion) &&
+         !string.IsNullOrEmpty(postalCode) &&
+         !string.IsNullOrEmpty(addressCountry))
+    {
+        <script type="application/ld+json">
+        {
+          "@@context": "http://schema.org",
+          "@@type": "Store",
+          "image": [
+            "@siteURL/Admin/Public/GetImage.ashx?width=400&height=400&crop=0&Compression=75&DoNotUpscale=true&image=@businessPhotoPath",
+            "@siteURL/Admin/Public/GetImage.ashx?width=400&height=300&crop=0&Compression=75&DoNotUpscale=true&image=@businessPhotoPath",
+            "@siteURL/Admin/Public/GetImage.ashx?width=448&height=225&crop=0&Compression=75&DoNotUpscale=true&image=@businessPhotoPath"
+          ],
+          "@@id": "@siteURL",
+          "name": "@businessName",
+          "address": {
+            "@@type": "PostalAddress",
+            "streetAddress": "@streetAddress",
+            "addressLocality": "@addressLocality",
+            "addressRegion": "@addressRegion",
+            "postalCode": "@postalCode",
+            "addressCountry": "@addressCountry"
+          }
+          @if (!string.IsNullOrEmpty(contactEmail))
+          {
+            <text>,"email": "@Model.Area.Item.GetString("ContactEmail")"</text>
+          }
+          @if (!string.IsNullOrEmpty(contactNumber))
+          {
+            <text>,"telephone": "@Model.Area.Item.GetString("ContactNumber")"</text>
+          }
+        }
+        </script>
+    }
+</head>
+
+<body>
+
+@MobileNavigation(userInitials)
+
+@LoginModal()
+
+<main class="site dw-mod">
+    <header class="top-container @stickyTop dw-mod" id="Top">
+        @if (renderPagesInToolBar && Pageview.Device.ToString() != "Mobile" && Pageview.Device.ToString() != "Tablet")
+        {
+            <div class="tools-navigation dw-mod">
+                <div class="center-container grid top-container__center-container dw-mod">
+                    <div class="grid__cell">
+                        <div class="u-pull--left u-margin-top">@toolbarText</div>
+                        <div class="u-pull--right">
+                            @RenderNavigation(new
+                            {
+                                id = "topToolsNavigation",
+                                cssclass = "menu menu-tools dw-mod dwnavigation",
+                                template = "TopMenu.xslt"
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (Pageview.Device.ToString() != "Mobile" && Pageview.Device.ToString() != "Tablet")
+        {
+            switch (topLayout)
+            {
+                case "condensed": //2
+                    <!-- Main navigation -->
+                    <nav class="main-navigation dw-mod">
+                        <div class="center-container top-container__center-container dw-mod">
+                            <div class="grid">
+
+                                <div class="grid__col-md-3 grid--align-self-center grid__col--bleed-y">
+                                    <div class="logo u-padding--xs dw-mod">
+                                        <a href="/Default.aspx?ID=@firstPageId">
+                                            <img class="grid__cell-img" src="@logo" alt="@businessName" />
+                                        </a>
+                                    </div>
+                                </div>
+
+                                @* Navigation *@
+                                <div class="u-pull--left">
+                                    @RenderHeaderNavigation()
+                                </div>
+
+                                <div class="grid__cell grid__cell--align-middle-right">
+                                    <ul class="menu dw-mod u-pull--right">
+                                        @RenderSignIn("inNavigation", userInitials)
+                                        @RenderLanguageSelector()
+                                        @RenderFavorites()
+                                        @RenderMiniCart()
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <!-- Searchbar -->
+                    <div class="u-box-shadow u-color-light-gray--bg u-inline-block u-full-width">
+                        <div class="center-container top-container__center-container dw-mod">
+                            <div class="typeahead typeahead--centered u-color-inherit js-typeahead dw-mod" data-page-size="10" id="ProductSearchBar" data-search-page-id="@productsSearchFeedId&feed=true" data-result-page-id="@productsPageId" data-groups-page-id="@productGroupsPageId">
+                                <button type="button" class="btn btn--condensed u-color-light-gray--bg typeahead-group-btn dw-mod js-typeahead-groups-btn" data-group-id="all">@Translate("All")</button>
+                                <ul class="dropdown dropdown--absolute-position u-min-w220px js-handlebars-root js-typeahead-groups-content dw-mod" id="ProductSearchBarGroupsContent" data-template="SearchGroupsTemplate" data-json-feed="/Default.aspx?ID=@productGroupsPageId&feedType=productGroups" data-init-onload="false" data-preloader="minimal"></ul>
+                                <div class="typeahead-search-field">
+                                    <input type="text" class="u-no-margin u-full-width js-typeahead-search-field" placeholder="@searchPlaceholder" value="@searchValue">
+                                    <ul class="dropdown dropdown--absolute-position u-min-w220px u-full-width js-handlebars-root js-typeahead-search-content dw-mod" id="ProductSearchBarContent" data-template="SearchContentTemplate" data-json-feed="/Default.aspx?ID=@productsSearchFeedId&feedType=productsOnly&feed=true" data-init-onload="false"></ul>
+                                </div>
+                                <button type="button" class="btn btn--condensed btn--primary u-no-margin dw-mod js-typeahead-enter-btn"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    break;
+                    case "minimal": //3
+                    <!-- Main navigation -->
+                    <nav class="main-navigation dw-mod">
+                        <div class="center-container top-container__center-container dw-mod">
+                            <div class="grid">
+
+                                <div class="grid__col-md-3 grid--align-self-center grid__col--bleed-y">
+                                    <div class="logo u-padding--xs dw-mod">
+                                        <a href="/Default.aspx?ID=@firstPageId">
+                                            <img class="grid__cell-img" src="@logo" alt="@businessName" />
+                                        </a>
+                                    </div>
+                                </div>
+
+                                @* Navigation *@
+                                <div class="u-pull--left">
+                                    @RenderHeaderNavigation()
+                                </div>
+
+                                <div class="grid__cell grid__cell--align-middle-right">
+                                    <ul class="menu dw-mod u-pull--right">
+
+                                        @* Search *@
+                                        <li class="menu__item menu__item--horizontal menu__item--top-level u-hidden-xxs dw-mod" onmouseover="document.getElementById('headerSearch').focus()">
+                                            <div class="menu__link u-w50px is-dropdown is-dropdown--no-icon dw-mod">
+                                                <i class="fa fa-search fa-1_5x"></i>
+                                                <div class="menu menu--dropdown u-w340px top-micro-search dw-mod">
+                                                    <div class="typeahead js-typeahead" data-page-size="10" id="ProductSearchBar" data-search-page-id="@productsSearchFeedId&feed=true" data-result-page-id="@productsPageId" data-groups-page-id="@productGroupsPageId">
+                                                        <div class="typeahead-search-field">
+                                                            <input type="text" class="u-no-margin u-full-width js-typeahead-search-field" id="headerSearch" placeholder="@searchPlaceholder" value="@searchValue">
+                                                            <ul class="dropdown dropdown--absolute-position u-min-w220px u-full-width js-handlebars-root js-typeahead-search-content" id="ProductSearchBarContent" data-template="SearchContentTemplate" data-json-feed="/Default.aspx?ID=@productsSearchFeedId&feedType=productsOnly&feed=true" data-init-onload="false" data-preloader="minimal"></ul>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        @RenderSignIn("inNavigation", userInitials)
+                                        @RenderLanguageSelector()
+                                        @RenderFavorites()
+                                        @RenderMiniCart()
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    break;
+                case "splitted": //4
+                    <!-- Header -->
+                    <div class="header header-top dw-mod">
+                        <div class="center-container top-container__center-container dw-mod">
+                            <div class="grid">
+
+                                @* Logo *@
+                                <div class="grid__col-md-6 grid__col-sm-6 grid--align-self-center grid__col--bleed-y">
+                                    <div class="grid__cell">
+                                        <div class="logo u-max-w220px u-margin-top u-margin-bottom dw-mod">
+                                            <a href="/Default.aspx?ID=@firstPageId">
+                                                <img class="grid__cell-img" src="@logo" alt="@businessName" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* Search *@
+                                <div class="grid__col-md-6 grid__col-sm-6 grid__col-xs-12 grid--align-self-center grid__col--bleed">
+                                    <div class="grid__cell">
+                                        <div class="typeahead u-no-margin u-margin-top u-margin-bottom u-color-inherit js-typeahead" data-page-size="10" id="TopProductSearch" data-search-page-id="@productsSearchFeedId&feed=true" data-result-page-id="@productsPageId" data-groups-page-id="@productGroupsPageId">
+                                            <button type="button" class="btn btn--condensed u-color-light-gray--bg typeahead-group-btn dw-mod js-typeahead-groups-btn" data-group-id="all">@Translate("All")</button>
+                                            <ul class="dropdown dropdown--absolute-position u-min-w220px js-handlebars-root js-typeahead-groups-content dw-mod" id="TopProductSearchGroupsContent" data-template="SearchGroupsTemplate" data-json-feed="/Default.aspx?ID=@productGroupsPageId&feedType=productGroups" data-init-onload="false" data-preloader="minimal"></ul>
+                                            <input type="text" class="typeahead-search-field u-no-margin js-typeahead-search-field" placeholder="@searchPlaceholder" value="@searchValue">
+                                            <ul class="dropdown dropdown--absolute-position u-min-w220px u-full-width js-handlebars-root js-typeahead-search-content u-full-width dw-mod" id="TopProductSearchContent" data-template="SearchContentTemplate" data-json-feed="/Default.aspx?ID=@productsSearchFeedId&feedType=productsOnly&feed=true" data-init-onload="false" data-preloader="minimal"></ul>
+                                            <button type="button" class="btn btn--condensed btn--primary u-no-margin dw-mod js-typeahead-enter-btn"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Main navigation -->
+                    <nav class="main-navigation dw-mod">
+                        <div class="center-container top-container__center-container dw-mod">
+                            <div class="grid">
+                                <div class="u-pull--left">
+                                    @RenderHeaderNavigation()
+                                </div>
+                                <div class="grid__cell grid__cell--align-middle-right">
+                                    <ul class="menu dw-mod u-pull--right">  
+                                        @RenderSignIn("inNavigation", userInitials)
+                                        @RenderLanguageSelector()
+                                        @RenderFavorites()
+                                        @if (!onlyPreview)
+                                        {
+                                            @RenderMiniCart()
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>               
+                    </nav>
+
+                    break;
+                case "normal": //1
+                default:
+                    <!-- Header -->
+                    <div class="header header-top dw-mod">
+                        <div class="center-container top-container__center-container dw-mod">
+                            <div class="grid">
+
+                                @* Logo *@
+                                <div class="grid__col-md-3 grid__col-sm-3 grid__col-xs-12 grid--align-self-center grid__col--bleed-y">
+                                    <div class="logo dw-mod">
+                                        <a href="/Default.aspx?ID=@firstPageId">
+                                            <img class="grid__cell-img" src="@logo" alt="@businessName" />
+                                        </a>
+                                    </div>
+                                </div>
+
+                                @* Search *@
+                                <div class="grid__col-md-4 grid__col-sm-4 grid__col-xs-12 grid__col--bleed-y grid--align-self-center">
+                                    <div class="typeahead u-margin u-color-inherit js-typeahead" data-page-size="10" id="TopProductSearch" data-search-page-id="@productsSearchFeedId&feed=true" data-result-page-id="@productsPageId" data-groups-page-id="@productGroupsPageId">
+                                        <button type="button" class="btn btn--condensed u-color-light-gray--bg typeahead-group-btn dw-mod js-typeahead-groups-btn" data-group-id="all">@Translate("All")</button>
+                                        <ul class="dropdown dropdown--absolute-position js-handlebars-root js-typeahead-groups-content u-min-w220px dw-mod" id="TopProductSearchGroupsContent" data-template="SearchGroupsTemplate" data-json-feed="/Default.aspx?ID=@productGroupsPageId&feedType=productGroups" data-init-onload="false" data-preloader="minimal"></ul>
+                                        <input type="text" class="typeahead-search-field u-no-margin js-typeahead-search-field" placeholder="@searchPlaceholder" value="@searchValue">
+                                        <ul class="dropdown dropdown--absolute-position u-min-w220px u-full-width js-handlebars-root js-typeahead-search-content u-full-width dw-mod" id="TopProductSearchContent" data-template="SearchContentTemplate" data-json-feed="/Default.aspx?ID=@productsSearchFeedId&feedType=productsOnly&feed=true" data-init-onload="false" data-preloader="minimal"></ul>
+                                        <button type="button" class="btn btn--condensed btn--primary u-no-margin dw-mod js-typeahead-enter-btn"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__col-md-4 grid__col-sm-4 grid__col-xs-12 grid__col--bleed-y grid--align-self-center">
+                                    <div class="grid__cell grid__cell--align-middle-right">
+                                        <ul class="menu dw-mod u-pull--right">
+                                            @RenderSignIn("outsideNavigation", userInitials)
+                                            @RenderLanguageSelector("outsideNavigation")
+                                            @RenderFavorites("outsideNavigation")
+                                            @if (!onlyPreview)
+                                            {
+                                                @RenderMiniCart("outsideNavigation")
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main navigation -->
+                    <nav class="main-navigation dw-mod">
+                        <div class="center-container top-container__center-container dw-mod">
+                            <div class="grid">
+                                @RenderHeaderNavigation()
+                            </div>
+                        </div>
+                    </nav>
+
+                    break;
+            }
+        }
+        else
+        {
+            string style = (topLayout == "normal" || topLayout == "splitted" ? "main-navigation--top-style" : "main-navigation--nav-style");
+            <!-- Main navigation -->
+            <nav class="main-navigation dw-mod @style">
+                <div class="center-container top-container__center-container dw-mod">
+                    <div class="grid">
+                        @MobileNavigationTrigger()
+
+                        <div class="logo u-max-w220px u-middle dw-mod">
+                            <a href="/Default.aspx?ID=@firstPageId">
+                                <img class="grid__cell-img u-w-100prc" src="@logo" alt="@businessName" />
+                            </a>
+                        </div>
+
+                        @if (!onlyPreview)
+                        {
+                            <ul class="menu dw-mod u-pull--right">
+                                @RenderMiniCart()
+                            </ul>
+                        }
+                    </div>
+                </div>               
+            </nav>
+
+            @* Mobile search *@
+            <div class="u-padding">
+                <div class="js-typeahead" data-page-size="10" id="MobileProductSearch" data-search-page-id="@productsSearchFeedId&feed=true" data-result-page-id="@productsPageId">
+                    <input type="text" class="u-full-width js-typeahead-search-field u-no-margin" placeholder="@searchPlaceholder" value="@searchValue">
+                    <ul class="dropdown dropdown--absolute-position u-min-w220px js-handlebars-root js-typeahead-search-content dw-mod" id="MobileProductSearchContent" data-template="SearchContentTemplate" data-json-feed="/Default.aspx?ID=@productsSearchFeedId&feedType=productsOnly&feed=true" data-init-onload="false"></ul>
+                </div>
+            </div>
+        }
+
+        @* Impersonation bar *@
+        @if (Model.CurrentUser.ID > 0 && Model.SecondaryUsers.Count > 0)
+        {
+            <div class="u-color-warning--bg">
+                <div class="center-container top-container__center-container dw-mod">
+                    @*Impersonation*@
+                    <div class="grid">
+                        <div class="grid--align-self-center grid__col-x">
+                            @if (Model.CurrentSecondaryUser != null && Model.CurrentSecondaryUser.ID > 0)
+                            {
+                                string stopImpersonateTranslation = Translate("Stop impersonation");
+                                string username = "";
+                                if (!string.IsNullOrEmpty(Model.CurrentSecondaryUser.FirstName) && !string.IsNullOrEmpty(Model.CurrentSecondaryUser.LastName))
+                                {
+                                    username = Model.CurrentSecondaryUser.FirstName + " " + Model.CurrentSecondaryUser.LastName;
+                                }
+                                else if (!string.IsNullOrEmpty(Model.CurrentSecondaryUser.Name))
+                                {
+                                    username = Model.CurrentSecondaryUser.Name;
+                                }
+                                else if (!string.IsNullOrEmpty(Model.CurrentSecondaryUser.Email))
+                                {
+                                    username = Model.CurrentSecondaryUser.Email;
+                                }
+                                else
+                                {
+                                    username = Model.CurrentSecondaryUser.UserName;
+                                }
+                                <div class="grid-cell">
+                                    <div class="u-pull--left u-bold u-margin-top">
+                                        <i class="fa fa-user-secret"></i>
+                                        @username<text>&nbsp;</text>@Translate("is impersonated by")<text>&nbsp;</text>@Pageview.User.UserName
+                                    </div>
+                                    <form method="post" class="u-pull--right u-no-margin">
+                                        <input type="submit" class="btn btn--secondary dw-mod u-no-margin" name="DwExtranetRemoveSecondaryUser" value="@stopImpersonateTranslation">
+                                    </form>
+                                </div>
+                            }
+                            else
+                            {
+                                string viewListTranslation = Translate("View the list of users you can impersonate");
+                                <div class="grid-cell u-bold">
+                                    <i class="fa fa-user-secret"></i>
+                                    <a href="/Default.aspx?ID=@impersonationPageId" title="@viewListTranslation" class="u-color-font-black">@viewListTranslation</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </header>
+
+    <!-- Floating mini cart -->
+    @if (!onlyPreview && !stickyMenu && pageId == productsPageId && Pageview.Device.ToString() != "Mobile" && Pageview.Device.ToString() != "Tablet")
+    {
+        <div class="floating-mini-cart u-hidden dw-mod" id="FloatingMiniCart">
+            <div class="mini-cart dw-mod">
+                <a href="/Default.aspx?ID=@cartPageId&Purge=True" class="menu-tools__link menu__link--condensed dw-mod js-mini-cart-button" onmouseover="Cart.UpdateMiniCart(event, 'SecondaryMiniCart', '/Default.aspx?ID=@miniCartFeedPageId&feedType=MiniCart')">
+                    <i class="fa fa-shopping-cart fa-4x"></i>
+                    <div class="mini-cart__counter mini-cart__counter--lg dw-mod">
+                        <div class="js-handlebars-root js-mini-cart-counter" id="FloatingCartCounter" data-template="MiniCartCounterContent" data-json-feed="/Default.aspx?ID=@miniCartFeedPageId&feedType=Counter" data-preloader="false" data-init-onload="false">
+                            <div class="js-mini-cart-counter-content">
+                                @Model.Cart.TotalProductsCount
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="mini-cart-dropdown js-handlebars-root js-mini-cart dw-mod" id="SecondaryMiniCart" data-template="MiniCartContent" data-cart-id="@miniCartFeedPageId" data-json-feed="/Default.aspx?ID=@miniCartFeedPageId&feedType=MiniCart" data-init-onload="false"></div>
+            </div>
+        </div>
+    }
+
+    <!-- Render the content -->
+    <div id="Page" class="page @pagePos">
+        <section class="center-container content-container dw-mod" id="content">
+            @ContentPlaceholder()
+        </section>
+    </div>
+</main>
+
+@RenderFooter()
+
+
+<!-- Content rendering helpers -->
+
+@helper MobileNavigation(string userInitials) {
+    int pageId = Model.TopPage.ID;
+    string mobileNavigationLevels = Model.Area.Item.GetBoolean("MobileNavigationLevels") ? Model.Area.Item.GetString("MobileNavigationLevels") : "3";
+    
+    bool showCreateAccountLink = Model.Area.Item.GetBoolean("ShowCreateAccountLink");
+
+    int miniCartFeedPageId = GetPageIdByNavigationTag("MiniCartFeed");
+    int cartFeedPageId = GetPageIdByNavigationTag("CartOrderlinesFeed");
+    int createAccountPageId = GetPageIdByNavigationTag("CreateAccount");
+
+    string myProfilePageId = (Model.CurrentUser.ID <= 0) ? GetPageIdByNavigationTag("SignInPage").ToString() + "&RedirectPageId=" + GetPageIdByNavigationTag("CustomerProfile").ToString() : GetPageIdByNavigationTag("CustomerProfile").ToString();
+    string myOrdersPageId = (Model.CurrentUser.ID <= 0) ? GetPageIdByNavigationTag("SignInPage").ToString() + "&RedirectPageId=" + GetPageIdByNavigationTag("CustomerOrders").ToString() : GetPageIdByNavigationTag("CustomerOrders").ToString();
+    string myFavoritesPageId = (Model.CurrentUser.ID <= 0) ? GetPageIdByNavigationTag("SignInPage").ToString() + "&RedirectPageId=" + GetPageIdByNavigationTag("CustomerFavorites").ToString() : GetPageIdByNavigationTag("CustomerFavorites").ToString();
+    bool showMyProfileLink = Model.Area.Item.GetBoolean("ShowMyProfileLink");
+    bool showMyOrdersLink = Model.Area.Item.GetBoolean("ShowMyOrdersLink");
+    bool showMyFavoritesLink = Model.Area.Item.GetBoolean("ShowMyFavoritesLink");
+
+    bool renderPagesInToolBar = Model.Area.Item.GetBoolean("RenderPagesInToolBar");
+    int startLevel = renderPagesInToolBar ? 1 : 0;
+
+    bool onlyPreview = Model.Area.Item.GetBoolean("OnlyPreviewForAnonymous") && Model.CurrentUser.ID == 0;
+
+    if (Pageview.Device.ToString() == "Mobile" || Pageview.Device.ToString() == "Tablet")
+    {
+        <!-- Trigger for mobile navigation -->
+        <input type="checkbox" id="MobileNavTrigger" class="mobile-nav-trigger" />
+
+        <!-- Mobile navigation -->
+        <nav class="mobile-navigation dw-mod">
+            @if (Model.CurrentUser.ID > 0)
+            {
+                string userName = Model.CurrentUser.FirstName != null ? Model.CurrentUser.FirstName : "";
+                userName += " " + Model.CurrentUser.LastName != null ? Model.CurrentUser.LastName : "";
+                userName += userName == "" && Model.CurrentUser.UserName != null ? Model.CurrentUser.UserName : "";
+
+                <ul class="menu menu-mobile">
+                    <li class="menu-mobile__item">
+                        <a href="/default.aspx?ID=@myProfilePageId" class="menu-mobile__link dw-mod"><i class="fa fa-user menu-mobile__link-icon"></i> @userName</a>
+                    </li>
+                </ul>
+            }
+
+            @RenderNavigation(new
+            {
+                id = "mobilenavigation",
+                cssclass = "menu menu-mobile dwnavigation",
+                startLevel = @startLevel,
+                ecomStartLevel = @startLevel+1,
+                endlevel = @mobileNavigationLevels,
+                expandmode = "all",
+                template = "BaseMenuForMobile.xslt"
+            })
+
+            @if (Model.Area.Item.GetBoolean("RenderPagesInToolBar"))
+            {
+                @RenderNavigation(new
+                {
+                    id = "topToolsMobileNavigation",
+                    cssclass = "menu menu-mobile dwnavigation",
+                    template = "ToolsMenuForMobile.xslt"
+                })
+            }
+
+            <ul class="menu menu-mobile">
+                @if (Model.CurrentUser.ID <= 0)
+                {
+                    <li class="menu-mobile__item">
+                        <label for="SignInModalTrigger" onclick="document.getElementById('MobileNavTrigger').checked = false;" class="menu-mobile__link dw-mod menu-mobile__link--highlighted"><i class="fa fa-user menu-mobile__link-icon"></i> @Translate("Sign in")</label>
+                    </li>
+                    if (showCreateAccountLink)
+                    {
+                        <li class="menu-mobile__item">
+                            <a class="menu-mobile__link menu-mobile__link--highlighted dw-mod" href="/Default.aspx?ID=@createAccountPageId"><i class="fa fa-user menu-mobile__link-icon"></i> @Translate("Create account")</a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    if (showMyProfileLink)
+                    {
+                        <li class="menu-mobile__item">
+                            <a href="/default.aspx?ID=@myProfilePageId" class="menu-mobile__link menu-mobile__link--highlighted dw-mod"><i class="fa fa-user menu-mobile__link-icon"></i> @Translate("My Profile")</a>
+                        </li>
+                    }
+                    if (showMyOrdersLink)
+                    {
+                        <li class="menu-mobile__item">
+                            <a href="/default.aspx?ID=@myOrdersPageId" class="menu-mobile__link menu-mobile__link--highlighted dw-mod"><i class="fa fa-list menu-mobile__link-icon"></i> @Translate("My Orders")</a>
+                        </li>
+                    }
+                    if (showMyFavoritesLink)
+                    {
+                        <li class="menu-mobile__item">
+                            <a href="/default.aspx?ID=@myFavoritesPageId" class="menu-mobile__link menu-mobile__link--highlighted dw-mod"><i class="fa fa-star menu-mobile__link-icon"></i> @Translate("My Favorites")</a>
+                        </li>
+                    }
+                    <li class="menu-mobile__item">
+                        <a class="menu-mobile__link menu-mobile__link--highlighted dw-mod" href="/Admin/Public/ExtranetLogoff.aspx?ID=@pageId"><i class="fa fa-user menu-mobile__link-icon"></i> @Translate("Sign out")</a>
+                    </li>
+                }
+                @if (Model.Languages.Count > 0)
+                {
+                    string selectedLanguage = "";
+                    foreach (var lang in Model.Languages)
+                    {
+                        if (lang.IsCurrent)
+                        {
+                            selectedLanguage = lang.Name;
+                        }
+                    }
+
+                    <li class="menu-mobile__item dw-mod">
+                        <label for="MobileMenuCheck_Language" class="menu-mobile__link menu-mobile__link--highlighted dw-mod"><i class="fa fa-globe menu-mobile__link-icon"></i> @selectedLanguage</label>
+                        <input id="MobileMenuCheck_Language" type="checkbox" class="expand-trigger">
+                        <label for="MobileMenuCheck_Language" class="menu-mobile__trigger"></label>
+                        <ul class="menu-mobile menu-mobile__submenu expand-menu">
+                            @foreach (var lang in Model.Languages)
+                            {
+                                <li class="menu-mobile__item dw-mod">
+                                    <a class="menu-mobile__link menu-mobile__link--highlighted dw-mod menu-mobile__link--level-1" href="/Default.aspx?ID=@lang.Page.ID&CurrencyCode=@Dynamicweb.Services.Areas.GetArea(lang.ID).EcomCurrencyId">@lang.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <label class="mobile-nav-trigger-off" for="MobileNavTrigger"></label>
+
+        if (!onlyPreview)
+        {
+            <div class="u-visually-hidden js-handlebars-root js-mini-cart" id="miniCart" data-template="MiniCartContent" data-cart-id="@cartFeedPageId" data-json-feed="/Default.aspx?ID=@miniCartFeedPageId&feedType=MiniCart" data-init-onload="false"></div>
+        }
+    }
+}
+
+@helper LoginModal() {
+    int pageId = Model.TopPage.ID;
+    string topLayout = Model.Area.Item.GetList("LayoutTop").SelectedValue;
+    int createAccountPageId = GetPageIdByNavigationTag("CreateAccount");
+    int signInProfilePageId = GetPageIdByNavigationTag("SignInPage");
+    string forgotPasswordPageId = signInProfilePageId.ToString() + "&LoginAction=Recovery";
+    string userSignedInError = !Model.LogOnFailed ? "" : "checked";
+    string userSignedInErrorText = "";
+
+    if (Model.LogOnFailed) {
+        switch (Model.LogOnFailedReason)
+        {
+            case Dynamicweb.Security.UserManagement.LogOnFailedReason.PasswordLengthInvalid:
+                userSignedInErrorText = Translate("Password length is invalid");
+                break;
+            case Dynamicweb.Security.UserManagement.LogOnFailedReason.IncorrectLogin:
+                userSignedInErrorText = Translate("Invalid email or password");
+                break;
+            case Dynamicweb.Security.UserManagement.LogOnFailedReason.ExceededFailedLogOnLimit:
+                userSignedInErrorText = Translate("You have exceeded the limit of allowed login attempts. The user account is temporarily locked");
+                break;
+            case Dynamicweb.Security.UserManagement.LogOnFailedReason.LoginLocked:
+                userSignedInErrorText = Translate("The user account is temporarily locked");
+                break;
+            case Dynamicweb.Security.UserManagement.LogOnFailedReason.PasswordExpired:
+                userSignedInErrorText = Translate("The password has expired and needs to be renewed");
+                break;
+            default:
+                userSignedInErrorText = Translate("An unknown error occured");
+                break;
+        }
+    }
+
+    <!-- Trigger for the login modal -->
+    <input type="checkbox" id="SignInModalTrigger" class="modal-trigger @topLayout" @userSignedInError />
+
+    <!-- Login modal -->
+    <div class="modal-container">
+        <label for="SignInModalTrigger" id="SignInModalOverlay" class="modal-overlay"></label>
+        <div class="modal modal--xs" id="SignInModal">
+            <div class="modal__header">
+                <h2>@Translate("Sign in")</h2>
+            </div>
+            <div class="modal__body">
+                <form method="post" id="LoginForm" class="u-no-margin">
+                    <input type="hidden" name="ID" value="@pageId" />
+                    <input type="hidden" name="DWExtranetUsernameRemember" value="True" />
+                    <input type="hidden" name="DWExtranetPasswordRemember" value="True" />
+                    <input type="text" class="u-full-width" id="LoginUsername" name="username" placeholder="@Translate("Email")" />
+                    <input type="password" class="u-full-width" id="LoginPassword" name="password" placeholder="@Translate("Password")" />
+                    <div class="field-error dw-mod">@userSignedInErrorText</div>
+
+                    <label>
+                        <input type="checkbox" id="RememberMe" name="Autologin" checked="checked" value="True">
+                        <span>@Translate("Remember me", "Remember me")</span>
+                    </label>
+
+                    <button type="submit" class="btn btn--primary btn--full dw-mod" name="LoginAction" value="Login" onclick="Buttons.LockButton(event)">@Translate("Sign in")</button>
+
+                    <a class="btn btn--link-clean dw-mod" href="/Default.aspx?id=@forgotPasswordPageId">@Translate("Forgot your password?", "Forgot your password?")</a>
+
+                    <a class="btn btn--link-clean dw-mod" href="/default.aspx?ID=@createAccountPageId">@Translate("Create account")?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@helper RenderHeaderNavigation() {
+    bool megaMenu = Model.Area.Item.GetList("NavigationMegaMenu").SelectedValue.ToLower() == "true" ? true : false;
+    string megamenuPromotionImage = Model.Area.Item.GetFile("NavigationMegamenuPromotionImage") != null ? Model.Area.Item.GetFile("NavigationMegamenuPromotionImage").Path : "";
+    bool renderPagesInToolBar = Model.Area.Item.GetBoolean("RenderPagesInToolBar");
+    int startLevel = renderPagesInToolBar ? 1 : 0;
+
+    if (Pageview.Device.ToString() != "Mobile" && Pageview.Device.ToString() != "Tablet")
+    {
+        if (!megaMenu)
+        {
+            @RenderNavigation(new
+            {
+                id = "topnavigation",
+                cssclass = "menu dw-mod dwnavigation",
+                startLevel = @startLevel,
+                ecomStartLevel = @startLevel+1,
+                endlevel = 5,
+                expandmode="all",
+                template = "BaseMenuWithDropdown.xslt"
+            });
+        }
+        else
+        {
+            @RenderNavigation(new
+           {
+               id = "topnavigation",
+               cssclass = "menu dw-mod dwnavigation",
+               startLevel = @startLevel,
+               ecomStartLevel = @startLevel+1,
+               endlevel = 5,
+               promotionImage = megamenuPromotionImage,
+               promotionLink = Model.Area.Item.GetString("NavigationMegamenuPromotionLink"),
+               expandmode = "all",
+               template = "BaseMegaMenu.xslt"
+           });
+        }
+    }
+}
+
+@helper MobileNavigationTrigger() {
+    @* Mobile navigation trigger *@
+
+    if (Pageview.Device.ToString() == "Mobile" || Pageview.Device.ToString() == "Tablet")
+    {
+        <div class="menu dw-mod u-pull--left">
+            <div class="menu__item menu__item--horizontal menu__item--top-level dw-mod">
+                <label for="MobileNavTrigger" class="mobile-nav-trigger-button menu__link dw-mod"></label>
+            </div>
+        </div> 
+    }
+}
+
+@helper RenderLanguageSelector(string type = "inNavigation") {
+    string liClasses = type == "inNavigation" ? "menu__item menu__item--horizontal menu__item--top-level dw-mod u-hidden-xxs" : "menu__item menu__item--horizontal menu--clean u-w40px dw-mod";
+    string menuLinkClass = type == "inNavigation" ? "menu__link" : "header-menu__link";
+
+    @* Language selector *@
+    if (Model.Languages.Count > 1)               
+    {
+        <li class="@liClasses">
+            <div class="@menuLinkClass u-w40px is-dropdown is-dropdown--no-icon dw-mod">
+                <i class="fa fa-globe fa-1_5x"></i>
+                <div class="menu menu--dropdown u-w100px dw-mod">
+                    @foreach (var lang in Model.Languages)
+                    {
+                        <a href="/Default.aspx?ID=@lang.Page.ID&CurrencyCode=@Dynamicweb.Services.Areas.GetArea(lang.ID).EcomCurrencyId" class="menu-dropdown__item menu-dropdown__item--link dw-mod">@lang.Name</a>
+                    }
+                </div>
+            </div>
+        </li>
+    }
+}
+
+@helper RenderMiniCart(string type = "inNavigation") {
+    string liClasses = type == "inNavigation" ? "menu__item menu__item--horizontal menu__item--top-level dw-mod" : "menu__item menu__item--horizontal menu--clean dw-mod";
+    string menuLinkClass = type == "inNavigation" ? "menu__link" : "header-menu__link";
+
+    int miniCartFeedPageId = GetPageIdByNavigationTag("MiniCartFeed");
+    int cartFeedPageId = GetPageIdByNavigationTag("CartOrderlinesFeed");
+    int cartPageId = GetPageIdByNavigationTag("CartPage");
+    double cartProductsCount = Model.Cart.TotalProductsCount;
+
+    @* Mini cart *@
+    <li class="@liClasses">
+        <div class="mini-cart dw-mod">
+            <a href="/Default.aspx?ID=@cartPageId&Purge=True" id="miniCartCounterWrap" class="@menuLinkClass dw-mod js-mini-cart-button" onmouseenter="Cart.UpdateMiniCart(event, 'miniCart', '/Default.aspx?ID=@miniCartFeedPageId&feedType=MiniCart')">
+                <i class="fa fa-shopping-cart fa-1_5x"></i>
+                <div class="mini-cart__counter mini-cart__counter--inline dw-mod">
+                    <div class="js-handlebars-root js-mini-cart-counter" id="cartCounter" data-template="MiniCartCounterContent" data-json-feed="/Default.aspx?ID=@miniCartFeedPageId&feedType=Counter" data-init-onload="false" data-preloader="false">
+                        <div class="js-mini-cart-counter-content">
+                            @cartProductsCount
+                        </div>
+                    </div>
+                </div>
+            </a>
+            @if (Pageview.Device.ToString() != "Mobile" && Pageview.Device.ToString() != "Tablet")
+            {
+                <div class="mini-cart-dropdown js-handlebars-root js-mini-cart dw-mod" id="miniCart" data-template="MiniCartContent" data-cart-id="@miniCartFeedPageId" data-json-feed="/Default.aspx?ID=@miniCartFeedPageId&feedType=MiniCart" data-init-onload="false"></div>
+            }
+        </div>
+    </li>
+}
+
+@helper RenderSignIn (string type = "inNavigation", string userInitials = "") {
+    string liClasses = type == "inNavigation" ? "menu__item menu__item--horizontal menu__item--top-level dw-mod u-hidden-xxs" : "menu__item menu__item--horizontal menu__item--clean u-w40px dw-mod";
+    string menuLinkClass = type == "inNavigation" ? "menu__link" : "header-menu__link";
+
+    int pageId = Model.TopPage.ID;
+    string myProfilePageId = (Model.CurrentUser.ID <= 0) ? GetPageIdByNavigationTag("SignInPage").ToString() + "&RedirectPageId=" + GetPageIdByNavigationTag("CustomerProfile").ToString() : GetPageIdByNavigationTag("CustomerProfile").ToString();
+    string myOrdersPageId = (Model.CurrentUser.ID <= 0) ? GetPageIdByNavigationTag("SignInPage").ToString() + "&RedirectPageId=" + GetPageIdByNavigationTag("CustomerOrders").ToString() : GetPageIdByNavigationTag("CustomerOrders").ToString();
+    int myDashboardPageId = GetPageIdByNavigationTag("CustomerDashboard");
+    string myFavoritesPageId = (Model.CurrentUser.ID <= 0) ? GetPageIdByNavigationTag("SignInPage").ToString() + "&RedirectPageId=" + GetPageIdByNavigationTag("CustomerFavorites").ToString() : GetPageIdByNavigationTag("CustomerFavorites").ToString();
+    string mySavedCardsPageId = (Model.CurrentUser.ID <= 0) ? GetPageIdByNavigationTag("SignInPage").ToString() + "&RedirectPageId=" + GetPageIdByNavigationTag("SavedCards").ToString() : GetPageIdByNavigationTag("SavedCards").ToString();
+    int createAccountPageId = GetPageIdByNavigationTag("CreateAccount");
+    int signInProfilePageId = GetPageIdByNavigationTag("SignInPage");
+    string forgotPasswordPageId = signInProfilePageId.ToString() + "&LoginAction=Recovery";
+    
+    bool showCreateAccountLink = Model.Area.Item.GetBoolean("ShowCreateAccountLink");
+    bool showMyProfileLink = Model.Area.Item.GetBoolean("ShowMyProfileLink");
+    bool showMyOrdersLink = Model.Area.Item.GetBoolean("ShowMyOrdersLink");
+    bool showMyFavoritesLink = Model.Area.Item.GetBoolean("ShowMyFavoritesLink");
+    bool showMySavedCardsLink = Model.Area.Item.GetBoolean("ShowMySavedCardsLink");
+
+    @* Sign in + Customer center links *@
+    <li class="@liClasses">
+        <div class="@menuLinkClass is-dropdown is-dropdown--no-icon u-w40px dw-mod">
+            @if (Model.CurrentUser.ID <= 0)
+            {
+                <i class="fa fa-user fa-1_5x"></i>
+            }
+            else
+            {
+                <a href="/default.aspx?ID=@myDashboardPageId" class="u-color-inherit"><div class="circle-icon-btn">@userInitials.ToUpper()</div></a>
+            }
+
+            <div class="menu menu--dropdown sign-in-dropdown dw-mod">
+                    <ul class="list list--clean dw-mod">
+                        @if (Model.CurrentUser.ID <= 0)
+                        {
+                            <li>
+                                <label for="SignInModalTrigger" class="btn btn--primary btn--full u-no-margin sign-in-modal-trigger-button dw-mod" onclick="setTimeout(function () { document.getElementById('LoginUsername').focus() }, 10)">@Translate("Sign in")</label>
+                            </li>
+                            if (showCreateAccountLink)
+                            {
+                                <li>
+                                    <a href="/default.aspx?ID=@createAccountPageId" class="list__link dw-mod">@Translate("Create account")</a>
+                                </li>
+                            }
+                            <li>
+                                <a href="/default.aspx?ID=@forgotPasswordPageId" class="list__link dw-mod">@Translate("Forgot your password?")</a>
+                            </li>
+                            if (showMyProfileLink || showMyOrdersLink || showMyFavoritesLink || showMySavedCardsLink)
+                            {
+                                <li class="list__seperator dw-mod"></li>
+                            }
+                        }
+                        @if (showMyProfileLink)
+                        {
+                            <li>
+                                <a href="/default.aspx?ID=@myProfilePageId" class="list__link dw-mod"><i class="fa fa-user"></i> @Translate("My Profile")</a>
+                            </li>
+                        }
+                        @if (showMyOrdersLink)
+                        {
+                            <li>
+                                <a href="/default.aspx?ID=@myOrdersPageId" class="list__link dw-mod"><i class="fa fa-list"></i> @Translate("My Orders")</a>
+                            </li>
+                        }
+                        @if (showMyFavoritesLink)
+                        {
+                            <li>
+                                <a href="/default.aspx?ID=@myFavoritesPageId" class="list__link dw-mod"><i class="fa fa-star"></i> @Translate("My Favorites")</a>
+                            </li>
+                        }
+                        @if (showMySavedCardsLink)
+                        {
+                            <li>
+                                <a href="/default.aspx?ID=@mySavedCardsPageId" class="list__link dw-mod"><i class="fa fa-credit-card"></i> @Translate("My Saved cards")</a>
+                            </li>
+                        }
+                        @if (Model.CurrentUser.ID > 0)
+                        {
+                            if (showMyProfileLink || showMyOrdersLink || showMyFavoritesLink || showMySavedCardsLink)
+                            {
+                                <li class="list__seperator dw-mod"></li>
+                            }
+                            <li>
+                                <a href="/Admin/Public/ExtranetLogoff.aspx?ID=@pageId" class="list__link dw-mod">@Translate("Sign out")</a>
+                            </li>
+                        }
+                    </ul>
+            </div>
+        </div>
+    </li>
+}
+
+@helper RenderFavorites(string type = "inNavigation") { 
+    string liClasses = type == "inNavigation" ? "menu__item menu__item--horizontal menu__item--top-level dw-mod u-hidden-xxs" : "menu__item menu__item--horizontal menu--clean u-w40px dw-mod";
+    string menuLinkClass = type == "inNavigation" ? "menu__link" : "header-menu__link";
+
+    string myFavoritesPageId = GetPageIdByNavigationTag("CustomerFavorites").ToString();
+
+    @* Favorites *@
+    if (Model.CurrentUser.ID > 0)
+    {
+        <li class="@liClasses">
+            <a href="/Default.aspx?ID=@myFavoritesPageId" class="@menuLinkClass dw-mod">
+                <i class="fa fa-star fa-1_5x"></i>
+            </a>
+        </li>
+    }
+}
+
+
+@helper RenderFooter() {
+    string footerColumnOneContent = !string.IsNullOrEmpty(Model.Area.Item.GetString("FooterColumnOne")) ? Model.Area.Item.GetString("FooterColumnOne") : "";
+    string footerColumnTwoContent = !string.IsNullOrEmpty(Model.Area.Item.GetString("FooterColumnTwo")) ? Model.Area.Item.GetString("FooterColumnTwo") : "";
+    string footerColumnThreeContent = !string.IsNullOrEmpty(Model.Area.Item.GetString("FooterColumnThree")) ? Model.Area.Item.GetString("FooterColumnThree") : "";
+    string footerColumnOneHeader = Model.Area.Item.GetString("FooterColumnOneHeader");
+    string footerColumnTwoHeader = Model.Area.Item.GetString("FooterColumnTwoHeader");
+    string footerColumnThreeHeader = Model.Area.Item.GetString("FooterColumnThreeHeader");
+    int newsletterSignUpPageId = GetPageIdByNavigationTag("NewsletterSignUp");
+
+    <!-- Footer section -->
+    <footer class="footer dw-mod">
+        <div class="center-container top-container__center-container dw-mod">
+            <div class="grid">
+                @if (!string.IsNullOrEmpty(footerColumnOneContent) || !string.IsNullOrEmpty(footerColumnOneHeader))
+                {
+                    <div class="grid__col-md-auto">
+                        <h4 class="footer__heading dw-mod">@footerColumnOneHeader</h4>
+                        <div class="footer__content dw-mod">
+                            @footerColumnOneContent
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(footerColumnTwoContent) || !string.IsNullOrEmpty(footerColumnTwoHeader))
+                {
+                    <div class="grid__col-md-auto">
+                        <h4 class="footer__heading dw-mod">@footerColumnTwoHeader</h4>
+                        <div class="footer__content dw-mod">
+                            @footerColumnTwoContent
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(footerColumnThreeContent) || !string.IsNullOrEmpty(footerColumnThreeHeader))
+                {
+                    <div class="grid__col-md-auto">
+                        <h4 class="footer__heading dw-mod">@footerColumnThreeHeader</h4>
+                        <div class="footer__content dw-mod">
+                            @footerColumnThreeContent
+                        </div>
+                    </div>
+                }
+                @if (Model.Area.Item.GetBoolean("FooterNewsletterSignUp"))
+                {
+                    <div class="grid__col-md-auto">
+                        <h4 class="footer__heading dw-mod">@Translate("Mailing list", "Mailing list")</h4>
+                        <div class="footer__content dw-mod">
+                            <p>@Translate("Sign up if you would like to receive occasional treats from us", "Sign up if you would like to receive occasional treats from us").</p>
+                            <form class="form dw-mod" name="NewsletterRedirect" action='/Default.aspx' method="get" enctype="multipart/form-data">
+                                <input name="ID" id="ID" value="@newsletterSignUpPageId" type="hidden" />
+                                <div class="form__field-combi">
+                                    <input name="NewsletterEmail" id="NewsletterEmail" type="text" placeholder='@Translate("Your email address", "Your email address")' />
+                                    <input class="btn btn--primary btn--condensed dw-mod" type="submit" id="Submitter" value='@Translate("Go", "Go")' />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+                @if (Model.Area.Item.GetItems("FooterSocialLinks").Count > 0)
+                {
+                    <div class="grid__col-md-auto">
+                        <h4 class="footer__heading dw-mod">@Translate("Social links", "Social links")</h4>
+                        <div class="footer__content dw-mod">
+                            <div class="collection dw-mod">
+                                @foreach (var socialitem in Model.Area.Item.GetItems("FooterSocialLinks"))
+                                {
+                                    //Fields.FirstOrDefault(x => x.SystemName == "Icon").GetString()
+                                    var socialIcon = socialitem.GetValue("Icon") as Dynamicweb.Frontend.ListViewModel;
+                                    string socialIconClass = socialIcon.SelectedValue;
+                                    string socialIconTitle = socialIcon.SelectedName;
+                                    string socialLink = socialitem.GetString("Link");
+
+                                    <a href="@socialLink" target="_blank" title="@socialIconTitle"><i class="fa @socialIconClass fa-2x"></i></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="grid__col-12 footer__copyright dw-mod">
+                    <p>@Model.Area.Item.GetString("FooterCopyrightText")</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+}
+
+
+@* Templates for Typeahead *@
+<script id="SearchGroupsTemplate" type="text/x-template">
+    {{#.}}
+        <li class="dropdown__item dw-mod" onclick="Search.UpdateGroupSelection(this)" data-group-id="{{id}}">{{name}}</li>
+    {{/.}}
+</script>
+
+<script id="SearchContentTemplate" type="text/x-template">
+    {{#each .}}   
+        {{#Product}}
+            {{#ifCond template "!==" "SearchMore"}}
+            <li class="dropdown__item dropdown__item--seperator dw-mod">
+                <div>
+                    <a href="{{link}}" class="js-typeahead-link u-color-inherit u-pull--left">
+                        <div class="u-margin-right u-pull--left {{noimage}} u-hidden-xs u-hidden-xxs"><img src="/Admin/Public/GetImage.ashx?width=45&height=36&crop=5&FillCanvas=True&Compression=75&image={{image}}" alt="{{name}}"></div>
+                        <div class="u-pull--left">
+                            <div class="u-bold u-max-w220px u-truncate-text js-typeahead-name">{{name}}</div>
+                            @if (!onlyPreview)
+                            {
+                                <div class="{{onlyPreview}}">{{price}}</div>
+                            }
+                        </div>
+                    </a>
+                    <div class="u-margin-left u-pull--right u-w80px u-hidden-xs u-hidden-xxs">
+                        <button class="btn btn--primary btn--condensed btn--full u-no-margin dw-mod {{hideBuyOptions}} js-ignore-click-outside" onclick="Cart.AddToCart(event, '{{productId}}', '1')"><i class="fa fa-shopping-cart js-ignore-click-outside"></i></button>
+                        <a href="{{link}}" class="btn btn--secondary btn--condensed btn--full u-no-margin dw-mod {{hideViewMore}} js-ignore-click-outside">@Translate("View")</a>
+                    </div>
+                </div>
+            </li>
+            {{/ifCond}}
+            {{#ifCond template "===" "SearchMore"}}
+                {{>SearchMore}}
+            {{/ifCond}}    
+        {{/Product}}
+    {{else}}
+        <li class="dropdown__item dropdown__item--seperator dw-mod">
+            @Translate("No products found")
+        </li>
+    {{/each}}
+</script>
+
+<script id="SearchMore" type="text/x-template">
+    <li class="dropdown__item dropdown__item--not-selectable dw-mod">
+        <a href="/Default.aspx?ID=@productsPageId&Search={{searchParameter}}&GroupID={{groupId}}" class="btn btn--primary btn--full u-no-margin dw-mod js-typeahead-link">
+            @Translate("View all")
+        </a>
+    </li>
+</script>
+
+@* Templates for the mini cart *@
+<script id="MiniCartCounterContent" type="text/x-template">
+    {{#.}}
+        <div class="js-mini-cart-counter-content dw-mod">
+            {{numberofproducts}}
+        </div>
+    {{/.}}
+</script>
+
+<script id="MiniCartContent" type="text/x-template">
+    {{#.}}
+        <div class="mini-cart-dropdown__inner {{isempty}} dw-mod">
+            <h4 class="u-ta-center u-no-margin u-margin-bottom u-margin-top">@Translate("Shopping cart")</h4>
+            <div class="mini-cart-dropdown__body dw-mod">
+                <table class="table mini-cart-table dw-mod">
+                    <thead>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>@Translate("Product")</td>
+                            <td class="u-ta-right">@Translate("Qty")</td>
+                            <td class="u-ta-right" width="120">@Translate("Price")</td>
+                        </tr>
+                    </thead>
+
+                    {{#OrderLines}}
+                        {{#ifCond template "===" "CartOrderline"}}
+                            {{>MiniCartOrderline}}
+                        {{/ifCond}}
+                        {{#ifCond template "===" "CartOrderlineMobile"}}
+                            {{>MiniCartOrderlineMobile}}
+                        {{/ifCond}}
+                        {{#ifCond template "===" "CartOrderlineDiscount"}}
+                            {{>MiniCartOrderlineDiscount}}
+                        {{/ifCond}}
+                    {{/OrderLines}}
+
+                    <tr>
+                        <td><i class="fa fa-credit-card"></i></td>
+                        <td>{{paymentmethod}}</td>
+                        <td colspan="2" class="u-ta-right" width="130">{{paymentfee}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-truck"></i></td>
+                        <td>{{shippingmethod}}</td>
+                        <td colspan="2" class="u-ta-right" width="130">{{shippingfee}}</td>
+                    </tr>
+                    <tr class="mini-cart-totals dw-mod">
+                        <td colspan="2">@Translate("Total")</td>
+                        <td class="u-ta-right">{{numberofproducts}}</td>
+                        <td class="u-ta-right" width="130">{{totalprice}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <table class="table mini-cart-table dw-mod">
+                <tr class="mini-cart-orderlines__footer dw-mod">
+                    <td colspan="2"><button type="button" class="btn btn--secondary u-pull--left u-no-margin dw-mod btn--sm" onclick="Cart.EmptyCart(event)">@Translate("Empty cart")</button></td>
+                    <td colspan="2" class="u-ta-right"><a href="/Default.aspx?ID=@cartPageId" class="btn btn--primary u-pull--right u-no-margin dw-mod btn--sm">@Translate("Proceed to checkout")</a></td>
+                </tr>
+            </table>
+        </div>
+    {{/.}}
+</script>
+
+<script id="MiniCartOrderline" type="text/x-template">
+    <tr class="{{isempty}}">
+        <td><a href="{{link}}" class="{{hideimage}}"><img src="/Admin/Public/GetImage.ashx?width=50&height=50&crop=5&Compression=75&image={{image}}" alt="{{name}}"></a></td>
+        <td>
+            <a href="{{link}}" class="mini-cart-orderlines__name" title="{{name}}">{{name}}</a>
+            <a href="{{link}}" class="mini-cart-orderlines__name item-number">{{variantname}}</a>
+            <div class="item-number">{{unitname}}</div>
+        </td>
+        <td class="u-ta-right">{{quantity}}</td>
+        <td class="u-ta-right">{{totalprice}}</td>
+    </tr>
+</script>
+
+<script id="MiniCartOrderlineMobile" type="text/x-template">
+    <tr class="{{isempty}}">
+        <td><a href="{{link}}" class="{{hideimage}}"><img src="/Admin/Public/GetImage.ashx?width=50&height=50&crop=5&Compression=75&image={{image}}" alt="{{name}}"></a></td>
+        <td>
+            <a href="{{link}}" class="mini-cart-orderlines__name">{{name}}</a>
+            <a href="{{link}}" class="mini-cart-orderlines__name item-number">{{variantname}}</a>
+            <div class="item-number">{{unitname}}</div>
+        </td>
+        <td class="u-ta-right">{{quantity}}</td>
+        <td class="u-ta-right">{{totalprice}}</td>
+    </tr>
+</script>
+
+<script id="MiniCartOrderlineDiscount" type="text/x-template">
+    <tr class="table__row--no-border {{isempty}}">
+        <td>&nbsp;</td>
+        <td><div class="mini-cart-orderlines__name dw-mod">{{name}}</div></td>
+        <td class="u-ta-right">&nbsp;</td>
+        <td class="u-ta-right">{{totalprice}}</td>
+    </tr>
+</script>
+
+<!-- Javascript -->
+<script src="/Files/Templates/Designs/Rapido/js/handlebars-v4.0.11.js"></script>
+<script src="/Files/Templates/Designs/Rapido/js/master.min.js"></script>
+
+@if (Model.Area.Item.GetBoolean("UseCustomJavascript"))
+{
+    <script src="/Files/Templates/Designs/Rapido/js/custom.min.js"></script>
+}
+
+<script>
+    Wireframe.Init(@wireframeMode.ToLower());
+</script>
+</body>
+</html>
+

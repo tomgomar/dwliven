@@ -1,0 +1,90 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using System
+@using System.Web
+
+@{ 
+    string cartPageId = GetPageIdByNavigationTag("CartPage").ToString();
+    string ordersPageId = GetPageIdByNavigationTag("CustomerOrders").ToString();
+    string quotesPageId = GetPageIdByNavigationTag("QuotesPage").ToString();
+    string favoritesPageId = GetPageIdByNavigationTag("CustomerFavorites").ToString();
+    string profilePageId = GetPageIdByNavigationTag("CustomerProfile").ToString();
+    string savedCardsPageId = GetPageIdByNavigationTag("SavedCards").ToString();
+}
+
+
+<div class="grid">
+    @if (profilePageId != "0")
+    {
+    <div class="grid__col-md-auto">
+        <a href="/Default.aspx?ID=@profilePageId" class="widget u-brand-color-two--bg-darken-20">
+            <div class="u-center-middle u-color-light">
+                <i class="fa fa-user widget__icon"></i>
+                <div class="widget__title">@Translate("My profile")</div>
+            </div>
+        </a>
+    </div>
+    }
+
+    @if (favoritesPageId != "0")
+    {
+    <div class="grid__col-md-auto">
+        <a href="/Default.aspx?ID=@favoritesPageId" class="widget u-brand-color-two--bg-darken-10">
+            <div class="u-center-middle u-color-light">
+                <i class="fa fa-star widget__icon"></i>
+                <div class="widget__title">@Translate("Favorites")</div>
+            </div>
+        </a>
+    </div>
+    }
+
+    @if (quotesPageId != "0")
+    {
+    <div class="grid__col-md-auto">
+        <a href="/Default.aspx?ID=@quotesPageId" class="widget u-brand-color-two--bg">
+            <div class="u-center-middle u-color-light">
+                <i class="fa fa-quote-right widget__icon"></i>
+                <div class="widget__title">@Translate("Quotes")</div>
+            </div>
+        </a>
+    </div>
+    }
+</div>
+<div class="grid">
+    @if (cartPageId != "0")
+    {
+    <div class="grid__col-md-auto">
+        <a href="/Default.aspx?ID=@cartPageId" class="widget u-brand-color-two--bg">
+            <div class="u-center-middle u-color-light">
+                <i class="fa fa-shopping-cart widget__icon"></i>
+                <div class="widget__title">@Translate("Shopping cart")</div>
+            </div>
+        </a>
+    </div>
+    }
+
+    @if (ordersPageId != "0")
+    {
+    <div class="grid__col-md-auto">
+        <a href="/Default.aspx?ID=@ordersPageId" class="widget u-brand-color-two--bg-lighten-10">
+            <div class="u-center-middle u-color-light">
+                <i class="fa fa-list widget__icon"></i>
+                <div class="widget__title">@Translate("My orders")</div>
+            </div>
+        </a>
+    </div>
+    }
+
+    @if (savedCardsPageId != "0")
+    {
+    <div class="grid__col-md-auto">
+        <a href="/Default.aspx?ID=@savedCardsPageId" class="widget u-brand-color-two--bg-lighten-20">
+            <div class="u-center-middle u-color-light">
+                <i class="fa fa-credit-card widget__icon"></i>
+                <div class="widget__title">@Translate("Saved cards")</div>
+            </div>
+        </a>
+    </div>
+    }
+</div>

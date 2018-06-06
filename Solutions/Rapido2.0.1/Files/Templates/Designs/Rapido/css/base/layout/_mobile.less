@@ -1,0 +1,208 @@
+// -----------------------------------------------------------------------------
+// Contains all styles related to the mobile part of the site/application.
+// -----------------------------------------------------------------------------
+
+html, body {
+    overflow-x: hidden; //fix for fixed mobile menu
+}
+
+//Navigation trigger
+.mobile-nav-trigger {
+    visibility: hidden;
+    position: absolute;
+}
+
+.mobile-nav-trigger-off {
+    display: none;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: @z-index-9;
+    left: 0;
+    top: 0;
+}
+
+.mobile-nav-trigger:checked ~ .site-container {
+    left: @mobile-navigation-width;
+}
+
+.mobile-nav-trigger:checked ~ .mobile-navigation {
+    left: 0;
+}
+
+.mobile-nav-trigger:checked ~ .site {
+    left: 250px;
+}
+
+.mobile-nav-trigger:checked ~ .mobile-nav-trigger-off  {
+    display: block;
+}
+
+.mobile-nav-trigger-button:before {
+    font-family: 'FontAwesome';
+    content: "\f0c9";
+    color: inherit;
+    cursor: pointer;
+}
+
+
+//Navigation
+.mobile-navigation {
+    width: @mobile-navigation-width;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: -250px;
+    z-index: @z-index-top;
+    box-shadow: 0 0 10px rgba(51,51,51,.38);
+    transition: left 0.2s;
+    overflow: auto;
+    height: 100%;
+}
+
+.menu-mobile {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.menu-mobile__item { //li
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    float: left;
+    color: @font-color;
+    transition: all 0.2s;
+} 
+
+.menu-mobile__link { //a
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: @reflex-cell-spacing-md @reflex-cell-spacing-lg;
+    font-size: @font-size;
+    color: @font-color;
+    cursor: pointer;
+    margin-bottom: 0;
+    border-bottom: 1px solid @gray-lighter;
+
+    &:hover {
+        background-color: @gray-lightest;
+    }
+}
+
+.menu-mobile__link.u-ta-right {
+    padding-right: 40px;
+}
+
+.menu-mobile-level(@level) {
+    .menu-mobile__link--level-@{level} {
+        padding-left: @reflex-cell-spacing-md * @level + 1;
+    }
+}
+
+.menu-mobile-level(1);
+.menu-mobile-level(2);
+.menu-mobile-level(3);
+.menu-mobile-level(4);
+.menu-mobile-level(5);
+.menu-mobile-level(6);
+.menu-mobile-level(7);
+.menu-mobile-level(8);
+
+.menu-mobile__link--active {
+    background-color: @gray-lightest;
+}
+
+.menu-mobile__link--highlighted {
+    background-color: @gray-lightest;
+}
+
+.menu-mobile__link-icon {
+    width: 18px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.menu-mobile__submenu {
+    display: none;
+}
+
+.menu-mobile__item--open > .menu-mobile__submenu {
+    display: inline-block;
+}
+
+.expand-trigger:checked ~ .menu-mobile__trigger ~ .menu-mobile__submenu{
+    display: block;
+}
+
+/*
+.menu-mobile__link--closed:before {
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: inherit;
+    font-family: "FontAwesome";
+    content: '\f105';
+    padding: @reflex-cell-spacing-md @reflex-cell-spacing-lg;
+    display: inline-block;
+    color: @font-color;
+}
+
+.menu-mobile__link--open:before {
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: inherit;
+    font-family: "FontAwesome";
+    content: '\f107';
+    padding: @reflex-cell-spacing-md @reflex-cell-spacing-lg;
+    display: inline-block;
+    color: @font-color;
+}
+*/
+
+/*
+.mobile-navigation .list li {
+    margin-bottom: 0;
+}
+
+.mobile-navigation__link {
+    padding: @reflex-cell-spacing-md @reflex-cell-spacing-lg;
+
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: none;
+    }
+}*/
+
+.menu-mobile__trigger {
+    position: absolute;
+    right: 0.5em;
+    top: .7em;
+    width: 30px;
+    text-align: center;
+}
+
+.expand-trigger ~ .menu-mobile__trigger:before {
+    line-height: inherit;
+    font-family: "FontAwesome";
+    content: "\f067"; //fa-plus
+    display: inline-block;
+    color: @font-color;
+}
+
+.expand-trigger:checked ~ .menu-mobile__trigger:before {
+    content: "\f068"; //fa-minus
+}
+
+.expand-trigger {
+    top: 0;
+    //without it menu will have small gap in the bottom of the screen
+}

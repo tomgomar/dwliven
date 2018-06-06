@@ -1,0 +1,45 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.PageViewModel>
+@MasterPageFile("Master.cshtml")
+
+@if (Model.PropertyItem.GetList("ShowBreadcrumb").SelectedValue == "True")
+{
+	<div class="grid__col-12 grid__col--bleed-y">
+		@RenderNavigation(new
+   {
+	   id = "breadcrumb",
+	   template = "Breadcrumb.xslt"
+   })
+	</div>
+}
+
+<div class="grid">
+	@if (Model.PropertyItem.GetList("LeftMenu").SelectedValue == "True")
+	{
+		var navigationMarkup = RenderNavigation(new
+		{
+			id = "leftnav",
+			cssclass = "menu dwnavigation",
+			startLevel = 2,
+			endlevel = 5,
+			template = "LeftNavigation.xslt"
+		});
+		if (!string.IsNullOrEmpty(navigationMarkup))
+		{
+			<nav class="grid__col-md-3 grid__col-sm-12 grid__col-xs-12">
+                <div class="grid">
+                    <div class="grid__col-12">
+                        <div class="grid__cell">
+					        @navigationMarkup
+				        </div>
+                    </div>
+                </div>
+			</nav>
+		}
+	}
+	<div class="grid__col-auto grid__col--bleed">
+		<div class="grid">
+			@* Divs count is equal divs in ParagraphContainer.cshtml *@
+			@Model.Placeholder("dwcontent", "content", "default:true;sort:1")
+		</div>
+	</div>
+</div>   

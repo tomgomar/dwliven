@@ -1,0 +1,31 @@
+// Typeahead
+
+.typeahead {
+    display: flex;
+    position: relative;
+    z-index: @z-index-7;
+    color: @text-color;
+}
+
+.typeahead--centered {
+   margin: @reflex-cell-spacing-md auto;
+   max-width: 600px;
+}
+
+.typeahead-group-btn {
+    margin: 0;
+}
+
+.typeahead-search-field {
+    margin: 0;
+    flex: 1 0 0px;
+    border-radius: 0;
+    position: relative;
+}
+
+.typeahead-group-btn::after {
+    font-family: "FontAwesome";
+    content: '\f0d7';
+    margin-left: @reflex-cell-spacing-sm;
+    position: relative;
+}

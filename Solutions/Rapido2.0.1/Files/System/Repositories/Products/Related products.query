@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="a39d3205-2a86-4593-8bec-dfcabe567fe4" Name="Related products.query">
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="ProductRelationGroup_RELGRP8" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="BikesRelated" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.Ecommerce.Context:LanguageID" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="ProductRelationGroup_RELGRP5" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="CoolCruiserRelated" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="ProductRelationGroup_RELGRP7" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="LadyBikesRelated" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="ProductRelationGroup_RELGRP4" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="WheelsForThisBikeRelated" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="ProductRelationGroup_RELGRP1" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="RelatedProductsRelated" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields />
+  <ViewLanguages />
+  <Parameters>
+    <Parameter Name="BikesRelated" Type="System.String" DefaultValue="" />
+    <Parameter Name="CoolCruiserRelated" Type="System.String" DefaultValue="" />
+    <Parameter Name="LadyBikesRelated" Type="System.String" DefaultValue="" />
+    <Parameter Name="WheelsForThisBikeRelated" Type="System.String" DefaultValue="" />
+    <Parameter Name="RelatedProductsRelated" Type="System.String" DefaultValue="" />
+  </Parameters>
+</Query>

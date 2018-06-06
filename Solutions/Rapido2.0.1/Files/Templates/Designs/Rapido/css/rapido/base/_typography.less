@@ -1,0 +1,112 @@
+/**
+ * Basic typography style for text
+ * Warning: These styles overrides without the default .dw-mod class, as they all target the most basic required elements
+ */
+
+//Header styles
+h1 {
+    .header-h1-mixin();
+}
+
+.header-h1-mixin() when not (@content-layout-header-font-family-family = none) {   
+	font-family: @content-layout-header-font-family-family, sans-serif;
+}
+
+.header-h1-mixin() when not (@content-layout-header-font-size = none) {   
+	font-size: unit(@content-layout-header-font-size, px);
+}
+
+.header-h1-mixin() when not (@content-layout-header-font-family-weight = none) {   
+	font-weight: ~'@{content-layout-header-font-family-weight}';
+}
+
+.header-h1-mixin() when not (@content-layout-header-line-height = none) {   
+	line-height: unit(@content-layout-header-line-height, em);
+}
+
+.header-h1-mixin() when not (@content-layout-header-font-color = none) {   
+	color: @content-layout-header-font-color;
+}
+
+.header-h1-mixin() when not (@content-layout-header-casing = "none") {   
+	text-transform: ~'@{content-layout-header-casing}';
+} 
+
+
+//Sub header styles
+h2 {
+    .header-h2-mixin();
+}
+
+.header-h2-mixin() when not (@content-layout-subheader-font-family-family = none) {   
+	font-family: @content-layout-subheader-font-family-family, sans-serif;;
+}
+
+.header-h2-mixin() when not (@content-layout-subheader-font-size = none) {   
+	font-size: unit(@content-layout-subheader-font-size, px);
+}
+
+.header-h2-mixin() when not (@content-layout-subheader-font-family-weight = none) {   
+	font-weight: ~'@{content-layout-subheader-font-family-weight}';
+}
+
+.header-h2-mixin() when not (@content-layout-subheader-line-height = none) {   
+	line-height: unit(@content-layout-subheader-line-height, em);
+}
+
+.header-h2-mixin() when not (@content-layout-subheader-font-color = none) {   
+	color: @content-layout-subheader-font-color;
+}
+
+.header-h2-mixin() when not (@content-layout-subheader-casing = "none") {   
+	text-transform: ~'@{content-layout-subheader-casing}';
+} 
+
+
+//Body styles
+body {
+    .body-mixin();
+}
+
+.body-mixin() when not (@content-layout-body-text-font-family-family = none) {   
+	font-family: @content-layout-body-text-font-family-family, sans-serif;;
+}
+
+.body-mixin() when not (@content-layout-body-text-font-size = none) {   
+	font-size: unit(@content-layout-body-text-font-size, px);
+}
+
+.body-mixin() when not (@content-layout-body-text-font-family-weight = none) {   
+	font-weight: ~'@{content-layout-body-text-font-family-weight}';
+}
+
+.body-mixin() when not (@content-layout-body-text-line-height = none) {   
+	line-height: unit(@content-layout-body-text-line-height, em);
+}
+
+.body-mixin() when not (@content-layout-body-text-font-color = none) {   
+	color: @content-layout-body-text-font-color;
+}
+
+.body-mixin() when not (@content-layout-body-text-casing = "none") {   
+	text-transform: ~'@{content-layout-body-text-casing}';
+}
+
+
+//link styles
+a, .link {
+    .a-mixin();
+}
+
+.a-mixin() when not (@content-layout-links-color = none) {   
+	color: @content-layout-links-color;
+} 
+
+a:hover, a:active, a:focus,
+.link:hover, .link:active, .link:focus {
+    .a-active-mixin();
+}
+
+.a-active-mixin() when not (@content-layout-links-hover-color = none) {   
+	color: @content-layout-links-hover-color;
+} 

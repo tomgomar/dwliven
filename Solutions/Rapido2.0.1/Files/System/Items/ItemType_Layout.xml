@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Content" name="Layout" systemName="Layout" description="" icon="PuzzlePiece" iconColor="" includeInUrlIndex="False" pageDefaultView="item" fieldForTitle="" title="" inherits="" useCache="False">
+    <fields>
+      <field name="Width on big devices" systemName="Width" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="en-US" defaultValue="12">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="6" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /></Parameters></editorConfuguration>
+        </editor>
+        <validators>
+          <validator type="Dynamicweb.Content.Items.Editors.RequiredValidator, Dynamicweb" errorMessage="" />
+        </validators>
+        <options sourceType="Static">
+          <Static>
+            <option name="33%" value="4" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_33.jpg" />
+            <option name="66%" value="8" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_66.jpg" />
+            <option name="25%" value="3" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_25.jpg" />
+            <option name="50%" value="6" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_50.jpg" />
+            <option name="75%" value="9" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_75.jpg" />
+            <option name="100%" value="12" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_100.jpg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Width on small devices" systemName="WidthMobile" description="1/2 layout cannot be used for less than 460 px width. Choose &quot;X&quot; if the paragraph should be hidden on a phone." type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="en-US" defaultValue="12">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="3" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /></Parameters></editorConfuguration>
+        </editor>
+        <validators>
+          <validator type="Dynamicweb.Content.Items.Editors.RequiredValidator, Dynamicweb" errorMessage="" />
+        </validators>
+        <options sourceType="Static">
+          <Static>
+            <option name="50%" value="6" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_sm50.jpg" />
+            <option name="100%" value="12" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_sm100.jpg" />
+            <option name="Hide" value="hide" icon="Templates/Designs/Rapido/Images/ItemTypes/DW_smHide.jpg" />
+          </Static>
+        </options>
+      </field>
+    </fields>
+    <rules>
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="Nothing" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="Layout settings" systemName="LayoutSettings" collapsibleState="None" visibilityField="" visibilityCondition="0" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="Width" />
+            <field systemName="WidthMobile" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

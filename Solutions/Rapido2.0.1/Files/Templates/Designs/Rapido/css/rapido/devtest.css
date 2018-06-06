@@ -1,0 +1,490 @@
+﻿.btn--primary.dw-mod {
+  font-size: 15px;
+  font-weight: normal;
+  border-radius: 0;
+  border-width: 0;
+  background-color: #FF5740;
+  color: #FFFFFF;
+}
+.btn--primary.dw-mod.btn--line-height:not(.btn--sm) {
+  line-height: 38px;
+  min-height: 38px;
+}
+.btn--primary.dw-mod:focus,
+.btn--primary.dw-mod:hover,
+.btn--primary.dw-mod:active {
+  background-color: #e64e3a;
+}
+.btn--secondary.dw-mod {
+  font-size: 15px;
+  font-weight: normal;
+  border-radius: 0;
+  border-width: 1px;
+  background-color: transparent;
+  border-color: #0085CA;
+  color: #0085CA;
+}
+.btn--secondary.dw-mod.btn--line-height:not(.btn--sm) {
+  line-height: 38px;
+  min-height: 38px;
+}
+.btn--secondary.dw-mod.btn--sm {
+  line-height: 26px;
+}
+.btn--secondary.dw-mod.btn--line-height:not(.btn--sm) {
+  line-height: 34px;
+  min-height: 34px;
+}
+.btn--secondary.dw-mod:focus,
+.btn--secondary.dw-mod:hover,
+.btn--secondary.dw-mod:active {
+  background-color: #0085CA;
+  color: #ffffff;
+}
+.btn--teritary.dw-mod {
+  font-size: 15px;
+  font-weight: normal;
+  border-radius: 0;
+  border-width: 1px;
+  background-color: transparent;
+  border-color: #14304A;
+  color: #14304A;
+}
+.btn--teritary.dw-mod.btn--line-height:not(.btn--sm) {
+  line-height: 36px;
+  min-height: 36px;
+}
+.btn--teritary.dw-mod.btn--sm {
+  line-height: 26px;
+}
+.btn--teritary.dw-mod.btn--line-height:not(.btn--sm) {
+  line-height: 32px;
+  min-height: 32px;
+}
+.btn--teritary.dw-mod:focus,
+.btn--teritary.dw-mod:hover,
+.btn--teritary.dw-mod:active {
+  background-color: #14304A;
+  color: #ffffff;
+}
+.btn--link.dw-mod {
+  color: #FF5740;
+}
+.btn--link.dw-mod:focus,
+.btn--link.dw-mod:hover,
+.btn--link.dw-mod:active {
+  color: #008FD9;
+}
+.pager__btn:hover:not(.disabled):not(.pager__btn--current) {
+  border: 1px solid #00476B;
+}
+.pager__btn--current {
+  background-color: #00476B;
+}
+a {
+  color: #0085CA;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+a:hover {
+  color: #0071ac;
+}
+/**
+ * Basic typography style for text
+ * Warning: These styles overrides without the default .dw-mod class, as they all target the most basic required elements
+ */
+h1 {
+  font-family: "Patua One", sans-serif;
+  font-size: 48px;
+  font-weight: regular;
+  line-height: 1.4em;
+  color: #14304A;
+}
+h2 {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4em;
+  color: #14304A;
+}
+body {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 16px;
+  font-weight: regular;
+  line-height: 1.4em;
+  color: #191919;
+}
+a,
+.link {
+  color: #FF5740;
+}
+a:hover,
+a:active,
+a:focus,
+.link:hover,
+.link:active,
+.link:focus {
+  color: #008FD9;
+}
+.u-brand-color-one,
+.u-brand-color-one h1,
+.u-brand-color-one h2,
+.u-brand-color-one h3,
+.u-brand-color-one h4,
+.u-brand-color-one h5,
+.u-brand-color-one h6,
+.u-brand-color-one i {
+  color: #FF5740;
+}
+.u-brand-color-two,
+.u-brand-color-two h1,
+.u-brand-color-two h2,
+.u-brand-color-two h3,
+.u-brand-color-two h4,
+.u-brand-color-two h5,
+.u-brand-color-two h6,
+.u-brand-color-two i {
+  color: #0085CA;
+}
+.u-brand-color-one--bg {
+  background-color: #FF5740 !important;
+  -webkit-print-color-adjust: exact;
+}
+.u-brand-color-one--bg-lighten-10 {
+  background-color: #ff8473;
+}
+.u-brand-color-one--bg-lighten-20 {
+  background-color: #ffb1a6;
+}
+.u-brand-color-one--bg-darken-10 {
+  background-color: #d91a00;
+}
+.u-brand-color-one--bg-darken-20 {
+  background-color: #ff2a0d;
+}
+.u-brand-color-two--bg {
+  background-color: #0085CA !important;
+  -webkit-print-color-adjust: exact;
+}
+.u-brand-color-two--bg-lighten-10 {
+  background-color: #00a7fd;
+}
+.u-brand-color-two--bg-lighten-20 {
+  background-color: #31b9ff;
+}
+.u-brand-color-two--bg-darken-10 {
+  background-color: #006397;
+}
+.u-brand-color-two--bg-darken-20 {
+  background-color: #004264;
+}
+.u-font-awesome {
+  font-family: "FontAwesome", "Titillium Web";
+}
+.center-container.dw-mod {
+  max-width: 1280px;
+}
+.site.dw-mod {
+  background-color: #FFFFFF;
+}
+.tools-navigation.dw-mod {
+  background-color: #404040;
+  font-family: "Abel";
+  font-size: 12px;
+  font-weight: regular;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  color: #E0E0E0;
+}
+.menu-tools__link.dw-mod {
+  font-family: "Abel";
+  font-size: 12px;
+  font-weight: regular;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  color: #E0E0E0;
+}
+.menu-tools__link.dw-mod:hover {
+  color: #E0E0E0;
+}
+.main-navigation.dw-mod {
+  background-color: #FFA826;
+  box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+.menu--dropdown.dw-mod,
+.menu--dropleft.dw-mod {
+  background-color: #FFFFFF;
+}
+.menu--dropdown.dw-mod .menu-dropdown__link.dw-mod,
+.menu--dropleft.dw-mod .menu-dropdown__link.dw-mod {
+  color: #333333;
+  font-size: 14px;
+}
+.is-dropdown.dw-mod:after {
+  color: #F7F7F7;
+  font-size: 14px;
+  line-height: 52px;
+}
+.menu-dropdown__item.dw-mod {
+  color: #333333;
+  font-size: 14px;
+}
+.menu-dropdown__link.dw-mod {
+  color: #333333;
+  font-size: 14px;
+  font-family: "Abel";
+}
+.menu--dropdown .list__link.dw-mod {
+  color: #333333;
+  font-size: 14px;
+  font-family: "Abel";
+}
+.menu--dropdown.dw-mod > .menu__item:after,
+.menu--dropleft.dw-mod > .menu__item:after {
+  color: #333333;
+}
+.menu--dropdown.dw-mod .menu__item:not(.menu__item--disabled):hover,
+.menu--dropleft.dw-mod .menu__item:not(.menu__item--disabled):hover,
+.mega-menu.dw-mod .menu__item--mega:not(.menu__item--disabled):hover {
+  background-color: #FAFAFA;
+}
+.menu--dropdown.dw-mod .menu__item:not(.menu__item--disabled):hover:after,
+.menu--dropleft.dw-mod .menu__item:not(.menu__item--disabled):hover:after,
+.mega-menu.dw-mod .menu__item--mega:not(.menu__item--disabled):hover:after {
+  color: #FF5740;
+}
+.menu--dropdown.dw-mod .menu__item:not(.menu__item--disabled):hover > .menu-dropdown__link.dw-mod,
+.menu--dropleft.dw-mod .menu__item:not(.menu__item--disabled):hover > .menu-dropdown__link.dw-mod,
+.mega-menu.dw-mod .menu__item--mega:not(.menu__item--disabled):hover > .menu-dropdown__link.dw-mod {
+  color: #FF5740;
+  background-color: #FAFAFA;
+}
+.menu--dropdown.dw-mod .menu__item:not(.menu__item--disabled):hover > .mega-menu__link.dw-mod,
+.menu--dropleft.dw-mod .menu__item:not(.menu__item--disabled):hover > .mega-menu__link.dw-mod,
+.mega-menu.dw-mod .menu__item--mega:not(.menu__item--disabled):hover > .mega-menu__link.dw-mod {
+  color: #FF5740;
+  background-color: #FAFAFA;
+}
+.mega-menu.dw-mod {
+  background-color: #FFFFFF;
+}
+.mega-menu__header-container__text.dw-mod {
+  color: #14304A;
+  font-size: 1.8rem;
+  font-family: "Abel";
+}
+.mega-menu__link.dw-mod {
+  color: #333333;
+  font-size: 14px;
+  font-family: "Abel";
+}
+.is-mega.dw-mod:after {
+  line-height: 52px;
+  color: #F7F7F7;
+}
+.menu__link.dw-mod {
+  font-family: "Abel";
+  font-size: 14px;
+  font-weight: regular;
+  line-height: 1.2em;
+  color: #F7F7F7;
+  text-transform: uppercase;
+  line-height: 38px;
+}
+.header-menu__link.dw-mod {
+  line-height: 38px;
+}
+.header-menu__link.dw-mod:hover {
+  background-color: #FAFAFA;
+  color: #FF5740;
+}
+.menu__item--active.dw-mod:not(.menu__item--top-level, .menu__item--clean),
+.menu__item.dw-mod:not(.menu__item--top-level, .menu__item--clean):hover,
+.menu__item.dw-mod:not(.menu__item--top-level, .menu__item--clean):focus,
+.menu__item.dw-mod:not(.menu__item--top-level, .menu__item--clean):active {
+  background-color: #FAFAFA;
+  color: #FF5740;
+}
+.menu__item--top-level {
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+.menu__item--top-level.menu__item--active.dw-mod,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):hover,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):focus,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):active {
+  border-bottom-color: #F2F2F2;
+  color: #F2F2F2;
+}
+.menu__item--top-level.menu__item--active.dw-mod:after,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):hover:after,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):focus:after,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):active:after {
+  color: #F2F2F2;
+}
+.menu__item--top-level.menu__item--active.dw-mod .menu__link,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):hover .menu__link,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):focus .menu__link,
+.menu__item--top-level.dw-mod:not(.menu__item--disabled):active .menu__link {
+  color: #F2F2F2;
+}
+.mini-cart-dropdown.dw-mod {
+  background-color: #FFFFFF;
+  font-size: 14px;
+  color: #333333;
+}
+.mini-cart-dropdown.dw-mod h4 {
+  color: #333333;
+}
+.mini-cart-dropdown.dw-mod .mini-cart-orderlines__name {
+  color: #333333;
+}
+.header-top.dw-mod {
+  background-color: #005F91;
+}
+.header-top.dw-mod .header-menu__link:hover {
+  background-color: #005F91;
+}
+.main-navigation.main-navigation--nav-style.dw-mod {
+  background-color: #FFA826;
+}
+.main-navigation.main-navigation--nav-style.dw-mod .menu__link.dw-mod {
+  color: #F7F7F7;
+}
+.main-navigation.main-navigation--nav-style.dw-mod .menu__link.dw-mod:active,
+.main-navigation.main-navigation--nav-style.dw-mod .menu__link.dw-mod:focus,
+.main-navigation.main-navigation--nav-style.dw-mod .menu__link.dw-mod:hover {
+  color: #F2F2F2;
+}
+.main-navigation.main-navigation--nav-style.dw-mod .menu__link.dw-mod:active,
+.main-navigation.main-navigation--nav-style.dw-mod .menu__link.dw-mod:focus,
+.main-navigation.main-navigation--nav-style.dw-mod .menu__link.dw-mod:hover {
+  background-color: #0074B0;
+}
+.main-navigation.main-navigation--top-style.dw-mod {
+  background-color: #005F91;
+}
+.main-navigation.main-navigation--top-style.dw-mod .menu__link.dw-mod {
+  color: #F7F7F7;
+}
+.main-navigation.main-navigation--top-style.dw-mod .menu__link.dw-mod:active,
+.main-navigation.main-navigation--top-style.dw-mod .menu__link.dw-mod:focus,
+.main-navigation.main-navigation--top-style.dw-mod .menu__link.dw-mod:hover {
+  color: #F2F2F2;
+}
+.main-navigation.main-navigation--top-style.dw-mod .menu__link.dw-mod:active,
+.main-navigation.main-navigation--top-style.dw-mod .menu__link.dw-mod:focus,
+.main-navigation.main-navigation--top-style.dw-mod .menu__link.dw-mod:hover {
+  background-color: #005F91;
+}
+.mobile-navigation.dw-mod {
+  background-color: #FFFFFF;
+}
+.menu-mobile__link.dw-mod,
+.mobile-navigation__link.dw-mod {
+  text-align: left;
+  font-family: "Abel";
+  font-size: 14px;
+  font-weight: regular;
+  line-height: 1.4em;
+  text-transform: uppercase;
+  color: #333333;
+}
+.expand-trigger ~ .menu-mobile__trigger:before {
+  color: #333333;
+}
+.mobile-navigation.dw-mod div.btn.dw-mod,
+.mobile-navigation.dw-mod label.btn.dw-mod,
+.mobile-navigation.dw-mod .circle-icon-btn.dw-mod,
+.menu-mobile__link--closed:before {
+  color: #333333;
+}
+.mobile-navigation.dw-mod .circle-icon-btn.dw-mod:after {
+  border-color: #333333;
+}
+.mobile-navigation__link.dw-mod:hover,
+.mobile-navigation__link.dw-mod:focus,
+.mobile-navigation__link.dw-mod:active {
+  background-color: #F6F6F6;
+  color: #121212;
+}
+.menu-mobile__link--active.dw-mod:not(.is-submenu),
+.menu-mobile__link.dw-mod:hover:not(.is-submenu),
+.menu-mobile__link.dw-mod:focus:not(.is-submenu),
+.menu-mobile__link.dw-mod:active:not(.is-submenu) {
+  background-color: #F6F6F6;
+  color: #121212;
+}
+.menu-mobile__link--active.dw-mod,
+.menu-mobile__link.dw-mod:hover,
+.menu-mobile__link.dw-mod:focus,
+.menu-mobile__link.dw-mod:active {
+  background-color: #F6F6F6;
+  color: #121212;
+}
+.menu-mobile__link--highlighted.dw-mod,
+.menu-mobile__link--highlighted.dw-mod:hover,
+.menu-mobile__link--highlighted.dw-mod:focus,
+.menu-mobile__link--highlighted.dw-mod:active {
+  background-color: #F6F6F6;
+  color: #121212;
+}
+.footer.dw-mod {
+  background-color: #3B3B3B;
+  color: #FFFFFF;
+}
+.footer__heading.dw-mod {
+  background-color: #3B3B3B;
+  color: #FFFFFF;
+}
+.footer.dw-mod .collection.dw-mod a {
+  background-color: #3B3B3B;
+  color: #FFFFFF;
+}
+.product-thumbs__item.dw-mod:hover,
+.product-thumbs__item--active.dw-mod {
+  border: 4px solid #0085CA;
+}
+.stickers-container__tag--sale.dw-mod {
+  background-color: #FF9900;
+  font-family: "Amaranth";
+  font-weight: regular;
+  color: #FFFFFF;
+  line-height: 1.8em;
+  text-transform: uppercase;
+}
+.stickers-container__tag--sale.dw-mod:not(.stickers-container__tag--micro) {
+  font-size: 18px;
+}
+.stickers-container__tag--new.dw-mod {
+  background-color: #3467B0;
+  font-family: "Amaranth";
+  font-weight: regular;
+  color: #333333;
+  line-height: 1.4em;
+  border-radius: 0 5px 5px 0;
+}
+.stickers-container__tag--new.dw-mod:not(.stickers-container__tag--micro) {
+  font-size: 14px;
+}
+.stickers-container__tag--custom.dw-mod {
+  background-color: #000000;
+  font-family: "Abril Fatface";
+  font-weight: regular;
+  color: #FFFFFF;
+}
+.stickers-container__tag--custom.dw-mod:not(.stickers-container__tag--micro) {
+  font-size: 17px;
+}
+.stickers-container__tag--custom.dw-mod:not(.stickers-container__tag--micro) {
+  line-height: 2em;
+}
+.receipt__header.dw-mod {
+  background-color: #0085CA !important;
+}
+.receipt__header.dw-mod * {
+  color: #FFFFFF !important;
+}
+.mini-cart-update .menu-tools__link.dw-mod {
+  color: #fff;
+}

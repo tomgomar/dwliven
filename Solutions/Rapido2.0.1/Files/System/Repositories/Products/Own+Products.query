@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query>
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="GroupNames" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.UserManagement.Context:CustomerNumber" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.Ecommerce.Context:LanguageID" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Contains">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.Ecommerce.Context:ShopID" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+</Query>
