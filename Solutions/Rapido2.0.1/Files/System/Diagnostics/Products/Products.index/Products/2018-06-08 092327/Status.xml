@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Status>
+  <StartTime Ticks="636640466076537314" Humanized="2018-06-08 09:23:27" />
+  <EndTime Ticks="636640466117276237" Humanized="2018-06-08 09:23:31" />
+  <Runtime>4355</Runtime>
+  <Count>0</Count>
+  <TotalCount>0</TotalCount>
+  <State>Failed</State>
+  <Fail>
+    <Reason>Product index builder experienced a fatal error.</Reason>
+    <ExceptionMessage>El proceso no puede obtener acceso al archivo 'D:\DW9Projects\0-GitProjects\dwliven\Solutions\Rapido2.0.1\Files\System\Diagnostics\Products\Products.index\Products secondary\2018-06-08 092329\Status.xml' porque está siendo utilizado en otro proceso.</ExceptionMessage>
+    <ExceptionStackTrace>   en System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   en System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   en System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   en System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   en System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   en System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   en System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   en System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   en Dynamicweb.Diagnostics.Tracking.Status.SaveOrUpdate(String folderPath)
+   en Dynamicweb.Ecommerce.Indexing.ProductIndexBuilder.LoadSettings()
+   en Dynamicweb.Ecommerce.Indexing.ProductIndexBuilder.Build(IIndexWriter writer, Tracker tracker)</ExceptionStackTrace>
+  </Fail>
+  <LogInformation>Closed index writer.</LogInformation>
+  <Meta>
+    <Build>Products</Build>
+  </Meta>
+</Status>
