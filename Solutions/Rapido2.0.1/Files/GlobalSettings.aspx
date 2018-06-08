@@ -7,7 +7,7 @@
       <Partner>Dynamicweb Software A/S</Partner>
       <Email>noreply@dynamicweb.dk</Email>
       <CopyrightMetaInformation>Dynamicweb Software A/S</CopyrightMetaInformation>
-      <SolutionLastReportDate>2018-06-05 13:34:31</SolutionLastReportDate>
+      <SolutionLastReportDate>2018-06-07 12:22:57</SolutionLastReportDate>
       <SolutionFilesize>150616</SolutionFilesize>
       <SolutionDatabaseSize>0</SolutionDatabaseSize>
       <SolutionLastFileSizeReportDate>2018-06-06 11:08:50</SolutionLastFileSizeReportDate>
