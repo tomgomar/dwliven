@@ -7,14 +7,17 @@
   <key name="Add to cart">
     <translation culture="da-DK"><![CDATA[Læg i kurv]]></translation>
     <translation culture="en-GB"><![CDATA[Add to cart]]></translation>
+    <translation culture="en-CA"><![CDATA[Add to cart]]></translation>
   </key>
   <key name="Product">
     <translation culture="da-DK"><![CDATA[Produkt]]></translation>
     <translation culture="en-GB"><![CDATA[Product]]></translation>
+    <translation culture="en-CA"><![CDATA[Product]]></translation>
   </key>
   <key name="Qty">
     <translation culture="da-DK"><![CDATA[Antal]]></translation>
     <translation culture="en-GB"><![CDATA[Qty]]></translation>
+    <translation culture="en-CA"><![CDATA[Qty]]></translation>
   </key>
   <key name="Edit cart">
     <translation culture="da-DK"><![CDATA[Rediger kurv]]></translation>
@@ -23,6 +26,7 @@
   <key name="Proceed to checkout">
     <translation culture="da-DK"><![CDATA[Gå til kassen]]></translation>
     <translation culture="en-GB"><![CDATA[Proceed to checkout]]></translation>
+    <translation culture="en-CA"><![CDATA[Proceed to checkout]]></translation>
   </key>
   <key name="Description">
     <translation culture="da-DK"><![CDATA[Beskrivelse]]></translation>
@@ -43,6 +47,7 @@
   <key name="Price">
     <translation culture="da-DK"><![CDATA[Pris]]></translation>
     <translation culture="en-GB"><![CDATA[Price]]></translation>
+    <translation culture="en-CA"><![CDATA[Price]]></translation>
   </key>
   <key name="Change">
     <translation culture="da-DK"><![CDATA[Rediger]]></translation>
@@ -55,6 +60,7 @@
   <key name="Delivery">
     <translation culture="da-DK"><![CDATA[Levering]]></translation>
     <translation culture="en-GB"><![CDATA[Delivery]]></translation>
+    <translation culture="en-CA"><![CDATA[Delivery]]></translation>
   </key>
   <key name="Payment">
     <translation culture="da-DK"><![CDATA[Betalingsmetode]]></translation>
@@ -111,6 +117,7 @@
   <key name="Search products">
     <translation culture="da-DK"><![CDATA[Søg efter produkt]]></translation>
     <translation culture="en-GB"><![CDATA[Search products]]></translation>
+    <translation culture="en-CA"><![CDATA[Search products]]></translation>
   </key>
   <key name="News">
     <translation culture="da-DK"><![CDATA[Nyheder]]></translation>
@@ -123,22 +130,27 @@
   <key name="Password">
     <translation culture="da-DK"><![CDATA[Kodeord]]></translation>
     <translation culture="en-GB"><![CDATA[Password]]></translation>
+    <translation culture="en-CA"><![CDATA[Password]]></translation>
   </key>
   <key name="Remember me">
     <translation culture="da-DK"><![CDATA[Husk mig]]></translation>
     <translation culture="en-GB"><![CDATA[Remember me]]></translation>
+    <translation culture="en-CA"><![CDATA[Remember me]]></translation>
   </key>
   <key name="Sign in">
     <translation culture="da-DK"><![CDATA[Log ind]]></translation>
     <translation culture="en-GB"><![CDATA[Sign in]]></translation>
+    <translation culture="en-CA"><![CDATA[Sign in]]></translation>
   </key>
   <key name="Your email address">
     <translation culture="da-DK"><![CDATA[Din emailadresse]]></translation>
     <translation culture="en-GB"><![CDATA[Your email address]]></translation>
+    <translation culture="en-CA"><![CDATA[Your email address]]></translation>
   </key>
   <key name="Mailing list">
     <translation culture="da-DK"><![CDATA[Nyhedsbrev]]></translation>
     <translation culture="en-GB"><![CDATA[Mailing list]]></translation>
+    <translation culture="en-CA"><![CDATA[Mailing list]]></translation>
   </key>
   <key name="Contact us">
     <translation culture="da-DK"><![CDATA[Kontakt os]]></translation>
@@ -167,10 +179,12 @@
   <key name="Sign up if you would like to receive occasional treats from us">
     <translation culture="da-DK"><![CDATA[Tilmeld dig hvis du vil modtage vores nyhedsbrev]]></translation>
     <translation culture="en-GB"><![CDATA[Sign up if you would like to receive occasional treats from us]]></translation>
+    <translation culture="en-CA"><![CDATA[Sign up if you would like to receive occasional treats from us]]></translation>
   </key>
   <key name="Email">
     <translation culture="da-DK"><![CDATA[Email]]></translation>
     <translation culture="en-GB"><![CDATA[Email]]></translation>
+    <translation culture="en-CA"><![CDATA[Email]]></translation>
   </key>
   <key name="Logout">
     <translation culture="da-DK"><![CDATA[Log ud]]></translation>
@@ -235,6 +249,7 @@
   <key name="Total">
     <translation culture="da-DK"><![CDATA[I alt]]></translation>
     <translation culture="en-GB"><![CDATA[Total]]></translation>
+    <translation culture="en-CA"><![CDATA[Total]]></translation>
   </key>
   <key name="Change shipping and payment method">
     <translation culture="da-DK"><![CDATA[Rediger leverings- og betalingsmetode]]></translation>
@@ -399,6 +414,7 @@
   <key name="Products">
     <translation culture="da-DK"><![CDATA[Produkter]]></translation>
     <translation culture="en-GB"><![CDATA[Products]]></translation>
+    <translation culture="en-CA"><![CDATA[Products]]></translation>
   </key>
   <key name="Any product">
     <translation culture="da-DK"><![CDATA[Alle produkter]]></translation>
@@ -595,10 +611,12 @@
   <key name="Social links">
     <translation culture="da-DK"><![CDATA[Sociale links]]></translation>
     <translation culture="en-GB"><![CDATA[Social links]]></translation>
+    <translation culture="en-CA"><![CDATA[Social links]]></translation>
   </key>
   <key name="Sort by">
     <translation culture="da-DK"><![CDATA[Sortering]]></translation>
     <translation culture="en-GB"><![CDATA[Sort by]]></translation>
+    <translation culture="en-CA"><![CDATA[Sort by]]></translation>
   </key>
   <key name="Price low-high">
     <translation culture="da-DK"><![CDATA[Pris lav-høj]]></translation>
@@ -615,6 +633,7 @@
   <key name="Default">
     <translation culture="da-DK"><![CDATA[Standard]]></translation>
     <translation culture="en-GB"><![CDATA[Default]]></translation>
+    <translation culture="en-CA"><![CDATA[Default]]></translation>
   </key>
   <key name="Reorder">
     <translation culture="da-DK"><![CDATA[Genbestil]]></translation>
@@ -671,6 +690,7 @@
   <key name="Forgot your password?">
     <translation culture="da-DK"><![CDATA[Har du glemt dit kodeord?]]></translation>
     <translation culture="en-GB"><![CDATA[Forgot your password?]]></translation>
+    <translation culture="en-CA"><![CDATA[Forgot your password?]]></translation>
   </key>
   <key name="Not a user yet?">
     <translation culture="da-DK"><![CDATA[Er du ikke bruger endnu?]]></translation>
@@ -794,6 +814,7 @@
   <key name="Weight">
     <translation culture="en-GB"><![CDATA[Weight]]></translation>
     <translation culture="da-DK"><![CDATA[Vægt]]></translation>
+    <translation culture="en-CA"><![CDATA[Weight]]></translation>
   </key>
   <key name="Volume">
     <translation culture="en-GB"><![CDATA[Volume]]></translation>
@@ -1326,6 +1347,7 @@
   <key name="Empty cart">
     <translation culture="en-GB"><![CDATA[Empty cart]]></translation>
     <translation culture="da-DK"><![CDATA[Tøm kurven]]></translation>
+    <translation culture="en-CA"><![CDATA[Empty cart]]></translation>
   </key>
   <key name="You used">
     <translation culture="en-GB"><![CDATA[You used]]></translation>
@@ -1446,6 +1468,7 @@
   <key name="View">
     <translation culture="da-DK"><![CDATA[Vis]]></translation>
     <translation culture="en-GB"><![CDATA[View]]></translation>
+    <translation culture="en-CA"><![CDATA[View]]></translation>
   </key>
   <key name="Are you sure to cancel request">
     <translation culture="da-DK"><![CDATA[Er du sikker på at du vil fortryde reklamationen]]></translation>
@@ -1662,6 +1685,7 @@
   <key name="Type">
     <translation culture="da-DK"><![CDATA[Type]]></translation>
     <translation culture="en-GB"><![CDATA[Type]]></translation>
+    <translation culture="en-CA"><![CDATA[Type]]></translation>
   </key>
   <key name="Buy all">
     <translation culture="da-DK"><![CDATA[Køb alle]]></translation>
@@ -1782,6 +1806,7 @@
   <key name="Please select variant!">
     <translation culture="en-GB"><![CDATA[Please select variant!]]></translation>
     <translation culture="da-DK"><![CDATA[Vælg venligst en variant!]]></translation>
+    <translation culture="en-CA"><![CDATA[Please select variant!]]></translation>
   </key>
   <key name="Please select variant">
     <translation culture="en-GB"><![CDATA[Please select variant]]></translation>
@@ -1790,22 +1815,27 @@
   <key name="Create account">
     <translation culture="en-GB"><![CDATA[Create account]]></translation>
     <translation culture="da-DK"><![CDATA[Opret konto]]></translation>
+    <translation culture="en-CA"><![CDATA[Create account]]></translation>
   </key>
   <key name="My Profile">
     <translation culture="en-GB"><![CDATA[My Profile]]></translation>
     <translation culture="da-DK"><![CDATA[Min profil]]></translation>
+    <translation culture="en-CA"><![CDATA[My Profile]]></translation>
   </key>
   <key name="My Orders">
     <translation culture="en-GB"><![CDATA[My Orders]]></translation>
     <translation culture="da-DK"><![CDATA[Mine ordrer]]></translation>
+    <translation culture="en-CA"><![CDATA[My Orders]]></translation>
   </key>
   <key name="My Favorites">
     <translation culture="en-GB"><![CDATA[My Favorites]]></translation>
     <translation culture="da-DK"><![CDATA[Mine favoritter]]></translation>
+    <translation culture="en-CA"><![CDATA[My Favorites]]></translation>
   </key>
   <key name="Shopping cart">
     <translation culture="en-GB"><![CDATA[Shopping cart]]></translation>
     <translation culture="da-DK"><![CDATA[Indkøbskurv]]></translation>
+    <translation culture="en-CA"><![CDATA[Shopping cart]]></translation>
   </key>
   <key name="ItemPublisher:Edit.SaveError">
     <translation culture="en-GB"><![CDATA[Item not saved!]]></translation>
@@ -1814,14 +1844,17 @@
   <key name="Filters">
     <translation culture="en-GB"><![CDATA[Filters]]></translation>
     <translation culture="da-DK"><![CDATA[Filtre]]></translation>
+    <translation culture="en-CA"><![CDATA[Filters]]></translation>
   </key>
   <key name="Select filters">
     <translation culture="en-GB"><![CDATA[Select filters]]></translation>
     <translation culture="da-DK"><![CDATA[Vælg filtre]]></translation>
+    <translation culture="en-CA"><![CDATA[Select filters]]></translation>
   </key>
   <key name="Close filters">
     <translation culture="en-GB"><![CDATA[Close filters]]></translation>
     <translation culture="da-DK"><![CDATA[Luk filtre]]></translation>
+    <translation culture="en-CA"><![CDATA[Close filters]]></translation>
   </key>
   <key name="Products found">
     <translation culture="en-GB"><![CDATA[Products found]]></translation>
@@ -1838,10 +1871,12 @@
   <key name="Remove filter">
     <translation culture="en-GB"><![CDATA[Remove filter]]></translation>
     <translation culture="da-DK"><![CDATA[Fjern filter]]></translation>
+    <translation culture="en-CA"><![CDATA[Remove filter]]></translation>
   </key>
   <key name="Reset all filters">
     <translation culture="en-GB"><![CDATA[Reset all filters]]></translation>
     <translation culture="da-DK"><![CDATA[Gendan alle filtre]]></translation>
+    <translation culture="en-CA"><![CDATA[Reset all filters]]></translation>
   </key>
   <key name="Click on a selectable element to add a comment">
     <translation culture="en-GB"><![CDATA[Click on a selectable element to add a comment]]></translation>
@@ -1906,6 +1941,7 @@
   <key name="No">
     <translation culture="en-GB"><![CDATA[No]]></translation>
     <translation culture="da-DK"><![CDATA[Nej]]></translation>
+    <translation culture="en-CA"><![CDATA[No]]></translation>
   </key>
   <key name="Published until">
     <translation culture="en-GB"><![CDATA[Published until]]></translation>
@@ -1922,6 +1958,7 @@
   <key name="Yes">
     <translation culture="en-GB"><![CDATA[Yes]]></translation>
     <translation culture="da-DK"><![CDATA[Ja]]></translation>
+    <translation culture="en-CA"><![CDATA[Yes]]></translation>
   </key>
   <key name="Get link">
     <translation culture="en-GB"><![CDATA[Get link]]></translation>
@@ -1942,18 +1979,22 @@
   <key name="Brand">
     <translation culture="en-GB"><![CDATA[Brand]]></translation>
     <translation culture="da-DK"><![CDATA[Mærke]]></translation>
+    <translation culture="en-CA"><![CDATA[Brand]]></translation>
   </key>
   <key name="Color">
     <translation culture="en-GB"><![CDATA[Color]]></translation>
     <translation culture="da-DK"><![CDATA[Farve]]></translation>
+    <translation culture="en-CA"><![CDATA[Color]]></translation>
   </key>
   <key name="Material">
     <translation culture="en-GB"><![CDATA[Material]]></translation>
     <translation culture="da-DK"><![CDATA[Materiale]]></translation>
+    <translation culture="en-CA"><![CDATA[Material]]></translation>
   </key>
   <key name="View all">
     <translation culture="en-GB"><![CDATA[View all]]></translation>
     <translation culture="da-DK"><![CDATA[Vis alle]]></translation>
+    <translation culture="en-CA"><![CDATA[View all]]></translation>
   </key>
   <key name="My profile">
     <translation culture="en-GB"><![CDATA[My profile]]></translation>
@@ -2042,10 +2083,12 @@
   <key name="Go">
     <translation culture="en-GB"><![CDATA[Go]]></translation>
     <translation culture="da-DK"><![CDATA[Tilmeld]]></translation>
+    <translation culture="en-CA"><![CDATA[Go]]></translation>
   </key>
   <key name="No products found">
     <translation culture="en-GB"><![CDATA[No products found]]></translation>
     <translation culture="da-DK"><![CDATA[Ingen søgeresultater fundet]]></translation>
+    <translation culture="en-CA"><![CDATA[No products found]]></translation>
   </key>
   <key name="Your search gave 0 results">
     <translation culture="en-GB"><![CDATA[Your search gave 0 results]]></translation>
@@ -2480,14 +2523,17 @@
   <key name="Load">
     <translation culture="en-GB"><![CDATA[Load]]></translation>
     <translation culture="da-DK"><![CDATA[Hent]]></translation>
+    <translation culture="en-CA"><![CDATA[Load]]></translation>
   </key>
   <key name="more">
     <translation culture="en-GB"><![CDATA[more]]></translation>
     <translation culture="da-DK"><![CDATA[mere]]></translation>
+    <translation culture="en-CA"><![CDATA[more]]></translation>
   </key>
   <key name="Return to top">
     <translation culture="en-GB"><![CDATA[Return to top]]></translation>
     <translation culture="da-DK"><![CDATA[Tilbage til toppen]]></translation>
+    <translation culture="en-CA"><![CDATA[Return to top]]></translation>
   </key>
   <key name="Something went wrong.">
     <translation culture="en-GB"><![CDATA[Something went wrong.]]></translation>
@@ -2644,10 +2690,12 @@
   <key name="Eco">
     <translation culture="en-GB"><![CDATA[Eco]]></translation>
     <translation culture="da-DK"><![CDATA[Eco]]></translation>
+    <translation culture="en-CA"><![CDATA[Eco]]></translation>
   </key>
   <key name="Format">
     <translation culture="en-GB"><![CDATA[Format]]></translation>
     <translation culture="da-DK"><![CDATA[Format]]></translation>
+    <translation culture="en-CA"><![CDATA[Format]]></translation>
   </key>
   <key name="name">
     <translation culture="en-GB"><![CDATA[Name]]></translation>
@@ -2800,14 +2848,17 @@
   <key name="Price high - low">
     <translation culture="en-GB"><![CDATA[Price high - low]]></translation>
     <translation culture="da-DK"><![CDATA[Pris høj - lav]]></translation>
+    <translation culture="en-CA"><![CDATA[Price high - low]]></translation>
   </key>
   <key name="Price low - high">
     <translation culture="en-GB"><![CDATA[Price low - high]]></translation>
     <translation culture="da-DK"><![CDATA[Pris lav - høj]]></translation>
+    <translation culture="en-CA"><![CDATA[Price low - high]]></translation>
   </key>
   <key name="My Saved cards">
     <translation culture="en-GB"><![CDATA[My Saved cards]]></translation>
     <translation culture="da-DK"><![CDATA[Mine gemte kort]]></translation>
+    <translation culture="en-CA"><![CDATA[My Saved cards]]></translation>
   </key>
   <key name="A - Z">
     <translation culture="en-GB"><![CDATA[A - Z]]></translation>
@@ -2820,6 +2871,7 @@
   <key name="Newest">
     <translation culture="en-GB"><![CDATA[Newest]]></translation>
     <translation culture="da-DK"><![CDATA[Nyest]]></translation>
+    <translation culture="en-CA"><![CDATA[Newest]]></translation>
   </key>
   <key name="Sign in for newsletter and accept">
     <translation culture="en-GB"><![CDATA[Sign in for newsletter and accept]]></translation>
