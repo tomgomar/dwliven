@@ -7,7 +7,7 @@
       <Partner>Dynamicweb Software A/S</Partner>
       <Email>noreply@dynamicweb.dk</Email>
       <CopyrightMetaInformation>Dynamicweb Software A/S</CopyrightMetaInformation>
-      <SolutionLastReportDate>2018-06-18 14:56:18</SolutionLastReportDate>
+      <SolutionLastReportDate>2018-06-24 14:04:49</SolutionLastReportDate>
       <SolutionFilesize>150616</SolutionFilesize>
       <SolutionDatabaseSize>0</SolutionDatabaseSize>
       <SolutionLastFileSizeReportDate>2018-06-06 11:08:50</SolutionLastFileSizeReportDate>
@@ -391,8 +391,6 @@
       <ImagesFolderName>Images</ImagesFolderName>
       <FilesFolderName>Files</FilesFolderName>
     </Filesystem>
-    <dblgnforna>
-    </dblgnforna>
     <dblgnfornafe>False</dblgnfornafe>
     <Clustering>
       <LocalMachineName>
@@ -409,10 +407,6 @@
     <AddIns>
       <AllowLoad>True</AllowLoad>
     </AddIns>
-    <InstalledSolutions>
-    </InstalledSolutions>
-    <LicenseInformation>
-    </LicenseInformation>
   </System>
   <Ecom>
     <Picture>

@@ -6,7 +6,7 @@
 *.license
 
 # Ignore settings (se modifican fechas automaticamente)
-GlobalSettings.*
+#GlobalSettings.*
 
 # Ignore indexes
 Diagnostics/ 
