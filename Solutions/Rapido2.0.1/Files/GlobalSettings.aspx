@@ -7,7 +7,7 @@
       <Partner>Dynamicweb Software A/S</Partner>
       <Email>noreply@dynamicweb.dk</Email>
       <CopyrightMetaInformation>Dynamicweb Software A/S</CopyrightMetaInformation>
-      <SolutionLastReportDate>2018-06-24 14:04:49</SolutionLastReportDate>
+      <SolutionLastReportDate>2018-06-27 10:06:22</SolutionLastReportDate>
       <SolutionFilesize>150616</SolutionFilesize>
       <SolutionDatabaseSize>0</SolutionDatabaseSize>
       <SolutionLastFileSizeReportDate>2018-06-06 11:08:50</SolutionLastFileSizeReportDate>
@@ -745,6 +745,21 @@
         <equipment.Reviews>True</equipment.Reviews>
         <equipment.External_reviews>True</equipment.External_reviews>
         <Brand_detail.Document>True</Brand_detail.Document>
+        <ProductoZanuy.Ecologico>True</ProductoZanuy.Ecologico>
+        <ProductoZanuy.Libre_de_gluten>True</ProductoZanuy.Libre_de_gluten>
+        <ProductoZanuy.Aceite_de_girasol>True</ProductoZanuy.Aceite_de_girasol>
+        <ProductoZanuy.Sin_aromas>True</ProductoZanuy.Sin_aromas>
+        <ProductoZanuy.Sin_colorantes>True</ProductoZanuy.Sin_colorantes>
+        <ProductoZanuy.Sin_grasas_trans>True</ProductoZanuy.Sin_grasas_trans>
+        <ProductoZanuy.Vegetariano>True</ProductoZanuy.Vegetariano>
+        <CategoriaZanuy.Tamanio>True</CategoriaZanuy.Tamanio>
+        <CategoriaZanuy.Ecologico>True</CategoriaZanuy.Ecologico>
+        <CategoriaZanuy.Sin_gluten>True</CategoriaZanuy.Sin_gluten>
+        <CategoriaZanuy.Sin_aromas>True</CategoriaZanuy.Sin_aromas>
+        <CategoriaZanuy.Sin_grasas_trans>True</CategoriaZanuy.Sin_grasas_trans>
+        <CategoriaZanuy.Sin_colorantes>True</CategoriaZanuy.Sin_colorantes>
+        <CategoriaZanuy.Aceite_de_girasol>True</CategoriaZanuy.Aceite_de_girasol>
+        <CategoriaZanuy.Vegetariano>True</CategoriaZanuy.Vegetariano>
       </Language>
       <Variant>
         <ClothingDetail.Material>True</ClothingDetail.Material>
@@ -786,6 +801,21 @@
         <equipment.Reviews>True</equipment.Reviews>
         <equipment.External_reviews>True</equipment.External_reviews>
         <Brand_detail.Document>True</Brand_detail.Document>
+        <ProductoZanuy.Ecologico>True</ProductoZanuy.Ecologico>
+        <ProductoZanuy.Libre_de_gluten>True</ProductoZanuy.Libre_de_gluten>
+        <ProductoZanuy.Aceite_de_girasol>True</ProductoZanuy.Aceite_de_girasol>
+        <ProductoZanuy.Sin_aromas>True</ProductoZanuy.Sin_aromas>
+        <ProductoZanuy.Sin_colorantes>True</ProductoZanuy.Sin_colorantes>
+        <ProductoZanuy.Sin_grasas_trans>True</ProductoZanuy.Sin_grasas_trans>
+        <ProductoZanuy.Vegetariano>True</ProductoZanuy.Vegetariano>
+        <CategoriaZanuy.Tamanio>True</CategoriaZanuy.Tamanio>
+        <CategoriaZanuy.Ecologico>True</CategoriaZanuy.Ecologico>
+        <CategoriaZanuy.Sin_gluten>True</CategoriaZanuy.Sin_gluten>
+        <CategoriaZanuy.Sin_aromas>True</CategoriaZanuy.Sin_aromas>
+        <CategoriaZanuy.Sin_grasas_trans>True</CategoriaZanuy.Sin_grasas_trans>
+        <CategoriaZanuy.Sin_colorantes>True</CategoriaZanuy.Sin_colorantes>
+        <CategoriaZanuy.Aceite_de_girasol>True</CategoriaZanuy.Aceite_de_girasol>
+        <CategoriaZanuy.Vegetariano>True</CategoriaZanuy.Vegetariano>
       </Variant>
     </ProductCategoriesLanguageControl>
     <GiftCards>
