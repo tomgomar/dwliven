@@ -13,8 +13,126 @@
           <ConstantExpression Value="SHOP7" Type="System.String[]" />
         </Right>
       </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <TermExpression Value="True" DisplayValue="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Ecologico" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterEco" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Sin_gluten" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterLibreGluten" />
+        </Right>
+      </BinaryExpression>
+      <GroupExpression Operator="Or">
+        <BinaryExpression Operator="Contains">
+          <Left>
+            <FieldExpression Field="ProductName_Search" />
+          </Left>
+          <Right>
+            <ParameterExpression Name="Search" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="Contains">
+          <Left>
+            <FieldExpression Field="ProductNumber_Search" />
+          </Left>
+          <Right>
+            <ParameterExpression Name="Search" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="Contains">
+          <Left>
+            <FieldExpression Field="freetext" />
+          </Left>
+          <Right>
+            <ParameterExpression Name="Search" />
+          </Right>
+        </BinaryExpression>
+      </GroupExpression>
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="ParentGroupIDs" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="GroupID" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Aceite_de_girasol" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterAceiteGirasol" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Sin_aromas" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterSinAromas" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Sin_colorantes" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterSinColorantes" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Sin_grasas_trans" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterSinTrans" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Vegetariano" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterVegetariano" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaZanuy|Tamanio" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="ParameterWeight" />
+        </Right>
+      </BinaryExpression>
     </GroupExpression>
   </Expressions>
   <ViewFields />
   <ViewLanguages />
+  <Parameters>
+    <Parameter Name="ParameterWeight" Type="System.Int32[]" DefaultValue="" />
+    <Parameter Name="ParameterLibreGluten" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="ParameterEco" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="Search" Type="System.String" DefaultValue="" />
+    <Parameter Name="GroupID" Type="System.String[]" DefaultValue="" />
+    <Parameter Name="ParameterAceiteGirasol" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="ParameterSinAromas" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="ParameterSinColorantes" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="ParameterSinTrans" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="ParameterVegetariano" Type="System.Boolean[]" DefaultValue="" />
+  </Parameters>
 </Query>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Facets Name="FacetsZanuy">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="ProductsZanuy.query" />
+  <Facet Name="Ecológico" Type="Field" Field="ProductCategory|CategoriaZanuy|Ecologico" QueryParameter="ParameterEco">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Aceite de girasol" Type="Field" Field="ProductCategory|CategoriaZanuy|Aceite_de_girasol" QueryParameter="ParameterAceiteGirasol">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Sin aromas" Type="Field" Field="ProductCategory|CategoriaZanuy|Sin_aromas" QueryParameter="ParameterSinAromas">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Sin colorantes" Type="Field" Field="ProductCategory|CategoriaZanuy|Sin_colorantes" QueryParameter="ParameterSinColorantes">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Sin gluten" Type="Field" Field="ProductCategory|CategoriaZanuy|Sin_gluten" QueryParameter="ParameterLibreGluten">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Sin grasas trans" Type="Field" Field="ProductCategory|CategoriaZanuy|Sin_grasas_trans" QueryParameter="ParameterSinTrans">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Vegetariano" Type="Field" Field="ProductCategory|CategoriaZanuy|Vegetariano" QueryParameter="ParameterVegetariano">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Tamaño" Type="Field" Field="ProductCategory|CategoriaZanuy|Tamanio" QueryParameter="ParameterWeight">
+    <RenderType Name="Range" SystemName="Range" />
+  </Facet>
+</Facets>
