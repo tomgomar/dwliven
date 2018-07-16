@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Status>
+  <StartTime Ticks="636669858399236825" Humanized="2018-07-12 09:50:39" />
+  <EndTime Ticks="636669858402597017" Humanized="2018-07-12 09:50:40" />
+  <Runtime>338</Runtime>
+  <Count>31</Count>
+  <TotalCount>31</TotalCount>
+  <State>Completed</State>
+  <Fail>
+    <Reason />
+    <ExceptionMessage />
+    <ExceptionStackTrace />
+  </Fail>
+  <LogInformation>Completed (31 / 31).</LogInformation>
+  <Meta>
+    <Build>Files</Build>
+    <CurrentFile>C:\DWprojects\GitProjects\dwliven\Solutions\Rapido2.0.1\Files\RecursosDigitales\Otros\redbikes2.jpg</CurrentFile>
+  </Meta>
+</Status>

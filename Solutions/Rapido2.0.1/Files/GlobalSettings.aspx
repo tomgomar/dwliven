@@ -7,7 +7,7 @@
       <Partner>Dynamicweb Software A/S</Partner>
       <Email>noreply@dynamicweb.dk</Email>
       <CopyrightMetaInformation>Dynamicweb Software A/S</CopyrightMetaInformation>
-      <SolutionLastReportDate>2018-07-01 06:00:22</SolutionLastReportDate>
+      <SolutionLastReportDate>2018-07-11 09:27:28</SolutionLastReportDate>
       <SolutionFilesize>150616</SolutionFilesize>
       <SolutionDatabaseSize>0</SolutionDatabaseSize>
       <SolutionLastFileSizeReportDate>2018-06-06 11:08:50</SolutionLastFileSizeReportDate>
@@ -99,7 +99,7 @@
       <DisableTemplateUpdates>False</DisableTemplateUpdates>
     </Updates>
     <LastSeenVersion>
-      <Version>9.4.12</Version>
+      <Version>9.4.15</Version>
     </LastSeenVersion>
     <Dictionary>
       <HideOldTranslationButton>false</HideOldTranslationButton>
@@ -118,6 +118,9 @@
       <EcomDescriptionEditorConfigID>1</EcomDescriptionEditorConfigID>
       <EcomTeaserEditorConfigID>1</EcomTeaserEditorConfigID>
     </ProviderBasedEditor>
+    <Permissions>
+      <UseNew>1</UseNew>
+    </Permissions>
   </Settings>
   <Modules>
     <Filemanager>
@@ -151,6 +154,7 @@
         </ValideForDays>
       </AutoLoginCookie>
       <Impersonation>OnlyOrders</Impersonation>
+      <ImpersonationFullExceptPermissions>False</ImpersonationFullExceptPermissions>
     </Users>
     <Extranet>
       <PasswordExpireDays>never</PasswordExpireDays>
@@ -187,6 +191,7 @@
         <SplitTestsSendTo>5</SplitTestsSendTo>
         <SplitTestsSendCRThreshold>5</SplitTestsSendCRThreshold>
         <SplitTestsSendImprovementLimit>20</SplitTestsSendImprovementLimit>
+        <ReturningVisitorsLastSent>12-07-2018 03:01:01</ReturningVisitorsLastSent>
       </Notifications>
       <VisitorEngagement>
         <TimeFrame>14</TimeFrame>
@@ -238,15 +243,16 @@
       </UploadedImages>
       <UploadedCustomFiles>
         <DefineWhere>OnUser</DefineWhere>
-        <FilesFolder>
-        </FilesFolder>
+        <FilesFolder>/Files</FilesFolder>
       </UploadedCustomFiles>
       <ExtranetPasswordSecurity>
         <PeriodLoginFailure>10</PeriodLoginFailure>
         <BlockingPeriod>10</BlockingPeriod>
         <LoginAttempts>3</LoginAttempts>
         <RecoveryTokenTimeout>24</RecoveryTokenTimeout>
+        <SecurityEnable>False</SecurityEnable>
       </ExtranetPasswordSecurity>
+      <UserSmartSearchesCahceRecalculatingInterval>1</UserSmartSearchesCahceRecalculatingInterval>
     </UserManagement>
     <LanguageManagement>
       <DeactivateParagraphOnNew>True</DeactivateParagraphOnNew>
@@ -407,6 +413,7 @@
     <AddIns>
       <AllowLoad>True</AllowLoad>
     </AddIns>
+    <dblgnforna>False</dblgnforna>
   </System>
   <Ecom>
     <Picture>
@@ -466,6 +473,8 @@
       <ConsolidateTaxesForProducts>False</ConsolidateTaxesForProducts>
       <ConsolidateTaxesForOrder>False</ConsolidateTaxesForOrder>
       <AllowEditOrderForUsers>False</AllowEditOrderForUsers>
+      <AllowExceedOriginalOrderPrice>False</AllowExceedOriginalOrderPrice>
+      <DisableDeleteButtonForOrders>False</DisableDeleteButtonForOrders>
     </Order>
     <Cookie>
       <DaysToSave>30</DaysToSave>
@@ -475,19 +484,23 @@
       <CacheProductCollectionMinutes>15</CacheProductCollectionMinutes>
     </ProductGroup>
     <Product>
-      <DontAllowLinksToProductIfNotActive>True</DontAllowLinksToProductIfNotActive>
+      <DontAllowLinksToProductIfNotActive>true</DontAllowLinksToProductIfNotActive>
       <ProductNotActivePage>
       </ProductNotActivePage>
       <DontShowProductIfHasNoPrice>False</DontShowProductIfHasNoPrice>
       <DontShowProductIfNotOnStock>False</DontShowProductIfNotOnStock>
-      <DontUseDefaultLanguageIsNoProductExists>True</DontUseDefaultLanguageIsNoProductExists>
+      <DontUseDefaultLanguageIsNoProductExists>False</DontUseDefaultLanguageIsNoProductExists>
       <DontShowVariantIfNotOnStock>False</DontShowVariantIfNotOnStock>
       <DontAllowLinksToVariantIfNotActive>False</DontAllowLinksToVariantIfNotActive>
-      <ActivateProductsOnAllLanguageVersions>False</ActivateProductsOnAllLanguageVersions>
+      <ActivateProductsOnAllLanguageVersions>true</ActivateProductsOnAllLanguageVersions>
       <DontShowVariantIfHasNoPrice>False</DontShowVariantIfHasNoPrice>
       <MinutesReserved>0</MinutesReserved>
       <ReserveMode>modeCheckout</ReserveMode>
       <ShowVariantDefault>False</ShowVariantDefault>
+      <AllowCombineProductsAsFamily>true</AllowCombineProductsAsFamily>
+      <BulkEditForProductVariant>False</BulkEditForProductVariant>
+      <ShowBackCatalogFields>False</ShowBackCatalogFields>
+      <DisableDeleteGroupsAndProductsBtn4AllUsers>False</DisableDeleteGroupsAndProductsBtn4AllUsers>
     </Product>
     <PageTitle>
       <Fix>PRE</Fix>
@@ -498,7 +511,7 @@
       <ChangeTitle>False</ChangeTitle>
     </PageTitle>
     <Unit>
-      <Volume>mÂ³</Volume>
+      <Volume>m³</Volume>
       <Weight>kg</Weight>
     </Unit>
     <ProductLanguageControl>
@@ -576,6 +589,8 @@
         <translateStatus>False</translateStatus>
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
+        <ProductWorkflowStateId>False</ProductWorkflowStateId>
+        <CustomSticker>False</CustomSticker>
       </Variant>
       <Language>
         <ProductManufacturer>True</ProductManufacturer>
@@ -583,9 +598,9 @@
         <ProductName>True</ProductName>
         <ProductLongDescription>True</ProductLongDescription>
         <quantity>True</quantity>
-        <ProductPrice>True</ProductPrice>
+        <ProductPrice>False</ProductPrice>
         <ProductShortDescription>True</ProductShortDescription>
-        <ProductVolume>True</ProductVolume>
+        <ProductVolume>False</ProductVolume>
         <ProductNumber>True</ProductNumber>
         <test1>True</test1>
         <ProductStockGroup>True</ProductStockGroup>
@@ -594,11 +609,11 @@
         <croporigin>True</croporigin>
         <ProductLink1>True</ProductLink1>
         <ProductLink2>True</ProductLink2>
-        <ProductStock>True</ProductStock>
+        <ProductStock>False</ProductStock>
         <ProductImageSmall>True</ProductImageSmall>
         <ProductActive>True</ProductActive>
         <ProductImageMedium>True</ProductImageMedium>
-        <ProductWeight>True</ProductWeight>
+        <ProductWeight>False</ProductWeight>
         <ProductVATGroup>True</ProductVATGroup>
         <discount>False</discount>
         <rims>False</rims>
@@ -628,7 +643,7 @@
         <FrontDerailleur>True</FrontDerailleur>
         <BackDerailleur>True</BackDerailleur>
         <ProductUpdated>True</ProductUpdated>
-        <Document>True</Document>
+        <Document>False</Document>
         <ProductDefaultPoints>False</ProductDefaultPoints>
         <ProductManufacturerId>False</ProductManufacturerId>
         <ProductShowInProductList>False</ProductShowInProductList>
@@ -651,6 +666,8 @@
         <translateStatus>False</translateStatus>
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
+        <ProductWorkflowStateId>False</ProductWorkflowStateId>
+        <CustomSticker>False</CustomSticker>
       </Language>
       <ChoicesMade>True</ChoicesMade>
     </ProductLanguageControl>
@@ -665,6 +682,7 @@
       <FullCartIsolation>False</FullCartIsolation>
       <UsePreviousCartInsteadOfNewCart>False</UsePreviousCartInsteadOfNewCart>
       <MergeAnonymousCartOnLoggingIn>False</MergeAnonymousCartOnLoggingIn>
+      <AllowDifferentContextDates>False</AllowDifferentContextDates>
     </Cart>
     <UseNew>True</UseNew>
     <C5>
@@ -681,12 +699,16 @@
       <MaxNumberOfProducts>10</MaxNumberOfProducts>
       <CacheProductsMinutes>10</CacheProductsMinutes>
       <CalcProductCountForGroup>true</CalcProductCountForGroup>
+      <ApplyStartAndEndLevelToNavigation>False</ApplyStartAndEndLevelToNavigation>
+      <UseOnlyCustomNavigationProvider>False</UseOnlyCustomNavigationProvider>
+      <CacheProductsMinute>
+      </CacheProductsMinute>
     </Navigation>
     <RelatedProducts>
       <LimitOfLinksToAppearOnTheList>5</LimitOfLinksToAppearOnTheList>
     </RelatedProducts>
     <Users>
-      <IncludeShopIdInExtranetLogIn>on</IncludeShopIdInExtranetLogIn>
+      <IncludeShopIdInExtranetLogIn>1</IncludeShopIdInExtranetLogIn>
     </Users>
     <Price>
       <List>
@@ -752,14 +774,14 @@
         <ProductoZanuy.Sin_colorantes>True</ProductoZanuy.Sin_colorantes>
         <ProductoZanuy.Sin_grasas_trans>True</ProductoZanuy.Sin_grasas_trans>
         <ProductoZanuy.Vegetariano>True</ProductoZanuy.Vegetariano>
-        <CategoriaZanuy.Tamanio>True</CategoriaZanuy.Tamanio>
-        <CategoriaZanuy.Ecologico>True</CategoriaZanuy.Ecologico>
-        <CategoriaZanuy.Sin_gluten>True</CategoriaZanuy.Sin_gluten>
-        <CategoriaZanuy.Sin_aromas>True</CategoriaZanuy.Sin_aromas>
-        <CategoriaZanuy.Sin_grasas_trans>True</CategoriaZanuy.Sin_grasas_trans>
-        <CategoriaZanuy.Sin_colorantes>True</CategoriaZanuy.Sin_colorantes>
-        <CategoriaZanuy.Aceite_de_girasol>True</CategoriaZanuy.Aceite_de_girasol>
-        <CategoriaZanuy.Vegetariano>True</CategoriaZanuy.Vegetariano>
+        <CategoriaZanuy.Tamanio>False</CategoriaZanuy.Tamanio>
+        <CategoriaZanuy.Ecologico>False</CategoriaZanuy.Ecologico>
+        <CategoriaZanuy.Sin_gluten>False</CategoriaZanuy.Sin_gluten>
+        <CategoriaZanuy.Sin_aromas>False</CategoriaZanuy.Sin_aromas>
+        <CategoriaZanuy.Sin_grasas_trans>False</CategoriaZanuy.Sin_grasas_trans>
+        <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
+        <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
+        <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
       </Language>
       <Variant>
         <ClothingDetail.Material>True</ClothingDetail.Material>
@@ -808,14 +830,14 @@
         <ProductoZanuy.Sin_colorantes>True</ProductoZanuy.Sin_colorantes>
         <ProductoZanuy.Sin_grasas_trans>True</ProductoZanuy.Sin_grasas_trans>
         <ProductoZanuy.Vegetariano>True</ProductoZanuy.Vegetariano>
-        <CategoriaZanuy.Tamanio>True</CategoriaZanuy.Tamanio>
-        <CategoriaZanuy.Ecologico>True</CategoriaZanuy.Ecologico>
-        <CategoriaZanuy.Sin_gluten>True</CategoriaZanuy.Sin_gluten>
-        <CategoriaZanuy.Sin_aromas>True</CategoriaZanuy.Sin_aromas>
-        <CategoriaZanuy.Sin_grasas_trans>True</CategoriaZanuy.Sin_grasas_trans>
-        <CategoriaZanuy.Sin_colorantes>True</CategoriaZanuy.Sin_colorantes>
-        <CategoriaZanuy.Aceite_de_girasol>True</CategoriaZanuy.Aceite_de_girasol>
-        <CategoriaZanuy.Vegetariano>True</CategoriaZanuy.Vegetariano>
+        <CategoriaZanuy.Tamanio>False</CategoriaZanuy.Tamanio>
+        <CategoriaZanuy.Ecologico>False</CategoriaZanuy.Ecologico>
+        <CategoriaZanuy.Sin_gluten>False</CategoriaZanuy.Sin_gluten>
+        <CategoriaZanuy.Sin_aromas>False</CategoriaZanuy.Sin_aromas>
+        <CategoriaZanuy.Sin_grasas_trans>False</CategoriaZanuy.Sin_grasas_trans>
+        <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
+        <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
+        <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
       </Variant>
     </ProductCategoriesLanguageControl>
     <GiftCards>
@@ -856,6 +878,7 @@
         <ProductMetaKeywords>False</ProductMetaKeywords>
         <ProductMetaCanonical>False</ProductMetaCanonical>
         <ProductMetaUrl>False</ProductMetaUrl>
+        <ProductWorkflowStateId>False</ProductWorkflowStateId>
       </CommonFields>
       <ProductFields>
         <brand>False</brand>
@@ -870,6 +893,7 @@
         <translateStatus>False</translateStatus>
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
+        <CustomSticker>False</CustomSticker>
       </ProductFields>
       <ProductCategories>
         <ClothingDetail.Material>False</ClothingDetail.Material>
@@ -905,6 +929,14 @@
         <equipment.Front_derailleur>False</equipment.Front_derailleur>
         <equipment.Back_derailleur>False</equipment.Back_derailleur>
         <equipment.External_reviews>False</equipment.External_reviews>
+        <CategoriaZanuy.Tamanio>False</CategoriaZanuy.Tamanio>
+        <CategoriaZanuy.Ecologico>False</CategoriaZanuy.Ecologico>
+        <CategoriaZanuy.Sin_gluten>False</CategoriaZanuy.Sin_gluten>
+        <CategoriaZanuy.Sin_aromas>False</CategoriaZanuy.Sin_aromas>
+        <CategoriaZanuy.Sin_grasas_trans>False</CategoriaZanuy.Sin_grasas_trans>
+        <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
+        <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
+        <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
       </ProductCategories>
     </Required>
     <ReadOnly>
@@ -939,6 +971,7 @@
         <ProductMetaKeywords>False</ProductMetaKeywords>
         <ProductMetaCanonical>False</ProductMetaCanonical>
         <ProductMetaUrl>False</ProductMetaUrl>
+        <ProductWorkflowStateId>False</ProductWorkflowStateId>
       </CommonFields>
       <ProductFields>
         <brand>False</brand>
@@ -953,6 +986,7 @@
         <translateStatus>False</translateStatus>
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
+        <CustomSticker>False</CustomSticker>
       </ProductFields>
       <ProductCategories>
         <ClothingDetail.Material>False</ClothingDetail.Material>
@@ -988,6 +1022,14 @@
         <equipment.Front_derailleur>False</equipment.Front_derailleur>
         <equipment.Back_derailleur>False</equipment.Back_derailleur>
         <equipment.External_reviews>False</equipment.External_reviews>
+        <CategoriaZanuy.Tamanio>False</CategoriaZanuy.Tamanio>
+        <CategoriaZanuy.Ecologico>False</CategoriaZanuy.Ecologico>
+        <CategoriaZanuy.Sin_gluten>False</CategoriaZanuy.Sin_gluten>
+        <CategoriaZanuy.Sin_aromas>False</CategoriaZanuy.Sin_aromas>
+        <CategoriaZanuy.Sin_grasas_trans>False</CategoriaZanuy.Sin_grasas_trans>
+        <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
+        <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
+        <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
       </ProductCategories>
     </ReadOnly>
     <Hidden>
@@ -1022,6 +1064,7 @@
         <ProductMetaKeywords>False</ProductMetaKeywords>
         <ProductMetaCanonical>False</ProductMetaCanonical>
         <ProductMetaUrl>False</ProductMetaUrl>
+        <ProductWorkflowStateId>False</ProductWorkflowStateId>
       </CommonFields>
       <ProductFields>
         <brand>False</brand>
@@ -1036,6 +1079,7 @@
         <translateStatus>False</translateStatus>
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
+        <CustomSticker>False</CustomSticker>
       </ProductFields>
       <ProductCategories>
         <ClothingDetail.Material>False</ClothingDetail.Material>
@@ -1071,6 +1115,14 @@
         <equipment.Front_derailleur>False</equipment.Front_derailleur>
         <equipment.Back_derailleur>False</equipment.Back_derailleur>
         <equipment.External_reviews>False</equipment.External_reviews>
+        <CategoriaZanuy.Tamanio>False</CategoriaZanuy.Tamanio>
+        <CategoriaZanuy.Ecologico>False</CategoriaZanuy.Ecologico>
+        <CategoriaZanuy.Sin_gluten>False</CategoriaZanuy.Sin_gluten>
+        <CategoriaZanuy.Sin_aromas>False</CategoriaZanuy.Sin_aromas>
+        <CategoriaZanuy.Sin_grasas_trans>False</CategoriaZanuy.Sin_grasas_trans>
+        <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
+        <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
+        <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
       </ProductCategories>
     </Hidden>
     <Fields>
@@ -1083,10 +1135,284 @@
         <DynamicwebAppSecretToken>B2AnlqBqny40mmMLBk5tp12Bxw0zMNDiFb68sFF4kRo1</DynamicwebAppSecretToken>
       </Credentials>
     </EconomicIntegration>
+    <Indexing>
+      <DoNotStoreDefaultFields>False</DoNotStoreDefaultFields>
+      <DoNotAnalyzeDefaultFields>False</DoNotAnalyzeDefaultFields>
+    </Indexing>
   </Ecom>
   <ItemTypes>
     <MetadataSource>files</MetadataSource>
     <HasBeenConverted>True</HasBeenConverted>
     <GoogleFontApiKey>AIzaSyC_AeYoZz8_ia1EqDZUILjLkbqEWmm8a_0</GoogleFontApiKey>
   </ItemTypes>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Cart>
+          <AllowDifferentContextDates>
+          </AllowDifferentContextDates>
+        </Cart>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_AllowCombineProductsAsFamily>
+  </ctl00_MainContent_AllowCombineProductsAsFamily>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Indexing>
+          <DoNotStoreDefaultFields>
+          </DoNotStoreDefaultFields>
+        </Indexing>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Indexing>
+          <DoNotAnalyzeDefaultFields>
+          </DoNotAnalyzeDefaultFields>
+        </Indexing>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_ApplyOnliyIfPageIsInPath>
+  </ctl00_MainContent_ApplyOnliyIfPageIsInPath>
+  <ctl00_MainContent_CalcProductCountForGroup>
+  </ctl00_MainContent_CalcProductCountForGroup>
+  <ctl00_MainContent_ApplyStartAndEndLevelToNavigation>
+  </ctl00_MainContent_ApplyStartAndEndLevelToNavigation>
+  <ctl00_MainContent_UseOnlyCustomNavigationProvider>
+  </ctl00_MainContent_UseOnlyCustomNavigationProvider>
+  <ctl00_MainContent_DontUseDefaultLanguageIsNoProductExists>
+  </ctl00_MainContent_DontUseDefaultLanguageIsNoProductExists>
+  <ctl00_MainContent_ActivateProductsOnAllLanguageVersions>
+  </ctl00_MainContent_ActivateProductsOnAllLanguageVersions>
+  <ctl00_MainContent_DontShowProductIfNotOnStock>
+  </ctl00_MainContent_DontShowProductIfNotOnStock>
+  <ctl00_MainContent_DontShowProductIfHasNoPrice>
+  </ctl00_MainContent_DontShowProductIfHasNoPrice>
+  <ctl00_MainContent_DontAllowLinksToProductIfNotActive>
+  </ctl00_MainContent_DontAllowLinksToProductIfNotActive>
+  <ctl00_MainContent_DontShowVariantIfNotOnStock>
+  </ctl00_MainContent_DontShowVariantIfNotOnStock>
+  <ctl00_MainContent_DontShowVariantIfHasNoPrice>
+  </ctl00_MainContent_DontShowVariantIfHasNoPrice>
+  <ctl00_MainContent_DontAllowLinksToVariantIfNotActive>
+  </ctl00_MainContent_DontAllowLinksToVariantIfNotActive>
+  <ctl00_MainContent_ShowVariantDefault>
+  </ctl00_MainContent_ShowVariantDefault>
+  <ctl00_MainContent_CacheProductCollection>
+  </ctl00_MainContent_CacheProductCollection>
+  <ctl00_MainContent_UseDeliveryCountryOnShippingFee>
+  </ctl00_MainContent_UseDeliveryCountryOnShippingFee>
+  <ctl00_MainContent_UseDeliveryCountryOnPaymentFee>
+  </ctl00_MainContent_UseDeliveryCountryOnPaymentFee>
+  <ctl00_MainContent_BulkEditForProductVariant>
+  </ctl00_MainContent_BulkEditForProductVariant>
+  <ctl00_MainContent_ShowBackCatalogFields>
+  </ctl00_MainContent_ShowBackCatalogFields>
+  <ctl00_MainContent_ConsolidateTaxesForProducts>
+  </ctl00_MainContent_ConsolidateTaxesForProducts>
+  <ctl00_MainContent_ConsolidateTaxesForOrder>
+  </ctl00_MainContent_ConsolidateTaxesForOrder>
+  <ctl00_MainContent_AllowEditOrderForUsers>
+  </ctl00_MainContent_AllowEditOrderForUsers>
+  <ctl00_MainContent_AllowExceedOriginalOrderPrice>
+  </ctl00_MainContent_AllowExceedOriginalOrderPrice>
+  <ctl00_MainContent_DisableDeleteButtonForOrders>
+  </ctl00_MainContent_DisableDeleteButtonForOrders>
+  <ctl00_MainContent_DisableDeleteGroupsAndProductsBtn4AllUsers>
+  </ctl00_MainContent_DisableDeleteGroupsAndProductsBtn4AllUsers>
+  <ctl00_MainContent_DisableCreationNewProductVariant>
+  </ctl00_MainContent_DisableCreationNewProductVariant>
+  <ctl00_MainContent_DisableCreationNewGroups>
+  </ctl00_MainContent_DisableCreationNewGroups>
+  <ctl00_MainContent_EditGroupId>
+  </ctl00_MainContent_EditGroupId>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Cart>
+          <AllowDifferentContextDates>
+          </AllowDifferentContextDates>
+        </Cart>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_AllowCombineProductsAsFamily>
+  </ctl00_MainContent_AllowCombineProductsAsFamily>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Indexing>
+          <DoNotStoreDefaultFields>
+          </DoNotStoreDefaultFields>
+        </Indexing>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Indexing>
+          <DoNotAnalyzeDefaultFields>
+          </DoNotAnalyzeDefaultFields>
+        </Indexing>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_ApplyOnliyIfPageIsInPath>
+  </ctl00_MainContent_ApplyOnliyIfPageIsInPath>
+  <ctl00_MainContent_CalcProductCountForGroup>
+  </ctl00_MainContent_CalcProductCountForGroup>
+  <ctl00_MainContent_ApplyStartAndEndLevelToNavigation>
+  </ctl00_MainContent_ApplyStartAndEndLevelToNavigation>
+  <ctl00_MainContent_UseOnlyCustomNavigationProvider>
+  </ctl00_MainContent_UseOnlyCustomNavigationProvider>
+  <ctl00_MainContent_DontUseDefaultLanguageIsNoProductExists>
+  </ctl00_MainContent_DontUseDefaultLanguageIsNoProductExists>
+  <ctl00_MainContent_ActivateProductsOnAllLanguageVersions>
+  </ctl00_MainContent_ActivateProductsOnAllLanguageVersions>
+  <ctl00_MainContent_DontShowProductIfNotOnStock>
+  </ctl00_MainContent_DontShowProductIfNotOnStock>
+  <ctl00_MainContent_DontShowProductIfHasNoPrice>
+  </ctl00_MainContent_DontShowProductIfHasNoPrice>
+  <ctl00_MainContent_DontAllowLinksToProductIfNotActive>
+  </ctl00_MainContent_DontAllowLinksToProductIfNotActive>
+  <ctl00_MainContent_DontShowVariantIfNotOnStock>
+  </ctl00_MainContent_DontShowVariantIfNotOnStock>
+  <ctl00_MainContent_DontShowVariantIfHasNoPrice>
+  </ctl00_MainContent_DontShowVariantIfHasNoPrice>
+  <ctl00_MainContent_DontAllowLinksToVariantIfNotActive>
+  </ctl00_MainContent_DontAllowLinksToVariantIfNotActive>
+  <ctl00_MainContent_ShowVariantDefault>
+  </ctl00_MainContent_ShowVariantDefault>
+  <ctl00_MainContent_CacheProductCollection>
+  </ctl00_MainContent_CacheProductCollection>
+  <ctl00_MainContent_UseDeliveryCountryOnShippingFee>
+  </ctl00_MainContent_UseDeliveryCountryOnShippingFee>
+  <ctl00_MainContent_UseDeliveryCountryOnPaymentFee>
+  </ctl00_MainContent_UseDeliveryCountryOnPaymentFee>
+  <ctl00_MainContent_BulkEditForProductVariant>
+  </ctl00_MainContent_BulkEditForProductVariant>
+  <ctl00_MainContent_ShowBackCatalogFields>
+  </ctl00_MainContent_ShowBackCatalogFields>
+  <ctl00_MainContent_ConsolidateTaxesForProducts>
+  </ctl00_MainContent_ConsolidateTaxesForProducts>
+  <ctl00_MainContent_ConsolidateTaxesForOrder>
+  </ctl00_MainContent_ConsolidateTaxesForOrder>
+  <ctl00_MainContent_AllowEditOrderForUsers>
+  </ctl00_MainContent_AllowEditOrderForUsers>
+  <ctl00_MainContent_AllowExceedOriginalOrderPrice>
+  </ctl00_MainContent_AllowExceedOriginalOrderPrice>
+  <ctl00_MainContent_DisableDeleteButtonForOrders>
+  </ctl00_MainContent_DisableDeleteButtonForOrders>
+  <ctl00_MainContent_DisableDeleteGroupsAndProductsBtn4AllUsers>
+  </ctl00_MainContent_DisableDeleteGroupsAndProductsBtn4AllUsers>
+  <ctl00_MainContent_DisableCreationNewProductVariant>
+  </ctl00_MainContent_DisableCreationNewProductVariant>
+  <ctl00_MainContent_DisableCreationNewGroups>
+  </ctl00_MainContent_DisableCreationNewGroups>
+  <ctl00_MainContent_EditGroupId>
+  </ctl00_MainContent_EditGroupId>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Cart>
+          <AllowDifferentContextDates>
+          </AllowDifferentContextDates>
+        </Cart>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_AllowCombineProductsAsFamily>
+  </ctl00_MainContent_AllowCombineProductsAsFamily>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Indexing>
+          <DoNotStoreDefaultFields>
+          </DoNotStoreDefaultFields>
+        </Indexing>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_>
+    <Globalsettings>
+      <Ecom>
+        <Indexing>
+          <DoNotAnalyzeDefaultFields>
+          </DoNotAnalyzeDefaultFields>
+        </Indexing>
+      </Ecom>
+    </Globalsettings>
+  </ctl00_MainContent_>
+  <ctl00_MainContent_ApplyOnliyIfPageIsInPath>
+  </ctl00_MainContent_ApplyOnliyIfPageIsInPath>
+  <ctl00_MainContent_CalcProductCountForGroup>
+  </ctl00_MainContent_CalcProductCountForGroup>
+  <ctl00_MainContent_ApplyStartAndEndLevelToNavigation>
+  </ctl00_MainContent_ApplyStartAndEndLevelToNavigation>
+  <ctl00_MainContent_UseOnlyCustomNavigationProvider>
+  </ctl00_MainContent_UseOnlyCustomNavigationProvider>
+  <ctl00_MainContent_DontUseDefaultLanguageIsNoProductExists>
+  </ctl00_MainContent_DontUseDefaultLanguageIsNoProductExists>
+  <ctl00_MainContent_ActivateProductsOnAllLanguageVersions>
+  </ctl00_MainContent_ActivateProductsOnAllLanguageVersions>
+  <ctl00_MainContent_DontShowProductIfNotOnStock>
+  </ctl00_MainContent_DontShowProductIfNotOnStock>
+  <ctl00_MainContent_DontShowProductIfHasNoPrice>
+  </ctl00_MainContent_DontShowProductIfHasNoPrice>
+  <ctl00_MainContent_DontAllowLinksToProductIfNotActive>
+  </ctl00_MainContent_DontAllowLinksToProductIfNotActive>
+  <ctl00_MainContent_DontShowVariantIfNotOnStock>
+  </ctl00_MainContent_DontShowVariantIfNotOnStock>
+  <ctl00_MainContent_DontShowVariantIfHasNoPrice>
+  </ctl00_MainContent_DontShowVariantIfHasNoPrice>
+  <ctl00_MainContent_DontAllowLinksToVariantIfNotActive>
+  </ctl00_MainContent_DontAllowLinksToVariantIfNotActive>
+  <ctl00_MainContent_ShowVariantDefault>
+  </ctl00_MainContent_ShowVariantDefault>
+  <ctl00_MainContent_CacheProductCollection>
+  </ctl00_MainContent_CacheProductCollection>
+  <ctl00_MainContent_UseDeliveryCountryOnShippingFee>
+  </ctl00_MainContent_UseDeliveryCountryOnShippingFee>
+  <ctl00_MainContent_UseDeliveryCountryOnPaymentFee>
+  </ctl00_MainContent_UseDeliveryCountryOnPaymentFee>
+  <ctl00_MainContent_BulkEditForProductVariant>
+  </ctl00_MainContent_BulkEditForProductVariant>
+  <ctl00_MainContent_ShowBackCatalogFields>
+  </ctl00_MainContent_ShowBackCatalogFields>
+  <ctl00_MainContent_ConsolidateTaxesForProducts>
+  </ctl00_MainContent_ConsolidateTaxesForProducts>
+  <ctl00_MainContent_ConsolidateTaxesForOrder>
+  </ctl00_MainContent_ConsolidateTaxesForOrder>
+  <ctl00_MainContent_AllowEditOrderForUsers>
+  </ctl00_MainContent_AllowEditOrderForUsers>
+  <ctl00_MainContent_AllowExceedOriginalOrderPrice>
+  </ctl00_MainContent_AllowExceedOriginalOrderPrice>
+  <ctl00_MainContent_DisableDeleteButtonForOrders>
+  </ctl00_MainContent_DisableDeleteButtonForOrders>
+  <ctl00_MainContent_DisableDeleteGroupsAndProductsBtn4AllUsers>
+  </ctl00_MainContent_DisableDeleteGroupsAndProductsBtn4AllUsers>
+  <ctl00_MainContent_DisableCreationNewProductVariant>
+  </ctl00_MainContent_DisableCreationNewProductVariant>
+  <ctl00_MainContent_DisableCreationNewGroups>
+  </ctl00_MainContent_DisableCreationNewGroups>
+  <ctl00_MainContent_EditGroupId>
+  </ctl00_MainContent_EditGroupId>
+  <ctl00_MainContent_ApplyReadonlyForAdministrators>
+  </ctl00_MainContent_ApplyReadonlyForAdministrators>
+  <ctl00_MainContent_ApplyHiddenForAdministrators>
+  </ctl00_MainContent_ApplyHiddenForAdministrators>
+  <ctl00_MainContent_ApplyReadonlyForAdministrators>
+  </ctl00_MainContent_ApplyReadonlyForAdministrators>
+  <ctl00_MainContent_ApplyHiddenForAdministrators>
+  </ctl00_MainContent_ApplyHiddenForAdministrators>
+  <ctl00_MainContent_ApplyReadonlyForAdministrators>
+  </ctl00_MainContent_ApplyReadonlyForAdministrators>
+  <ctl00_MainContent_ApplyHiddenForAdministrators>
+  </ctl00_MainContent_ApplyHiddenForAdministrators>
 </Globalsettings>

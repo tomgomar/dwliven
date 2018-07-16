@@ -1,0 +1,137 @@
+﻿<input type="hidden" id="percent0" value="20" />
+<input type="hidden" id="percent1" value="40" />
+<input type="hidden" id="percent2" value="30" />
+<input type="hidden" id="percent3" value="5" />
+<input type="hidden" id="percent4" value="5" />
+<div id="Container_0" style="display:none;">
+    <script type="text/javascript">
+        function updateurl() {
+            var org = "<!--@SefUrl-->"
+        }
+    </script>
+
+    <div class="optimize-edit-box">
+         <fieldset>
+            <legend class="gbTitle">URL&nbsp;</legend>
+
+             <div class="form-group input-group">
+                 <input type="text" class="std" id="Field_0" name="Field_0" autocomplete="off" value="<!--@SefUrlText-->" onkeyup="validate0();" onmouseout="validate0();" onchange="validate0();" maxlength="255" oncontextmenu="return false;" value="" />
+                 <i class="md md-lg md-warning color-warning" title="Warning" id="iconWarning_0"></i>
+                 <i class="fa fa-lg fa-check-circle-o color-success" title="Ok" id="iconOk_0"></i>
+                 <i class="fa fa-lg fa-times-circle-o color-danger" title="Error" id="iconErr_0"></i>
+             </div>
+            
+            <ol>
+                <li id="wElementcount_0">Du mangler elementet "Titel" (&lt;title&gt;*&lt;/title&gt;). For at få fuld gavn af din søgemaskineoptimering bør du sikre dig, at dette element bliver tilføjet til dit website</li>
+			    <li id="wFrequency1_0">Frasen &laquo;<!--@Phrase-->&raquo; er ikke del af "Url". Tilføj &laquo;<!--@Phrase-->&raquo; til "Url" teksten.</li>
+			    <li id="wWordcount_0">Tilføj <em id="wWordcount_0_more">flere</em> ord til feltet. Du har i øjeblikket kun <em id="wWordcount_0_currently">
+				    1
+			    </em>&nbsp;ord og du behøver mindst <em>
+				    1
+			    </em>.</li>
+    			
+			    <li id="wBeginWithPhrase_0">
+				    Flyt frasen &laquo;<!--@Phrase-->&raquo; til begyndelsen af tekst-feltet.
+			    </li>
+		    </ol>
+    		
+		    <div id="wOk_0" class="optimize-optimized">
+		        Dette felt er fuldt optimeret.
+		    </div>
+    		
+		    <div class="optimize-navigation">
+		        <button class="btn btn-default" id="cmdPrev0" disabled="disabled" onclick="return false;">Tilbage</button>&nbsp;
+		        <button class="btn btn-default" id="cmdNext0" onclick="if(canNavigate(0, 1)) enable(1); return false;">Næste</button>
+		    </div>
+		</fieldset>
+    </div>
+ 
+	<input type="hidden" name="isValid_0" id="isValid_0" value="" />
+
+	<script type="text/javascript">
+	    function validate0() {
+	        validate('title', 0, 1, '<!--@Phrase-->', '1');
+	    }
+	</script>
+</div>
+<!--@LoopStart(Elements)-->
+<div id="Container_<!--@ID-->" style="display:none;">
+    <div class="optimize-edit-box">
+         <fieldset>
+            <legend class="gbTitle"><!--@Description-->&nbsp;</legend>
+
+             <div class="form-group input-group">
+                 <!--@If(ID=="3" || ID=="4")-->
+                 <textarea rows="4" class="std" name="Field_<!--@ID-->" id="Field_<!--@ID-->" autocomplete="off" onkeyup="validate<!--@ID-->();" onmouseout="validate<!--@ID-->();" onchange="validate<!--@ID-->();" maxlength="255" oncontextmenu="return false;"><!--@FirstValue--></textarea>
+                 <!--@Else-->
+                 <input type="text" class="std" name="Field_<!--@ID-->" id="Field_<!--@ID-->" autocomplete="off" value="<!--@FirstValue-->" onkeyup="validate<!--@ID-->();" onmouseout="validate<!--@ID-->();" onchange="validate<!--@ID-->();" maxlength="255" oncontextmenu="return false;" />
+                 <!--@EndIf-->
+                 <input type="hidden" name="Field_<!--@Name-->" value="<!--@html-->" />
+                 <i class="md md-lg md-warning color-warning" title="Warning" id="iconWarning_<!--@ID-->"></i>
+                 <i class="fa fa-lg fa-check-circle-o color-success" title="Ok" id="iconOk_<!--@ID-->"></i>
+                 <i class="fa fa-lg fa-times-circle-o color-danger" title="Error" id="iconErr_<!--@ID-->"></i>
+             </div>
+
+             <!--@If(ID=="3" || ID=="4")-->
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <!--@EndIf-->
+            <ol>
+                <li id="wElementcount_<!--@ID-->">Du mangler elementet "<!--@Description-->" (<!--@Pattern-->). For at få fuld gavn af din søgemaskineoptimering bør du sikre dig, at dette element bliver tilføjet til dit website </li>
+			    <li id="wFrequency1_<!--@ID-->">Frasen &laquo;<!--@Phrase-->&raquo; er ikke del af "<!--@Description-->". Tilføj &laquo;<!--@Phrase-->&raquo; til "<!--@Description-->" teksten.</li>
+			    <li id="wWordcount_<!--@ID-->">Tilføj <em id="wWordcount_<!--@ID-->_more">flere</em> ord til feltet. Du har i øjeblikket kun <em id="wWordcount_<!--@ID-->_currently">
+				    <!--@WordCount-->
+			    </em>&nbsp;ord og du behøver mindst <em>
+				    <!--@MinRquiredWordCount-->
+			    </em>.</li>
+    			
+			    <li id="wWordcountMax_<!--@ID-->">Fjern <em id="wWordcountMax_<!--@ID-->_less">less</em> ord fra feltet. Du har <em id="wWordcountMax_<!--@ID-->_currently">
+				    <!--@WordCount-->
+			    </em>&nbsp;ord og skal bruge maks <em>
+				    <!--@MaxRequiredWordCount-->
+			    </em>.</li>
+    			
+			    <li id="wTooManyCharacters_<!--@ID-->">
+				    Fjern tegn fra dette felt. Det har <em id="wTooManyCharacters_<!--@ID-->_current">#</em> og bør ikke have flere end <!--@RequiredCharacterCountMax-->.
+			    </li>
+			    <li id="wTooFewCharacters_<!--@ID-->">
+				    Tilføj tegn til dette felt. Det har <em id="wTooFewCharacters_<!--@ID-->_current">#</em> og bør have mere end <!--@RequiredCharacterCountMin-->.
+			    </li>
+    			
+			    <li id="wBeginWithPhrase_<!--@ID-->">
+				    Flyt frasen &laquo;<!--@Phrase-->&raquo; til begyndelsen af tekst-feltet.
+			    </li>
+            </ol>
+            
+            <div id="wOk_<!--@ID-->" class="optimize-optimized">
+		        Dette felt er fuldt optimeret.
+		    </div>
+    		
+		    <div class="optimize-navigation">
+	            <button class="btn btn-default" id="cmdPrev<!--@ID-->" onclick="if(canNavigate(<!--@ID-->, -1)) enable(eval(<!--@ID--> - 1)); return false;">Tilbage</button>&nbsp;
+		        <button class="btn btn-default" id="cmdNext<!--@ID-->" onclick="if(canNavigate(<!--@ID-->, 1)) enable(eval(<!--@ID--> + 1)); return false;">Næste</button>
+	        </div>
+	    </fieldset>
+    </div>
+
+	<input type="hidden" name="isValid_<!--@ID-->" id="isValid_<!--@ID-->" value="" />
+	<input type="hidden" id="RequiredCharacterCountMax_<!--@ID-->" value="<!--@RequiredCharacterCountMax-->" />
+	<input type="hidden" id="RequiredCharacterCountMin_<!--@ID-->" value="<!--@RequiredCharacterCountMin-->" />
+	<input type="hidden" id="MaxRequiredWordCount_<!--@ID-->" value="<!--@MaxRequiredWordCount-->" />
+
+	<script type="text/javascript">
+        function validate<!--@ID-->(){
+            if (<!--@ID--> == "3" || <!--@ID--> == "4"){
+                var lines=document.all.Field_<!--@ID-->.value.replace(/\r/g,'').split('\n');
+                lines=lines.slice(0,4);
+                document.all.Field_<!--@ID-->.value=lines.join('\n');
+            }
+		validate('<!--@Name-->', <!--@ID-->, <!--@Count-->, '<!--@Phrase-->', '<!--@MinRquiredWordCount-->'); 
+	}
+	
+	</script>
+</div>
+<!--@LoopEnd(Elements)-->

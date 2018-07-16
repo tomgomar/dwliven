@@ -44,6 +44,14 @@
 
 @RenderSnippet("PIMListTools")
 
+<!-- TOM DEBUG -->
+@if (!string.IsNullOrWhiteSpace(GetString("Ecom:CatalogPublishing.UseCatalogPublishing"))) {
+<div style="clear: both; width: 100%;padding-bottom:5px; text-align: center;">
+  <a href='/default.aspx?CatalogPublishingcmd=preview' >DEBUG: Click here to Catalog Publishing</a>
+</div>
+}
+
+
 <div class="fit-to-panel-size">
     <div class="grid">
         <div class="grid grid--align-content-start js-handlebars-root" id="productList" data-template="ProductContainer" data-pre-render-template="ProductPreRenderContainer" data-json-feed="@feedFullUrl" data-preloader="overlay"></div>
@@ -388,7 +396,8 @@
                             {{{description}}}
                         </div>
 
-                        <div class="grid__cell-footer product-list-item__footer dw-mod">
+		
+                       <div class="grid__cell-footer product-list-item__footer dw-mod">
                             <div class="grid__cell">
                                 <div class="u-pull--right">
                                     <div class="buttons-collection buttons-collection--right">
@@ -432,8 +441,8 @@
             {{/.}}
         </script>
 
-        @* Details view *@
-
+        @* Details view *@		
+		
         <script id="ProductDetailsItemContainer" type="text/x-template">
             {{#.}}
                 <div id="Product{{id}}" data-template="ProductDetailsItem" data-preloader="overlay" class="grid__col-md-12 product-list__details-item dw-mod" style="z-index: {{zIndex}}">
@@ -471,6 +480,7 @@
         </script>
     </div>
 </div>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {

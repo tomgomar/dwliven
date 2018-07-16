@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Facets Name="Files">
+  <Meta />
+  <Settings />
+  <Source Repository="FilesZanuy" Item="Files.query" />
+  <Facet Name="Folder" Type="Field" Field="DirectoryRelativePath" QueryParameter="Folder">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Extension" Type="Field" Field="Extension" QueryParameter="Extension">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="File Size" Type="Field" Field="FileSizeGroup" QueryParameter="File size">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="File type" Type="List" Field="Extension" QueryParameter="File type">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+    <Option Name="Imagen (JPG)" Value=".jpeg" />
+    <Option Name="Imagen (JPG)" Value=".jpg" />
+    <Option Name="Imagen (JPG)" Value=".JPG" />
+    <Option Name="Imagen (PNG)" Value=".png" />
+  </Facet>
+</Facets>

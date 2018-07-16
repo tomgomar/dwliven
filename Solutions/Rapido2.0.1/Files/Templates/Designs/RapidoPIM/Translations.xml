@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<translations>
+  <key name="Search" DefaultValue="Search">
+    <translation culture="en-GB"><![CDATA[Search]]></translation>
+    <translation culture="da-DK"><![CDATA[Search]]></translation>
+    <translation culture="es-ES"><![CDATA[Search]]></translation>
+  </key>
+  <key name="An unknown error occured" DefaultValue="An unknown error occured">
+    <translation culture="en-GB"><![CDATA[An unknown error occured]]></translation>
+    <translation culture="da-DK"><![CDATA[An unknown error occured]]></translation>
+    <translation culture="es-ES"><![CDATA[An unknown error occured]]></translation>
+  </key>
+  <key name="Sign in" DefaultValue="Sign in">
+    <translation culture="en-GB"><![CDATA[Sign in]]></translation>
+    <translation culture="da-DK"><![CDATA[Sign in]]></translation>
+    <translation culture="es-ES"><![CDATA[Sign in]]></translation>
+  </key>
+  <key name="Email" DefaultValue="Email">
+    <translation culture="en-GB"><![CDATA[Email]]></translation>
+    <translation culture="da-DK"><![CDATA[Email]]></translation>
+    <translation culture="es-ES"><![CDATA[Email]]></translation>
+  </key>
+  <key name="Password" DefaultValue="Password">
+    <translation culture="en-GB"><![CDATA[Password]]></translation>
+    <translation culture="da-DK"><![CDATA[Password]]></translation>
+    <translation culture="es-ES"><![CDATA[Password]]></translation>
+  </key>
+  <key name="Remember me" DefaultValue="Remember me">
+    <translation culture="en-GB"><![CDATA[Remember me]]></translation>
+    <translation culture="da-DK"><![CDATA[Remember me]]></translation>
+    <translation culture="es-ES"><![CDATA[Remember me]]></translation>
+  </key>
+  <key name="Logo" DefaultValue="Logo">
+    <translation culture="en-GB"><![CDATA[Logo]]></translation>
+    <translation culture="da-DK"><![CDATA[Logo]]></translation>
+    <translation culture="es-ES"><![CDATA[Logo]]></translation>
+  </key>
+  <key name="Search files" DefaultValue="Search files">
+    <translation culture="en-GB"><![CDATA[Search files]]></translation>
+    <translation culture="da-DK"><![CDATA[Search files]]></translation>
+    <translation culture="es-ES"><![CDATA[Search files]]></translation>
+  </key>
+  <key name="Export" DefaultValue="Export">
+    <translation culture="en-GB"><![CDATA[Export]]></translation>
+    <translation culture="da-DK"><![CDATA[Export]]></translation>
+    <translation culture="es-ES"><![CDATA[Export]]></translation>
+  </key>
+  <key name="Purpose" DefaultValue="Purpose">
+    <translation culture="en-GB"><![CDATA[Purpose]]></translation>
+    <translation culture="da-DK"><![CDATA[Purpose]]></translation>
+    <translation culture="es-ES"><![CDATA[Purpose]]></translation>
+  </key>
+  <key name="Original" DefaultValue="Original">
+    <translation culture="en-GB"><![CDATA[Original]]></translation>
+    <translation culture="da-DK"><![CDATA[Original]]></translation>
+    <translation culture="es-ES"><![CDATA[Original]]></translation>
+  </key>
+  <key name="Print" DefaultValue="Print">
+    <translation culture="en-GB"><![CDATA[Print]]></translation>
+    <translation culture="da-DK"><![CDATA[Print]]></translation>
+    <translation culture="es-ES"><![CDATA[Print]]></translation>
+  </key>
+  <key name="Office" DefaultValue="Office">
+    <translation culture="en-GB"><![CDATA[Office]]></translation>
+    <translation culture="da-DK"><![CDATA[Office]]></translation>
+    <translation culture="es-ES"><![CDATA[Office]]></translation>
+  </key>
+  <key name="Download" DefaultValue="Download">
+    <translation culture="en-GB"><![CDATA[Download]]></translation>
+    <translation culture="da-DK"><![CDATA[Download]]></translation>
+    <translation culture="es-ES"><![CDATA[Download]]></translation>
+  </key>
+  <key name="Filters" DefaultValue="Filters">
+    <translation culture="en-GB"><![CDATA[Filters]]></translation>
+    <translation culture="da-DK"><![CDATA[Filters]]></translation>
+    <translation culture="es-ES"><![CDATA[Filters]]></translation>
+  </key>
+  <key name="Select filters" DefaultValue="Select filters">
+    <translation culture="en-GB"><![CDATA[Select filters]]></translation>
+    <translation culture="da-DK"><![CDATA[Select filters]]></translation>
+    <translation culture="es-ES"><![CDATA[Select filters]]></translation>
+  </key>
+  <key name="Close filters" DefaultValue="Close filters">
+    <translation culture="en-GB"><![CDATA[Close filters]]></translation>
+    <translation culture="da-DK"><![CDATA[Close filters]]></translation>
+    <translation culture="es-ES"><![CDATA[Close filters]]></translation>
+  </key>
+  <key name="Files found" DefaultValue="Files found">
+    <translation culture="en-GB"><![CDATA[Files found]]></translation>
+    <translation culture="da-DK"><![CDATA[Files found]]></translation>
+    <translation culture="es-ES"><![CDATA[Files found]]></translation>
+  </key>
+  <key name="Select all" DefaultValue="Select all">
+    <translation culture="en-GB"><![CDATA[Select all]]></translation>
+    <translation culture="da-DK"><![CDATA[Select all]]></translation>
+    <translation culture="es-ES"><![CDATA[Select all]]></translation>
+  </key>
+  <key name="Load" DefaultValue="Load">
+    <translation culture="en-GB"><![CDATA[Load]]></translation>
+    <translation culture="da-DK"><![CDATA[Load]]></translation>
+    <translation culture="es-ES"><![CDATA[Load]]></translation>
+  </key>
+  <key name="more" DefaultValue="more">
+    <translation culture="en-GB"><![CDATA[more]]></translation>
+    <translation culture="da-DK"><![CDATA[more]]></translation>
+    <translation culture="es-ES"><![CDATA[more]]></translation>
+  </key>
+  <key name="Return to top" DefaultValue="Return to top">
+    <translation culture="en-GB"><![CDATA[Return to top]]></translation>
+    <translation culture="da-DK"><![CDATA[Return to top]]></translation>
+    <translation culture="es-ES"><![CDATA[Return to top]]></translation>
+  </key>
+  <key name="No files found" DefaultValue="No files found">
+    <translation culture="en-GB"><![CDATA[No files found]]></translation>
+    <translation culture="da-DK"><![CDATA[No files found]]></translation>
+    <translation culture="es-ES"><![CDATA[No files found]]></translation>
+  </key>
+  <key name="View all" DefaultValue="View all">
+    <translation culture="en-GB"><![CDATA[View all]]></translation>
+    <translation culture="da-DK"><![CDATA[View all]]></translation>
+    <translation culture="es-ES"><![CDATA[View all]]></translation>
+  </key>
+  <key name="Your search gave 0 results" DefaultValue="Your search gave 0 results">
+    <translation culture="en-GB"><![CDATA[Your search gave 0 results]]></translation>
+    <translation culture="da-DK"><![CDATA[Your search gave 0 results]]></translation>
+    <translation culture="es-ES"><![CDATA[Your search gave 0 results]]></translation>
+  </key>
+  <key name="Remove filter" DefaultValue="Remove filter">
+    <translation culture="en-GB"><![CDATA[Remove filter]]></translation>
+    <translation culture="da-DK"><![CDATA[Remove filter]]></translation>
+    <translation culture="es-ES"><![CDATA[Remove filter]]></translation>
+  </key>
+  <key name="Reset all filters" DefaultValue="Reset all filters">
+    <translation culture="en-GB"><![CDATA[Reset all filters]]></translation>
+    <translation culture="da-DK"><![CDATA[Reset all filters]]></translation>
+    <translation culture="es-ES"><![CDATA[Reset all filters]]></translation>
+  </key>
+  <key name="Last time modified" DefaultValue="Last time modified">
+    <translation culture="en-GB"><![CDATA[Last time modified]]></translation>
+    <translation culture="da-DK"><![CDATA[Last time modified]]></translation>
+    <translation culture="es-ES"><![CDATA[Last time modified]]></translation>
+  </key>
+  <key name="File size" DefaultValue="File size">
+    <translation culture="en-GB"><![CDATA[File size]]></translation>
+    <translation culture="da-DK"><![CDATA[File size]]></translation>
+    <translation culture="es-ES"><![CDATA[File size]]></translation>
+  </key>
+  <key name="Digital assets" DefaultValue="Digital assets">
+    <translation culture="en-GB"><![CDATA[Digital assets]]></translation>
+    <translation culture="da-DK"><![CDATA[Digital assets]]></translation>
+    <translation culture="es-ES"><![CDATA[Digital assets]]></translation>
+  </key>
+  <key name="No files added" DefaultValue="No files added">
+    <translation culture="en-GB"><![CDATA[No files added]]></translation>
+    <translation culture="da-DK"><![CDATA[No files added]]></translation>
+    <translation culture="es-ES"><![CDATA[No files added]]></translation>
+  </key>
+  <key name="bits" DefaultValue="bits">
+    <translation culture="en-GB"><![CDATA[bits]]></translation>
+    <translation culture="da-DK"><![CDATA[bits]]></translation>
+    <translation culture="es-ES"><![CDATA[bits]]></translation>
+  </key>
+  <key name="File name" DefaultValue="File name">
+    <translation culture="en-GB"><![CDATA[File name]]></translation>
+    <translation culture="da-DK"><![CDATA[File name]]></translation>
+    <translation culture="es-ES"><![CDATA[File name]]></translation>
+  </key>
+  <key name="Updated" DefaultValue="Updated">
+    <translation culture="en-GB"><![CDATA[Updated]]></translation>
+    <translation culture="da-DK"><![CDATA[Updated]]></translation>
+    <translation culture="es-ES"><![CDATA[Updated]]></translation>
+  </key>
+  <key name="Dimensions" DefaultValue="Dimensions">
+    <translation culture="en-GB"><![CDATA[Dimensions]]></translation>
+    <translation culture="da-DK"><![CDATA[Dimensions]]></translation>
+    <translation culture="es-ES"><![CDATA[Dimensions]]></translation>
+  </key>
+  <key name="Colors" DefaultValue="Colors">
+    <translation culture="en-GB"><![CDATA[Colors]]></translation>
+    <translation culture="da-DK"><![CDATA[Colors]]></translation>
+    <translation culture="es-ES"><![CDATA[Colors]]></translation>
+  </key>
+  <key name="Search products" DefaultValue="Search products">
+    <translation culture="en-GB"><![CDATA[Search products]]></translation>
+    <translation culture="da-DK"><![CDATA[Search products]]></translation>
+    <translation culture="es-ES"><![CDATA[Search products]]></translation>
+  </key>
+  <key name="All" DefaultValue="All">
+    <translation culture="en-GB"><![CDATA[All]]></translation>
+    <translation culture="da-DK"><![CDATA[All]]></translation>
+    <translation culture="es-ES"><![CDATA[All]]></translation>
+  </key>
+  <key name="No products found" DefaultValue="No products found">
+    <translation culture="en-GB"><![CDATA[No products found]]></translation>
+    <translation culture="da-DK"><![CDATA[No products found]]></translation>
+    <translation culture="es-ES"><![CDATA[No products found]]></translation>
+  </key>
+  <key name="Language" DefaultValue="Language">
+    <translation culture="en-GB"><![CDATA[Language]]></translation>
+    <translation culture="da-DK"><![CDATA[Language]]></translation>
+    <translation culture="es-ES"><![CDATA[Language]]></translation>
+  </key>
+  <key name="Export format" DefaultValue="Export format">
+    <translation culture="en-GB"><![CDATA[Export format]]></translation>
+    <translation culture="da-DK"><![CDATA[Export format]]></translation>
+    <translation culture="es-ES"><![CDATA[Export format]]></translation>
+  </key>
+  <key name="Submit" DefaultValue="Submit">
+    <translation culture="en-GB"><![CDATA[Submit]]></translation>
+    <translation culture="da-DK"><![CDATA[Submit]]></translation>
+    <translation culture="es-ES"><![CDATA[Submit]]></translation>
+  </key>
+  <key name="Brand" DefaultValue="Brand">
+    <translation culture="en-GB"><![CDATA[Brand]]></translation>
+    <translation culture="da-DK"><![CDATA[Brand]]></translation>
+    <translation culture="es-ES"><![CDATA[Brand]]></translation>
+  </key>
+  <key name="Type" DefaultValue="Type">
+    <translation culture="en-GB"><![CDATA[Type]]></translation>
+    <translation culture="da-DK"><![CDATA[Type]]></translation>
+    <translation culture="es-ES"><![CDATA[Type]]></translation>
+  </key>
+  <key name="Material" DefaultValue="Material">
+    <translation culture="en-GB"><![CDATA[Material]]></translation>
+    <translation culture="da-DK"><![CDATA[Material]]></translation>
+    <translation culture="es-ES"><![CDATA[Material]]></translation>
+  </key>
+  <key name="Eco" DefaultValue="Eco">
+    <translation culture="en-GB"><![CDATA[Eco]]></translation>
+    <translation culture="da-DK"><![CDATA[Eco]]></translation>
+    <translation culture="es-ES"><![CDATA[Eco]]></translation>
+  </key>
+  <key name="No" DefaultValue="No">
+    <translation culture="en-GB"><![CDATA[No]]></translation>
+    <translation culture="da-DK"><![CDATA[No]]></translation>
+    <translation culture="es-ES"><![CDATA[No]]></translation>
+  </key>
+  <key name="Weight" DefaultValue="Weight">
+    <translation culture="en-GB"><![CDATA[Weight]]></translation>
+    <translation culture="da-DK"><![CDATA[Weight]]></translation>
+    <translation culture="es-ES"><![CDATA[Weight]]></translation>
+  </key>
+  <key name="Color" DefaultValue="Color">
+    <translation culture="en-GB"><![CDATA[Color]]></translation>
+    <translation culture="da-DK"><![CDATA[Color]]></translation>
+    <translation culture="es-ES"><![CDATA[Color]]></translation>
+  </key>
+  <key name="Yes" DefaultValue="Yes">
+    <translation culture="en-GB"><![CDATA[Yes]]></translation>
+    <translation culture="da-DK"><![CDATA[Yes]]></translation>
+    <translation culture="es-ES"><![CDATA[Yes]]></translation>
+  </key>
+  <key name="Format" DefaultValue="Format">
+    <translation culture="en-GB"><![CDATA[Format]]></translation>
+    <translation culture="da-DK"><![CDATA[Format]]></translation>
+    <translation culture="es-ES"><![CDATA[Format]]></translation>
+  </key>
+  <key name="Please select variant!" DefaultValue="Please select variant!">
+    <translation culture="en-GB"><![CDATA[Please select variant!]]></translation>
+    <translation culture="da-DK"><![CDATA[Please select variant!]]></translation>
+    <translation culture="es-ES"><![CDATA[Please select variant!]]></translation>
+  </key>
+  <key name="Description" DefaultValue="Description">
+    <translation culture="en-GB"><![CDATA[Description]]></translation>
+    <translation culture="da-DK"><![CDATA[Description]]></translation>
+    <translation culture="es-ES"><![CDATA[Description]]></translation>
+  </key>
+  <key name="Product information" DefaultValue="Product information">
+    <translation culture="en-GB"><![CDATA[Product information]]></translation>
+    <translation culture="da-DK"><![CDATA[Product information]]></translation>
+    <translation culture="es-ES"><![CDATA[Product information]]></translation>
+  </key>
+  <key name="Show more" DefaultValue="Show more">
+    <translation culture="en-GB"><![CDATA[Show more]]></translation>
+    <translation culture="da-DK"><![CDATA[Show more]]></translation>
+    <translation culture="es-ES"><![CDATA[Show more]]></translation>
+  </key>
+  <key name="Show less" DefaultValue="Show less">
+    <translation culture="en-GB"><![CDATA[Show less]]></translation>
+    <translation culture="da-DK"><![CDATA[Show less]]></translation>
+    <translation culture="es-ES"><![CDATA[Show less]]></translation>
+  </key>
+  <key name="Images" DefaultValue="Images">
+    <translation culture="en-GB"><![CDATA[Images]]></translation>
+    <translation culture="da-DK"><![CDATA[Images]]></translation>
+    <translation culture="es-ES"><![CDATA[Images]]></translation>
+  </key>
+  <key name="Generate PDF" DefaultValue="Generate PDF">
+    <translation culture="en-GB"><![CDATA[Generate PDF]]></translation>
+    <translation culture="da-DK"><![CDATA[Generate PDF]]></translation>
+    <translation culture="es-ES"><![CDATA[Generate PDF]]></translation>
+  </key>
+  <key name="Select type" DefaultValue="Select type">
+    <translation culture="en-GB"><![CDATA[Select type]]></translation>
+    <translation culture="da-DK"><![CDATA[Select type]]></translation>
+    <translation culture="es-ES"><![CDATA[Select type]]></translation>
+  </key>
+  <key name="What about these products?" DefaultValue="What about these products?">
+    <translation culture="en-GB"><![CDATA[What about these products?]]></translation>
+    <translation culture="da-DK"><![CDATA[What about these products?]]></translation>
+    <translation culture="es-ES"><![CDATA[What about these products?]]></translation>
+  </key>
+  <key name="View" DefaultValue="View">
+    <translation culture="en-GB"><![CDATA[View]]></translation>
+    <translation culture="da-DK"><![CDATA[View]]></translation>
+    <translation culture="es-ES"><![CDATA[View]]></translation>
+  </key>
+  <key name="Products" DefaultValue="Products">
+    <translation culture="en-GB"><![CDATA[Products]]></translation>
+    <translation culture="da-DK"><![CDATA[Products]]></translation>
+    <translation culture="es-ES"><![CDATA[Products]]></translation>
+  </key>
+  <key name="Productnumber" DefaultValue="Productnumber">
+    <translation culture="en-GB"><![CDATA[Productnumber]]></translation>
+    <translation culture="da-DK"><![CDATA[Productnumber]]></translation>
+    <translation culture="es-ES"><![CDATA[Productnumber]]></translation>
+  </key>
+  <key name="Date" DefaultValue="Date">
+    <translation culture="en-GB"><![CDATA[Date]]></translation>
+    <translation culture="da-DK"><![CDATA[Date]]></translation>
+    <translation culture="es-ES"><![CDATA[Date]]></translation>
+  </key>
+  <key name="Short description" DefaultValue="Short description">
+    <translation culture="en-GB"><![CDATA[Short description]]></translation>
+    <translation culture="da-DK"><![CDATA[Short description]]></translation>
+    <translation culture="es-ES"><![CDATA[Short description]]></translation>
+  </key>
+  <key name="Long description" DefaultValue="Long description">
+    <translation culture="en-GB"><![CDATA[Long description]]></translation>
+    <translation culture="da-DK"><![CDATA[Long description]]></translation>
+    <translation culture="es-ES"><![CDATA[Long description]]></translation>
+  </key>
+  <key name="Product data" DefaultValue="Product data">
+    <translation culture="en-GB"><![CDATA[Product data]]></translation>
+    <translation culture="da-DK"><![CDATA[Product data]]></translation>
+    <translation culture="es-ES"><![CDATA[Product data]]></translation>
+  </key>
+  <key name="Forgot your password?" DefaultValue="Forgot your password?">
+    <translation culture="en-GB"><![CDATA[Forgot your password?]]></translation>
+    <translation culture="da-DK"><![CDATA[Forgot your password?]]></translation>
+    <translation culture="es-ES"><![CDATA[Forgot your password?]]></translation>
+  </key>
+  <key name="Ecológico" DefaultValue="Ecológico">
+    <translation culture="en-GB"><![CDATA[Ecológico]]></translation>
+    <translation culture="da-DK"><![CDATA[Ecológico]]></translation>
+    <translation culture="es-ES"><![CDATA[Ecológico]]></translation>
+  </key>
+  <key name="Aceite de girasol" DefaultValue="Aceite de girasol">
+    <translation culture="en-GB"><![CDATA[Aceite de girasol]]></translation>
+    <translation culture="da-DK"><![CDATA[Aceite de girasol]]></translation>
+    <translation culture="es-ES"><![CDATA[Aceite de girasol]]></translation>
+  </key>
+  <key name="Sin aromas" DefaultValue="Sin aromas">
+    <translation culture="en-GB"><![CDATA[Sin aromas]]></translation>
+    <translation culture="da-DK"><![CDATA[Sin aromas]]></translation>
+    <translation culture="es-ES"><![CDATA[Sin aromas]]></translation>
+  </key>
+  <key name="Sin colorantes" DefaultValue="Sin colorantes">
+    <translation culture="en-GB"><![CDATA[Sin colorantes]]></translation>
+    <translation culture="da-DK"><![CDATA[Sin colorantes]]></translation>
+    <translation culture="es-ES"><![CDATA[Sin colorantes]]></translation>
+  </key>
+  <key name="Sin gluten" DefaultValue="Sin gluten">
+    <translation culture="en-GB"><![CDATA[Sin gluten]]></translation>
+    <translation culture="da-DK"><![CDATA[Sin gluten]]></translation>
+    <translation culture="es-ES"><![CDATA[Sin gluten]]></translation>
+  </key>
+  <key name="Sin grasas trans" DefaultValue="Sin grasas trans">
+    <translation culture="en-GB"><![CDATA[Sin grasas trans]]></translation>
+    <translation culture="da-DK"><![CDATA[Sin grasas trans]]></translation>
+    <translation culture="es-ES"><![CDATA[Sin grasas trans]]></translation>
+  </key>
+  <key name="Vegetariano" DefaultValue="Vegetariano">
+    <translation culture="en-GB"><![CDATA[Vegetariano]]></translation>
+    <translation culture="da-DK"><![CDATA[Vegetariano]]></translation>
+    <translation culture="es-ES"><![CDATA[Vegetariano]]></translation>
+  </key>
+  <key name="Filename" DefaultValue="Filename">
+    <translation culture="en-GB"><![CDATA[Filename]]></translation>
+    <translation culture="da-DK"><![CDATA[Filename]]></translation>
+    <translation culture="es-ES"><![CDATA[Filename]]></translation>
+  </key>
+  <key name="Filesize" DefaultValue="Filesize">
+    <translation culture="en-GB"><![CDATA[Filesize]]></translation>
+    <translation culture="da-DK"><![CDATA[Filesize]]></translation>
+    <translation culture="es-ES"><![CDATA[Filesize]]></translation>
+  </key>
+  <key name="Invalid email or password" DefaultValue="Invalid email or password">
+    <translation culture="en-GB"><![CDATA[Invalid email or password]]></translation>
+    <translation culture="da-DK"><![CDATA[Invalid email or password]]></translation>
+    <translation culture="es-ES"><![CDATA[Invalid email or password]]></translation>
+  </key>
+  <key name="Showing page" DefaultValue="Showing page">
+    <translation culture="en-GB"><![CDATA[Showing page]]></translation>
+    <translation culture="da-DK"><![CDATA[Showing page]]></translation>
+    <translation culture="es-ES"><![CDATA[Showing page]]></translation>
+  </key>
+  <key name="of" DefaultValue="of">
+    <translation culture="en-GB"><![CDATA[of]]></translation>
+    <translation culture="da-DK"><![CDATA[of]]></translation>
+    <translation culture="es-ES"><![CDATA[of]]></translation>
+  </key>
+  <key name="products" DefaultValue="products">
+    <translation culture="en-GB"><![CDATA[products]]></translation>
+    <translation culture="da-DK"><![CDATA[products]]></translation>
+    <translation culture="es-ES"><![CDATA[products]]></translation>
+  </key>
+  <key name="Add to cart" DefaultValue="Add to cart">
+    <translation culture="en-GB"><![CDATA[Add to cart]]></translation>
+    <translation culture="da-DK"><![CDATA[Add to cart]]></translation>
+    <translation culture="es-ES"><![CDATA[Add to cart]]></translation>
+  </key>
+</translations>

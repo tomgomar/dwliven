@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="fed16ad1-9bb9-4508-b860-9e922599237a" Name="Files.query">
+  <Meta />
+  <Settings />
+  <Source Repository="FilesZanuy" Item="Files.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Parameters>
+    <Parameter Name="Search" Type="System.String" DefaultValue="" />
+    <Parameter Name="Folder" Type="System.String[]" DefaultValue="" />
+    <Parameter Name="Extension" Type="System.String[]" DefaultValue="" />
+    <Parameter Name="File size" Type="System.String[]" DefaultValue="" />
+    <Parameter Name="File type" Type="System.String[]" DefaultValue="" />
+  </Parameters>
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="DirectoryRelativePath" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Folder" />
+        </Right>
+      </BinaryExpression>
+      <GroupExpression Operator="Or">
+        <BinaryExpression Operator="Contains">
+          <Left>
+            <FieldExpression Field="FileName" />
+          </Left>
+          <Right>
+            <ParameterExpression Name="Search" />
+          </Right>
+        </BinaryExpression>
+      </GroupExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="Extension" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Extension" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="FileSizeGroup" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="File size" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="Extension" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="File type" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields />
+  <ViewLanguages />
+  <SortOrder>
+    <Sort Field="FileSize" Direction="Descending" />
+  </SortOrder>
+</Query>
