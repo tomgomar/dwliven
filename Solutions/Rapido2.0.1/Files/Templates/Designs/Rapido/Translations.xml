@@ -71,6 +71,7 @@
     <translation culture="da-DK"><![CDATA[Levering]]></translation>
     <translation culture="en-GB"><![CDATA[Delivery]]></translation>
     <translation culture="en-CA"><![CDATA[Delivery]]></translation>
+    <translation culture="es-ES"><![CDATA[Delivery]]></translation>
   </key>
   <key name="Payment">
     <translation culture="da-DK"><![CDATA[Betalingsmetode]]></translation>
@@ -854,6 +855,7 @@
     <translation culture="en-GB"><![CDATA[Weight]]></translation>
     <translation culture="da-DK"><![CDATA[Vægt]]></translation>
     <translation culture="en-CA"><![CDATA[Weight]]></translation>
+    <translation culture="es-ES"><![CDATA[Weight]]></translation>
   </key>
   <key name="Volume">
     <translation culture="en-GB"><![CDATA[Volume]]></translation>
@@ -1733,6 +1735,7 @@
     <translation culture="da-DK"><![CDATA[Type]]></translation>
     <translation culture="en-GB"><![CDATA[Type]]></translation>
     <translation culture="en-CA"><![CDATA[Type]]></translation>
+    <translation culture="es-ES"><![CDATA[Type]]></translation>
   </key>
   <key name="Buy all">
     <translation culture="da-DK"><![CDATA[Køb alle]]></translation>
@@ -2042,16 +2045,19 @@
     <translation culture="en-GB"><![CDATA[Brand]]></translation>
     <translation culture="da-DK"><![CDATA[Mærke]]></translation>
     <translation culture="en-CA"><![CDATA[Brand]]></translation>
+    <translation culture="es-ES"><![CDATA[Brand]]></translation>
   </key>
   <key name="Color">
     <translation culture="en-GB"><![CDATA[Color]]></translation>
     <translation culture="da-DK"><![CDATA[Farve]]></translation>
     <translation culture="en-CA"><![CDATA[Color]]></translation>
+    <translation culture="es-ES"><![CDATA[Color]]></translation>
   </key>
   <key name="Material">
     <translation culture="en-GB"><![CDATA[Material]]></translation>
     <translation culture="da-DK"><![CDATA[Materiale]]></translation>
     <translation culture="en-CA"><![CDATA[Material]]></translation>
+    <translation culture="es-ES"><![CDATA[Material]]></translation>
   </key>
   <key name="View all">
     <translation culture="en-GB"><![CDATA[View all]]></translation>
@@ -2768,11 +2774,13 @@
     <translation culture="en-GB"><![CDATA[Eco]]></translation>
     <translation culture="da-DK"><![CDATA[Eco]]></translation>
     <translation culture="en-CA"><![CDATA[Eco]]></translation>
+    <translation culture="es-ES"><![CDATA[Eco]]></translation>
   </key>
   <key name="Format">
     <translation culture="en-GB"><![CDATA[Format]]></translation>
     <translation culture="da-DK"><![CDATA[Format]]></translation>
     <translation culture="en-CA"><![CDATA[Format]]></translation>
+    <translation culture="es-ES"><![CDATA[Format]]></translation>
   </key>
   <key name="name">
     <translation culture="en-GB"><![CDATA[Name]]></translation>
