@@ -1,0 +1,38 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Dynamicweb.Ecommerce.SalesDiscounts.SimpleVoucherDiscount
+</name>
+</assembly>
+<members>
+<member name="T:Dynamicweb.Ecommerce.SalesDiscounts.SimpleVoucherDiscount.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Dynamicweb.Ecommerce.SalesDiscounts.SimpleVoucherDiscount.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Dynamicweb.Ecommerce.SalesDiscounts.SimpleVoucherDiscount.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Dynamicweb.Ecommerce.SalesDiscounts.SimpleVoucherDiscount.SimpleVoucherDiscount">
+ <summary>
+ Represents simple voucher discount
+ If the total sum of the products purchased on an order is equal or bigger that the specified amount a discount will be triggered
+ </summary>
+</member>
+<member name="M:Dynamicweb.Ecommerce.SalesDiscounts.SimpleVoucherDiscount.SimpleVoucherDiscount.ProcessOrder(Dynamicweb.Ecommerce.Orders.Order)">
+ <summary>
+ Method is not implemented
+ </summary>
+ <param name="order">Is not used</param>
+</member>
+</members>
+</doc>

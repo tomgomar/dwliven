@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Index Type="Dynamicweb.Indexing.Index, Dynamicweb.Indexing" Name="Files.index">
+  <Meta />
+  <Settings />
+  <Instances Balancer="Dynamicweb.Indexing.Balancing.ActivePassive">
+    <Instance Name="Files" Type="Dynamicweb.Indexing.Lucene.LuceneIndexProvider, Dynamicweb.Indexing.Lucene">
+      <Folder></Folder>
+    </Instance>
+  </Instances>
+  <Builds Type="Dynamicweb.Content.Files.FileIndexBuilder, Dynamicweb">
+    <Build Name="Files" Action="Full">
+      <Setting Name="Recursive">True</Setting>
+      <Setting Name="StartFolder">RecursosDigitales</Setting>
+      <Setting Name="SkipMetadata">False</Setting>
+      <Notification SendLog="false" NotificationType="Never" />
+    </Build>
+  </Builds>
+  <Schema>
+    <Fields>
+      <Extension Type="Dynamicweb.Content.Files.FileIndexSchemaExtender, Dynamicweb" Stored="false" Analyzed="false" Indexed="false" />
+      <Grouping Source="FileSize" Name="FileSizeGroup" SystemName="FileSizeGroup" Type="System.String" Stored="true" Analyzed="false" Indexed="true">
+        <Group Name="0 MB - 0.1 KB" From="0" To="100000" />
+        <Group Name="0.1 MB - 0.5 MB" From="100000" To="500000" />
+        <Group Name="0.5 MB - 1 MB" From="500000" To="1000000" />
+        <Group Name="1 MB - 5 MB" From="1000000" To="5000000" />
+        <Group Name="&gt; 5 MB" From="5000000" To="50000000" />
+      </Grouping>
+    </Fields>
+    <FieldTypes />
+  </Schema>
+</Index>

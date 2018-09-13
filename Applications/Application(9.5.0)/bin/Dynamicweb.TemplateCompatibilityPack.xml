@@ -1,0 +1,300 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Dynamicweb.TemplateCompatibilityPack
+</name>
+</assembly>
+<members>
+<member name="M:AreaExtensions.get_Value(Dynamicweb.Content.Area,System.String)">
+ <summary>
+ Implemenets Dynamicweb.Content.Area get_Value() method for compatibility with DW8 templates
+ </summary>
+ <param name="area"></param>
+ <param name="name"></param>
+ <returns></returns>
+</member>
+<member name="M:Dynamicweb.Base.Request(System.String)">
+ <summary>
+ Instead of using Request.QueryString or Request.Form
+ </summary>
+ <param name="name">Name of the value in the request collection</param>
+ <returns>The value of the specified key</returns>
+ <remarks>
+ By default the return value has been SQL Escaped (Database.SQLEscapeInjection)
+ </remarks>
+</member>
+<member name="M:Dynamicweb.Base.Request(System.String,System.Boolean)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Instead of using Request.QueryString or Request.Form
+ </summary>
+ <param name="name">Name of the value in the request collection</param>
+ <param name="sqlEscape">Specifies wether the return value should be SQL Escaped, but only for values in the Querystring</param>
+ <returns></returns>
+ <remarks>
+ </remarks>
+ <history>
+ 	[np]	24/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+</member>
+<member name="M:Dynamicweb.Base.ReadTextFile(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the contents of a text file as a string.
+ </summary>
+ <param name="strFile">Path and name of text file to read.</param>
+ <remarks>
+ strFile must contain the physical path to the file e.g. "C:/Testfile.txt" 
+ </remarks>
+ <history>
+     [bbr]   11-04-2005  Comments edited
+ 	[daf]	16-03-2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+</member>
+<member name="M:Dynamicweb.Base.ReadTextFile(System.String,System.Text.Encoding)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Read the current text file in a particular encoding.
+ </summary>
+ <param name="strFile">Path and name of text file to read.</param>
+ <param name="Encoding">As System.Text.Encoding, to determin a particular encoding.</param>
+ <remarks>
+ strFile must contain the physical path to the file e.g. "C:/Testfile.txt" 
+ </remarks>
+ <returns>Returns the contents of a text file as a string.</returns>
+ <history>
+ </history>
+ -----------------------------------------------------------------------------
+</member>
+<member name="M:Dynamicweb.Base.WriteTextFile(System.String,System.String,System.Boolean)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Writes a string to a text file.
+ </summary>
+ <param name="strTextToWrite">String to write to the file.</param>
+ <param name="strFile">Path and name of text file to write.</param>
+ <param name="blnAppendToFile">Boolean indicating whether to append to the file.
+ True to append, False to overwrite file.</param>
+ <remarks>
+ strFile must contain the physical file path to the file e.g. Server.Mappath("/files/filer/Testfile.txt")
+ </remarks>
+ <history>
+     [bbr]   11-04-2005  Comments edited
+ 	[daf]	16-03-2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+</member>
+<member name="M:Dynamicweb.Base.WriteTextFile(System.String,System.String,System.Boolean,System.Text.Encoding)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Writes a string to a text file in a particular encoding.
+ </summary>
+ <param name="strTextToWrite">String to write to the file.</param>
+ <param name="strFile">Path and name of text file to write.</param>
+ <param name="blnAppendToFile">Boolean indicating whether to append to the file.
+ True to append, False to overwrite file.</param>
+ <param name="Encoding">As System.Text.Encoding, to determin a particular encoding.</param>
+ <remarks>
+ strFile must contain the physical file path to the file e.g. Server.Mappath("/files/filer/Testfile.txt")
+ </remarks>
+ <history>
+ </history>
+ -----------------------------------------------------------------------------
+</member>
+<member name="M:Dynamicweb.Base.GetGs(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Reads a setting from the globalsettings file.
+ </summary>
+ <param name="Path">Name of the setting.</param>
+ <remarks>
+ If the selected settings does not exist an empty string is returned.
+ </remarks>                
+</member>
+<member name="F:Dynamicweb.Dates.DateFormatString">
+ <summary>
+ Returns a string for String.Format: "ddd, dd MMM yyyy HH':'mm"
+ </summary>
+</member>
+<member name="F:Dynamicweb.Dates.DateOnlyFormatString">
+ <summary>
+ Returns a string for String.Format: "ddd, dd MMM yyyy"
+ </summary>
+</member>
+<member name="F:Dynamicweb.Dates.DateFormatStringShort">
+ <summary>
+ Returns a string for String.Format: "dd MMM yyyy HH':'mm"
+ </summary>
+</member>
+<member name="F:Dynamicweb.Dates.DateFormatStringDayAndMonth">
+ <summary>
+ Returns a string for String.Format: "dd. MMM"
+ </summary>
+</member>
+<member name="F:Dynamicweb.Dates.DateFormatStringFull">
+ <summary>
+ Returns a string for String.Format: "ddd, dd MMM yyyy HH':'mm':'ss"
+ </summary>
+</member>
+<member name="F:Dynamicweb.Dates.DateOnlyFormatStringShort">
+ <summary>
+ Returns a string for String.Format: "dd-mm-yyyy"
+ </summary>
+</member>
+<member name="F:Dynamicweb.Dates.TimeOnlyFormatStringFull">
+ <summary>
+ Returns a string for String.Format: "hh:mm:ss"
+ </summary>
+</member>
+<member name="T:Dynamicweb.Input">
+ <summary>
+ Utility class to handle input from web requests and formatting of data from external sources such as querystrings or databases. Ensures formatting and shortcuts to getting secure data from forms and querystrings.
+ </summary>
+</member>
+<member name="M:Dynamicweb.Input.Request(System.String)">
+ <summary>
+ Gets the specified <c>string</c> from the QueryString, Form, Cookies, or ServerVariables collections.
+ </summary>
+ <param name="key">The name of the collection member to get.</param>
+</member>
+<member name="M:Dynamicweb.Input.Request(System.String,System.Boolean)">
+ <summary>
+ Gets the specified <c>string</c> from the QueryString, Form, Cookies, or ServerVariables collections.
+ </summary>
+ <param name="key">The name of the collection member to get.</param>
+ <param name="sqlEscape">Obsolete</param>
+ <returns>The QueryString, Form, Cookies, or ServerVariables collection member specified in the key parameter. If the specified key is not found, then a null reference (Nothing in Visual Basic) is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.RequestInteger(System.String)">
+ <summary>
+ Gets the specified <c>integer</c> from the QueryString, Form, Cookies, or ServerVariables collections.
+ </summary>
+ <param name="key">The name of the collection member to get.</param>
+ <returns>The QueryString, Form, Cookies, or ServerVariables collection member specified in the key parameter. If the specified key is not found or not a valid integer, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.RequestDouble(System.String)">
+ <summary>
+ Gets the specified <c>double</c> from the QueryString, Form, Cookies, or ServerVariables collections.
+ </summary>
+ <param name="key">The name of the collection member to get.</param>
+ <returns>The QueryString, Form, Cookies, or ServerVariables collection member specified in the key parameter. If the specified key is not found or not a valid double, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.RequestLong(System.String)">
+ <summary>
+ Gets the specified <c>long</c> from the QueryString, Form, Cookies, or ServerVariables collections.
+ </summary>
+ <param name="key">The name of the collection member to get.</param>
+ <returns>The QueryString, Form, Cookies, or ServerVariables collection member specified in the key parameter. If the specified key is not found or not a valid long, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.RequestBoolean(System.String)">
+ <summary>
+ Gets the specified <c>boolean</c> from the QueryString, Form, Cookies, or ServerVariables collections.
+ </summary>
+ <param name="key">The name of the collection member to get.</param>
+ <returns>The QueryString, Form, Cookies, or ServerVariables collection member specified in the key parameter. If the specified key is not found or not a valid boolean, then false is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.RequestDate(System.String)">
+ <summary>
+ Gets the specified <c>Date</c> from the QueryString, Form, Cookies, or ServerVariables collections.
+ </summary>
+ <param name="key">The name of the collection member to get.</param>
+ <returns>The QueryString, Form, Cookies, or ServerVariables collection member specified in the key parameter. If the specified key is not found or not a valid boolean, then false is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.HasRequest(System.String)">
+ <summary>
+ Determines whether the specified key contains in request(form or query string).
+ </summary>
+ <param name="key">The key</param>
+ <returns></returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatString(System.Object)">
+ <summary>
+ Formats the <paramref>input</paramref> to a valid <c>string</c>. If the specified <paramref>input</paramref> is not a valid <c>string</c>, then <c>String.Empty</c> is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>A valid string. If the specified <paramref>input</paramref> is not a valid <c>string</c>, then <c>String.Empty</c> is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatBoolean(System.Object)">
+ <summary>
+ Determines wether or not <paramref>input</paramref> is 'something' (as opposed to nothing), and
+ if the object type is a boolean. If so, the function returns the value of the boolean
+ object. In all other cases <c>false</c> is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>A valid boolean. If the specified <paramref>input</paramref> is not a valid <c>boolean</c>, then <c>false</c> is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatBoolean(System.String)">
+ <summary>
+ Formats the <paramref>input</paramref> to a valid <c>boolean</c>. If the specified <paramref>input</paramref> is not a valid <c>boolean</c>, then <c>false</c> is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>
+ A valid boolean. If <paramref>input</paramref> is <c>IsNullOrEmpty</c>, "false", "0", "off" or "no" it returns false; otherwise true. Case insensitive.
+ </returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatInteger(System.Object)">
+ <summary>
+ Formats the <paramref>input</paramref> to a valid <c>integer</c>. If the specified <paramref>input</paramref> is not a valid <c>integer</c>, then 0 is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>A valid integer. If the specified <paramref>input</paramref> is not a valid <c>integer</c>, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatInteger64(System.Object)">
+ <summary>
+ Formats the <paramref>input</paramref> to a valid <c>integer</c>. If the specified <paramref>input</paramref> is not a valid <c>integer</c>, then 0 is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>A valid integer. If the specified <paramref>input</paramref> is not a valid <c>integer</c>, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatLong(System.Object)">
+ <summary>
+ Formats the <paramref>input</paramref> to a valid <c>long</c>. If the specified <paramref>input</paramref> is not a valid <c>long</c>, then 0 is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>A valid <c>long</c>. If the specified <paramref>input</paramref> is not a valid <c>long</c>, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatDouble(System.Object)">
+ <summary>
+ Formats the <paramref>input</paramref> to a valid <c>double</c>. If the specified <paramref>input</paramref> is not a valid <c>double</c>, then 0 is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>A valid <c>double</c>. If the specified <paramref>input</paramref> is not a valid <c>double</c>, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatDouble(System.Object,System.Boolean)">
+ <summary>
+ Formats the <paramref name="input">input</paramref> to a valid <c>double</c>. If the specified <paramref>input</paramref> is not a valid <c>double</c>, then 0 is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <param name="useContextCulture">if <c>true</c> the current culture of the frontend pageview or the backend user is used for parsing.</param>
+ <returns>A valid <c>double</c>. If the specified <paramref>input</paramref> is not a valid <c>double</c>, then 0 is returned.</returns>
+</member>
+<member name="M:Dynamicweb.Input.FormatDate(System.Object)">
+ <summary>
+ Formats the <paramref>input</paramref> to a valid <c>Date</c>. If the specified <paramref>input</paramref> is not a valid <c>Date</c>, then <c>Date.MinValue</c> is returned.
+ </summary>
+ <param name="input">The input to format.</param>
+ <returns>
+ A valid Date.
+ </returns>
+</member>
+<member name="M:Dynamicweb.Input.ParseDouble(System.String)">
+ <summary>
+ Parses the <paramref>input</paramref> to a valid <c>double</c>. If the specified <paramref>input</paramref> is not a valid <c>double</c>, then 0 is returned.
+ </summary>
+ <param name="input">The input to format - a string represenation of something that is a double.</param>
+ <returns>
+ A valid <c>double</c>. If the specified <paramref>input</paramref> is not a valid <c>double</c>, then 0.0 is returned.
+ "1234.12" is parsed as 1234.12
+ "1234,12" is parsed as 1234.12
+ "1,234.12" is parsed as 1234.12
+ "1.234,12" is parsed as 1234.12
+ <c>null</c> (<c>nothing</c> in Visual Basic) is parsed as 0.0
+ <c>String.Empty</c> is parsed as 0.0
+ </returns>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

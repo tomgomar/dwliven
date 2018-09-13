@@ -1,0 +1,1951 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dynamicweb.Extensibility</name>
+    </assembly>
+    <members>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInActiveAttribute">
+            <summary>
+            Defines if the add-in is active
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInActiveAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInActiveAttribute" /> class.
+            </summary>
+            <param name="active">if set to <c>true</c> [active].</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInActiveAttribute.Active">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Dynamicweb.Extensibility.AddIns.AddInActiveAttribute" /> is active.
+            </summary>
+            <value><c>true</c> if active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInAuthorAttribute">
+            <summary>
+            Defines the the author of an add-in.
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInAuthorAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInAuthorAttribute">AddInAuthorAttribute</see> using the specified author name.
+            </summary>
+            <param name="name">The name of the authro.</param>
+            <remarks></remarks>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInAuthorAttribute.Name">
+            <summary>
+            Gets or sets the name of the add-in author.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInDataConstrainAttribute">
+            <summary>
+            Defines the constrains attribute
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInDataConstrainAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInDataConstrainAttribute" /> class.
+            </summary>
+            <param name="format">The format.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInDataConstrainAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInDataConstrainAttribute" /> class.
+            </summary>
+            <param name="inputFormat">The input format.</param>
+            <param name="outputFormat">The ooutput format.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInDataConstrainAttribute.InputFormat">
+            <summary>
+            Gets or sets the input format.
+            </summary>
+            <value>The input format.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInDataConstrainAttribute.OutputFormat">
+            <summary>
+            Gets or sets the output format.
+            </summary>
+            <value>The output format.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInDeprecatedAttribute">
+            <summary>
+            Defines the deprecated attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInDeprecatedAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInDeprecatedAttribute" /> class.
+            </summary>
+            <param name="isDeprecated">if set to <c>true</c> [is deprecated].</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInDeprecatedAttribute.Deprecated">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Dynamicweb.Extensibility.AddIns.AddInDeprecatedAttribute" /> is deprecated.
+            </summary>
+            <value><c>true</c> if deprecated; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInDescriptionAttribute">
+            <summary>
+            Defines the description attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInDescriptionAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInDescriptionAttribute" /> class.
+            </summary>
+            <param name="description">The description.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInDescriptionAttribute.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInGroupAttribute">
+            <summary>
+            Defines the group attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInGroupAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInGroupAttribute" /> class.
+            </summary>
+            <param name="group">The group.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInGroupAttribute.Group">
+            <summary>
+            Gets or sets the group.
+            </summary>
+            <value>The group.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInIconAttribute">
+            <summary>
+            Defines the icon attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInIconAttribute.#ctor(Dynamicweb.Core.UI.Icons.KnownIcon)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInIconAttribute" /> class.
+            </summary>
+            <param name="knownIcon">The icon.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInIconAttribute.Icon">
+            <summary>
+            Gets or sets the icon.
+            </summary>
+            <value>The Icon.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInIgnoreAttribute">
+            <summary>
+            Defines if the add-in is ignored
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInIgnoreAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInIgnoreAttribute" /> class.
+            </summary>
+            <param name="label">The label.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInIgnoreAttribute.Ignore">
+            <summary>
+            Gets or sets the Ignore Property.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInImageAttribute">
+            <summary>
+            Defines the image attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInImageAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInImageAttribute" /> class.
+            </summary>
+            <param name="image">The image.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInImageAttribute.Image">
+            <summary>
+            Gets or sets the image.
+            </summary>
+            <value>The image.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInIsAdditionalAttribute">
+            <summary>
+            Defines the is additional attribute
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInIsAdditionalAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInIsAdditionalAttribute" /> class.
+            </summary>
+            <param name="isAdditional">if set to <c>true</c> [is additional].</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInIsAdditionalAttribute.IsAdditional">
+            <summary>
+            Gets or sets a value indicating whether this instance is additional.
+            </summary>
+            <value>
+            <c>true</c> if this instance is additional; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInIsEditableAttribute">
+            <summary>
+            Defines which fields are editable in frontend
+            </summary>
+            <seealso cref="T:System.Attribute" />
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInIsEditableAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInIsEditableAttribute"/> class.
+            </summary>
+            <param name="isEditable">if set to <c>true</c> [is editable].</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInIsEditableAttribute.IsEditable">
+            <summary>
+            Gets or sets a value indicating whether this instance is editable.
+            </summary>
+            <value>
+            <c>true</c> if this instance is editable; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInLabelAttribute">
+            <summary>
+            Defines the label attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInLabelAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInLabelAttribute" /> class.
+            </summary>
+            <param name="label">The label.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInLabelAttribute.Label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+            <value>The label.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInLoader">
+            <summary>
+            Represents an add-ins loader.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInLoader.AssemblyDirectory">
+            <summary>
+            Gets or sets the assembly directory path.
+            </summary>
+            <value>Path to the directory where add-in assemblies should be loaded from.</value>
+        </member>
+        <member name="F:Dynamicweb.Extensibility.AddIns.AddInLoader.BinDirectory">
+            <summary>
+            The bin directory
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInLoader.LoadingCompleted">
+            <summary>
+            Gets the value indicating whether add-ins have been loaded.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInLoader.LoadedAssemblies">
+            <summary>
+            Gets the loaded assemblies.
+            </summary>
+            <value>
+            The loaded assemblies.
+            </value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInLoader.Load">
+            <summary>
+            Loads all add-ins.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInLoader.AssemblyLoaded(System.String)">
+            <summary>
+            Checkes whether specified assembly has been loaded.
+            </summary>
+            <param name="assemblyName">Short name of the assembly.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInLoader.GetAssemblyFileName(System.Reflection.Assembly)">
+            <summary>
+            Retrieves the short name (with ".dll" suffix) of the specified assembly.
+            </summary>
+            <param name="asm">Assembly to process.</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInManager">
+            <summary>
+            Manager for extensibility.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInManager.CachedTypes">
+            <summary>
+            Gets or sets the cached add-in types.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInManager.AllowAddIns">
+            <summary>
+            Gets a value indicating whether [allow add ins].
+            </summary>
+            <value>
+              <c>true</c> if [allow add ins]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInManager.ImplicitConversions">
+            <summary>
+            Gets the list of implicit conversion rules.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.CanBeCastFrom(System.Type,System.Type)">
+            <summary>
+            Determines whether specified target type can be cast from the specified source type.
+            </summary>
+            <param name="targetType">Target type.</param>
+            <param name="sourceType">Source type.</param>
+            <returns>Value indicating whether specified target type can be cast from the specified source type.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.EnsureAssembliesAreLoaded">
+            <summary>
+            Ensures the assemblies are loaded.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAssemblyQualifiedName(System.Type)">
+            <summary>
+            Returns the assembly-qualified name of the type (full name plus assembly simple name).
+            </summary>
+            <param name="type">Type.</param>
+            <returns>Assembly-qualified name of the type (full name plus assembly simple name).</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInClasses(System.String)">
+            <summary>
+            Returns all types whose name contains the given search string.
+            By default, only usable types are returned, i.e., public and not abstract classes.
+            </summary>
+            <param name="search">Search string.</param>
+            <returns>All types whose name contains the given search string.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInClasses(System.String,System.Boolean)">
+            <summary>
+            Returns all types whose name contains the given search string.
+            By default, only usable types are returned, i.e., public and not abstract classes.
+            </summary>
+            <param name="search">Search string.</param>
+            <param name="strongMatch">Value indicating whether match is only counted from the beginning of the type full name.</param>
+            <returns>All types whose name contains the given search string.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInClasses(System.String,System.Boolean,System.Func{System.Type,System.Boolean})">
+            <summary>
+            Returns all types whose name contains the given search string.
+            Only types that pass the <paramref name="typeIsUsablePredicate"/> are returned.
+            </summary>
+            <param name="search">Search string.</param>
+            <param name="strongMatch">Value indicating whether match is only counted from the beginning of the type full name.</param>
+            <param name="typeIsUsablePredicate">A predicate that is used to determine whether the found types are usable.</param>
+            <returns>All types whose name contains the given search string.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInClasses``1">
+            <summary>
+            Gets the add in classes.
+            </summary>
+            <typeparam name="T">The type to get classes of.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInClasses(System.Type)">
+            <summary>
+            Gets the add in classes.
+            </summary>
+            <param name="addInBaseType">Type of the add in base.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetCustomAttributes``1(System.Type)">
+            <summary>
+            Returns a list of custom attributes of the given type defined on a given type.
+            </summary>
+            <typeparam name="T">Attribute type.</typeparam>
+            <param name="targetType">Type to examine.</param>
+            <returns>A list of custom attributes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="targetType">targetType</paramref> is null.</exception>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetCustomAttributes``1(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns a list of custom attributes of the given type defined on a given property.
+            </summary>
+            <typeparam name="T">Attribute type.</typeparam>
+            <param name="targetProperty">Property to examine.</param>
+            <returns>A list of custom attributes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="targetProperty">targetProperty</paramref> is null.</exception>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetProviders``1">
+            <summary>
+            Gets a list of providers of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetProviders``1(System.String)">
+            <summary>
+            Gets a list of providers of the specified type and specfied target attribute value
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target">The target attribute value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetTemplateExtenders``1">
+            <summary>
+            Gets the list of template extenders of the specified type.
+            </summary>
+            <typeparam name="T">Template extender base type.</typeparam>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetTemplateExtenders``1(System.Boolean)">
+            <summary>
+            Gets the list of template extenders of the specified type.
+            </summary>
+            <param name="ignoreCache">Value indicating whether to ignore cached version of extenders.</param>
+            <typeparam name="T">Template extender base type.</typeparam>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInName(System.Type)">
+            <summary>
+            Gets <see cref="T:Dynamicweb.Extensibility.AddIns.AddInNameAttribute">AddInName</see> attribute from the specified type.
+            Use this method if the type contains only one Name attributes, otherwise use the <see cref="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInNames(System.Type)">GetAddInNames</see> function.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInNames(System.Type)">
+            <summary>
+            Gets <see cref="T:Dynamicweb.Extensibility.AddIns.AddInNameAttribute">AddInName</see> attributes from the specified type.
+            Use this method if the type contains multiple Name attributes, otherwise use the <see cref="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInName(System.Type)">GetAddInName</see> function.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInTargets(System.Type)">
+            <summary>
+            Retrieves the list of values of the "Path" property of an add-in's <see cref="T:Dynamicweb.Extensibility.AddIns.AddInTargetAttribute">AddInTargetAttribute</see> attributes.
+            </summary>
+            <param name="addInType">Add-in type.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInAuthors(System.Type)">
+            <summary>
+            Retrieves the list of values of the "Name" property of an add-in's <see cref="T:Dynamicweb.Extensibility.AddIns.AddInAuthorAttribute">AddInAuthorAttribute</see> attributes.
+            </summary>
+            <param name="addInType">Add-in type.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInUseParameters(System.Type)">
+            <summary>
+            Gets the add in use parameters.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInActive(System.Type)">
+            <summary>
+            Gets the AddIn active attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInDeprecated(System.Type)">
+            <summary>
+            Gets the add in deprecated attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInUseParameterOrdering(System.Type)">
+            <summary>
+            Gets the add in use parameter ordering attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInUseParameterGrouping(System.Type)">
+            <summary>
+            Gets the add in use parameter grouping attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInDescription(System.Type)">
+            <summary>
+            Gets the add in description attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInIgnore(System.Type)">
+            <summary>
+            Returns a value indicating whether the given type has an Ignore attribute; <c>true</c> if this is the case, <c>false</c> otherwise.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInImage(System.Type)">
+            <summary>
+            Gets the add in image attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetIcon(System.Type,Dynamicweb.Core.UI.Icons.KnownIcon)">
+            <summary>
+            Gets the add in icon attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="defaultIcon">The icon should be return if addInType doesn't have <see cref="T:Dynamicweb.Extensibility.AddIns.AddInIconAttribute">AddInIconAttribute</see> attribute</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInGroup(System.Type)">
+            <summary>
+            Gets the add in group attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInDataConstrain(System.Type)">
+            <summary>
+            Gets the add in data constrain attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInIsAdditional(System.Type)">
+            <summary>
+            Gets the add in is additional attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInOrder(System.Type)">
+            <summary>
+            Gets the add in order attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInLabel(System.Type)">
+            <summary>
+            Gets the add in label attribute.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInLabels(System.Type)">
+            <summary>
+            Gets the add in labels.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInIsStandard(System.Type)">
+            <summary>
+            Determines whether the given add-in is a standard Dynamicweb add-in.
+            </summary>
+            <param name="type">Add-in type.</param>
+            <returns>Value indicating whether the given add-in is a standard Dynamicweb add-in.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameters(System.Type)">
+            <summary>
+            Gets the add in parameters.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterName(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns the name of the add-in parameter.
+            </summary>
+            <param name="prop">Object property.</param>
+            <returns>The name of the add-in parameter.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterOrderInCode(System.Type,System.String)">
+            <summary>
+            Gets the add in parameter order in code.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetPropertyInfo(System.Type,System.String)">
+            <summary>
+            Gets the property info.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetPropertyValue(System.Object,System.String)">
+            <summary>
+            Retrieves a value of the given property.
+            </summary>
+            <param name="target">Object instance.</param>
+            <param name="propertyName">Property name.</param>
+            <returns>Property value.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterEditor(System.Type,System.String)">
+            <summary>
+            Gets the add in parameter editor.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterOrder(System.Type,System.String)">
+            <summary>
+            Gets the add in parameter order.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterGroupName(System.Type,System.String)">
+            <summary>
+            Gets the name of the add in parameter group.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterEditorName(System.Type,System.String)">
+            <summary>
+            Gets the name of the add in parameter editor.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterValue(System.Object,System.String)">
+            <summary>
+            Gets the add in parameter value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInParameterType(System.Object,System.String)">
+            <summary>
+            Gets the type of the add in parameter.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInTypeByName(System.String)">
+            <summary>
+            Gets the name of the add in type by.
+            </summary>
+            <param name="typeName">Name of the type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInTypeByAddInName(System.String)">
+            <summary>
+            Gets the name of the add in type by add in.
+            </summary>
+            <param name="addInName">Name of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.SetAddInParameterValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets the add in parameter value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.ImplementsInterface(System.Object,System.Type)">
+            <summary>
+            Implements the interface of specified type.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="interfaceType">The interface type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.ImplementsInterface(System.Type,System.Type)">
+            <summary>
+            Returns a value indicating whether the given type implements the given interface.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="interfaceType">Interface type.</param>
+            <returns>Value indicating whether the given type implements the given interface.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.CreateAddInInstance(System.Type,System.Object[])">
+            <summary>
+            Creates the add in instance.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="args">The args.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.CreateAddInInstance(System.Type)">
+            <summary>
+            Creates the add in instance.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.CreateAddInInstance(System.String)">
+            <summary>
+            Creates the add in instance.
+            </summary>
+            <param name="addInTypeName">Name of the add in type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.CreateAddInInstance(System.String,System.Object[])">
+            <summary>
+            Creates the add in instance.
+            </summary>
+            <param name="addInTypeName">Name of the add in type.</param>
+            <param name="args">Optional arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.CreateAddInInstances``1">
+            <summary>
+            Creates the add in instances.
+            </summary>
+            <typeparam name="T">The type to get instances of.</typeparam>
+            <returns>List of instances of the given type.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.InvokeFunction(System.Object,System.String,System.Object[])">
+            <summary>
+            Invokes the function of the specfied name on the specified instance with the specified parameters.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="functionName">Name of the function.</param>
+            <param name="arguments">The arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.InvokeStaticFunction(System.String,System.String,System.Object[])">
+            <summary>
+            Invokes a static function on the type with the given type name.
+            The function must be static and public.
+            The params array must contain elements that exactly match a signature for given function.
+            </summary>
+            <param name="typeName">Name of the type.</param>
+            <param name="functionName">Name of the function.</param>
+            <param name="arguments">The arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.InvokeStaticFunction(System.Type,System.String,System.Object[])">
+            <summary>
+            Invokes a static function on the given type.
+            The function must be static and public.
+            The params array must contain elements that exactly match a signature for given function.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="functionName">Name of the function.</param>
+            <param name="arguments">The arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetCollectionElementType(System.Type)">
+            <summary>
+            Returns a type of an element if the target type represents a strongly typed collection. 
+            </summary>
+            <param name="type">Type to examine.</param>
+            <returns>A type of an element if the target type represents a strongly typed collection.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInProperties(System.Type)">
+            <summary>
+            Gets the add in properties.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInProperty(System.Type,System.String)">
+            <summary>
+            Gets the add in property.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInPropertyType(System.Type,System.String)">
+            <summary>
+            Gets the type of the add in property.
+            </summary>
+            <param name="addInType">Type of the add in.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInPropertyValue(System.Object,System.String)">
+            <summary>
+            Gets the add in property value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.GetAddInPropertyValue(System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the add in property value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="prop">Property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.SetAddInPropertyValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets the add in property value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="propertyValue">The property value.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.SetAddInPropertyValue(System.Object,System.String,System.Object,System.Boolean)">
+            <summary>
+            Sets the add in property value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="propertyValue">The property value.</param>
+            <param name="tryConvert">Value indicating whether to try converting the property value to corresponding property type if their types don't match originally.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.IsAddInEnabled(System.Type)">
+            <summary>
+            Determines whether [is add in enabled] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns>
+              <c>true</c> if [is add in enabled] [the specified type]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.SetAddInEnabled(System.Type)">
+            <summary>
+            Sets the add in enabled.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.SetAddInDisabled(System.Type)">
+            <summary>
+            Sets the add in disabled.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.IsAssemblyAllowed(System.String)">
+            <summary>
+            Returns a value which indicates whether the specified assembly is allowed.
+            </summary>
+            <param name="asmName">Assembly name.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInManager.IsAssemblyNative(System.String)">
+            <summary>
+            Returns a value which indicates whether the specified assembly is a part of Dynamicweb.
+            </summary>
+            <param name="asmName">Assembly name.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInNameAttribute">
+            <summary>
+            Defines the name attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInNameAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInNameAttribute" /> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInNameAttribute.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInOrderAttribute">
+            <summary>
+            Defines the order attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInOrderAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInOrderAttribute" /> class.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInOrderAttribute.Order">
+            <summary>
+            Gets or sets the order.
+            </summary>
+            <value>The order.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInParameterAttribute">
+            <summary>
+            Defines the parameter attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInParameterAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInParameterAttribute" /> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInParameterAttribute.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInParameterEditorAttribute">
+            <summary>
+            Defines the parameter editor attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInParameterEditorAttribute.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInParameterEditorAttribute" /> class.
+            </summary>
+            <param name="editor">Type of the editor.</param>
+            <param name="options">The options.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInParameterEditorAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInParameterEditorAttribute"/> class.
+            </summary>
+            <param name="editorType">Type of the editor.</param>
+            <param name="options">The options.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInParameterEditorAttribute.EditorType">
+            <summary>
+            Gets or sets the type of the editor.
+            </summary>
+            <value>The type of the editor.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInParameterEditorAttribute.Options">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInParameterGroupAttribute">
+            <summary>
+            Defines the parameter group attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInParameterGroupAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInParameterGroupAttribute" /> class.
+            </summary>
+            <param name="group">The group.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInParameterGroupAttribute.Group">
+            <summary>
+            Gets or sets the group.
+            </summary>
+            <value>The group.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInUseParameterGroupingAttribute">
+            <summary>
+            Defines the use parameter grouping attribute.
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInUseParameterGroupingAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInUseParameterGroupingAttribute" /> class.
+            </summary>
+            <param name="active">if set to <c>true</c> [active].</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInUseParameterGroupingAttribute.Active">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Dynamicweb.Extensibility.AddIns.AddInUseParameterGroupingAttribute" /> is active.
+            </summary>
+            <value><c>true</c> if active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInParameterOrderAttribute">
+            <summary>
+            Defines the parameter order attribute
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInParameterOrderAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInParameterOrderAttribute" /> class.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInParameterOrderAttribute.Order">
+            <summary>
+            Gets or sets the order.
+            </summary>
+            <value>The order.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInUseParameterOrderingAttribute">
+            <summary>
+            Defines the use parameter ordering attribute.
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInUseParameterOrderingAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInUseParameterOrderingAttribute" /> class.
+            </summary>
+            <param name="active">if set to <c>true</c> [active].</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInUseParameterOrderingAttribute.Active">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Dynamicweb.Extensibility.AddIns.AddInUseParameterOrderingAttribute" /> is active.
+            </summary>
+            <value><c>true</c> if active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInTargetAttribute">
+            <summary>
+            Defines the the place where an add-in should be displayed.
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInTargetAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInTargetAttribute">AddInTargetAttribute</see> using the specified location path.
+            </summary>
+            <param name="path">The location path.</param>
+            <remarks></remarks>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInTargetAttribute.Path">
+            <summary>
+            Gets or sets the location path.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.AddInUseParametersAttribute">
+            <summary>
+            Defines the use parameters attribute.
+            </summary>
+            <example>
+            <code description="Example of attribute usage" source="..\Dynamicweb\06 - Dynamicweb Host\Dynamicweb\Head\Dynamicweb.Examples\Extensibility\AddInWithEditors.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.AddInUseParametersAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.AddInUseParametersAttribute" /> class.
+            </summary>
+            <param name="useParameters">if set to <c>true</c> [do use parameters].</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.AddIns.AddInUseParametersAttribute.UseParameters">
+            <summary>
+            Gets or sets a value indicating whether [do use parameters].
+            </summary>
+            <value><c>true</c> if [do use parameters]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn">
+            <summary>
+            AddIn base class that enables parameters based configurable attributes
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn" /> class.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.UpdateFromPost(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Updates from post back.
+            <remarks>Get the parameter from Context.Current.Request.Form</remarks>
+            <param name="form">Form information. Null is allowed.</param>
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.GetIdSuitableString(System.String)">
+            <summary>
+            Gets the id suitable string.
+            </summary>
+            <param name="inputValue">The input string.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.LoadParametersFromXml(System.String)">
+            <summary>
+            Loads the parameters from XML.
+            </summary>
+            <param name="xmlPar">The XML par.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.GetParametersToXml">
+            <summary>
+            Gets the parameters to XML.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.GetParametersToXml(System.Boolean)">
+            <summary>
+            Gets the parameters to XML.
+            </summary>
+            <param name="includeDeclaration">if set to <c>true</c> [include declaration].</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.SetValue(System.String,System.Object)">
+            <summary>
+            Sets the value.
+            </summary>
+            <param name="parameterName">Name of the param.</param>
+            <param name="parameterValue">The param value.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.GetInstanceFromParameterXml``1(System.String)">
+            <summary>
+            Gets the instance from parameter XML.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="xml">The XML.</param>
+            <returns>T.</returns>
+            <exception cref="T:System.ArgumentException">
+            xml
+            or
+            Parameter contains invalid XML.;xml
+            </exception>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AddIns.ConfigurableAddIn.RenderAdditionalContent(System.IO.TextWriter)">
+            <summary>
+            Renders the content of the additional.
+            </summary>
+            <param name="output">The output.</param>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.AssemblyLoader">
+            <summary>
+            AssemblyLoader is used for loading assemblies not already inte appdomain
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.AssemblyLoader.LoadAssemblies(System.String)">
+            <summary>
+            Loads all an absolute folder path and all subfolders.
+            The path is also available for assembly resolve for ASPX compiling.
+            </summary>
+            <param name="path">The path.</param>
+            <exception cref="T:System.ArgumentNullException">path</exception>
+            <exception cref="T:System.ArgumentException">
+            Argument 'path' is not an absolute path.
+            or
+            The folder represented by the argument 'path' does not exist.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="path" /> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">If <paramref name="path" /> is not an absolute path.</exception>
+            <exception cref="T:System.ArgumentException">If <paramref name="path" /> points to a folder that does not exist.</exception>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.IServiceContainer">
+            <summary>
+            Interface IServiceContainer
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.IServiceContainer.Compose(System.Object)">
+            <summary>
+            Composes the specified composite.
+            </summary>
+            <param name="composite">The composite.</param>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.IServiceLocator">
+            <summary>
+            The generic Service Locator interface. This interface is used
+            to retrieve services (instances identified by type and optional
+            name) from a container.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.IServiceLocator.GetInstance(System.Type)">
+            <summary>
+            Get an instance of the given <paramref name="serviceType"/>.
+            </summary>
+            <param name="serviceType">Type of object requested.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is an error resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.IServiceLocator.GetInstance(System.Type,System.String)">
+            <summary>
+            Get an instance of the given named <paramref name="serviceType"/>.
+            </summary>
+            <param name="serviceType">Type of object requested.</param>
+            <param name="key">Name the object was registered with.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is an error resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.IServiceLocator.GetAllInstances(System.Type)">
+            <summary>
+            Get all instances of the given <paramref name="serviceType"/> currently
+            registered in the container.
+            </summary>
+            <param name="serviceType">Type of object requested.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>A sequence of instances of the requested <paramref name="serviceType"/>.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.IServiceLocator.GetInstance``1">
+            <summary>
+            Get an instance of the given <typeparamref name="TService"/>.
+            </summary>
+            <typeparam name="TService">Type of object requested.</typeparam>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.IServiceLocator.GetInstance``1(System.String)">
+            <summary>
+            Get an instance of the given named <typeparamref name="TService"/>.
+            </summary>
+            <typeparam name="TService">Type of object requested.</typeparam>
+            <param name="key">Name the object was registered with.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.IServiceLocator.GetAllInstances``1">
+            <summary>
+            Get all instances of the given <typeparamref name="TService"/> currently
+            registered in the container.
+            </summary>
+            <typeparam name="TService">Type of object requested.</typeparam>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>A sequence of instances of the requested <typeparamref name="TService"/>.</returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Macros.Macro">
+            <summary>
+            Abstract class inherited by all macro implementations.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Macros.Macro.Name">
+            <summary>
+            Gets the name of the Macro.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Macros.Macro.SupportedActions">
+            <summary>
+            Gets the supported actions.
+            </summary>
+            <value>
+            The supported actions.
+            </value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Macros.Macro.Evaluate(System.String)">
+            <summary>
+            Evaluates the specified action.
+            </summary>
+            <param name="action">The action.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Macros.MacroService">
+            <summary>
+            The service that handles and evaluates macros used in code, i.e. smart searches and indexing engine.
+            </summary>
+        </member>
+        <member name="F:Dynamicweb.Extensibility.Macros.MacroService.ActionSplitChar">
+            <summary>
+            The action split character
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Macros.MacroService.Evaluate(System.String)">
+            <summary>
+            Evaluates the specified action.
+            Format: "{Name}:{Action}", where Name is the name of the Macro and Action is the action for the Macro to evaluate.
+            </summary>
+            <param name="input">The input to evaluate. Format: "{Name}:{Action}", where Name is the name of the Macro and Action is the action for the Macro to evaluate.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Macros.MacroService.SupportedActions">
+            <summary>
+            Gets the supported actions.
+            </summary>
+            <value>
+            The supported actions.
+            </value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.NamespaceDoc">
+            <summary>
+            The Dynamicweb.Extensibility namespace contains the API used for managing repositories which holds indexes and searches using the Lucene based indexes.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Data.NamespaceDoc">
+            <summary>
+            The Dynamicweb.Extensibility.Data namespace provides the basic objects used for repositories.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Tasks.NamespaceDoc">
+            <summary>
+            The Dynamicweb.Extensibility.Tasks contains classes for managing and running tasks in repositories. A task is i.e. an index job running on a seperate thread.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Notifications.NotificationArgs">
+            <summary>
+            Class NotificationArgs - inherited by all notification argument classes.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Notifications.NotificationContext">
+            <summary>
+            Use this object inside a Using statement to handle how notifications are handled. Can be used to suppress all notifications from objects and code run within this using block.
+            </summary>
+            <example>
+            <code description="Updating data in the database" source="..\Dynamicweb\09 - Core\Dynamicweb.Extensibility\Head\Dynamicweb.Extensibility\Notifications\NotificationContext.cs" lang="CS"></code>
+            </example>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationContext.State">
+            <summary>
+            Gets the state.
+            </summary>
+            <value>The state.</value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationContext.#ctor(Dynamicweb.Extensibility.Notifications.NotificationContext.NotificationState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.Notifications.NotificationContext"/> class.
+            </summary>
+            <param name="state">The state.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationContext.SuppressNotifications">
+            <summary>
+            Gets the suppressed notifications.
+            </summary>
+            <value>The suppressed notifications.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationContext.Notify">
+            <summary>
+            Gets the NotificationContext.
+            </summary>
+            <value>The NotificationContext.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Notifications.NotificationContext.NotificationState">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Dynamicweb.Extensibility.Notifications.NotificationContext.NotificationState.SuppressNotifications">
+            <summary>
+            Suppresses all notifications and makes sure that no observers (notification subscribers) are called within the using statement.
+            </summary>
+        </member>
+        <member name="F:Dynamicweb.Extensibility.Notifications.NotificationContext.NotificationState.Notify">
+            <summary>
+            Default behavior. Makes all notifications being raised as expected. Calls all the observers (notification subscribers) raised by the objects within the using statement.
+            </summary>
+        </member>
+        <member name="F:Dynamicweb.Extensibility.Notifications.NotificationContext.NotificationState.LoadBalancing">
+            <summary>
+            Used by the loadbalancer to keep track of which updates need to be broadcast and which do not.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationContext.Current">
+            <summary>
+            Gets the current instance of the NotificationContext.
+            </summary>
+            <value>The current.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationContext.CurrentState">
+            <summary>
+            Gets the current state of the NotificationContext.
+            </summary>
+            <value>The state of the current.</value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationContext.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationContext.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Notifications.NotificationManager">
+            <summary>
+            Class NotificationManager.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationManager.Notify(System.String,Dynamicweb.Extensibility.Notifications.NotificationArgs)">
+            <summary>
+            Notifies the specified notification.
+            </summary>
+            <param name="notification">The notification.</param>
+            <param name="eventArgs">The event args.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationManager.HasSubscribers(System.String)">
+            <summary>
+            Determines whether there are any notification subscribers that are configured to receive the given notification.
+            </summary>
+            <param name="notification">Notification name.</param>
+            <returns>Value indicating whether there are any notification subscribers that are configured to receive the given notification.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationManager.HasSubscribers(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Determines whether there are any notification subscribers that are configured to receive any of the given notifications.
+            </summary>
+            <param name="notifications">Notification names.</param>
+            <returns>Value indicating whether there are any notification subscribers that are configured to receive any of the given notifications.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="notifications">notifications</paramref> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="notifications">notifications</paramref> does not contain any valid elements.</exception>
+            <remarks></remarks>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Notifications.NotificationSubscriber">
+            <summary>
+            Base implementation of notification subscribers.
+            </summary>
+            <example>
+             <code title="How to create and subscribe to notifications" description="" lang="CS">//Create notification
+            Dynamicweb.Extensibility.NotificationManager.Notify("MY_NOTIFICATION", new string[] { "my notification" });
+            ...
+            //How to subscribe to notification
+            [Dynamicweb.Extensibility.Subscribe("MY_NOTIFICATION")]
+               public class MyObserver : Dynamicweb.Extensibility.NotificationSubscriber
+               {
+                   public override void OnNotify(string notification, object[] args)
+                   {
+                       if (args == null || args.Length != 1)
+                           return;
+            
+                   Class1.vb    string message = (string)args[0];
+            
+                       Dynamicweb.Common.SystemTools.StringHelper.WriteEventLog(message, System.Diagnostics.EventLogEntryType.Information);
+                   }
+               }</code>
+            </example>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationSubscriber.OnNotify(System.String,Dynamicweb.Extensibility.Notifications.NotificationArgs)">
+            <summary>
+            Call to invoke observer.
+            </summary>
+            <param name="notification">The notification.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationSubscriber.IsActive">
+            <summary>
+            Gets a value indicating whether this instance is active.
+            </summary>
+            <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationSubscriber.IsFrontend">
+            <summary>
+            Gets a value indicating whether the current code executes in the frontend
+            </summary>
+            <returns>
+            <c>true</c> if in frontend; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationSubscriber.Rank">
+            <summary>
+            Gets the rank.
+            </summary>
+            <value>The rank.</value>
+            <remarks>The subscriber with the highest rank will be notified last</remarks>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationSubscriber.CompareTo(Dynamicweb.Extensibility.Notifications.NotificationSubscriber)">
+            <summary>
+            When sorted, the Rank is used.
+            </summary>
+            <param name="other">The other.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.NotificationSubscriber.TypeInfo">
+            <summary>
+            Gets the type info in a string with namespace, class and assembly name.
+            </summary>
+            <value>The type info string.</value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.NotificationSubscriber.SetTypeInfo(System.Type)">
+            <summary>
+            Sets the type information from the notification manager
+            </summary>
+            <param name="t">The t.</param>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Notifications.SubscribeAttribute">
+            <summary>
+            Defines the subscribe attribute
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Notifications.SubscribeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.Notifications.SubscribeAttribute" /> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Notifications.SubscribeAttribute.Name">
+            <summary>
+            Gets or sets the name of the subscriber.
+            </summary>
+            <value>The name - constant or string that defines the notification.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.IProviderMetadata">
+            <summary>
+            Interface IProviderMetadata
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.IProviderMetadata.Version">
+            <summary>
+            Gets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.ProviderAttribute">
+            <summary>
+            Class ProviderAttribute.
+            </summary>
+            <seealso cref="T:System.ComponentModel.Composition.ExportAttribute" />
+            <seealso cref="T:Dynamicweb.Extensibility.IProviderMetadata" />
+        </member>
+        <member name="P:Dynamicweb.Extensibility.ProviderAttribute.Version">
+            <summary>
+            Gets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ProviderAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.ProviderAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ProviderAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.ProviderAttribute"/> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ProviderAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.ProviderAttribute"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ProviderAttribute.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.ProviderAttribute"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ProviderAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.ProviderAttribute"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="version">The version.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ProviderAttribute.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.ProviderAttribute"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="version">The version.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ProviderAttribute.#ctor(System.String,System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.ProviderAttribute"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+            <param name="version">The version.</param>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.ProviderBaseAttribute">
+            <summary>
+            Class ProviderBaseAttribute.
+            </summary>
+            <seealso cref="T:System.ComponentModel.Composition.InheritedExportAttribute" />
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Providers.ActivationException">
+            <summary>
+            The standard exception thrown when a ServiceLocator has an error in resolving an object.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ActivationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Exception" /> class.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ActivationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Exception" /> class with a specified error message.
+            </summary>
+            <param name="message">
+            The message that describes the error. 
+             </param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ActivationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Exception" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">
+            The error message that explains the reason for the exception. 
+            </param>
+            <param name="innerException">
+            The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. 
+            </param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ActivationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Exception" /> class with serialized data.
+            </summary>
+            <param name="info">
+            The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. 
+            </param>
+            <param name="context">
+            The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. 
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="info" /> parameter is null. 
+            </exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">
+            The class name is null or <see cref="P:System.Exception.HResult" /> is zero (0). 
+            </exception>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Providers.ICodeProvider">
+            <summary>
+            ICodeProvider
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ICodeProvider.Execute">
+            <summary>
+            Executes this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Providers.MefServiceContainer">
+            <summary>
+            Class MefServiceContainer contains Dynamicweb implementation service container using MEF
+            </summary>
+            <seealso cref="T:Dynamicweb.Extensibility.IServiceContainer" />
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Providers.MefServiceContainer.Container">
+            <summary>
+            Gets or sets the container.
+            </summary>
+            <value>The container.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.Providers.MefServiceContainer.Catalog">
+            <summary>
+            Gets or sets the catalog.
+            </summary>
+            <value>The catalog.</value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.MefServiceContainer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.Providers.MefServiceContainer"/> class.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.MefServiceContainer.Compose(System.Object)">
+            <summary>
+            Composes the specified composite.
+            </summary>
+            <param name="composite">The composite.</param>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Providers.MefServiceLocator">
+            <summary>
+            Class MefServiceLocator contains Dynamicwebs implementation of a service locator based on MEF.
+            </summary>
+            <seealso cref="T:Dynamicweb.Extensibility.Providers.ServiceLocator" />
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.MefServiceLocator.#ctor(System.ComponentModel.Composition.Hosting.ExportProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dynamicweb.Extensibility.Providers.MefServiceLocator"/> class.
+            </summary>
+            <param name="provider">The provider.</param>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.MefServiceLocator.DoGetInstance(System.Type,System.String)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of resolving
+            the requested service instance.
+            </summary>
+            <param name="serviceType">Type of instance requested.</param>
+            <param name="key">Name of registered service you want. May be null.</param>
+            <returns>
+            The requested service instance.
+            </returns>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException"></exception>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.MefServiceLocator.DoGetAllInstances(System.Type)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of
+            resolving all the requested service instances.
+            </summary>
+            <param name="serviceType">Type of service requested.</param>
+            <returns>
+            Sequence of service instance objects.
+            </returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.Providers.ServiceLocator">
+            <summary>
+            This class is a helper that provides a default implementation
+            for most of the methods of <see cref="T:Dynamicweb.Extensibility.IServiceLocator"/>.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.ClearCache">
+            <summary>
+            Clears the cache.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.GetService(System.Type)">
+            <summary>
+            Implementation of <see cref="M:System.IServiceProvider.GetService(System.Type)"/>.
+            </summary>
+            <param name="serviceType">The requested service.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is an error in resolving the service instance.</exception>
+            <returns>The requested object.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.GetInstance(System.Type)">
+            <summary>
+            Get an instance of the given <paramref name="serviceType"/>.
+            </summary>
+            <param name="serviceType">Type of object requested.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is an error resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.GetInstance(System.Type,System.String)">
+            <summary>
+            Get an instance of the given named <paramref name="serviceType"/>.
+            </summary>
+            <param name="serviceType">Type of object requested.</param>
+            <param name="key">Name the object was registered with.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is an error resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.GetAllInstances(System.Type)">
+            <summary>
+            Get all instances of the given <paramref name="serviceType"/> currently
+            registered in the container.
+            </summary>
+            <param name="serviceType">Type of object requested.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>A sequence of instances of the requested <paramref name="serviceType"/>.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.GetInstance``1">
+            <summary>
+            Get an instance of the given <typeparamref name="TService"/>.
+            </summary>
+            <typeparam name="TService">Type of object requested.</typeparam>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.GetInstance``1(System.String)">
+            <summary>
+            Get an instance of the given named <typeparamref name="TService"/>.
+            </summary>
+            <typeparam name="TService">Type of object requested.</typeparam>
+            <param name="key">Name the object was registered with.</param>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.GetAllInstances``1">
+            <summary>
+            Get all instances of the given <typeparamref name="TService"/> currently
+            registered in the container.
+            </summary>
+            <typeparam name="TService">Type of object requested.</typeparam>
+            <exception cref="T:Dynamicweb.Extensibility.Providers.ActivationException">if there is are errors resolving
+            the service instance.</exception>
+            <returns>A sequence of instances of the requested <typeparamref name="TService"/>.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.DoGetInstance(System.Type,System.String)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of resolving
+            the requested service instance.
+            </summary>
+            <param name="serviceType">Type of instance requested.</param>
+            <param name="key">Name of registered service you want. May be null.</param>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.DoGetAllInstances(System.Type)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of
+            resolving all the requested service instances.
+            </summary>
+            <param name="serviceType">Type of service requested.</param>
+            <returns>Sequence of service instance objects.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.FormatActivationExceptionMessage(System.Exception,System.Type,System.String)">
+            <summary>
+            Format the exception message for use in an <see cref="T:Dynamicweb.Extensibility.Providers.ActivationException"/>
+            that occurs while resolving a single service.
+            </summary>
+            <param name="actualException">The actual exception thrown by the implementation.</param>
+            <param name="serviceType">Type of service requested.</param>
+            <param name="key">Name requested.</param>
+            <returns>The formatted exception message string.</returns>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.Providers.ServiceLocator.FormatActivateAllExceptionMessage(System.Exception,System.Type)">
+            <summary>
+            Format the exception message for use in an <see cref="T:Dynamicweb.Extensibility.Providers.ActivationException"/>
+            that occurs while resolving multiple service instances.
+            </summary>
+            <param name="actualException">The actual exception thrown by the implementation.</param>
+            <param name="serviceType">Type of service requested.</param>
+            <returns>The formatted exception message string.</returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.ServiceContainerProvider">
+            <summary>
+            This delegate type is used to provide a method that will
+            return the current container. Used with the <see cref="T:Dynamicweb.Extensibility.ServiceLocator" />
+            static accessor class.
+            </summary>
+            <returns>An <see cref="T:Dynamicweb.Extensibility.IServiceLocator" />.</returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.ServiceContainer">
+            <summary>
+            This class provides the ambient container for this application. If your
+            framework defines such an ambient container, use ServiceLocator.Current
+            to get it.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.ServiceContainer.SystemFolder">
+            <summary>
+            Gets or sets the system folder.
+            </summary>
+            <value>The system folder.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.ServiceContainer.Assemblies">
+            <summary>
+            Gets or sets the assemblies.
+            </summary>
+            <value>The assemblies.</value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ServiceContainer.ClearContainer">
+            <summary>
+            Clears the Container
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.ServiceContainer.Current">
+            <summary>
+            The current ambient container.
+            </summary>
+            <value>The current.</value>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.ServiceContainer.Internal">
+            <summary>
+            Gets the internal.
+            </summary>
+            <value>The internal.</value>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ServiceContainer.SetContainerProvider(Dynamicweb.Extensibility.ServiceContainerProvider)">
+            <summary>
+            Set the delegate that is used to retrieve the current container.
+            </summary>
+            <param name="newProvider">Delegate that, when called, will return
+            the current ambient container.</param>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.ServiceLocatorProvider">
+            <summary>
+            This delegate type is used to provide a method that will
+            return the current container. Used with the <see cref="T:Dynamicweb.Extensibility.ServiceLocator"/>
+            static accessor class.
+            </summary>
+            <returns>An <see cref="T:Dynamicweb.Extensibility.IServiceLocator"/>.</returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.ServiceLocator">
+            <summary>
+            This class provides the ambient container for this application. If your
+            framework defines such an ambient container, use ServiceLocator.Current
+            to get it.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Extensibility.ServiceLocator.Current">
+            <summary>
+            The current ambient container.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.ServiceLocator.SetLocatorProvider(Dynamicweb.Extensibility.ServiceLocatorProvider)">
+            <summary>
+            Set the delegate that is used to retrieve the current container.
+            </summary>
+            <param name="newProvider">Delegate that, when called, will return
+            the current ambient container.</param>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.TypeExtensions">
+            <summary>
+            Class TypeExtensions contains extension methods for working with types.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.TypeExtensions.GetTypeNameWithAssembly(System.Type)">
+            <summary>
+            Get name of the type in format "[FullName], [AssemblyName]"
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Dynamicweb.Extensibility.TypeParser">
+            <summary>
+            Parse string value to typed value
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Extensibility.TypeParser.Parse(System.String,System.String)">
+            <summary>
+            Parse string value to typed value
+            </summary>
+            <param name="type">Type of the value</param>
+            <param name="value">Value</param>
+            <returns>System.Object.</returns>
+        </member>
+    </members>
+</doc>

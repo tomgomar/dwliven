@@ -480,6 +480,7 @@
   <key name="Confirm password">
     <translation culture="da-DK"><![CDATA[Bekræft kodeord]]></translation>
     <translation culture="en-GB"><![CDATA[Confirm password]]></translation>
+    <translation culture="es-ES"><![CDATA[Confirm password]]></translation>
   </key>
   <key name="Username">
     <translation culture="da-DK"><![CDATA[Brugernavn]]></translation>
@@ -989,6 +990,7 @@
   <key name="Download">
     <translation culture="en-GB"><![CDATA[Download]]></translation>
     <translation culture="da-DK"><![CDATA[Download]]></translation>
+    <translation culture="es-ES"><![CDATA[Download]]></translation>
   </key>
   <key name="No loyalty points">
     <translation culture="en-GB"><![CDATA[No loyalty points]]></translation>
@@ -2032,6 +2034,7 @@
   <key name="Create user account">
     <translation culture="en-GB"><![CDATA[Create user account]]></translation>
     <translation culture="da-DK"><![CDATA[Opret bruger konto]]></translation>
+    <translation culture="es-ES"><![CDATA[Create user account]]></translation>
   </key>
   <key name="The email address will be your username, when you sign in">
     <translation culture="en-GB"><![CDATA[The email address will be your username, when you sign in]]></translation>
@@ -2040,6 +2043,7 @@
   <key name="Create your new account">
     <translation culture="en-GB"><![CDATA[Create your new account]]></translation>
     <translation culture="da-DK"><![CDATA[Opret din konto]]></translation>
+    <translation culture="es-ES"><![CDATA[Create your new account]]></translation>
   </key>
   <key name="Brand">
     <translation culture="en-GB"><![CDATA[Brand]]></translation>
@@ -2306,10 +2310,12 @@
   <key name="Show more">
     <translation culture="en-GB"><![CDATA[Show more]]></translation>
     <translation culture="da-DK"><![CDATA[Vis mere]]></translation>
+    <translation culture="es-ES"><![CDATA[Show more]]></translation>
   </key>
   <key name="Show less">
     <translation culture="en-GB"><![CDATA[Show less]]></translation>
     <translation culture="da-DK"><![CDATA[Vis mindre]]></translation>
+    <translation culture="es-ES"><![CDATA[Show less]]></translation>
   </key>
   <key name="B2B Ecommerce">
     <translation culture="en-GB"><![CDATA[B2B Ecommerce]]></translation>
@@ -3136,5 +3142,35 @@
     <translation culture="en-GB"><![CDATA[Vegetariano]]></translation>
     <translation culture="da-DK"><![CDATA[]]></translation>
     <translation culture="es-ES"><![CDATA[Vegetariano]]></translation>
+  </key>
+  <key name="New_facet" DefaultValue="New_facet">
+    <translation culture="en-GB"><![CDATA[New_facet]]></translation>
+    <translation culture="da-DK"><![CDATA[New_facet]]></translation>
+    <translation culture="es-ES"><![CDATA[New_facet]]></translation>
+  </key>
+  <key name="Organic_facet" DefaultValue="Organic_facet">
+    <translation culture="en-GB"><![CDATA[Organic_facet]]></translation>
+    <translation culture="da-DK"><![CDATA[Organic_facet]]></translation>
+    <translation culture="es-ES"><![CDATA[Organic_facet]]></translation>
+  </key>
+  <key name="Gluten free_facet" DefaultValue="Gluten free_facet">
+    <translation culture="en-GB"><![CDATA[Gluten free_facet]]></translation>
+    <translation culture="da-DK"><![CDATA[Gluten free_facet]]></translation>
+    <translation culture="es-ES"><![CDATA[Gluten free_facet]]></translation>
+  </key>
+  <key name="New" DefaultValue="New">
+    <translation culture="en-GB"><![CDATA[New]]></translation>
+    <translation culture="da-DK"><![CDATA[New]]></translation>
+    <translation culture="es-ES"><![CDATA[New]]></translation>
+  </key>
+  <key name="Organic" DefaultValue="Organic">
+    <translation culture="en-GB"><![CDATA[Organic]]></translation>
+    <translation culture="da-DK"><![CDATA[Organic]]></translation>
+    <translation culture="es-ES"><![CDATA[Organic]]></translation>
+  </key>
+  <key name="Gluten free" DefaultValue="Gluten free">
+    <translation culture="en-GB"><![CDATA[Gluten free]]></translation>
+    <translation culture="da-DK"><![CDATA[Gluten free]]></translation>
+    <translation culture="es-ES"><![CDATA[Gluten free]]></translation>
   </key>
 </translations>

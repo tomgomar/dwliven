@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="33871c19-416d-4067-bcc7-bd05d56e97a7" Name="Products.query">
+  <Meta />
+  <Settings />
+  <Source Repository="ProductsLiven" Item="ProductsLiven.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Parameters>
+    <Parameter Name="Search" Type="System.String" DefaultValue="" />
+    <Parameter Name="PriceRange" Type="System.Double[]" DefaultValue="" />
+    <Parameter Name="GroupID" Type="System.String[]" DefaultValue="" />
+    <Parameter Name="DoNotShowVariantsAsSingleProducts" Type="System.Boolean" DefaultValue="" />
+    <Parameter Name="New" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="Organic" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="Gluten free" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="Sunflower oil" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="Expandable by air" Type="System.Boolean[]" DefaultValue="" />
+    <Parameter Name="Low-fat" Type="System.Boolean[]" DefaultValue="" />
+  </Parameters>
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="PriceRange" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="PriceRange" />
+        </Right>
+      </BinaryExpression>
+      <GroupExpression Operator="Or">
+        <BinaryExpression Operator="Equal">
+          <Left>
+            <FieldExpression Field="ProductName_Search" />
+          </Left>
+          <Right>
+            <ParameterExpression Name="Search" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="Equal">
+          <Left>
+            <FieldExpression Field="ProductNumber_Search" />
+          </Left>
+          <Right>
+            <ParameterExpression Name="Search" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="Contains">
+          <Left>
+            <FieldExpression Field="freetext" />
+          </Left>
+          <Right>
+            <ParameterExpression Name="Search" />
+          </Right>
+        </BinaryExpression>
+      </GroupExpression>
+      <BinaryExpression Operator="Between">
+        <Left>
+          <FieldExpression Field="Price" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="PriceRange" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="ParentGroupIDs" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="GroupID" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.Ecommerce.Context:LanguageID" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="AutoID" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.UserManagement.Context:FavoritesAutoIdByUserId" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ShowMasterOrVariantInList" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="DoNotShowVariantsAsSingleProducts" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaLiven|LivenNew" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="New" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaLiven|LivenOrganic" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Organic" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaLiven|LivenGlutenFree" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Gluten free" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaLiven|LivenSunflowerOil" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Sunflower oil" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaLiven|LivenExpandableByAir" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Expandable by air" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="ProductCategory|CategoriaLiven|LivenLowfat" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Low-fat" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Contains">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="SHOP9" Type="System.String" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields />
+  <ViewLanguages />
+</Query>

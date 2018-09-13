@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="496ffde7-599f-4ed4-aa8e-98c21234db1c" Name="FrontpagePromotion.query">
+  <Meta />
+  <Settings />
+  <Source Repository="ProductsLiven" Item="ProductsLiven.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Parameters>
+    <Parameter Name="Combinations" Type="System.String[]" DefaultValue="" />
+  </Parameters>
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.Ecommerce.Context:LanguageID" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="ProductVariantIdCombination" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="Combinations" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields />
+  <ViewLanguages />
+</Query>

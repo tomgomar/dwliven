@@ -410,4 +410,9 @@
     <translation culture="da-DK"><![CDATA[Add to cart]]></translation>
     <translation culture="es-ES"><![CDATA[Add to cart]]></translation>
   </key>
+  <key name="Search result for" DefaultValue="Search result for">
+    <translation culture="en-GB"><![CDATA[Search result for]]></translation>
+    <translation culture="da-DK"><![CDATA[Search result for]]></translation>
+    <translation culture="es-ES"><![CDATA[Search result for]]></translation>
+  </key>
 </translations>

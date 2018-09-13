@@ -1,0 +1,134 @@
+﻿<input type="hidden" id="percent0" value="20" />
+<input type="hidden" id="percent1" value="40" />
+<input type="hidden" id="percent2" value="30" />
+<input type="hidden" id="percent3" value="5" />
+<input type="hidden" id="percent4" value="5" />
+<div id="Container_0" style="display:none;">
+    <script type="text/javascript">
+        function updateurl() {
+            var org = "<!--@SefUrl-->"
+        }
+    </script>
+
+    <div class="optimize-edit-box">
+        <fieldset>
+            <legend class="gbTitle">URL&nbsp;</legend>
+
+            <div class="form-group input-group">
+                <input type="text" class="std" id="Field_0" name="Field_0" autocomplete="off" value="<!--@SefUrlText-->" onkeyup="validate0();" onmouseout="validate0();" onchange="validate0();" maxlength="255" oncontextmenu="return false;" value="" />
+                <i class="md md-lg md-warning color-warning" title="Warning" id="iconWarning_0"></i>
+                <i class="fa fa-lg fa-check-circle-o color-success" title="Ok" id="iconOk_0"></i>
+                <i class="fa fa-lg fa-times-circle-o color-danger" title="Error" id="iconErr_0"></i>
+            </div>
+            
+            <ol>
+                <li id="wElementcount_0">You are missing the element "Title" (&lt;title&gt;*&lt;/title&gt;). To get the full benefit from your search engine optimization, make sure this element is added to your website </li>
+			    <li id="wFrequency1_0">The phrase &laquo;<!--@Phrase-->&raquo; is not part of the "Url". Add &laquo;<!--@Phrase-->&raquo; to "Url" text.</li>
+			    <li id="wWordcount_0">Add <em id="wWordcount_0_more">more</em> word(s) to the field. You currently have <em id="wWordcount_0_currently">
+				    1
+			    </em>&nbsp;word(s) and you need at least <em>
+				    1
+			    </em>.</li>
+			    <li id="wBeginWithPhrase_0">
+				    Move the phrase &laquo;<!--@Phrase-->&raquo; to the beginning of the field text.
+			    </li>
+		    </ol>
+    		
+		    <div id="wOk_0" class="optimize-optimized">
+		        This field is fully optimized.
+		    </div>
+    		
+		    <div class="optimize-navigation">
+		        <button class="btn btn-default" id="cmdPrev0" disabled="disabled" onclick="return false;">Back</button>&nbsp;
+		        <button class="btn btn-default" id="cmdNext0" onclick="if(canNavigate(0, 1)) enable(1); return false;">Next</button>
+		    </div>
+		</fieldset>
+    </div>
+ 
+	<input type="hidden" name="isValid_0" id="isValid_0" value="" />
+
+	<script type="text/javascript">
+	    function validate0() {
+	        validate('title', 0, 1, '<!--@Phrase-->', '1');
+	    }
+	</script>
+</div>
+<!--@LoopStart(Elements)-->
+<div id="Container_<!--@ID-->" style="display:none;">
+    <div class="optimize-edit-box">
+        <fieldset>
+            <legend class="gbTitle"><!--@Description-->&nbsp;</legend>
+            <div class="form-group input-group">
+                <!--@If(ID=="3" || ID=="4")-->
+                <textarea rows="4" class="std" name="Field_<!--@ID-->" id="Field_<!--@ID-->" autocomplete="off" onkeyup="validate<!--@ID-->();" onmouseout="validate<!--@ID-->();" onchange="validate<!--@ID-->();" maxlength="255" oncontextmenu="return false;"><!--@FirstValue--></textarea>
+                <!--@Else-->
+                <input type="text" class="std" name="Field_<!--@ID-->" id="Field_<!--@ID-->" autocomplete="off" value="<!--@FirstValue-->" onkeyup="validate<!--@ID-->();" onmouseout="validate<!--@ID-->();" onchange="validate<!--@ID-->();" maxlength="255" oncontextmenu="return false;" />
+                <!--@EndIf-->
+                <input type="hidden" name="Field_<!--@Name-->" value="<!--@html-->" />
+                <i class="md md-lg md-warning color-warning" title="Warning" id="iconWarning_<!--@ID-->"></i>
+                <i class="fa fa-lg fa-check-circle-o color-success" title="Ok" id="iconOk_<!--@ID-->"></i>
+                <i class="fa fa-lg fa-times-circle-o color-danger" title="Error" id="iconErr_<!--@ID-->"></i>
+            </div>
+            <!--@If(ID=="3" || ID=="4")-->
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <!--@EndIf-->
+            <ol>
+                <li id="wElementcount_<!--@ID-->">You are missing the element "<!--@Description-->" (<!--@Pattern-->). To get the full benefit from your search engine optimization, make sure this element is added to your website </li>
+			    <li id="wFrequency1_<!--@ID-->">The phrase &laquo;<!--@Phrase-->&raquo; is not part of the "<!--@Description-->". Add &laquo;<!--@Phrase-->&raquo; to "<!--@Description-->" text.</li>
+			    <li id="wWordcount_<!--@ID-->">Add <em id="wWordcount_<!--@ID-->_more">more</em> word(s) to the field. You currently have <em id="wWordcount_<!--@ID-->_currently">
+				    <!--@WordCount-->
+			    </em>&nbsp;word(s) and you need at least <em>
+				    <!--@MinRquiredWordCount-->
+			    </em>.</li>
+    			
+			    <li id="wWordcountMax_<!--@ID-->">Remove <em id="wWordcountMax_<!--@ID-->_less">less</em> word(s) from the field. You currently have <em id="wWordcountMax_<!--@ID-->_currently">
+				    <!--@WordCount-->
+			    </em>&nbsp;word(s) and you need no more than <em>
+				    <!--@MaxRequiredWordCount-->
+			    </em>.</li>
+			    <li id="wTooManyCharacters_<!--@ID-->">
+				    Remove characters from this field. You have <em id="wTooManyCharacters_<!--@ID-->_current">#</em> and should have no more than <!--@RequiredCharacterCountMax-->.
+			    </li>
+			    <li id="wTooFewCharacters_<!--@ID-->">
+				    Add characters to this field. You have <em id="wTooFewCharacters_<!--@ID-->_current">#</em> and should have more than <!--@RequiredCharacterCountMin-->.
+			    </li>
+
+
+			    <li id="wBeginWithPhrase_<!--@ID-->">
+				    Move the phrase &laquo;<!--@Phrase-->&raquo; to the beginning of the field text.
+			    </li>
+            </ol>
+            
+            <div id="wOk_<!--@ID-->" class="optimize-optimized">
+		        This field is fully optimized.
+		    </div>
+    		
+		    <div class="optimize-navigation">
+		        <button class="btn btn-default" id="cmdPrev<!--@ID-->" onclick="if(canNavigate(<!--@ID-->, -1)) enable(eval(<!--@ID--> - 1)); return false;">Back</button>&nbsp;
+		        <button class="btn btn-default" id="cmdNext<!--@ID-->" onclick="if(canNavigate(<!--@ID-->, 1)) enable(eval(<!--@ID--> + 1)); return false;">Next</button>
+	        </div>
+	    </fieldset>
+    </div>
+
+	<input type="hidden" name="isValid_<!--@ID-->" id="isValid_<!--@ID-->" value="" />
+	<input type="hidden" id="RequiredCharacterCountMax_<!--@ID-->" value="<!--@RequiredCharacterCountMax-->" />
+	<input type="hidden" id="RequiredCharacterCountMin_<!--@ID-->" value="<!--@RequiredCharacterCountMin-->" />
+	<input type="hidden" id="MaxRequiredWordCount_<!--@ID-->" value="<!--@MaxRequiredWordCount-->" />
+
+	<script type="text/javascript">
+        function validate<!--@ID-->(){
+            if (<!--@ID--> == "3" || <!--@ID--> == "4"){
+                var lines=document.all.Field_<!--@ID-->.value.replace(/\r/g,'').split('\n');
+                lines=lines.slice(0,4);
+                document.all.Field_<!--@ID-->.value=lines.join('\n');
+            }
+		validate('<!--@Name-->', <!--@ID-->, <!--@Count-->, '<!--@Phrase-->', '<!--@MinRquiredWordCount-->'); 
+	}
+	
+	</script>
+</div>
+<!--@LoopEnd(Elements)-->

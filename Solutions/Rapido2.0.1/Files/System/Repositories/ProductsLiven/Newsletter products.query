@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="f1ba43c9-1998-45cb-83f0-3c941c2f3d7c" Name="Newsletter products.query">
+  <Meta />
+  <Settings />
+  <Source Repository="ProductsLiven" Item="ProductsLiven.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields />
+  <ViewLanguages />
+</Query>

@@ -10,7 +10,7 @@
   <Builds Type="Dynamicweb.Content.Files.FileIndexBuilder, Dynamicweb">
     <Build Name="Files" Action="Full">
       <Setting Name="Recursive">True</Setting>
-      <Setting Name="StartFolder">DigitalAssets</Setting>
+      <Setting Name="StartFolder">RecursosDigitales</Setting>
       <Setting Name="SkipMetadata">False</Setting>
       <Notification SendLog="false" NotificationType="Never" />
     </Build>

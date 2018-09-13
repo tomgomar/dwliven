@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Facets Name="FacetsLiven">
+  <Meta />
+  <Settings />
+  <Source Repository="ProductsLiven" Item="Products.query" />
+  <Facet Name="New" Type="Field" Field="ProductCategory|CategoriaLiven|LivenNew" QueryParameter="New">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Organic" Type="Field" Field="ProductCategory|CategoriaLiven|LivenOrganic" QueryParameter="Organic">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Gluten free" Type="Field" Field="ProductCategory|CategoriaLiven|LivenGlutenFree" QueryParameter="Gluten free">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Sunflower oil" Type="Field" Field="ProductCategory|CategoriaLiven|LivenSunflowerOil" QueryParameter="Sunflower oil">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Expandable by air" Type="Field" Field="ProductCategory|CategoriaLiven|LivenExpandableByAir" QueryParameter="Expandable by air">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+  <Facet Name="Low-fat" Type="Field" Field="ProductCategory|CategoriaLiven|LivenLowfat" QueryParameter="Low-fat">
+    <RenderType Name="Checkboxes" SystemName="Checkboxes" />
+  </Facet>
+</Facets>

@@ -18,7 +18,7 @@
     <Parameter Name="LadyBikes" Type="System.String" DefaultValue="" />
     <Parameter Name="WheelsForThisBike" Type="System.String" DefaultValue="" />
     <Parameter Name="RelatedProducts" Type="System.String" DefaultValue="" />
-    <Parameter Name="DoNotShowVariantsAsSingleProducts" Type="System.Boolean" />
+    <Parameter Name="DoNotShowVariantsAsSingleProducts" Type="System.Boolean" DefaultValue="" />
   </Parameters>
   <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
   <SortOrder>

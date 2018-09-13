@@ -1,0 +1,21 @@
+﻿body {
+}
+
+.button {
+    width: 70px;
+}
+
+.lbl {
+    width: 100px;
+}
+
+.border {
+    padding: 5px;
+}
+.buttobbox{
+    text-align:right;
+    padding-right:16px;
+}
+.hidden{
+    display:none;
+}

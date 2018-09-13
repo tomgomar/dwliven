@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="c63205c9-c1f6-43df-b029-c2f1d9473588" Name="Promotion.query">
+  <Meta />
+  <Settings />
+  <Source Repository="ProductsLiven" Item="ProductsLiven.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Parameters>
+    <Parameter Name="GroupId" Type="System.String[]" />
+  </Parameters>
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <TermExpression Value="True" DisplayValue="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="MatchAny">
+        <Left>
+          <FieldExpression Field="GroupIDs" />
+        </Left>
+        <Right>
+          <ParameterExpression Name="GroupId" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Equal">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <MacroExpression Lookup="Dynamicweb.Ecommerce.Context:LanguageID" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields />
+  <ViewLanguages />
+</Query>

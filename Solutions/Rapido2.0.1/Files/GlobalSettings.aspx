@@ -7,10 +7,10 @@
       <Partner>Dynamicweb Software A/S</Partner>
       <Email>noreply@dynamicweb.dk</Email>
       <CopyrightMetaInformation>Dynamicweb Software A/S</CopyrightMetaInformation>
-      <SolutionLastReportDate>2018-07-22 10:35:35</SolutionLastReportDate>
-      <SolutionFilesize>150616</SolutionFilesize>
-      <SolutionDatabaseSize>0</SolutionDatabaseSize>
-      <SolutionLastFileSizeReportDate>2018-06-06 11:08:50</SolutionLastFileSizeReportDate>
+      <SolutionLastReportDate>2018-09-12 10:34:17</SolutionLastReportDate>
+      <SolutionFilesize>334783</SolutionFilesize>
+      <SolutionDatabaseSize>200</SolutionDatabaseSize>
+      <SolutionLastFileSizeReportDate>2018-09-03 16:15:27</SolutionLastFileSizeReportDate>
       <InstallationCheckSum>974251c97f4f27763c8df8c7769afc89</InstallationCheckSum>
       <InstallationCrmID>c5613b65-ceb7-e611-87b9-00155d30401d</InstallationCrmID>
       <InstallationCrmSolutionName>base9dev.local.dynamicweb.dk</InstallationCrmSolutionName>
@@ -99,7 +99,11 @@
       <DisableTemplateUpdates>False</DisableTemplateUpdates>
     </Updates>
     <LastSeenVersion>
-      <Version>9.4.15</Version>
+      <Version>9.5.0</Version>
+      <User>
+        <UserName>
+        </UserName>
+      </User>
     </LastSeenVersion>
     <Dictionary>
       <HideOldTranslationButton>false</HideOldTranslationButton>
@@ -295,8 +299,8 @@
       <Password>Admin123</Password>
       <Type>ms_sqlserver</Type>
       <UserName>administrador</UserName>
-      <Database>livendb</Database>
-      <SQLServer>naslivensql.database.windows.net</SQLServer>
+      <Database>naslivendb</Database>
+      <SQLServer>nasdemosql.database.windows.net</SQLServer>
       <DWWebIP>
       </DWWebIP>
       <SQLServer2>
@@ -328,7 +332,7 @@
       </DateFormat>
     </Database>
     <Version>
-      <CurrentVersion>9.4.0.0</CurrentVersion>
+      <CurrentVersion>9.5.0.0</CurrentVersion>
       <PerformedOncePackages>
         <updates.xml>2029,2028,2023,2021</updates.xml>
         <ecom.xml>2029,2028,2027,2025</ecom.xml>
@@ -591,6 +595,12 @@
         <translateTime>False</translateTime>
         <ProductWorkflowStateId>False</ProductWorkflowStateId>
         <CustomSticker>False</CustomSticker>
+        <FieldVideo>True</FieldVideo>
+        <Video>True</Video>
+        <FieldWord>True</FieldWord>
+        <FieldExcel>True</FieldExcel>
+        <FieldPDF>True</FieldPDF>
+        <FieldLink>True</FieldLink>
       </Variant>
       <Language>
         <ProductManufacturer>True</ProductManufacturer>
@@ -668,6 +678,12 @@
         <translateTime>False</translateTime>
         <ProductWorkflowStateId>False</ProductWorkflowStateId>
         <CustomSticker>False</CustomSticker>
+        <FieldVideo>True</FieldVideo>
+        <Video>True</Video>
+        <FieldWord>True</FieldWord>
+        <FieldExcel>True</FieldExcel>
+        <FieldPDF>True</FieldPDF>
+        <FieldLink>True</FieldLink>
       </Language>
       <ChoicesMade>True</ChoicesMade>
     </ProductLanguageControl>
@@ -782,6 +798,18 @@
         <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
         <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
         <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
+        <CategoriaLeven.LevenNew>True</CategoriaLeven.LevenNew>
+        <CategoriaLeven.LevenOrganic>True</CategoriaLeven.LevenOrganic>
+        <CategoriaLeven.LevenGlutenFree>True</CategoriaLeven.LevenGlutenFree>
+        <CategoriaLeven.LevenSunflowerOil>True</CategoriaLeven.LevenSunflowerOil>
+        <CategoriaLeven.LevenExpandableByAir>True</CategoriaLeven.LevenExpandableByAir>
+        <CategoriaLeven.LevenLowFat>True</CategoriaLeven.LevenLowFat>
+        <CategoriaLiven.LivenNew>True</CategoriaLiven.LivenNew>
+        <CategoriaLiven.LivenOrganic>True</CategoriaLiven.LivenOrganic>
+        <CategoriaLiven.LivenGlutenFree>True</CategoriaLiven.LivenGlutenFree>
+        <CategoriaLiven.LivenSunflowerOil>True</CategoriaLiven.LivenSunflowerOil>
+        <CategoriaLiven.LivenExpandableByAir>True</CategoriaLiven.LivenExpandableByAir>
+        <CategoriaLiven.LivenLowfat>True</CategoriaLiven.LivenLowfat>
       </Language>
       <Variant>
         <ClothingDetail.Material>True</ClothingDetail.Material>
@@ -838,6 +866,18 @@
         <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
         <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
         <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
+        <CategoriaLeven.LevenNew>True</CategoriaLeven.LevenNew>
+        <CategoriaLeven.LevenOrganic>True</CategoriaLeven.LevenOrganic>
+        <CategoriaLeven.LevenGlutenFree>True</CategoriaLeven.LevenGlutenFree>
+        <CategoriaLeven.LevenSunflowerOil>True</CategoriaLeven.LevenSunflowerOil>
+        <CategoriaLeven.LevenExpandableByAir>True</CategoriaLeven.LevenExpandableByAir>
+        <CategoriaLeven.LevenLowFat>True</CategoriaLeven.LevenLowFat>
+        <CategoriaLiven.LivenNew>True</CategoriaLiven.LivenNew>
+        <CategoriaLiven.LivenOrganic>True</CategoriaLiven.LivenOrganic>
+        <CategoriaLiven.LivenGlutenFree>True</CategoriaLiven.LivenGlutenFree>
+        <CategoriaLiven.LivenSunflowerOil>True</CategoriaLiven.LivenSunflowerOil>
+        <CategoriaLiven.LivenExpandableByAir>True</CategoriaLiven.LivenExpandableByAir>
+        <CategoriaLiven.LivenLowfat>True</CategoriaLiven.LivenLowfat>
       </Variant>
     </ProductCategoriesLanguageControl>
     <GiftCards>
@@ -894,6 +934,11 @@
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
         <CustomSticker>False</CustomSticker>
+        <FieldLink>False</FieldLink>
+        <FieldVideo>False</FieldVideo>
+        <FieldPDF>False</FieldPDF>
+        <FieldWord>False</FieldWord>
+        <FieldExcel>False</FieldExcel>
       </ProductFields>
       <ProductCategories>
         <ClothingDetail.Material>False</ClothingDetail.Material>
@@ -937,6 +982,12 @@
         <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
         <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
         <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
+        <CategoriaLiven.LivenNew>False</CategoriaLiven.LivenNew>
+        <CategoriaLiven.LivenOrganic>False</CategoriaLiven.LivenOrganic>
+        <CategoriaLiven.LivenGlutenFree>False</CategoriaLiven.LivenGlutenFree>
+        <CategoriaLiven.LivenSunflowerOil>False</CategoriaLiven.LivenSunflowerOil>
+        <CategoriaLiven.LivenExpandableByAir>False</CategoriaLiven.LivenExpandableByAir>
+        <CategoriaLiven.LivenLowfat>False</CategoriaLiven.LivenLowfat>
       </ProductCategories>
     </Required>
     <ReadOnly>
@@ -987,6 +1038,11 @@
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
         <CustomSticker>False</CustomSticker>
+        <FieldLink>False</FieldLink>
+        <FieldVideo>False</FieldVideo>
+        <FieldPDF>False</FieldPDF>
+        <FieldWord>False</FieldWord>
+        <FieldExcel>False</FieldExcel>
       </ProductFields>
       <ProductCategories>
         <ClothingDetail.Material>False</ClothingDetail.Material>
@@ -1030,6 +1086,12 @@
         <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
         <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
         <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
+        <CategoriaLiven.LivenNew>False</CategoriaLiven.LivenNew>
+        <CategoriaLiven.LivenOrganic>False</CategoriaLiven.LivenOrganic>
+        <CategoriaLiven.LivenGlutenFree>False</CategoriaLiven.LivenGlutenFree>
+        <CategoriaLiven.LivenSunflowerOil>False</CategoriaLiven.LivenSunflowerOil>
+        <CategoriaLiven.LivenExpandableByAir>False</CategoriaLiven.LivenExpandableByAir>
+        <CategoriaLiven.LivenLowfat>False</CategoriaLiven.LivenLowfat>
       </ProductCategories>
     </ReadOnly>
     <Hidden>
@@ -1080,6 +1142,11 @@
         <translateDescription>False</translateDescription>
         <translateTime>False</translateTime>
         <CustomSticker>False</CustomSticker>
+        <FieldLink>False</FieldLink>
+        <FieldVideo>False</FieldVideo>
+        <FieldPDF>False</FieldPDF>
+        <FieldWord>False</FieldWord>
+        <FieldExcel>False</FieldExcel>
       </ProductFields>
       <ProductCategories>
         <ClothingDetail.Material>False</ClothingDetail.Material>
@@ -1123,6 +1190,12 @@
         <CategoriaZanuy.Sin_colorantes>False</CategoriaZanuy.Sin_colorantes>
         <CategoriaZanuy.Aceite_de_girasol>False</CategoriaZanuy.Aceite_de_girasol>
         <CategoriaZanuy.Vegetariano>False</CategoriaZanuy.Vegetariano>
+        <CategoriaLiven.LivenNew>False</CategoriaLiven.LivenNew>
+        <CategoriaLiven.LivenOrganic>False</CategoriaLiven.LivenOrganic>
+        <CategoriaLiven.LivenGlutenFree>False</CategoriaLiven.LivenGlutenFree>
+        <CategoriaLiven.LivenSunflowerOil>False</CategoriaLiven.LivenSunflowerOil>
+        <CategoriaLiven.LivenExpandableByAir>False</CategoriaLiven.LivenExpandableByAir>
+        <CategoriaLiven.LivenLowfat>False</CategoriaLiven.LivenLowfat>
       </ProductCategories>
     </Hidden>
     <Fields>
@@ -1403,6 +1476,18 @@
   </ctl00_MainContent_DisableCreationNewGroups>
   <ctl00_MainContent_EditGroupId>
   </ctl00_MainContent_EditGroupId>
+  <ctl00_MainContent_ApplyReadonlyForAdministrators>
+  </ctl00_MainContent_ApplyReadonlyForAdministrators>
+  <ctl00_MainContent_ApplyHiddenForAdministrators>
+  </ctl00_MainContent_ApplyHiddenForAdministrators>
+  <ctl00_MainContent_ApplyReadonlyForAdministrators>
+  </ctl00_MainContent_ApplyReadonlyForAdministrators>
+  <ctl00_MainContent_ApplyHiddenForAdministrators>
+  </ctl00_MainContent_ApplyHiddenForAdministrators>
+  <ctl00_MainContent_ApplyReadonlyForAdministrators>
+  </ctl00_MainContent_ApplyReadonlyForAdministrators>
+  <ctl00_MainContent_ApplyHiddenForAdministrators>
+  </ctl00_MainContent_ApplyHiddenForAdministrators>
   <ctl00_MainContent_ApplyReadonlyForAdministrators>
   </ctl00_MainContent_ApplyReadonlyForAdministrators>
   <ctl00_MainContent_ApplyHiddenForAdministrators>
