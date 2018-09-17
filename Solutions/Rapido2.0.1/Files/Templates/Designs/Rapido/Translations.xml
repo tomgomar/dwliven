@@ -245,10 +245,12 @@
   <key name="Showing page">
     <translation culture="da-DK"><![CDATA[Viser side]]></translation>
     <translation culture="en-GB"><![CDATA[Showing page]]></translation>
+    <translation culture="es-ES"><![CDATA[Showing page]]></translation>
   </key>
   <key name="of">
     <translation culture="da-DK"><![CDATA[af]]></translation>
     <translation culture="en-GB"><![CDATA[of]]></translation>
+    <translation culture="es-ES"><![CDATA[of]]></translation>
   </key>
   <key name="products">
     <translation culture="da-DK"><![CDATA[produkter]]></translation>
@@ -843,6 +845,7 @@
   <key name="Including products">
     <translation culture="en-GB"><![CDATA[Including products]]></translation>
     <translation culture="da-DK"><![CDATA[Inkluderede produkter]]></translation>
+    <translation culture="es-ES"><![CDATA[Including products]]></translation>
   </key>
   <key name="Mobile">
     <translation culture="en-GB"><![CDATA[Mobile]]></translation>
@@ -2340,6 +2343,7 @@
   <key name="Manage Accounts">
     <translation culture="en-GB"><![CDATA[Manage Accounts]]></translation>
     <translation culture="da-DK"><![CDATA[Rediger konto]]></translation>
+    <translation culture="es-ES"><![CDATA[Manage Accounts]]></translation>
   </key>
   <key name="Login as">
     <translation culture="en-GB"><![CDATA[Login as]]></translation>
@@ -2436,14 +2440,17 @@
   <key name="Sign in as">
     <translation culture="en-GB"><![CDATA[Sign in as]]></translation>
     <translation culture="da-DK"><![CDATA[Log ind som]]></translation>
+    <translation culture="es-ES"><![CDATA[Sign in as]]></translation>
   </key>
   <key name="customer(s) found">
     <translation culture="en-GB"><![CDATA[customer(s) found]]></translation>
     <translation culture="da-DK"><![CDATA[kunder fundet]]></translation>
+    <translation culture="es-ES"><![CDATA[customer(s) found]]></translation>
   </key>
   <key name="Select the customer you want to manage">
     <translation culture="en-GB"><![CDATA[Select the customer you want to manage]]></translation>
     <translation culture="da-DK"><![CDATA[Vælg den kunde du vil arbejde med]]></translation>
+    <translation culture="es-ES"><![CDATA[Select the customer you want to manage]]></translation>
   </key>
   <key name="Check your email - we sent you an email with the password">
     <translation culture="en-GB"><![CDATA[Check your email - we sent you an email with the password]]></translation>
@@ -2875,6 +2882,7 @@
   <key name="Search user">
     <translation culture="en-GB"><![CDATA[Search user]]></translation>
     <translation culture="da-DK"><![CDATA[Søg bruger]]></translation>
+    <translation culture="es-ES"><![CDATA[Search user]]></translation>
   </key>
   <key name="We have received a request to reset your password for your account.">
     <translation culture="en-GB"><![CDATA[We have received a request to reset your password for your account.]]></translation>
