@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SmartSearch>
+  <SmartInfo id="3d413d72-7830-4cd7-839b-45bd8dddbbe8" provider="Dynamicweb.SmartSearch.Providers.User.UserProviderSmartSearch" date="2018-09-24 10:25:19" name="Usuarios de Zaragoza" userID="0" limit="-1" isHidden="False" configuration="" index="Products.index|Products" />
+  <RulesGroups>
+    <RulesGroup CombineMethod="None">
+      <Rule fieldID="City" fieldType="System.String" ctrlTypeID="0" fieldName="City" operator="Equals" ruleValueFrom="Zaragoza" ruleValueTo="Nothing" />
+    </RulesGroup>
+  </RulesGroups>
+  <SortParams>
+    <SortParam fieldID="Active" fieldType="System.Boolean" fieldName="Active" sort="Asc" />
+    <SortParam fieldID="Active" fieldType="System.Boolean" fieldName="Active" sort="Asc" />
+  </SortParams>
+  <ViewFields />
+  <ViewLanguages />
+</SmartSearch>

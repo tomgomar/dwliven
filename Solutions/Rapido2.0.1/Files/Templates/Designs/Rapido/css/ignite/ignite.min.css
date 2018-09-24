@@ -1,12 +1,11 @@
-﻿/* Hide prices in: Products page > Details list view */
+﻿/* NAS TOM: Este fichero esta vacio originalmente, para modificarlo libremente. */
+/* Hide prices in: Products page > Details list view */
 .product-list__details-item__right.dw-mod .u-pull--right {
-	display: none !important;
-	/* background-color: #ff00ff; */
+ 	display: none !important;
 }
 /* Hide prices in: Products page > Grid view */
 .price.dw-mod, .before-price {
-	display: none !important;
-	/* background-color: #ff00ff; */
+	 display: none !important;
 }
 .grid__cell.product-list__grid-item__price-info {
 	height: auto;
@@ -16,5 +15,4 @@
 }
 .product-list__list-item__price-actions {
 	display: none !important;
-	/* background-color: #ff00ff; */
 }

@@ -7,7 +7,7 @@
       <Partner>Dynamicweb Software A/S</Partner>
       <Email>noreply@dynamicweb.dk</Email>
       <CopyrightMetaInformation>Dynamicweb Software A/S</CopyrightMetaInformation>
-      <SolutionLastReportDate>2018-09-16 10:35:41</SolutionLastReportDate>
+      <SolutionLastReportDate>2018-09-18 10:36:38</SolutionLastReportDate>
       <SolutionFilesize>334783</SolutionFilesize>
       <SolutionDatabaseSize>200</SolutionDatabaseSize>
       <SolutionLastFileSizeReportDate>2018-09-03 16:15:27</SolutionLastFileSizeReportDate>
@@ -276,16 +276,16 @@
   </Modules>
   <System>
     <MailServer>
-      <Server>smtp.dynamic-systems.lan</Server>
+      <Server>mail.netaservice.com</Server>
       <DoNotUsePickup>False</DoNotUsePickup>
-      <Port>
-      </Port>
-      <Username>
-      </Username>
-      <Password>
-      </Password>
+      <Port>25</Port>
+      <Username>dynamicweb@netaservice.com</Username>
+      <Password>ZYT2RG8kMh</Password>
       <Type>smtp</Type>
       <UseSll>False</UseSll>
+      <SaveAllMailsToDisk>False</SaveAllMailsToDisk>
+      <ByPassRecipients>True</ByPassRecipients>
+      <ByPassRecipientsSendTo>tgomez@netaservice.com</ByPassRecipientsSendTo>
     </MailServer>
     <ActiveDirectory>
       <ADSI-Domain>

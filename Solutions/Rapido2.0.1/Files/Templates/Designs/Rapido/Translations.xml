@@ -2518,6 +2518,7 @@
   <key name="Invalid email or password">
     <translation culture="en-GB"><![CDATA[Invalid email or password]]></translation>
     <translation culture="da-DK"><![CDATA[Forkert email eller kodeord]]></translation>
+    <translation culture="es-ES"><![CDATA[Invalid email or password]]></translation>
   </key>
   <key name="errorheader">
     <translation culture="en-GB"><![CDATA[An error has happend]]></translation>
@@ -2566,10 +2567,12 @@
   <key name="If you do not want to recieve emails from us, you can">
     <translation culture="en-GB"><![CDATA[If you do not want to recieve emails from us, you can]]></translation>
     <translation culture="da-DK"><![CDATA[Hvis du ikke ønske at modtage emails fra os, kan du]]></translation>
+    <translation culture="es-ES"><![CDATA[If you do not want to recieve emails from us, you can]]></translation>
   </key>
   <key name="unsubscribe">
     <translation culture="en-GB"><![CDATA[unsubscribe]]></translation>
     <translation culture="da-DK"><![CDATA[afmelde]]></translation>
+    <translation culture="es-ES"><![CDATA[unsubscribe]]></translation>
   </key>
   <key name="Subscribe confirmation">
     <translation culture="en-GB"><![CDATA[Subscribe confirmation]]></translation>
@@ -2903,18 +2906,22 @@
   <key name="Your email address is now confirmed.">
     <translation culture="en-GB"><![CDATA[Your email address is now confirmed.]]></translation>
     <translation culture="da-DK"><![CDATA[Din email adresse er nu bekræftet.]]></translation>
+    <translation culture="es-ES"><![CDATA[Your email address is now confirmed.]]></translation>
   </key>
   <key name="Thank you for the subscription">
     <translation culture="en-GB"><![CDATA[Thank you for the subscription]]></translation>
     <translation culture="da-DK"><![CDATA[Tak for din tilmeldning]]></translation>
+    <translation culture="es-ES"><![CDATA[Thank you for the subscription]]></translation>
   </key>
   <key name="Thank you for signing up to recieve emails. You will receive occasional Newsletters with news, information and promotions.">
     <translation culture="en-GB"><![CDATA[Thank you for signing up to recieve emails. You will receive occasional Newsletters with news, information and promotions.]]></translation>
     <translation culture="da-DK"><![CDATA[Tak for din tilmelding. Du vil modtage nyhedsbreve med nyheder, informationer og tilbud.]]></translation>
+    <translation culture="es-ES"><![CDATA[Thank you for signing up to recieve emails. You will receive occasional Newsletters with news, information and promotions.]]></translation>
   </key>
   <key name="My favorites">
     <translation culture="en-GB"><![CDATA[My favorites]]></translation>
     <translation culture="da-DK"><![CDATA[Mine favoritter]]></translation>
+    <translation culture="es-ES"><![CDATA[My favorites]]></translation>
   </key>
   <key name="Sign up form">
     <translation culture="en-GB"><![CDATA[Sign up form]]></translation>
